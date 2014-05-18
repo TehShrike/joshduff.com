@@ -1,8 +1,8 @@
 module.exports = {
-	title: 'Noddity',
-	noddityRoot: window.location.pathname + 'default-content/',
-	editLink: 'https://github.com/TehShrike/noddity/edit/master/default-content/',
-	logo: 'logo.svg',
+	title: "Josh Duff .com",
+	noddityRoot: 'http://beta.joshduff.com/content/',
+	editLink: 'https://github.com/TehShrike/joshduff.com-content/edit/master/',
+	logo: 'http://beta.joshduff.com/content/images/logo.svg',
 	errorPage: '404.md',
 	pathPrefix: '#!/',
 	pagePathPrefix: 'post/',
