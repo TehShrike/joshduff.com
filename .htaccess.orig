@@ -1,0 +1,74 @@
+# made with help from: http://htaccess.madewithlove.be/
+
+AddOutputFilterByType DEFLATE text/html text/plain application/javascript text/css
+
+ExpiresActive On
+ExpiresDefault "access plus 4 hours"
+ExpiresByType application/javascript A3600
+ExpiresByType application/x-javascript A3600
+ExpiresByType text/javascript A3600
+ExpiresByType text/html A90
+ExpiresByType text/plain A10
+ExpiresByType text/css A3600
+
+# Handle search engine static file stuff using github.com/TehShrike/seoaas
+#   * if you use a subdirectory, like "site.com/blog/" you'd change to "RewriteBase /blog/"
+#   * if you're running your own static generator site, change the domain in RewriteRule
+#   * if you've changed your config.js `pagePathPrefix` you'll need to change every instance
+#     of "post/" to your new prefix, e.g. "journal/" or whatever
+#   * if you're using your own content folder, say "my-content", you'll need to
+#     change "default-content" to "my-content"
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteCond %{QUERY_STRING} ^_escaped_fragment_=([^&]*/)([^&/]*)
+<<<<<<< HEAD
+RewriteRule .* "http://seo.noddityaas.com/?noddityRoot=http://%{HTTP_HOST}%{REQUEST_URI}content/&postUrlRoot=http://%{HTTP_HOST}%{REQUEST_URI}#!%1&post=%2"
+RewriteCond %{QUERY_STRING} ^_escaped_fragment_=([^&]*)$
+RewriteRule .* "http://seo.noddityaas.com/?noddityRoot=http://%{HTTP_HOST}%{REQUEST_URI}content/&postUrlRoot=http://%{HTTP_HOST}%{REQUEST_URI}#!&post=%1"
+=======
+RewriteRule .* "http://seo.rssaas.com/?noddityRoot=http://%{HTTP_HOST}%{REQUEST_URI}content/&postUrlRoot=http://%{HTTP_HOST}%{REQUEST_URI}#!%1&post=%2"
+RewriteCond %{QUERY_STRING} ^_escaped_fragment_=([^&]*)$
+RewriteRule .* "http://seo.rssaas.com/?noddityRoot=http://%{HTTP_HOST}%{REQUEST_URI}content/&postUrlRoot=http://%{HTTP_HOST}%{REQUEST_URI}#!&post=%1"
+>>>>>>> FETCH_HEAD
+RewriteCond %{REQUEST_URI} ^/342(/|$)
+RewriteRule .* "http://%{HTTP_HOST}/#!/post/2012-11-29-an-entreaty.md" [NE,R=301]
+RewriteCond %{REQUEST_URI} ^/323(/|$)
+RewriteRule .* "http://%{HTTP_HOST}/#!/post/2011-09-26-how-should-we-then-drive.md" [NE,R=301]
+RewriteCond %{REQUEST_URI} ^/270(/|$)
+RewriteRule .* "http://%{HTTP_HOST}/#!/post/2011-05-10-why-you-should-not-be-using-mysqli-prepare.md" [NE,R=301]
+RewriteCond %{REQUEST_URI} ^/252(/|$)
+RewriteRule .* "http://%{HTTP_HOST}/#!/post/2011-01-09-what-would-universities-do-if-they-cared-about-computer-science.md" [NE,R=301]
+RewriteCond %{REQUEST_URI} ^/248(/|$)
+RewriteRule .* "http://%{HTTP_HOST}/#!/post/2010-08-23-on-growing-as-a-programmer-i-think.md" [NE,R=301]
+RewriteCond %{REQUEST_URI} ^/203(/|$)
+RewriteRule .* "http://%{HTTP_HOST}/#!/post/2010-06-21-profanities-and-other-funny-words.md" [NE,R=301]
+RewriteCond %{REQUEST_URI} ^/200(/|$)
+RewriteRule .* "http://%{HTTP_HOST}/#!/post/2010-05-25-dirty-mother.md" [NE,R=301]
+RewriteCond %{REQUEST_URI} ^/189(/|$)
+RewriteRule .* "http://%{HTTP_HOST}/#!/post/2010-02-19-run-a-query-for-every-table-in-a-database.md" [NE,R=301]
+RewriteCond %{REQUEST_URI} ^/173(/|$)
+RewriteRule .* "http://%{HTTP_HOST}/#!/post/2010-02-04-logical-errors-in-queries-do-not-want.md" [NE,R=301]
+RewriteCond %{REQUEST_URI} ^/156(/|$)
+RewriteRule .* "http://%{HTTP_HOST}/#!/post/2010-01-22-convert-blocks-of-text-to-sentence-case.md" [NE,R=301]
+RewriteCond %{REQUEST_URI} ^/145(/|$)
+RewriteRule .* "http://%{HTTP_HOST}/#!/post/2010-01-15-running-my-first-campaign.md" [NE,R=301]
+RewriteCond %{REQUEST_URI} ^/141(/|$)
+RewriteRule .* "http://%{HTTP_HOST}/#!/post/2009-12-29-sleep-schedule.md" [NE,R=301]
+RewriteCond %{REQUEST_URI} ^/39(/|$)
+RewriteRule .* "http://%{HTTP_HOST}/#!/post/2009-07-03-recent-big-news-cops-beat-up-gay-people.md" [NE,R=301]
+RewriteCond %{REQUEST_URI} ^/38(/|$)
+RewriteRule .* "http://%{HTTP_HOST}/#!/post/2009-01-13-if-life-isnt-fair-should-we-make-laws-to-fix-it.md" [NE,R=301]
+RewriteCond %{REQUEST_URI} ^/36(/|$)
+RewriteRule .* "http://%{HTTP_HOST}/#!/post/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.md" [NE,R=301]
+RewriteCond %{REQUEST_URI} ^/33(/|$)
+RewriteRule .* "http://%{HTTP_HOST}/#!/post/2008-07-18-things-i-think-about-while-sitting-on-the-toilet.md" [NE,R=301]
+RewriteCond %{REQUEST_URI} ^/19(/|$)
+RewriteRule .* "http://%{HTTP_HOST}/#!/post/2006-09-23-an-observation-on-college-classes.md" [NE,R=301]
+RewriteCond %{REQUEST_URI} ^/feed(/|$)
+<<<<<<< HEAD
+RewriteRule .* "http://rss.noddityaas.com/?noddityRoot=http://joshduff.com/content/&postUrlRoot=http://joshduff.com/#!post/&title=Josh Duff .com&author=Josh" [R=301]
+=======
+RewriteRule .* "http://rssaas.com/?noddityRoot=http://beta.joshduff.com/content/&postUrlRoot=http://beta.joshduff.com/%23!post/&title=Josh Duff .com&author=Josh" [R=301]
+>>>>>>> FETCH_HEAD
+</IfModule>
