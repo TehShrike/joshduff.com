@@ -1,8 +1,8 @@
 module.exports = {
 	title: "Josh Duff .com",
-	noddityRoot: 'http://beta.joshduff.com/content/',
+	noddityRoot: 'http://joshduff.com/content/',
 	editLink: 'https://github.com/TehShrike/joshduff.com-content/edit/master/',
-	logo: 'http://beta.joshduff.com/content/images/logo.svg',
+	logo: 'http://joshduff.com/content/images/logo.svg',
 	errorPage: '404.md',
 	pathPrefix: '#!/',
 	pagePathPrefix: 'post/',
