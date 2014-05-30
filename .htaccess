@@ -21,10 +21,8 @@ ExpiresByType text/css A3600
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
-RewriteCond %{QUERY_STRING} ^_escaped_fragment_=([^&]*/)([^&/]*)
-RewriteRule .* "http://seo.noddityaas.com/?noddityRoot=http://%{HTTP_HOST}%{REQUEST_URI}content/&postUrlRoot=http://%{HTTP_HOST}%{REQUEST_URI}#!%1&post=%2"
-RewriteCond %{QUERY_STRING} ^_escaped_fragment_=([^&]*)$
-RewriteRule .* "http://seo.noddityaas.com/?noddityRoot=http://%{HTTP_HOST}%{REQUEST_URI}content/&postUrlRoot=http://%{HTTP_HOST}%{REQUEST_URI}#!&post=%1"
+RewriteCond %{QUERY_STRING} ^_escaped_fragment_=(?:[^&]*/)?([^&/]*)
+RewriteRule .* "http://seo.noddityaas.com/?noddityRoot=http://%{HTTP_HOST}%{REQUEST_URI}content/&postUrlRoot=http://%{HTTP_HOST}%{REQUEST_URI}#!/post/&post=%1"
 RewriteCond %{REQUEST_URI} ^/342(/|$)
 RewriteRule .* "http://%{HTTP_HOST}/#!/post/2012-11-29-an-entreaty.md" [NE,R=301]
 RewriteCond %{REQUEST_URI} ^/323(/|$)
@@ -60,5 +58,5 @@ RewriteRule .* "http://%{HTTP_HOST}/#!/post/2008-07-18-things-i-think-about-whil
 RewriteCond %{REQUEST_URI} ^/19(/|$)
 RewriteRule .* "http://%{HTTP_HOST}/#!/post/2006-09-23-an-observation-on-college-classes.md" [NE,R=301]
 RewriteCond %{REQUEST_URI} ^/feed(/|$)
-RewriteRule .* "http://rss.noddityaas.com/?noddityRoot=http://joshduff.com/content/&postUrlRoot=http://joshduff.com/#!post/&title=Josh Duff .com&author=Josh" [R=301]
+RewriteRule .* "http://rss.noddityaas.com/?noddityRoot=http://joshduff.com/content/&postUrlRoot=http://joshduff.com/#!/post/&title=Josh Duff .com&author=Josh" [R=301]
 </IfModule>
