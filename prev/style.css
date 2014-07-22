@@ -1,11 +1,11 @@
-#menu {
+div.menu {
 	float: left;
 	position: relative;
 	padding: 25px;
 	width: 300px;
 }
 
-#main {
+div.main {
 	float: left;
 	padding: 20px;
 	margin: 10px;
@@ -19,15 +19,15 @@ body {
 	background-color: #FAFAFA;
 }
 
-#menu ol {
+div.menu ol {
 	padding: 0;
 }
 
-#menu li a {
+div.menu li a {
 	text-decoration: none;
 }
 
-#menu li {
+div.menu li {
 	border-bottom: thin solid rgba(55, 42, 26, 1);
 	margin: 20px 0px;
 	line-height: 1.05;
@@ -56,7 +56,7 @@ body {
 	font-style: normal;
 }
 
-h1,h2,h3,h4,#menu a {
+h1,h2,h3,h4,div.menu a {
 	font-family: "cantarellregular","Lucida Sans Unicode","Lucida Sans","Geneva","Verdana","sans-serif";
 }
 

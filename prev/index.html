@@ -4,20 +4,9 @@
 	<title>
 		Noddity
 	</title>
-	<!--
-		If you want to enable an RSS feed for your site, uncomment this next line, and change the
-		arguments to point to your domain and have your name and blog title and stuff.
-	-->
-	<!-- <link href="http://rssaas.com/?noddityRoot=http://noddity.com/content/&postUrlRoot=http://noddity.com/%23!/post/&title=Noddity&author=TehShrike" rel="alternate" type="application/rss+xml" title="Noddity" /> -->
+	<link href="http://rss.noddityaas.com/?noddityRoot=http://joshduff.com/content/&postUrlRoot=http://joshduff.com/%23!/post/&title=Josh%20Duff%20.com&author=Josh" rel="alternate" type="application/rss+xml" title="Blog" />
 
-	<!--
-		this next line tells search engine spiders that they should use _escaped_fragment_ urls
-		to find static versions of your pages.  Make sure that .htaccess file is working correctly
-		if you want to enable this.
-	-->
-	<!-- <meta name="fragment" content="!"> -->
-
-	<meta charset="utf-8">
+	<meta name="fragment" content="!">
 
 	<link rel="stylesheet" type="text/css" href="style.css" />
 	<link rel="shortcut icon" href="icon/favicon.ico">
@@ -44,42 +33,49 @@
 </head>
 
 <body>
-<div id="menu"></div>
-<div id="main"></div>
 
-<script id='template-menu' type="text/ractive">
-	<a href="{{pathPrefix}}">
-		<img class="logo" src="{{logo}}" />
-	</a>
+<script id='main' type="text/ractive">
 
-	<div>
-		<h3>Posts</h3>
-		<ol>
-			{{#postList}}
-				<li><a href="{{pathPrefix}}{{pagePathPrefix}}{{filename}}">{{title}}</a></li>
-			{{/postList}}
-		</ol>
-	</div>
-</script>
-<script id="template-main" type="text/ractive">
+	<div class="menu">
+		<a href="{{pathPrefix}}">
+			<img class="logo" src="{{logo}}" />
+		</a>
 
-	{{#editLink}}<div id="edit-post-link"><a href="{{editLink}}{{current}}">Edit this post</a></div>{{/editLink}}
-	<article>
 		<div>
-			{{#metadata.title}}
-				<h1>{{metadata.title}}</h1>
-			{{/metadata.title}}
-			<div class="post-content">
-				{{{html}}}
-			</div>
+			<h3>Posts</h3>
+			<ol>
+				{{#postList}}
+					<li><a href="{{pathPrefix}}{{pagePathPrefix}}{{filename}}">{{title}}</a></li>
+				{{/postList}}
+			</ol>
 		</div>
-	</article>
+	</div>
+
+	<div class="main">
+		{{#editLink}}<div id="edit-post-link"><a href="{{editLink}}{{current}}">Edit this post</a></div>{{/editLink}}
+		<article>
+			{{#currentPost}}
+				{{>post}}
+			{{/currentPost}}
+		</article>
+	</div>
 
 </script>
 
-<script src="config.js"></script>
 <script src="js/vendor/satnav.js"></script>
-<script src="js/build.js"></script>
+<script src="build.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-11745494-1', 'joshduff.com');
+  ga('require', 'linkid', 'linkid.js');
+  ga('send', 'pageview');
+
+</script>
 
 </body>
 
