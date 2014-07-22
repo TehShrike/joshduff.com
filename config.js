@@ -1,4 +1,4 @@
-module.exports = {
+noddityConfig = {
 	title: "Josh Duff .com",
 	noddityRoot: window.location.pathname + 'content/',
 	editLink: 'https://github.com/TehShrike/joshduff.com-content/edit/master/',
