@@ -1,10 +1,11 @@
-module.exports = {
+noddityConfig = {
 	title: "Josh Duff .com",
-	noddityRoot: 'http://joshduff.com/content/',
+	noddityRoot: window.location.pathname + 'content/',
 	editLink: 'https://github.com/TehShrike/joshduff.com-content/edit/master/',
 	logo: 'http://joshduff.com/content/images/logo.svg',
 	errorPage: '404.md',
 	pathPrefix: '#!/',
 	pagePathPrefix: 'post/',
-	debug: false
+	debug: false,
+	sidebar: null
 }

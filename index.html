@@ -6,6 +6,7 @@
 	</title>
 	<link href="http://rss.noddityaas.com/?noddityRoot=http://joshduff.com/content/&postUrlRoot=http://joshduff.com/%23!/post/&title=Josh%20Duff%20.com&author=Josh" rel="alternate" type="application/rss+xml" title="Blog" />
 
+	<meta charset="utf-8">
 	<meta name="fragment" content="!">
 
 	<link rel="stylesheet" type="text/css" href="style.css" />
@@ -33,37 +34,42 @@
 </head>
 
 <body>
+<div id="sidebar"></div>
+<div id="main"></div>
 
-<script id='main' type="text/ractive">
+<script id='template-menu' type="text/ractive">
+	<a href="{{pathPrefix}}">
+		<img class="logo" src="{{logo}}" />
+	</a>
 
-	<div class="menu">
-		<a href="{{pathPrefix}}">
-			<img class="logo" src="{{logo}}" />
-		</a>
+	<div>
+		<h3>Posts</h3>
+		<ol>
+			{{#postList}}
+				<li><a href="{{pathPrefix}}{{pagePathPrefix}}{{filename}}">{{title}}</a></li>
+			{{/postList}}
+		</ol>
+	</div>
+</script>
+<script id="template-main" type="text/ractive">
 
+	{{#editLink}}<div id="edit-post-link"><a href="{{editLink}}{{current}}">Edit this post</a></div>{{/editLink}}
+	<article>
 		<div>
-			<h3>Posts</h3>
-			<ol>
-				{{#postList}}
-					<li><a href="{{pathPrefix}}{{pagePathPrefix}}{{filename}}">{{title}}</a></li>
-				{{/postList}}
-			</ol>
+			{{#metadata.title}}
+				<h1>{{metadata.title}}</h1>
+			{{/metadata.title}}
+			<div class="post-content">
+				{{{html}}}
+			</div>
 		</div>
-	</div>
-
-	<div class="main">
-		{{#editLink}}<div id="edit-post-link"><a href="{{editLink}}{{current}}">Edit this post</a></div>{{/editLink}}
-		<article>
-			{{#currentPost}}
-				{{>post}}
-			{{/currentPost}}
-		</article>
-	</div>
+	</article>
 
 </script>
 
+<script src="config.js"></script>
 <script src="js/vendor/satnav.js"></script>
-<script src="build.js"></script>
+<script src="js/build.js"></script>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -76,6 +82,10 @@
   ga('send', 'pageview');
 
 </script>
+
+<script type="text/javascript">
+  window.qbaka||function(e,t){var n=[];var r=e.qbaka=function(){n.push(arguments)};e.__qbaka_eh=e.onerror;e.onerror=function(){r("onerror",arguments);if(e.__qbaka_eh)try{e.__qbaka_eh.apply(e,arguments)}catch(t){}};e.onerror.qbaka=1;r.sv=2;r._=n;r.log=function(){r("log",arguments)};r.report=function(){r("report",arguments,new Error)};var i=t.createElement("script"),s=t.getElementsByTagName("script")[0],o=function(){s.parentNode.insertBefore(i,s)};i.type="text/javascript";i.async=!0;i.src=("https:"==t.location.protocol?"https:":"http:")+"//cdn.qbaka.net/reporting.js";typeof i.async=="undefined"&&t.addEventListener?t.addEventListener("DOMContentLoaded",o):o();r.key="11cabe9ac0a700e2ef9dd768cc799047"}(window,document);qbaka.options={autoStacktrace:1,trackEvents:1};
+  </script>
 
 </body>
 
