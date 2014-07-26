@@ -5,5 +5,3 @@ The content is in [/content](https://github.com/TehShrike/joshduff.com/tree/mast
 The code that displays the content is [Noddity](http://noddity.com).
 
 All content is licensed [WTFPL](http://wtfpl2.com/).
-
-:-D
