@@ -1,0 +1,77 @@
+==================================================================
+https://keybase.io/tehshrike
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://joshduff.com
+  * I am tehshrike (https://keybase.io/tehshrike) on keybase.
+  * I have a public key with fingerprint 3B94 CC2A 2C46 7B35 2F61  F71F 545D 7CD7 3324 13D2
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "client": {
+            "name": "keybase.io node.js client",
+            "version": "0.4.15"
+        },
+        "key": {
+            "fingerprint": "3b94cc2a2c467b352f61f71f545d7cd7332413d2",
+            "host": "keybase.io",
+            "key_id": "545D7CD7332413D2",
+            "uid": "f6f11ad66732e0f51aa5d9648b7b3800",
+            "username": "tehshrike"
+        },
+        "merkle_root": {
+            "ctime": 1408061731,
+            "hash": "db1b5c5bcb3ba89a984be0e0685cc5f5752a2682f3a136548a59b9df35b4588b520b6c2da86ca1bd31f88457fc26ae67e65813d7f71443a32b6073c7e75a1e7b",
+            "seqno": 38267
+        },
+        "service": {
+            "hostname": "joshduff.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1408061778,
+    "expire_in": 157680000,
+    "prev": "e11cd9aad96c6b76b336d0cabebebd01498f7a72ec4789fd6f0260faca2d2dca",
+    "seqno": 5,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG/MacGPG2 v2.0.22 (Darwin)
+Comment: GPGTools - https://gpgtools.org
+
+owFdkmtoHFUYhndrG2Nq27QRLRhKOgSLkKxz5sy5zGprL+kFij9s+sOKupxrdppk
+Zp2ZxG6vWhF6paEXaUsvEJOoFCKIorZQoYktaYyYggSxCBGMRBQRCmK10jNhS1Xm
+z8yc53u/732/0zPvgUxNdvPLOydgY92N7Og0z7T++vymHRYPZdnK77BEh6+CJH0L
+WKey8la7KnMWq5wfNgShVLmtcUOFabK6VRT7YWAoO+fmALJ2NaV8Wq39oE1FpchP
+xSzIPVcIhznCxYRD5GgMNAEauUgSIQmEjgugdIxmMYyT/7S1ZjQLvjR/Dd9C1rRU
++JaU75o50FgDwCTGBDrK1ggwhqSHXcpNO2rbKRirqOIpUcW4GPntKh24U0XtHaoQ
+heGMbZH4KQNcm9oYEAjMSCwumirJAUcCccEhZ9RjHnW5spWNKRICaUSQMYipoyED
+ECOXMuRxT2qIuIso5cixORaOZBQLBriEQFPqIqKFg5nCRGFETQjEBOO6kEGHY5tA
+QRRBDCjCjYdYvRqEVh5SB5Nd6WfU7QuVjp3GVnG3NYyLskvrnAg7TU0pCpNQhB3m
+pJgkpXzqOSmXUvI1xQcLFZEC9wNplvbvtQKD/i8PQpssta3kR6rgpwQi2MRr22kf
+1W00FQBCeoyZ9AXmBHMIsbQF48o80gauRzVhxFHCJdTTEmvbwbZmgjnSkYLdd4nM
+nKzNSMZ+W8CSrsisa3+2fnYmW5OpmjMrvbeZmodq713m5sKDfz/cf/Dw9GfTrZ2j
+f47sX9G8enL1p0MjVWONG796cSM9P8Kz689OXF/Yv2hy/d4fmg5c6T/n935/+cbw
+cW/qpdY9w/tujf0xMqd0dNYbte9P1T423lP6vPaLwUO/9H256dTVFwZO/lgvzjdc
+mdtevD38ljg8taWxJ997VvTBluYLT53+Lnj2tjyy8snFB6reRWLiH77q8uPrTm6m
+/csuPYJn/zXafO3mlusXjq89d6nO//313g/vZMuf9G64GXytwbicWNc1/Wb928eq
+40e9pweWD5B3Fvt76z7IT347fPGbeU+8t33b/L7fNpxWQx/9nLtmvZJVJwafOfHx
+wiW38uXtB/f0PVedX/rTxQVndt8F
+=dPCH
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/tehshrike
+
+==================================================================
