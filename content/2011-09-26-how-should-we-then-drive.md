@@ -6,6 +6,8 @@ _Inside joke: the title of this post is a reference to [a book](http://en.wikipe
 
 I believe that God created the world, and that those who are [chosen](http://en.wikipedia.org/wiki/Limited_atonement) by him should obey him to the best of their abilities.  Despite these aspirations, I'm a terrible sinner.
 
+Hmmm
+
 Nonetheless, at least I've got goals to aspire to, right?  Sure, there are quite a few that most people don't agree with, especially [the ones that prohibit actions that non-Christians (and even many self-proclaimed Christians) don't want to call evil](http://www.biblegateway.com/passage/?search=leviticus%2018:22&amp;version=MSG).
 
 Still, most people are on board with the second-greatest commandment - in fact, [according to popular culture](http://store.penny-arcade.com/products/pat070181), that is in fact the main point of Jesus' coming to Earth!
