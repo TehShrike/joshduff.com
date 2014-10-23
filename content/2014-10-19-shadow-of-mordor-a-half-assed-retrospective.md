@@ -18,7 +18,7 @@ Mount & Blade features swing-and-block skill-based gameplay, but with more empha
 
 But the implicit narrative is very strong.  You have a weapon.  You have a horse.  You are surrounded by cities and nations with large armies.  You may battle any of the robbers, armies, or cities around you, but as one man, you are easily beaten.
 
-The first time I played, I ran into a handful of robbers and instantly ran at them with my sword.  I think I hit two of them before the beat me down, and a text block informed me that I had slaved under their command for eight months before I could escape.
+The first time I played, I ran into a handful of robbers and instantly ran at them with my sword.  I think I hit two of them before they beat me down, and a text block informed me that I had slaved under their command for eight months before I could escape.
 
 Recruit a few men, challenge a small group of robbers.  Lose some men, gain some supplies.  Make it to the next town to by food.
 
