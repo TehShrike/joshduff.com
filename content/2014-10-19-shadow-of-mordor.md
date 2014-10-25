@@ -1,5 +1,5 @@
 title: Shadow of Mordor: an old dog with a new trick
-date: 2014-10-19 22:00:00
+date: Sun Oct 19 2014 22:00:00 GMT-0500 (CDT)
 
 Shadow of Mordor does something that I don't often see in triple-A games: it contextualizes the core gameplay in a way that makes it vastly more enjoyable.
 
