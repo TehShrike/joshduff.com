@@ -40,32 +40,32 @@ Named enemies
 
 Like Mount & Blade, Shadow of Mordor lets me claim that satisfying feeling of setting my sights on a foe and fighting until I can challenge and take them down.
 
-Unlike any other action game that I remember, though, Shadow of Mordor brings a triple-A polish to that experience.
+But unlike any other action game that I remember, Shadow of Mordor brings a triple-A polish to that experience.
 
-In Mount & Blade, I recruited unique named characters with their own strengths, backstories and relationships with each other.  Ostensibly, they cared about whether or not I attacked certain factions, or whether I let merchants live.  But my personal relationship with them never advanced beyond seeing them as "spear guy" "sword lady" and "archer dude".
+In Mount & Blade, I recruited unique named characters with their own strengths, backstories and relationships with each other.  Ostensibly, they cared about whether or not I attacked certain factions, or whether I killed off merchant caravans.  But my personal relationship with them never advanced beyond seeing them as "spear guy" "sword lady" and "archer dude".
 
-Shadow of Mordor's bad guys are similar in that they are procedurally generated, but the attributes that the game rolls up for them are inescapably relevant.  Not for their expertly-written backstories, but because they all relate directly to the NPC's ability to survive my attack and kill me.
+Shadow of Mordor's bad guys are procedurally generated, but the attributes that the game rolls up for them are inescapably relevant.  Not for their expertly-written backstories, but because they all relate directly to the NPC's ability to survive my attacks and kill me.
 
-Calling someone a "beastmaster" and giving them a fur coat is all well and good, but when he one-shots a caragor that I send after him, I start to take their character a bit more seriously, even if it does boil down to a title and a bullet-point list of skills and flaws.
+Calling someone a "beastmaster" and giving them a fur coat is all well and good, but when he one-shots the caragor that I send after him, I start to take their character a bit more seriously, even if it does boil down to a title and a bullet-point list of skills and flaws.
 
-Shadow of Mordor also sets itself apart from the Batman series by extending the unique character generation to the nameless droogs.  Batman had the luxury of fighting the same ten guys over and over, but I have to worry about whether or not this urak grunt is going to be able to toss me on my ass when I try to flip over him.
+Shadow of Mordor also sets itself apart from the Batman series by extending the unique character generation to the nameless droogs.  Batman had the luxury of fighting the same ten guys over and over, but I have to worry about whether or not this urak grunt is going to have the "toss me on my ass" ability when I try to flip over him.
 
 Is it enough?
 =========
 
-I haven't even gotten to the gameplay feature that people seem to most enjoy - turning urak to join my side and take position among the other captains.  Check out [Tom Francis talking about his crew](http://www.pentadact.com/2014-10-18-what-works-and-why-saurons-army/) to get a big grin on your face.
+I haven't even experienced the gameplay feature that people seem to most enjoy - turning urak to my side to take position among the other captains.  Check out [Tom Francis talking about his crew](http://www.pentadact.com/2014-10-18-what-works-and-why-saurons-army/) to get a big grin on your face.
 
 Unlocking that skill could keep me involved in the world for a while longer, but the trappings of the game do make it hard.  [Shamus Young's takedown of the written storytelling](http://www.escapistmagazine.com/articles/view/video-games/columns/experienced-points/12479-Shadow-of-Mordor-is-Tawdry-Tolkien-Fanfiction) is accurate.  The only enjoyable part so far has been the song Gollum sang about how he wanted to stab me.
 
 As I level up, I have started to feel like I could probably take on most of the captains now.  This removes a lot of the context that actually makes the game fun - I can understand why a [no-upgrades run](http://nowrongwaytoplay.tumblr.com/post/99486423288/shadow-of-mordor-permadeath-no-upgrades-run) would be more rewarding.
 
-Worst of all, I have to play a character who, unlike me, doesn't care about doing battle with challenging opponents, but only the wholesale slaughter of a race in some vague kind of revenge fantasy.
+Worst of all, I have to play a character who, unlike me, doesn't care about doing battle with challenging opponents, but only the wholesale slaughter of a race in some vague revenge fantasy.
 
-In Mount & Blade my character was businesslike and effective, going toe to toe with other knights.  Shadow of Mordor's Talion constantly speaks of his enemies with derision, and revels in gutting them.
+In Mount & Blade my character was businesslike and effective, going toe to toe with other knights.  Shadow of Mordor's Talion talks about his enemies with his nose in the air, and revels in gutting them.
 
 Cautiously optimistic
 =========
 
-Shadow of Mordor took a step forward in turning open worlds into the sweet sweet crack that gamers want.  They stumbled on a gameplay contextualization a step above what the other big-label games have been using (e.g. Grand Theft Auto's "isn't it sweet to steal any car and drive around really fast").
+Shadow of Mordor takes a step forward in turning open worlds into the sweet sweet crack that gamers want.  They stumbled on a gameplay contextualization a step above what the other big-label games have been using (e.g. Grand Theft Auto's "isn't it sweet to steal any car and drive around really fast").
 
 It's encouraging to see a big-budget game with great player motivation in its game world.  I hope to see more publisher-funded titles trying to copy these ideas.
