@@ -31,7 +31,7 @@ Earning my way over many hours to be able to threaten a king's army was extremel
 
 This is the game that Shadow of Mordor has stumbled into: more than swordfights and collectables and exposition-by-cutscene, it gives you a world full of challenges that are not motivated by a written story.
 
-As I play, Urak society constantly trains up new leaders to take me on.  Many of them kill me.  The writers didn't turn that grunt a mini-boss, I did when I by zigging when I should have zagged.  Killing me gains him reputation and power, putting one more piece on a board full of opponents.
+As I play, Urak society constantly trains up new leaders to take me on.  Many of them kill me.  The writers didn't turn that grunt a mini-boss, I did by zigging when I should have zagged.  Killing me gains him reputation and power, and puts one more opposing piece on a board full of them.
 
 The captains go about their business regardless of me, or the written story.  Left alone, they fight amongst themselves to gain even more power.  Whether I level up by challenging the big captains or picking flowers is up to me.
 
