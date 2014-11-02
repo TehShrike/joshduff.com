@@ -9,7 +9,7 @@ In Batman, the primary context of your gameplay is the explicit written narrativ
 
 Shadow of Mordor botches this context up horribly, with its written narrative draining fun and motivation out of the game.
 
-But improving on the Batman games, Shadow of Mordor provides another context for progress through gameplay - one reminds me of indie game Mount & Blade.
+But improving on the Batman games, Shadow of Mordor provides another context for progress through gameplay, one that reminds me of indie game Mount & Blade.
 
 When all you have is a sword
 =========
