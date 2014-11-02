@@ -29,7 +29,7 @@ Oh hellz yeah I can thrive
 
 Earning my way over many hours to be able to threaten a king's army was extremely satisfying.  And judging from the success of the Day Z/Rust genre, plenty of other players share my compulsion.
 
-This is the game that Shadow of Mordor has stumbled into: moare than hitting things and collectables and exposition-by-cutscene, it gives you a world full of challenges that are not motivated by a written story.
+This is the game that Shadow of Mordor has stumbled into: more than hitting things and collectables and exposition-by-cutscene, it gives you a world full of challenges that are not motivated by a written story.
 
 As I play, Urak society constantly trains up new leaders to take me on.  Many of them kill me.  The writers didn't turn that grunt a mini-boss, I did when I by zigging when I should have zagged.  Killing me gains him reputation and power, putting one more piece on a board full of opponents.
 
