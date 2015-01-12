@@ -11,6 +11,7 @@ I was unable to find the original article online, but found the ingredients [her
 ## The Dirty Mother
 
 > "Use two slices of buttery Texas toast as bookends, and slap together a sausage patty, hash browns, and three generous chops of ham, separating each layer with a slice of cheddar cheese. Throw two fried eggs in the mix, and comfort them with four strips of crispy bacon. A splash of ketchup or Worcestershire sauce is your choice, but tons of S&amp;P is mandatory."
+
 We would usually go to IHOP, order the ingredients individually, and assemble the sandwiches ourselves.  The braver souls in the group would purchase fries as a side dish.
 
 These memories are making me hungry.
