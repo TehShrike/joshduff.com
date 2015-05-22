@@ -1,7 +1,5 @@
----
 title: Why your webapp needs a state-based router
-date: "Thu May 21 2015 20:04:29 GMT-0500 (CDT)"
----
+date: Thu May 21 2015 20:04:29 GMT-0500 (CDT)
 
 Yeah, the title is slightly hyperbolic - not every webapp is appropriate for a state router.  Yours probably is, though!
 
