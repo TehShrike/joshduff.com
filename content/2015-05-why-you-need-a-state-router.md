@@ -29,7 +29,7 @@ But when you start writing a more complex webapp, you will discover new desires 
 
 If your account page has a sub-menu that lets you switch between "profile" and "account settings" forms, you have a few options:
 
-1. don't reflect the current sub-menu in the url - if they refresh the page at `/app/settings`, they see whatever the default/first submenu is.  This is bad because you can't hit the back button to go back to the last form, or send people links to the billing address form.
+1. neglect to put the current sub-menu's path in the url at all - if they are at `/app/settings` and have the profile submenu open and they hit the refresh button, they get popped back to whatever the default state is (the profile page maybe).  This is bad because you can't hit the back button to go back to the last form, or send people links to form you want them to see on the settings page.
 2. represent the sub-menu in the url instead of the page inside of it - you handle both the routes `/app/settings-profile` and `/app/settings-account`, and they both just happen to render that same menu on the left side.  This is bad because you have to re-render the menu every time, and you can't link to the settings page without having to link to one of its sub-pages.
 3. Use a solution that lets you nest your views, and handles interpreting the url to realize that `/app/settings/profile` should display the main logged-in app view, with the settings page inside of that, and the profile sub-page inside of that.  This is the good option!
 
