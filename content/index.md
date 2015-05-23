@@ -1,5 +1,4 @@
-Josh Duff
-=========
+title: Josh Duff
 
 This is my home page!  A far cry from the tripod-hosted html of my youth.  I actually pay for hosting now!
 
