@@ -7,10 +7,10 @@ Yeah, the title is slightly hyperbolic - state routers aren't appropriate for ev
 
 Let's lay out a few definitions before diving in to avoid possible misunderstandings:
 
-- webapp: a single-page application running in the browser that uses [pushState](https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history) to control navigation instead of sending the browser to a different html page.
+- webapp: a [native web application](https://blog.andyet.com/2015/01/22/native-web-apps) running in the browser that uses [pushState](https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history) to control navigation instead of sending the browser to a different html page.
 - router: any library that triggers your code when the url changes so you can update content in the dom.
 
-## Routing in a single-page webapp
+## Routing in a webapp
 
 Simple routers work something like this:
 
@@ -97,7 +97,7 @@ The documentation is [on Github](https://github.com/TehShrike/abstract-state-rou
 
 ## You should use it!
 
-If you're making a single-page webapp that is more complex than a simple content site like this blog, you need a state-based router, and I'd like to help you use this one.
+If you're making a webapp that is more complex than a simple content site like this blog, you need a state-based router, and I'd like to help you use this one.
 
 If you have a favorite template/dom manipulation library that you want to use, let me know and I'll help you write the renderer so that you can use it with abstract-state-router.
 
