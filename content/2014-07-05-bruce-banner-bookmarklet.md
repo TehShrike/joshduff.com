@@ -5,8 +5,8 @@ date: Sat Jul 05 2014 19:18:05 GMT+0000 (UTC)
 
 I made this bookmarklet to convert his posts to sentence case.
 
-1. Drag this link to your bookmark bar: <a href="javascript:(function() {
-	Array.prototype.slice.call(document.querySelector('div.entry').children).forEach(function(element) {
+1. Drag this link to your bookmark bar: <a href="javascript:(function() { 
+	Array.prototype.slice.call(document.querySelector('div.Article-content').children).forEach(function(element) {
 		element.textContent = element.textContent.toLocaleLowerCase().replace(/([.!?]|^)(\s*\w)/gm, function(match, sentenceEnder, firstCharacter) {
 			return sentenceEnder + firstCharacter.toLocaleUpperCase()
 		})
