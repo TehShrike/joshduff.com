@@ -9,7 +9,9 @@ No?
 Well, how about something like CHECK or REPAIR table, then?
 
 If you ever find yourself in the rare situation where you need to run the same query across every table in a database, this procedure might make your life easier:
-<pre lang="mysql">DELIMITER $$
+
+```
+DELIMITER $$
 CREATE PROCEDURE `p_run_for_each_table`(IN strDatabase TEXT, IN strOperation TEXT)
     DETERMINISTIC
 BEGIN
@@ -38,7 +40,8 @@ BEGIN
 	CLOSE TableCursor;
 	DEALLOCATE PREPARE Statement;
 END$$
-DELIMITER ;</pre>
+DELIMITER ;
+```
 
 # Useage
 
