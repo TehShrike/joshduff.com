@@ -48,10 +48,13 @@ DELIMITER ;
 The procedure takes two parameters.  The first one is the name of the database whose tables you want to run the query for.
 
 The second is the query you would like to run.  The strings "{?database}" and "{?table}" will be replaced with the database and table names.
-<pre lang="mysql">CALL p_run_for_each_table('databasename', 'SELECT * FROM {?database}.{?table}');</pre>
+
+```
+CALL p_run_for_each_table('databasename', 'SELECT * FROM {?database}.{?table}');
+```
 
 # What queries you can run
 
 You should be able to use any queries that can be run in a prepared statement - you can find the list about two-thirds of the way down [this page](http://dev.mysql.com/doc/refman/5.1/en/sql-syntax-prepared-statements.html).
 
-As of MySQL 5.1, you can run these queries: "ALTER TABLE, CALL, COMMIT, CREATE INDEX, CREATE TABLE, DELETE, DO, DROP INDEX, DROP TABLE, INSERT, RENAME TABLE, REPLACE, SELECT, SET, UPDATE, and most SHOW statements."
+As of MySQL 5.1, you can run these queries: "`ALTER TABLE`, `CALL`, `COMMIT`, `CREATE INDEX`, `CREATE TABLE`, `DELETE`, `DO`, `DROP INDEX`, `DROP TABLE`, `INSERT`, `RENAME TABLE`, `REPLACE`, `SELECT`, `SET`, `UPDATE`, and most `SHOW` statements."
