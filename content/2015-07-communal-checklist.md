@@ -103,7 +103,7 @@ If my site does ever start getting regular traffic, this may lead to some small 
 
 ## Yet to do
 
-The most obvious missing feature that I know if is the inability to reorder items.  If many people start using the site, I'll give [dragula](https://github.com/bevacqua/dragula) another try (I couldn't figure out how to get the dragging styles to work in my first quick try).
+The most obvious missing feature that I know of is the inability to reorder items.  If many people start using the site, I'll give [dragula](https://github.com/bevacqua/dragula) another try (I couldn't figure out how to get the dragging styles to work in my first quick try).
 
 Other assorted TLC would include testing the app more thoroughly on phones and touchscreens, and figuring out how to make the checkboxes larger and friendlier.
 
