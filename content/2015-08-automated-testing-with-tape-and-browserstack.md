@@ -7,7 +7,7 @@ Testing in node isn't enough, though - publishing client-side modules needs auto
 
 I tried [Saucelabs](https://saucelabs.com/) first, using [Zuul](https://github.com/defunctzombie/zuul) to launch tests.  It seemed all right, though just doing initial setup and debugging I quickly hit the testing time limit for free open-source accounts, making it a no-go for automated testing.
 
-I figured I'd try Browserstack.  Initial testing with a trial account using their in-browser VM and a local network tunnel proved sweet-ass, so I asked for one of their free accounts for open source projects.  At time of writing there are no test limits on the open source accounts, though they are limited to two active VMs at a time.
+I figured I'd try [Browserstack](https://www.browserstack.com).  Initial testing with a trial account using their in-browser VM and a local network tunnel proved sweet-ass, so I asked for one of their free accounts for open source projects.  At time of writing there are no test limits on the open source accounts, though they are limited to two active VMs at a time.
 
 Here's how to use tape with Browserstack!
 
