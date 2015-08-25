@@ -28,7 +28,7 @@ To get that programmatic reporting to actually happen, I wrote [browserstack-tap
 browserify test.js node_modules/browserstack-tape-reporter/index.js -o test.build.js -d
 ```
 
-Make sure to use at least version 0.3.7 of browserstack-runner, as it is the [first version that doesn't default to expecting qunit](https://github.com/browserstack/browserstack-runner/pull/127).
+Make sure to use at least version 0.3.7 of [browserstack-runner](https://github.com/browserstack/browserstack-runner), as it is the [first version that doesn't default to expecting qunit](https://github.com/browserstack/browserstack-runner/pull/127).
 
 With this recent version, you can leave the `test_framework` property out of your `browserstack.json` and the browserstack-tape-reporter will handle everything.
 
