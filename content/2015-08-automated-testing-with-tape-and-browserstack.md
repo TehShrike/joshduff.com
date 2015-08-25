@@ -40,7 +40,7 @@ Also, if you're testing in IE9+, [tap-browser-color](https://github.com/kirbysay
 
 ### Example package.json scripts section
 
-For your copy/pasting pleasure, here's an exmaple of the simple scripts boilerplate my browserstack-tested modules are using so far:
+For your copy/pasting pleasure, here's an example of the simple scripts boilerplate my browserstack-tested modules are using so far:
 
 ```js
 "scripts": {
@@ -70,7 +70,9 @@ For your copy/pasting pleasure, here's an exmaple of the simple scripts boilerpl
 }
 ```
 
-index.html is a file in the root directory of my project, with these contents: `<!DOCTYPE html><html><body></body><script src="test.build.js"></script></html>`
+index.html is a file in the root directory of my project, with these contents:
+
+	<!DOCTYPE html><html><body></body><script src="test.build.js"></script></html>
 
 I bumped the `timeout` from the default of 300 seconds to 600.  When I launched Browserstack tests from my Macbook Pro they would generally finish in time, though browserstack-runner would peg my local processor.  Launched from travis-ci, jobs would frequently hit the 300 second limit and time out, presumably something to do with the low-processor Travis VMs.
 
