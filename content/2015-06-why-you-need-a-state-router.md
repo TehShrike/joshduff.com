@@ -38,7 +38,7 @@ If your account page has a submenu that allows users to switch between "profile"
 
 ## In the bad 'ol days
 
-I first used AngularJS [at work](http://www.edatasource.com/) on a project that began in mid-2013.  Like every other Angular app at the time, we used the simple [$location](https://docs.angularjs.org/api/ng/service/$location) router exposed by the framework.
+I first used AngularJS [at work](http://www.edatasource.com/) on a project that began in mid-2013.  Like every other Angular app at the time, we used the simple [$routeProvider](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) exposed by the framework.
 
 We had one route for the login screen, and another for each of the two different screens inside the app.  There was a lot of shared ui around the edges of the app, with the menu and search bar and everything, so both of those screen's routes used the same template, something like this:
 
