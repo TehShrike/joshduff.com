@@ -9,6 +9,7 @@ I believe that God created the world, and that those who are [chosen](http://en.
 Nonetheless, at least I've got goals to aspire to, right?  Sure, there are quite a few that most people don't agree with, especially [the ones that prohibit actions that non-Christians (and even many self-proclaimed Christians) don't want to call evil](http://www.biblegateway.com/passage/?search=leviticus%2018:22&amp;version=MSG).
 
 Still, most people are on board with the second-greatest commandment - in fact, [according to popular culture](http://store.penny-arcade.com/products/pat070181), that is in fact the main point of Jesus' coming to Earth!
+
 > 37 Jesus said to him, "'You shall love the LORD your God with all your heart, with all your soul, and with all your mind.'
 > 
 > 
@@ -22,9 +23,11 @@ Still, most people are on board with the second-greatest commandment - in fact, 
 > 
 > 
 > [Matthew 22:37-40](http://www.biblegateway.com/passage/?search=matthew%2022:37-40&amp;version=MSG) (NKJV)
+
 (And for those paying attention, yes, I consider Penny Arcade to be an arbiter of popular culture.)
 
 But if I'm not engaging in weekly gay-hunts, what IS my Christianity doing for me?  Well, among the many other instructions for living life that God passed down to us, it seems that he really does care about Christians being an improvement for the quality-of-life of the people around us:
+
 > "Let me tell you why you are here. You're here to be salt-seasoning that brings out the God-flavors of this earth. If you lose your saltiness, how will people taste godliness? You've lost your usefulness and will end up in the garbage." [Matthew 5:13](http://www.biblegateway.com/passage/?search=matthew%205:13&amp;version=MSG) (MSG)
 
 # Seriously, what is this post even about
