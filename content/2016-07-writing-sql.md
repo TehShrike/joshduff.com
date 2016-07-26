@@ -1,5 +1,7 @@
+---
 title: Writing SQL for real applications
 date: 2016-07-26T01:11:19.617Z
+---
 
 For about the last decade now I've been writing business software backed by relational databases.  Working with my coworkers, I have acquired conventions for writing schema and production queries that make working with the application's database easier.
 
