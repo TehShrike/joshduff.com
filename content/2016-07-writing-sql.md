@@ -1,5 +1,5 @@
 ---
-title: Writing SQL for real applications
+title: Writing SQL for applications
 date: 2016-07-26T01:11:19.617Z
 ---
 
