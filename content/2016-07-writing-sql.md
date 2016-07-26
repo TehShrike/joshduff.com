@@ -25,11 +25,13 @@ First, the ability to write queries without having to look up a bunch of table s
 
 Second, looking at a single table and quickly understanding all of its relationships.
 
-## The primary key column should be the table name suffixed with `_id`
+## The primary key column should be either `id`, or the table name suffixed with `_id`
 
-The actual suffix doesn't matter, but `_id` seems to be the most common convention.  The main point is that whatever suffix you pick should be consistent across the entire schema.
+It's a matter of preference whether you use `customer_id` versus `id` as the primary key column of the `customer` table, you could make arguments either direction - just apply the convention consistently.
 
-This lets you join to another table without having to remember anything but the table name.
+The actual suffix/name doesn't matter, but `_id` seems to be the most common convention.
+
+The main point is that whatever suffix you pick should be consistent across the entire schema.  This lets you join to another table without having to remember anything but the table name.
 
 ## Foreign keys should always contain the name of the column they link to
 
