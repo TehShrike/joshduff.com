@@ -3,7 +3,7 @@ title: Writing SQL for real applications
 date: 2016-07-26T01:11:19.617Z
 ---
 
-For about the last decade now I've been writing business software backed by relational databases.  Working with my coworkers, I have acquired conventions for writing schema and production queries that make working with the application's database easier.
+For about the last decade now I've been writing business software backed by relational databases.  Working with my teammates, I have acquired conventions for writing schema and production queries that make interacting with the application's database simpler and easier.
 
 These conventions primarily optimize for **reading or writing queries in production code**.
 
@@ -12,8 +12,8 @@ I believe it is fair to say that for most business applications, the schema + da
 As Patrick McKenzie likes to remind us, most of our industry is built on building specialized spreadsheets.
 
 > Every spreadsheet shared in a business is an angel announcing another SaaS app still needs to be built.
-> - @patio11
-> https://twitter.com/patio11/status/655674551615942657
+>
+> -- @patio11 [2015-10-18](https://twitter.com/patio11/status/655674551615942657)
 
 The less friction involved in interacting with the underlying data, the greater our ability to develop our application.
 
@@ -134,7 +134,7 @@ This paid off enormously over the years as the application was deployed to many 
 
 It's not hopeless - you can achieve an easy-to-work-with schema - as long as your team is on board, and when working in an area of the schema, leaves things better than they found them.
 
-This is something I'm still working on!  I got super-excited to learn more after Neal Ford recommended [Refactoring Databases: Evolutionary Database Design](https://www.amazon.com/gp/product/0321774515/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0321774515&linkCode=as2&tag=josduf-20&linkId=5983034458d49f14545009fbc8d5b31f) in a talk at UberConf.
+This is something I'm still working on!  I got super-excited to learn more after listening to Neal Ford's *Continuous Delivery: Infrastructure and Data* talk at Uberconf, and am following his recommendation to read [Refactoring Databases: Evolutionary Database Design](https://www.amazon.com/gp/product/0321774515/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0321774515&linkCode=as2&tag=josduf-20&linkId=5983034458d49f14545009fbc8d5b31f).
 
 # In conclusion
 
