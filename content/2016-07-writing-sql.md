@@ -63,7 +63,7 @@ This will allow you to write queries with many joins without having to look up a
 
 # Query conventions
 
-These conventions all have the goal of making queries in productino code easier to read and maintain.
+These conventions all have the goal of making queries in production code easier to read and maintain.
 
 ## No `SELECT *`
 
