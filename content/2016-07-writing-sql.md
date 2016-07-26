@@ -101,7 +101,7 @@ Similarly, if you consistently use table names in column identifiers, you make i
 
 This convention does make it easier to add joins to existing queries.  However, in my mind the primary advantage is the improved readability.
 
-## Uppercase everything but identifiers
+## Uppercase everything except identifiers
 
 Sadly, I haven't yet worked with a code editor that applied SQL syntax highlighting inside of static strings.
 
