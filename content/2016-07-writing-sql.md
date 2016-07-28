@@ -51,6 +51,14 @@ No matter how sure you are that a natural candidate key will never change, and t
 
 That fear alone is pretty motivating.  But beyond that I have found that when foreign keys use identifiers that don't have any business concern outside of the database, queries are easier to write and mutating state in tables becomes less scary.
 
+## No abbreviations in table or column names
+
+Abbreviations and otherwise shortened labels make your schema difficult to read, and incomprehensible to people who don't spend every minute in the project.  Saving those occasional keystrokes is not worth it.
+
+Making an exception for industry-standard abbreviations is fine - in the car parts inventory industry, `vin` is a reasonable column name, and `esp` is an acceptable table name in the email marketing industry.
+
+Using abbreviations that you come up with yourself, or drpping vwls to sv chars is counterproductive.
+
 ## No plural table names
 
 This is one of the simplest conventions, but the one that causes the most annoyance when ignored.
