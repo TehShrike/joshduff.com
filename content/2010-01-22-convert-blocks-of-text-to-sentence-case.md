@@ -1,4 +1,4 @@
-title: Convert blocks of text to sentence case
+title: Convert blocks of text to sentence case in MySQL
 date: 2010-01-22T07:31:00-06:00
 categories: mysql
 
@@ -6,7 +6,7 @@ You know what I hate?  Paragraphs of capital (or all lowercase) letters.
 
 The other day a coworker was looking to beautify a large quantity of data spread across some MySQL tables.  I created this function to make his life easier:
 
-<pre lang="mysql">
+```
 DELIMITER $$
 CREATE FUNCTION `f_sentence_case`(strInput TEXT, nMinimumLength INT) RETURNS TEXT
 DETERMINISTIC
@@ -63,7 +63,7 @@ RETURN result;
 
 END$$
 DELIMITER ;
-</pre>
+```
 
 # What it does
 
@@ -77,8 +77,8 @@ It changes the words to be all lowercase, unless they happen to be the first wor
 
 To clean up a field so that it is formatted in sentence case (ignoring all words with less than 3 characters), simply run this query:
 
-<pre lang="mysql">
+```
 UPDATE `table` SET `field` = f_sentence_case(`field`, 3);
-</pre>
+```
 
 Other than that, my only specs for the query were for it to be functional and hopefully not break my brain when I went back to read it later.  If anyone has any significant improvements to it, let me know!
