@@ -1,5 +1,5 @@
 ---
-title: Podcasts that excellent for specific reasons
+title: Podcasts that are excellent for specific reasons
 date: 2016-08-07T01:38:21.015Z
 ---
 
