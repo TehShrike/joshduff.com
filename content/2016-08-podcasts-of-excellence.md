@@ -1,11 +1,11 @@
 ---
-title: Podcasts that excellent for specific reasons
+title: Podcasts that are excellent for specific reasons
 date: 2016-08-07T01:38:21.015Z
 ---
 
 I've been listening to podcasts for a few years now - they're pretty great, and I listen to a lot of popular ones that are known for being great.  That's not interesting.
 
-hile listening to these podcasts-of-established-quality, I've caught on to a lot of the standards or tropes that well-produced podcasts adhere to.  Good audio quality, interesting personalities, whatever.  That's not interesting either.
+While listening to these podcasts-of-established-quality, I've caught on to a lot of the standards or tropes that well-produced podcasts adhere to.  Good audio quality, interesting personalities, whatever.  That's not interesting either.
 
 What is potentially interesting is that there are a few podcasts that aim high and kick an unusual amount of ass in areas that most casters don't.  They're so good at it that it can be easy to miss, so I wanted to call out a few.
 
