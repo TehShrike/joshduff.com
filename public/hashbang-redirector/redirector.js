@@ -8,6 +8,7 @@
 		document.head.appendChild(meta)
 
 		setTimeout(function() {
+			// For Firefox/old IE
 			document.location = path
 		}, 1000)
 	}
