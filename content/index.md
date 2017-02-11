@@ -1,12 +1,13 @@
 title: Josh Duff
 
-This is my home page!  A far cry from the tripod-hosted html of my youth.  I actually pay for hosting now!
+I make software, mostly for businesses.  Feel free to [peruse my resume](https://github.com/TehShrike/resume).
 
-Other internet places
---------
+I've written more code than words on the internet in recent years.  If you like JavaScript, [follow me on Github](https://github.com/TehShrike/)!
 
-[Follow me on Twitter](https://twitter.com/TehShrike) or [on app.net](https://alpha.app.net/tehshrike) to read short sentences and occasional snippets of internet gold that I mine from the depths.
+Here are a few projects of mine you might want to check out:
 
-I make software!  You can read my public code [on Github](https://github.com/TehShrike).  I wrote the software running this web site.  See how quickly the pages load when you click the links in the menu!  oooh, aaah.  It's called Noddity, [you can try it yourself if you like](http://noddity.com/).
+- [Noddity](http://noddity.com), the blog/wiki platform running this site
+- [abstract-state-router](https://github.com/TehShrike/abstract-state-router), for building large webapps
+- [communalchecklist.com](http://communalchecklist.com), a gift registry/checklist without all the fluff
 
-<a href="http://stackexchange.com/users/69337/tehshrike"><img src="http://stackexchange.com/users/flair/69337.png" width="208" height="58" /></a>
+You can [follow me on Twitter](https://twitter.com/TehShrike).
