@@ -25,7 +25,7 @@ Simple routers work something like this:
 
 But when you start writing a more complex webapp, you will discover new desires within yourself.  You will begin to desire the ability to nest different parts of your webapp inside each other in some kind of hierarchy.
 
-<img src="http://joshduff.com/content/images/github-settings-submenu.png" alt="Github user settings screenshot" style="width: 360px; height: 162px;"/>
+<img src="images/github-settings-submenu.png" alt="Github user settings screenshot" style="width: 360px; height: 162px;"/>
 
 Let's say you're making an account page that looks something like Github's here.
 
@@ -73,7 +73,7 @@ ui-router is one of those solutions where once you've seen it in use, you can fe
 
 This gives you the power to write each state as its own little module - you don't have to manually watch for changes to the querystring, because if any relevant parameter changes, your state goes away and a fresh new version of the state is instantiated.  Each state is its own little island and changes on navigation independently of any parent/child states.
 
-<img src="http://joshduff.com/content/images/analyst-menu-hierarchy.png" alt="Analyst Nextgen menu hierarchy" style="width: 467px; height: 187px;"/>
+<img src="images/analyst-menu-hierarchy.png" alt="Analyst Nextgen menu hierarchy" style="width: 467px; height: 187px;"/>
 
 This screenshot is from my employer's product.  Each of those three menus is a different nested state that allows you to drill down to a different child state.  And the url routing is a dream!
 

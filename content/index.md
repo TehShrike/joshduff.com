@@ -1,4 +1,6 @@
+---
 title: Josh Duff
+---
 
 I make software, mostly for businesses.  Feel free to [peruse my resume](https://github.com/TehShrike/resume).
 

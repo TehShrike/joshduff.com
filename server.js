@@ -6,13 +6,11 @@ require(`babel-register`)({
 	ignore: function(path) {
 		// false => transpile with babel
 		const nodeModules = /\/node_modules\//.test(path)
-		if (nodeModules) {
-			if (/\/noddity-static-server\//.test(path)) {
-				console.log('matching', path)
-			}
 
-			return !/\/noddity-static-server\//.test(path)
+		if (nodeModules) {
+			return !/\/(noddity-static-server|noddity-lazy-static-render)\//.test(path)
 		}
+
 		return false
 	}
 })

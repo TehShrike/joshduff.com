@@ -1,3 +1,8 @@
+---
+title: Post template
+markdown: false
+---
+
 <div id="sidebar">
 	::sidebar.md::
 </div>

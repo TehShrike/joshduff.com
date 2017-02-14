@@ -23,11 +23,11 @@ I was looking for super-lightweight rules, so I didn't even use the full rules s
 *   The fastest draw (based on weapon speed and personal speed) goes first
 *   Roll percentile dice (based on your weapon, personal accuracy, and a relatively short list of modifiers) to see if you hit:
 
-!["Boot Hill hit determination chart"](content/images/hit-determination-chart.jpg "Boot Hill hit determination chart")
+!["Boot Hill hit determination chart"](/images/hit-determination-chart.jpg "Boot Hill hit determination chart")
 
 *   Roll percentile dice on a wound chart to see where you hit:
 
-!["Boot Hill wound chart"](content/images/wound-chart.jpg "Boot Hill wound chart")
+!["Boot Hill wound chart"](/images/wound-chart.jpg "Boot Hill wound chart")
 
 Mortal wounds kill you.
 
