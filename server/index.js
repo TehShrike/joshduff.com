@@ -9,10 +9,10 @@ const conditionalGet = require('koa-conditional-get')
 const Butler = require('noddity-butler')
 const level = require('level-mem')
 
-const indexHtml = require('fs').readFileSync('./index.html', { encoding: 'utf8' })
+const indexHtml = require('fs').readFileSync(__dirname + '/index.html', { encoding: 'utf8' })
 
-const contentUrl = 'http://localhost.com:9999/'
-const assetsUrl = 'http://localhost.com:9998/'
+const contentUrl = 'https://joshduffcom-content-wiyfzddluw.now.sh'
+const assetsUrl = 'https://joshduffcom-assets-wrsoneocce.now.sh'
 
 const butler = Butler(contentUrl, level('server'), {
 	refreshEvery: 1000 * 60 * 5,
