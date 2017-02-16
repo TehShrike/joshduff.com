@@ -11,7 +11,7 @@ const level = require('level-mem')
 
 const indexHtml = require('fs').readFileSync(__dirname + '/index.html', { encoding: 'utf8' })
 
-const contentUrl = 'https://joshduffcom-content-wiyfzddluw.now.sh'
+const contentUrl = 'https://joshduffcom-content-sbptaapaix.now.sh'
 const assetsUrl = 'https://joshduffcom-assets-wrsoneocce.now.sh'
 
 const butler = Butler(contentUrl, level('server'), {
