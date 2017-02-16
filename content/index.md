@@ -1,5 +1,6 @@
 ---
 title: Josh Duff
+date: 2017-02-16T15:37:34.176Z
 ---
 
 I make software, mostly for businesses.  Feel free to [peruse my resume](https://github.com/TehShrike/resume).

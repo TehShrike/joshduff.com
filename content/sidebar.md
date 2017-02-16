@@ -1,5 +1,6 @@
 ---
 title: SIDEBAAAAAAR
+date: 2017-02-16T15:37:34.176Z
 ---
 
 <a href="{{pathPrefix}}">
