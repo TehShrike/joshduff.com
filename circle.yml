@@ -4,8 +4,6 @@ machine:
 dependencies:
   pre:
     - npm install now -g
-    - npm install now-alias -g
-    - npm install noddity-linter -g
     - npm install
 test:
   override:
