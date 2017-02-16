@@ -4,6 +4,7 @@ machine:
 dependencies:
   pre:
     - npm install now -g
+    - npm install now-alias -g
     - npm install
 test:
   override:
@@ -13,3 +14,4 @@ deployment:
     branch: master
     commands:
       - now --token=$NOW_API_KEY --name=joshduff.com-content --static content
+      - now-alias --token=$NOW_API_KEY --name=joshduff.com-content --alias=content.joshduff.com
