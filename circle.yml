@@ -1,0 +1,17 @@
+machine:
+  node:
+    version: 7.5.0
+dependencies:
+  pre:
+    - npm install now -g
+    - npm install now-alias -g
+    - npm install noddity-linter -g
+    - npm install
+test:
+  override:
+    - npm run lint
+deployment:
+  production:
+    branch: master
+    commands:
+      - now --token=$NOW_API_KEY --name=joshduff.com-content --static content
