@@ -29,8 +29,8 @@
     "koa-router": "7.0.1",
     "level-mem": "0.18.0",
     "noddity-butler": "~2.6.2",
-    "noddity-lazy-static-render": "~1.0.2",
-    "noddity-static-server": "~2.1.0"
+    "noddity-lazy-static-render": "~1.1.0",
+    "noddity-static-server": "~2.2.0"
   },
   "devDependencies": {
     "ecstatic": "2.1.0"
