@@ -5,7 +5,7 @@ A wild side project appears!
 
 My wife was looking for a site to set up a gift registry.  She tried several sites, but they weren't great - Amazon and Target have pretty good registries, but only if you lock your friends into buying from that one store.
 
-There are more open-ended registries, but most of them require that your friends create accounts, and one of the most reasonable ones forces you to create multiple rows for each item if you wante people to be able to indicate that they were buying say, only one of the two needed pajamas.
+There are more open-ended registries, but most of them require that your friends create accounts, and one of the most reasonable ones forces you to create multiple rows for each item if you wanted people to be able to indicate that they were buying say, only one of the two needed pajamas.
 
 My finely-tuned programmer senses tingled.  A simple CRUD webapp, something like a custom to-do list - I should be able to whip up a servicable app in a few evenings!  I could call it the Communal Checklist.
 
