@@ -6,5 +6,5 @@ http.createServer(ecstatic({
 })).listen(9999)
 
 http.createServer(ecstatic({
-	root: __dirname + '/public'
+	root: __dirname + '/assets'
 })).listen(9998)
