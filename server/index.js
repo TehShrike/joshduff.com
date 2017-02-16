@@ -15,8 +15,8 @@ const level = require('level-mem')
 const indexHtml = fs.readFileSync(path.join(__dirname, '/index.html'), { encoding: 'utf8' })
 const keybaseTxt = fs.readFileSync(path.join(__dirname, '../.well-known/keybase.txt'), { encoding: 'utf8' })
 
-const contentUrl = 'https://joshduffcom-content-sbptaapaix.now.sh'
-const assetsUrl = 'https://joshduffcom-assets-wrsoneocce.now.sh'
+const contentUrl = 'https://content.joshduff.com'
+const assetsUrl = 'https://assets.joshduff.com'
 
 const butler = Butler(contentUrl, level('server'), {
 	refreshEvery: 1000 * 60 * 5,
