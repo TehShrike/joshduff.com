@@ -1,5 +1,8 @@
 {
   "name": "joshduff.com",
+  "engines": {
+    "node": ">=7.6.0"
+  },
   "alias": "joshduff.com",
   "private": true,
   "version": "1.0.0",
@@ -22,10 +25,7 @@
   },
   "homepage": "https://github.com/TehShrike/joshduff.com#readme",
   "dependencies": {
-    "babel-plugin-transform-async-to-generator": "6.16.0",
-    "babel-polyfill": "6.16.0",
-    "babel-register": "6.16.3",
-    "koa": "2.0.0-alpha.7",
+    "koa": "2.2.0",
     "koa-compress": "2.0.0",
     "koa-conditional-get": "2.0.0",
     "koa-router": "7.0.1",
