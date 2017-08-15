@@ -73,7 +73,7 @@ TRACE("Stupid quickbooks.\n");
 
 ```
 IQBBasePtr stupid = response-&gt;GetDetail();
-TRACE("Response Type: %d\n", (int)stupid-&gt;Type-&gt;GetValue());
+TRACE("Response Type: %d\n", (int)stupid->Type->GetValue());
 InterpretResponse(stupid);
 ```
 
