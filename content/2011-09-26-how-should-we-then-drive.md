@@ -57,7 +57,8 @@ Well, that has kind of happened - but not until after I started adopting a proac
 My life was changed (no, really!) when I read [this site](http://trafficwaves.org/) written by an engineer on the internet.  I'd recommend reading it over, but here's the basic premise:
 
 *   Busy roads (especially big ones like highways) get inefficient to travel on quite a bit
-*   It turns out that if you drive in a certain way, you can make highway driving a lot more efficient... not for you, but for all the people behind you, too
+*   It turns out that if you drive in a certain way, you can make highway driving a lot more efficient... not just for yourself, but for all the people behind you, too.
+
 So how does a motivated engineer make the world better?  It turns out, you can improve the quality-of-life of those around you by simply **leaving a big gap between you and the vehicle in front of you**.
 
 I don't want to belabor all of the points he makes (seriously, you should read his site), but the general idea is
