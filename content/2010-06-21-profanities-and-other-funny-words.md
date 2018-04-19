@@ -72,7 +72,7 @@ TRACE("Stupid quickbooks.\n");
 ```
 
 ```
-IQBBasePtr stupid = response-&gt;GetDetail();
+IQBBasePtr stupid = response->GetDetail();
 TRACE("Response Type: %d\n", (int)stupid->Type->GetValue());
 InterpretResponse(stupid);
 ```
@@ -181,7 +181,7 @@ That fourth argument is the default value, returned if there is no existing sett
 
 ```
 // lol xor
-if ((bPaid || bUnpaid) &amp;&amp; !(bPaid &amp;&amp; bUnpaid))
+if ((bPaid || bUnpaid) && !(bPaid && bUnpaid))
 ```
 
 **lulz**: 1
