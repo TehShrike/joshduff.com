@@ -1,0 +1,14 @@
+{
+ 	"name": "joshduff-com",
+ 	"regions": ["us-east-1"],
+	"stages": {
+		"production": {
+			"domain": "joshduff.com",
+			"runtime": "static",
+			"lambda": {
+				"warm": true,
+				"warm_count": 1
+			}
+		}
+	}
+}
