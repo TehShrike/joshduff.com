@@ -4,7 +4,7 @@ markdown: false
 ---
 
 <div id="sidebar">
-	::sidebar.md::
+	::sidebar::
 </div>
 
 <div id="main">

@@ -10,9 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
-    "lint": "noddity-linter \"./content/\"",
-    "publish-content": "now --name=joshduff.com-content --static content",
-    "publish-assets": "now --name=joshduff.com-assets --static assets"
+    "lint": "noddity-linter \"./content/\""
   },
   "repository": {
     "type": "git",
@@ -25,17 +23,11 @@
   },
   "homepage": "https://github.com/TehShrike/joshduff.com#readme",
   "dependencies": {
-    "koa": "2.2.0",
-    "koa-compress": "2.0.0",
-    "koa-conditional-get": "2.0.0",
-    "koa-router": "7.0.1",
-    "level-mem": "0.18.0",
-    "noddity-butler": "~2.6.2",
     "noddity-lazy-static-render": "~1.1.0",
-    "noddity-static-server": "~2.2.0"
+    "polkadot": "^0.2.0",
+    "polkadot-router": "^2.0.0"
   },
   "devDependencies": {
-    "ecstatic": "2.1.0",
     "noddity-linter": "~1.0.1"
   }
 }
