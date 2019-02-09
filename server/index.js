@@ -13,6 +13,11 @@ const contentTypes = {
 	svg: `image/svg+xml`,
 	jpg: `image/jpeg`,
 	txt: `text/plain`,
+	css: `text/css`,
+	js: `application/javascript`,
+	xml: `application/xml`,
+	json: `application/json`,
+	ico: `image/x-icon`,
 }
 
 // TODO
