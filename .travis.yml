@@ -8,9 +8,9 @@ script:
 deploy:
   - provider: script
     skip_cleanup: true
-    script:
+    before_deploy:
       - curl -sf https://up.apex.sh/install | sh
       - up upgrade
-      - ./deploy.sh
+    script: ./deploy.sh
     on:
       branch: master
