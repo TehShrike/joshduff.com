@@ -17,6 +17,10 @@ body {
 	min-width: 1110px;
 	color: #141414;
 	background-color: #FAFAFA;
+
+	font-family: "Merriweather", "PT Serif", Georgia, "Times New Roman", serif;
+	font-size: 1.2em;
+	line-height: 1.4;
 }
 
 #sidebar ol {
@@ -28,14 +32,15 @@ body {
 }
 
 #sidebar li {
+	padding-bottom: 4px;
 	border-bottom: thin solid rgba(55, 42, 26, 1);
 	margin: 20px 0px;
 	line-height: 1.05;
 	list-style-type: none;
 }
 
-h1,h2,h3,h4,#sidebar a {
-	font-family: "cantarellregular", "Lucida Sans Unicode","Lucida Sans","Geneva","Verdana","sans-serif";
+h1,h2,h3,h4,h5,h6 {
+	font-family:  "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", sans-serif;
 }
 
 h1 {
@@ -56,11 +61,6 @@ h3 {
 
 h4 {
 	font-size: .8em;
-}
-
-body {
-	font-family: "sina_novaregular", "Georgia","Cambria","Times New Roman","Times","serif";
-	font-size: 1.3em;
 }
 
 img.logo {
