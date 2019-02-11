@@ -20,11 +20,6 @@ const contentTypes = {
 	ico: `image/x-icon`,
 }
 
-// TODO
-// build the html files
-// redirect .md routes to .html files on disk
-// a route for /feed that sets the proper rss/xml content type
-
 module.exports = () => polkadot(
 	handleErrors(
 		noFuckingAroundNow(
@@ -48,6 +43,7 @@ module.exports = () => polkadot(
 					'/36/:whatever?': permanentRedirect(`/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.md`),
 					'/33/:whatever?': permanentRedirect(`/2008-07-18-things-i-think-about-while-sitting-on-the-toilet.md`),
 					'/19/:whatever?': permanentRedirect(`/2006-09-23-an-observation-on-college-classes.md`),
+					'/': servePath(relative(`../public/index.md`)),
 				},
 			}, serve(relative(`../public`)))
 		)
@@ -81,20 +77,25 @@ const fileExists = path => new Promise((resolve, reject) => {
 	})
 })
 
-const serve = root => async(req, res) => {
-	const requestPath = req.path
-	const filePath = path.join(root, requestPath)
-	console.log(`trying to serve`, filePath)
-	if (!await fileExists(filePath)) {
+const servePath = path => async(req, res) => {
+	console.log(`trying to serve`, path)
+	if (!await fileExists(path)) {
 		res.statusCode = 404
 		return `File not found`
 	}
 
-	const contentType = contentTypes[getExtension(filePath)] || null
+	const contentType = contentTypes[getExtension(path)] || null
 
 	contentType && res.setHeader(`Content-Type`, contentType)
 
-	return fs.createReadStream(filePath)
+	return fs.createReadStream(path)
+}
+
+const serve = root => async(req, res) => {
+	const requestPath = req.path
+	const filePath = path.join(root, requestPath)
+
+	return servePath(filePath)(req, res)
 }
 
 const getExtension = inputPath => {
@@ -106,7 +107,6 @@ const getExtension = inputPath => {
 }
 
 const permanentRedirect = redirectTo => async(req, res) => {
-	console.log(`redirecting to`, redirectTo)
 	res.statusCode = 301
 	res.setHeader(`Location`, redirectTo)
 }
