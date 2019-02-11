@@ -18,6 +18,7 @@ const contentTypes = {
 	xml: `application/xml`,
 	json: `application/json`,
 	ico: `image/x-icon`,
+	rss: `application/rss+xml`,
 }
 
 module.exports = () => polkadot(
