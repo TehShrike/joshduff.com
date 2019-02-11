@@ -1,6 +1,7 @@
 ---
-title: Josh Duff
+title: Home
 date: 2017-02-16T15:37:34.176Z
+list: false
 ---
 
 I make software, mostly for businesses.

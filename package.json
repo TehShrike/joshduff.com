@@ -8,9 +8,10 @@
   "version": "1.0.0",
   "description": "JoshDuff.com",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "generate-noddity --root=content --output=public --template=index.html --extension=md '*.md' --filter=./noddity-filter.js --data=./noddity-data.json && cpy content/images public/images",
+    "test": "npm run lint",
     "start": "node server/server.js",
-    "lint": "noddity-linter \"./content/\""
+    "lint": "noddity-linter \"./content/\" --useIndex=false"
   },
   "repository": {
     "type": "git",
@@ -23,11 +24,12 @@
   },
   "homepage": "https://github.com/TehShrike/joshduff.com#readme",
   "dependencies": {
-    "noddity-lazy-static-render": "~1.1.0",
     "polkadot": "^0.2.0",
     "polkadot-router": "^2.0.0"
   },
   "devDependencies": {
-    "noddity-linter": "~1.0.1"
+    "cpy-cli": "^2.0.0",
+    "noddity-generator-cli": "^1.2.0",
+    "noddity-linter": "^1.1.0"
   }
 }

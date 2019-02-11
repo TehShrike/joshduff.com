@@ -1,0 +1,8 @@
+{
+	"title": "Josh Duff",
+	"editLink": "https://github.com/TehShrike/joshduff.com/edit/master/content/",
+	"logo": "/images/logo.svg",
+	"errorPage": "404.md",
+	"pathPrefix": "/",
+	"pagePathPrefix": ""
+}
