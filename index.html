@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>
-			Josh Duff{{#if metadata.title}} | {{metadata.title}} {{/if}}
+			Josh Duff{{#if metadata.title && metadata.title !== 'Josh Duff'}} | {{metadata.title}} {{/if}}
 		</title>
 		<link
 			href="http://rss.noddityaas.com/?noddityRoot=http://joshduff.com/content/&postUrlRoot=http://joshduff.com/post/&title=Josh%20Duff%20.com&author=Josh"

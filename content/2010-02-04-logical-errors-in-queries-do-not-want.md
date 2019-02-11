@@ -1,6 +1,5 @@
 title: Logical errors in queries: DO NOT WANT
 date: 2010-02-04T09:17:00-06:00
-categories: mysql
 
 During my career developing database-driven software (teehee, I'm a professional) I've noted that the most horrific query errors are the logical ones - queries that parse correctly, and return reasonable-looking data, but make wrong assumptions about how different parts of the query relate to each other.
 

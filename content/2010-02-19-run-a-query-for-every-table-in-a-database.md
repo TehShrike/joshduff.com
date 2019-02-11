@@ -1,6 +1,5 @@
 title: Run a query for every table in a database
 date: 2010-02-19T02:16:00-06:00
-categories: mysql
 
 Ever wished you could run a dangerous query like DROP TABLE or TRUNCATE against every table in a database in a single query?
 

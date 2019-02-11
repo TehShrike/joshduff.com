@@ -1,6 +1,5 @@
 title: Profanities and other funny words
 date: 2010-06-21T03:11:00-06:00
-categories: geekery
 
 I recently did a quick audit of the source code I help maintain/develop for [the company I work for](http://wikido.isoftdata.com/index.php/ISoft_Data_Systems).  By which I mean, I spent the last part of a Friday searching through our code for funny words.
 
@@ -190,8 +189,6 @@ if ((bPaid || bUnpaid) && !(bPaid && bUnpaid))
 ```
 
 # A few other gems
-
-Ebonics?
 
 ```
 // If shift was already depressed, fo' real, don't screw that up

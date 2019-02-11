@@ -8,7 +8,7 @@ markdown: false
 </div>
 
 <div id="main">
-	{{#editLink}}<div id="edit-post-link"><a href="{{editLink}}{{current}}">Edit this post</a></div>{{/editLink}}
+	{{#editLink}}<div id="edit-post-link"><a href="{{editLink}}{{current}}" target=_blank rel="external noreferrer">Edit</a></div>{{/editLink}}
 	<article>
 		<div>
 			{{#metadata.title}}

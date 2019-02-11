@@ -71,14 +71,8 @@ img.logo {
 }
 
 div#edit-post-link {
-	position: absolute;
-	top: 2em;
-	right: 0;
-	border: 0;
-	-webkit-transform: rotate(45deg);
-	-o-transform:rotate(45deg);
-	-moz-transform:rotate(45deg);
-	-ms-transform:rotate(45deg);
+	display: flex;
+	justify-content: flex-end;
 }
 
 div#edit-post-link a {

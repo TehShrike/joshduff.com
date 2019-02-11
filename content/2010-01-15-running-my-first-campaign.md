@@ -1,6 +1,5 @@
 title: Running my first campaign!
 date: 2010-01-15T21:41:00-06:00
-categories: opinion
 
 Less than a year ago, I jumped off the high-board of nerdiness into the deep end of the role-playing pool - and ran my very first campaign.
 

@@ -1,12 +1,11 @@
 title: Sandwich war crimes: the Dirty Mother
 date: 2010-05-25T13:57:00-06:00
-categories: opinion
 
 For those attending a university, the end of a semester is a time of much rejoicing.  During my last semesters at such an institution, I took place in an end-of-year celebratory tradition involving a ridiculous sandwich.
 
 In some issue of Maxim (November 2005?) there was an article featuring absurd sandwich-based foods.  So ridiculous were these edibles that some fraternity brothers of mine decided that the consumption of one such sandwich would make a fitting end-of-semester celebration.
 
-I was unable to find the original article online, but found the ingredients [here](http://www.ntxalliance.com/index.php?action=printpage;topic=3970.0).  I post them here for posterity.
+I was unable to find the original article online, but found the ingredients [here](https://web.archive.org/web/20101103053652/http://www.ntxalliance.com/index.php?action=printpage;topic=3970.0).  I post them here for posterity.
 
 ## The Dirty Mother
 

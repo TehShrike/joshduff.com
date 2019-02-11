@@ -1,6 +1,5 @@
 title: Convert blocks of text to sentence case in MySQL
 date: 2010-01-22T07:31:00-06:00
-categories: mysql
 
 You know what I hate?  Paragraphs of capital (or all lowercase) letters.
 
@@ -42,11 +41,11 @@ BEGIN
 		SET Word := TrimmedWord;
 
 		# Make it lowercase if it is all uppercase
-		SET Word := IF(LENGTH(Word) >= nMinimumLength AND Word NOT REGEXP '[0-9]', 
+		SET Word := IF(LENGTH(Word) >= nMinimumLength AND Word NOT REGEXP '[0-9]',
 			IF(NewSentence,
 				CONCAT(UCASE(SUBSTR(Word, 1, 1)), LCASE(SUBSTR(Word, 2, LENGTH(Word) - 1))),
 				LCASE(Word)
-			), 
+			),
 			Word);
 
 		SET result := CONCAT(result, REPEAT(' ', NumberOfSpaces), Word);
