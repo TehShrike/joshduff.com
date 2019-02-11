@@ -1,0 +1,16 @@
+sudo: true
+language: node_js
+node_js:
+  - "10"
+script:
+  - npm ci
+  - npm run lint
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script:
+      - curl -sf https://up.apex.sh/install | sh
+      - up upgrade
+      - ./deploy.sh
+    on:
+      branch: master
