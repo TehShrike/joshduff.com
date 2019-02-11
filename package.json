@@ -8,7 +8,7 @@
   "version": "1.0.0",
   "description": "JoshDuff.com",
   "scripts": {
-    "build": "generate-noddity --root=content --output=public --template=index.html --extension=md '*.md' --filter=./noddity-filter.js --data=./noddity-data.json --feed=./noddity-feed.json && cpy content/images public/images",
+    "generate": "generate-noddity --root=content --output=public --template=index.html --extension=md '*.md' --filter=./noddity-filter.js --data=./noddity-data.json --feed=./noddity-feed.json && cpy content/images public/images",
     "test": "npm run lint",
     "start": "node server/server.js",
     "lint": "noddity-linter \"./content/\" --useIndex=false"
