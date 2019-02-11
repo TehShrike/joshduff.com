@@ -5,12 +5,12 @@ node_js:
 script:
   - npm ci
   - npm run lint
+before_deploy:
+  - curl -sf https://up.apex.sh/install | sh
+  - up upgrade
 deploy:
   - provider: script
     skip_cleanup: true
-    before_deploy:
-      - curl -sf https://up.apex.sh/install | sh
-      - up upgrade
     script: ./deploy.sh
     on:
       branch: master
