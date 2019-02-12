@@ -25,7 +25,7 @@
   "homepage": "https://github.com/TehShrike/joshduff.com#readme",
   "dependencies": {
     "polkadot": "^0.2.0",
-    "polkadot-router": "^2.0.0"
+    "polkadot-router": "^2.1.0"
   },
   "devDependencies": {
     "cpy-cli": "^2.0.0",

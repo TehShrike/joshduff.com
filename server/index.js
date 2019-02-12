@@ -67,7 +67,7 @@ module.exports = () => polkadot(
 
 const handleErrors = handler => async(req, res) => {
 	try {
-		return handler(req, res)
+		return await handler(req, res)
 	} catch (err) {
 		res.statusCode = 500
 
