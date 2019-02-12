@@ -6,13 +6,18 @@ const path = require(`path`)
 
 const relative = relativePath => path.join(__dirname, relativePath)
 
-const contentTypes = {
-	html: `text/html`,
-	md: `text/html`,
+const HEADERS = {
+	contentType: `Content-Type`,
+	location: `Location`,
+}
+
+const CONTENT_TYPES = {
+	html: `text/html; charset=utf-8`,
+	md: `text/html; charset=utf-8`,
 	png: `image/png`,
 	svg: `image/svg+xml`,
 	jpg: `image/jpeg`,
-	txt: `text/plain`,
+	txt: `text/plain; charset=utf-8`,
 	css: `text/css`,
 	js: `application/javascript`,
 	xml: `application/xml`,
@@ -36,8 +41,26 @@ module.exports = () => polkadot(
 					'/145/:whatever?': permanentRedirect(`/2010-01-15-running-my-first-campaign.md`),
 					'/36/:whatever?': permanentRedirect(`/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.md`),
 					'/': servePath(relative(`../public/index.md`)),
+					'/*': figureOutFilePathAndThen(relative(`../public`), servePath),
 				},
-			}, serve(relative(`../public`)))
+				HEAD: {
+					ping: () => ``,
+					'/323/:whatever?': permanentRedirect(`/2011-09-26-how-should-we-then-drive.md`),
+					'/203/:whatever?': permanentRedirect(`/2010-06-21-profanities-and-other-funny-words.md`),
+					'/200/:whatever?': permanentRedirect(`/2010-05-25-dirty-mother.md`),
+					'/189/:whatever?': permanentRedirect(`/2010-02-19-run-a-query-for-every-table-in-a-database.md`),
+					'/173/:whatever?': permanentRedirect(`/2010-02-04-logical-errors-in-queries-do-not-want.md`),
+					'/156/:whatever?': permanentRedirect(`/2010-01-22-convert-blocks-of-text-to-sentence-case.md`),
+					'/145/:whatever?': permanentRedirect(`/2010-01-15-running-my-first-campaign.md`),
+					'/36/:whatever?': permanentRedirect(`/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.md`),
+					'/': statusAndHeaderForFile(relative(`../public/index.md`)),
+					'/*': figureOutFilePathAndThen(relative(`../public`), statusAndHeaderForFile),
+				},
+			}, (req, res) => {
+				res.statusCode = 405
+				res.setHeader(HEADERS.contentType, CONTENT_TYPES.txt)
+				return `¯\\_(ツ)_/¯`
+			})
 		)
 	)
 )
@@ -69,25 +92,33 @@ const fileExists = path => new Promise((resolve, reject) => {
 	})
 })
 
-const servePath = path => async(req, res) => {
-	console.log(`trying to serve`, path)
+const statusAndHeaderForFile = path => async(req, res) => {
 	if (!await fileExists(path)) {
 		res.statusCode = 404
+		res.setHeader(HEADERS.contentType, CONTENT_TYPES.txt)
+		return ``
+	} else {
+		const contentType = CONTENT_TYPES[getExtension(path)] || null
+
+		contentType && res.setHeader(HEADERS.contentType, contentType)
+	}
+}
+
+const servePath = path => async(req, res) => {
+	await statusAndHeaderForFile(path)(req, res)
+
+	if (res.statusCode === 404) {
 		return `File not found`
 	}
-
-	const contentType = contentTypes[getExtension(path)] || null
-
-	contentType && res.setHeader(`Content-Type`, contentType)
 
 	return fs.createReadStream(path)
 }
 
-const serve = root => async(req, res) => {
+const figureOutFilePathAndThen = (root, fn) => (req, res) => {
 	const requestPath = req.path
 	const filePath = path.join(root, requestPath)
 
-	return servePath(filePath)(req, res)
+	return fn(filePath)(req, res)
 }
 
 const getExtension = inputPath => {
@@ -100,5 +131,5 @@ const getExtension = inputPath => {
 
 const permanentRedirect = redirectTo => async(req, res) => {
 	res.statusCode = 301
-	res.setHeader(`Location`, redirectTo)
+	res.setHeader(HEADERS.location, redirectTo)
 }
