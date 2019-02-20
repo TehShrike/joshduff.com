@@ -28,39 +28,41 @@ const CONTENT_TYPES = {
 
 module.exports = () => polkadot(
 	handleErrors(
-		noFuckingAroundNow(
-			router({
-				GET: {
-					ping: () => `pong`,
-					'/323/:whatever?': permanentRedirect(`/2011-09-26-how-should-we-then-drive.md`),
-					'/203/:whatever?': permanentRedirect(`/2010-06-21-profanities-and-other-funny-words.md`),
-					'/200/:whatever?': permanentRedirect(`/2010-05-25-dirty-mother.md`),
-					'/189/:whatever?': permanentRedirect(`/2010-02-19-run-a-query-for-every-table-in-a-database.md`),
-					'/173/:whatever?': permanentRedirect(`/2010-02-04-logical-errors-in-queries-do-not-want.md`),
-					'/156/:whatever?': permanentRedirect(`/2010-01-22-convert-blocks-of-text-to-sentence-case.md`),
-					'/145/:whatever?': permanentRedirect(`/2010-01-15-running-my-first-campaign.md`),
-					'/36/:whatever?': permanentRedirect(`/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.md`),
-					'/': servePath(relative(`../public/index.md`)),
-					'/*': figureOutFilePathAndThen(relative(`../public`), servePath),
-				},
-				HEAD: {
-					ping: () => ``,
-					'/323/:whatever?': permanentRedirect(`/2011-09-26-how-should-we-then-drive.md`),
-					'/203/:whatever?': permanentRedirect(`/2010-06-21-profanities-and-other-funny-words.md`),
-					'/200/:whatever?': permanentRedirect(`/2010-05-25-dirty-mother.md`),
-					'/189/:whatever?': permanentRedirect(`/2010-02-19-run-a-query-for-every-table-in-a-database.md`),
-					'/173/:whatever?': permanentRedirect(`/2010-02-04-logical-errors-in-queries-do-not-want.md`),
-					'/156/:whatever?': permanentRedirect(`/2010-01-22-convert-blocks-of-text-to-sentence-case.md`),
-					'/145/:whatever?': permanentRedirect(`/2010-01-15-running-my-first-campaign.md`),
-					'/36/:whatever?': permanentRedirect(`/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.md`),
-					'/': statusAndHeaderForFile(relative(`../public/index.md`)),
-					'/*': figureOutFilePathAndThen(relative(`../public`), statusAndHeaderForFile),
-				},
-			}, (req, res) => {
-				res.statusCode = 405
-				res.setHeader(HEADERS.contentType, CONTENT_TYPES.txt)
-				return `¯\\_(ツ)_/¯`
-			})
+		cacheControlHeaders(
+			noFuckingAroundNow(
+				router({
+					GET: {
+						ping: () => `pong`,
+						'/323/:whatever?': permanentRedirect(`/2011-09-26-how-should-we-then-drive.md`),
+						'/203/:whatever?': permanentRedirect(`/2010-06-21-profanities-and-other-funny-words.md`),
+						'/200/:whatever?': permanentRedirect(`/2010-05-25-dirty-mother.md`),
+						'/189/:whatever?': permanentRedirect(`/2010-02-19-run-a-query-for-every-table-in-a-database.md`),
+						'/173/:whatever?': permanentRedirect(`/2010-02-04-logical-errors-in-queries-do-not-want.md`),
+						'/156/:whatever?': permanentRedirect(`/2010-01-22-convert-blocks-of-text-to-sentence-case.md`),
+						'/145/:whatever?': permanentRedirect(`/2010-01-15-running-my-first-campaign.md`),
+						'/36/:whatever?': permanentRedirect(`/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.md`),
+						'/': servePath(relative(`../public/index.md`)),
+						'/*': figureOutFilePathAndThen(relative(`../public`), servePath),
+					},
+					HEAD: {
+						ping: () => ``,
+						'/323/:whatever?': permanentRedirect(`/2011-09-26-how-should-we-then-drive.md`),
+						'/203/:whatever?': permanentRedirect(`/2010-06-21-profanities-and-other-funny-words.md`),
+						'/200/:whatever?': permanentRedirect(`/2010-05-25-dirty-mother.md`),
+						'/189/:whatever?': permanentRedirect(`/2010-02-19-run-a-query-for-every-table-in-a-database.md`),
+						'/173/:whatever?': permanentRedirect(`/2010-02-04-logical-errors-in-queries-do-not-want.md`),
+						'/156/:whatever?': permanentRedirect(`/2010-01-22-convert-blocks-of-text-to-sentence-case.md`),
+						'/145/:whatever?': permanentRedirect(`/2010-01-15-running-my-first-campaign.md`),
+						'/36/:whatever?': permanentRedirect(`/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.md`),
+						'/': statusAndHeaderForFile(relative(`../public/index.md`)),
+						'/*': figureOutFilePathAndThen(relative(`../public`), statusAndHeaderForFile),
+					},
+				}, (req, res) => {
+					res.statusCode = 405
+					res.setHeader(HEADERS.contentType, CONTENT_TYPES.txt)
+					return `¯\\_(ツ)_/¯`
+				})
+			)
 		)
 	)
 )
@@ -73,6 +75,15 @@ const handleErrors = handler => async(req, res) => {
 
 		return err.message || err
 	}
+}
+
+const MAX_AGE_SECONDS = 60 * 60
+const cacheControlHeaders = handler => async (req, res) => {
+	const body = await handler(req, res)
+
+	res.setHeader('Cache-Control', 'public, max-age=' + MAX_AGE_SECONDS)
+
+	return body
 }
 
 const noFuckingAroundNow = handler => (req, res) => {
