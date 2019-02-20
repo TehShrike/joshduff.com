@@ -9,6 +9,7 @@ const relative = relativePath => path.join(__dirname, relativePath)
 const HEADERS = {
 	contentType: `Content-Type`,
 	location: `Location`,
+	cacheControl: `Cache-Control`,
 }
 
 const CONTENT_TYPES = {
@@ -78,10 +79,10 @@ const handleErrors = handler => async(req, res) => {
 }
 
 const MAX_AGE_SECONDS = 60 * 60
-const cacheControlHeaders = handler => async (req, res) => {
+const cacheControlHeaders = handler => async(req, res) => {
 	const body = await handler(req, res)
 
-	res.setHeader('Cache-Control', 'public, max-age=' + MAX_AGE_SECONDS)
+	res.setHeader(HEADERS.cacheControl, `public, max-age=` + MAX_AGE_SECONDS)
 
 	return body
 }
