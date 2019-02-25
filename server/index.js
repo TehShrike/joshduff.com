@@ -1,4 +1,5 @@
 const polkadot = require(`polkadot`)
+const middleware = require(`polkadot-middleware`)
 const router = require(`polkadot-router`)
 
 const fs = require(`fs`)
@@ -27,9 +28,7 @@ const CONTENT_TYPES = {
 	rss: `application/rss+xml`,
 }
 
-const pipe = (...fns) => fns.reduceRight((acc, fn) => fn(acc))
-
-module.exports = () => pipe(
+module.exports = () => middleware(
 	polkadot,
 	handleErrors,
 	cacheControlHeaders,
@@ -68,9 +67,9 @@ module.exports = () => pipe(
 	})
 )
 
-const handleErrors = handler => async(req, res) => {
+const handleErrors = next => async(req, res) => {
 	try {
-		return await handler(req, res)
+		return await next(req, res)
 	} catch (err) {
 		res.statusCode = 500
 
@@ -79,22 +78,22 @@ const handleErrors = handler => async(req, res) => {
 }
 
 const MAX_AGE_SECONDS = 60 * 60
-const cacheControlHeaders = handler => async(req, res) => {
-	const body = await handler(req, res)
+const cacheControlHeaders = next => async(req, res) => {
+	const body = await next(req, res)
 
 	res.setHeader(HEADERS.cacheControl, `public, max-age=` + MAX_AGE_SECONDS)
 
 	return body
 }
 
-const noFuckingAroundNow = handler => (req, res) => {
+const noFuckingAroundNow = next => (req, res) => {
 	if (req.path.split(`/`).some(chunk => chunk === `..`)) {
 		console.log(`Detected some fucking around`)
 		res.statusCode = 404
 		return
 	}
 
-	return handler(req, res)
+	return next(req, res)
 }
 
 const fileExists = path => new Promise((resolve, reject) => {
