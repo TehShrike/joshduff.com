@@ -5,7 +5,7 @@
 		"production": {
 			"domain": "joshduff.com",
 			"lambda": {
-				"runtime": "nodejs8.10",
+				"runtime": "nodejs12.x",
 				"warm": true,
 				"warm_count": 2
 			}
