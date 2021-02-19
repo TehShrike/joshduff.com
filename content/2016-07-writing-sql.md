@@ -33,7 +33,7 @@ The actual suffix/name doesn't matter, but `_id` seems to be the most common con
 
 The main point is that whatever suffix you pick should be consistent across the entire schema.  This lets you join to another table without having to remember anything but the table name.
 
-## Foreign keys should always contain the name of the column they link to
+## Foreign keys should always contain the name of the table they link to
 
 If rows in your `invoice` table link to rows in your `customer` table, the invoice table should be named `customer_id`, not `buyer_id` or `purchaser_id`.
 
