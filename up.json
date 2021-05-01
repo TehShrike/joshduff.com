@@ -7,7 +7,7 @@
 			"lambda": {
 				"runtime": "nodejs12.x",
 				"warm": true,
-				"warm_count": 2
+				"warm_count": 1
 			}
 		}
 	}
