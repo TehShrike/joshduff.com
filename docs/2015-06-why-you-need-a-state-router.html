@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>
+			Josh Duff | Why your webapp needs a state-based router 
+		</title>
+		<link type="application/rss+xml" href="/feed.rss" rel="alternate" title="Josh Duff">
+
+		<meta charset="utf-8">
+
+		<link type="text/css" rel="stylesheet" href="/assets/style.css">
+
+		<link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+		<link type="image/png" rel="icon" href="/assets/icon/favicon-32x32.png" sizes="32x32">
+		<link type="image/png" rel="icon" href="/assets/icon/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/assets/icon/manifest.json">
+		<link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/assets/icon/favicon.ico">
+		<meta name="msapplication-config" content="/assets/icon/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+	</head>
+
+	<body>
+		<div id="sidebar"><p><a href="/">
+<img class="logo" src="/images/logo.svg">
+</a></p>
+<div>
+    <h3>Posts</h3>
+    <ol>
+            <li><a href="/2016-07-writing-sql.md">Writing SQL for applications</a></li>
+            <li><a href="/2015-09-communal-checklist.md">Side project post-partum: Communal Checklist</a></li>
+            <li><a href="/2015-06-why-you-need-a-state-router.md">Why your webapp needs a state-based router</a></li>
+            <li><a href="/2014-11-22-noddity.md">Writing Noddity</a></li>
+            <li><a href="/2012-11-29-an-entreaty.md">An entreaty</a></li>
+            <li><a href="/2011-09-26-how-should-we-then-drive.md">How Should We Then Drive?</a></li>
+            <li><a href="/2010-06-21-profanities-and-other-funny-words.md">Profanities and other funny words</a></li>
+            <li><a href="/2010-05-25-dirty-mother.md">Sandwich war crimes: the Dirty Mother</a></li>
+            <li><a href="/2010-02-19-run-a-query-for-every-table-in-a-database.md">Run a query for every table in a database</a></li>
+            <li><a href="/2010-02-04-logical-errors-in-queries-do-not-want.md">Logical errors in queries: DO NOT WANT</a></li>
+            <li><a href="/2010-01-22-convert-blocks-of-text-to-sentence-case.md">Convert blocks of text to sentence case in MySQL</a></li>
+            <li><a href="/2010-01-15-running-my-first-campaign.md">Running my first campaign!</a></li>
+            <li><a href="/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.md">My accomplishment for the day: a MySQL quine!</a></li>
+    </ol>
+</div>
+</div> <div id="main"><div id="edit-post-link"><a href="https://github.com/TehShrike/joshduff.com/edit/master/content/2015-06-why-you-need-a-state-router.md" target="_blank" rel="external noreferrer">Edit</a></div> <article><div><h1>Why your webapp needs a state-based router</h1> <div class="post-content"><p>Yeah, the title is slightly hyperbolic - state routers aren't appropriate for every webapp.  Your webapp probably needs one though!</p>
+<h2 id="quick-intro">Quick intro</h2>
+<p>Let's lay out a few definitions before diving in to avoid possible misunderstandings:</p>
+<ul>
+<li>webapp: a <a href="https://blog.andyet.com/2015/01/22/native-web-apps">native web application</a> running in the browser that uses <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history">pushState</a> to control navigation instead of sending the browser to a different html page.</li>
+<li>router: any library that triggers your code when the url changes so you can update content in the dom.</li>
+</ul>
+<h2 id="routing-in-a-webapp">Routing in a webapp</h2>
+<p>Simple routers work something like this:</p>
+<pre><code>route('/content/:name', function(params) {
+    var name = params.name
+    getContent(name, function(err, content) {
+        $('.container').text(content) // insert your DOM manipulation framework here
+    })
+})
+</code></pre>
+<p>...which is all well and good.  My personal web site, the one you're probably reading this post on, uses such a simple router.</p>
+<p>But when you start writing a more complex webapp, you will discover new desires within yourself.  You will begin to desire the ability to nest different parts of your webapp inside each other in some kind of hierarchy.</p>
+<p><img style="width: 360px; height: 162px;" src="images/github-settings-submenu.png" alt="Github user settings screenshot"></p>
+<p>Let's say you're making an account page that looks something like Github's here.</p>
+<p>If your account page has a submenu that allows users to switch between "profile" and "account settings" forms, you have a few options:</p>
+<ol>
+<li>Neglect to put the current submenu's path in the url at all - if the user is at <code>/app/settings</code>, has the profile submenu open, and hits the refresh button, they pop back to whatever the default state is (maybe the profile page).  This is bad because they can't then hit the back button to go back to the last form, or send people links to a specific submenu on the settings page.</li>
+<li>Represent the submenu in the url, instead of the page that contains it - you create routing rules for both <code>/app/settings-profile</code> and <code>/app/settings-account</code>, and both their templates just happen to contain that same menu on the left side.  This is bad because you have to re-render the menu every time, and you can't link to the settings page without setting up a settings route that is just a redirect, or linking directly to a default sub-page.</li>
+<li>Make the submenu a parameter of the settings route - so inside a single route handler for <code>/app/settings/:submenu</code>, you put a big if block in your template that says "if the submenu parameter is 'profile' embed the profile page, else if it's 'account' embed that page..." etc etc.  This is awkward, and doesn't scale well past one level of nesting.</li>
+<li>Use a solution that lets you nest your views, and handles interpreting the url to realize that <code>/app/settings/profile</code> should display the main logged-in app view, with the settings page inside of that, and the profile sub-page inside of that.  <strong>This is the good option!</strong></li>
+</ol>
+<h2 id="in-the-bad-ol-days">In the bad 'ol days</h2>
+<p>I first used AngularJS <a href="http://www.edatasource.com/">at work</a> on a project that began in mid-2013.  Like every other Angular app at the time, we used the simple <a href="https://docs.angularjs.org/api/ngRoute/provider/$routeProvider">$routeProvider</a> exposed by the framework.</p>
+<p>We had one route for the login screen, and another for each of the two different screens inside the app.  There was a lot of shared ui around the edges of the app, with the menu and search bar and everything, so both of those screen's routes used the same template, something like this:</p>
+<pre><code>&lt;div id="main"&gt;
+    &lt;div id="search-bar"&gt;
+        &lt;input type="text" magical-autocomplete&gt;
+    &lt;/div&gt;
+    &lt;div id="menu"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="" ng-click="navigateTo('page1')"&gt;Page 1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="" ng-click="navigateTo('page2')"&gt;Page 2&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div id="content"&gt;
+        &lt;div ng-include="template.urlOfActualTemplate"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Navigating to Page 1 or Page 2 would set <code>scope.template.urlOfActualTemplate = 'this-screen/screen-template.html'</code> and that would get displayed via the <code>ng-include</code>.</p>
+<p>Pretty ugly.  Everything that we wanted serialized to the url was manually synchronized to a querystring parameter.  We never even considered going to the effort of representing further nested states by adding something like <code>&amp;childScreen=profile</code> to the querystring.</p>
+<h2 id="and-then-i-fell-into-the-light">And then I fell into the light</h2>
+<p>When the time came to begin our next AngularJS project, I turned to the barely-maintained-but-still-useful <a href="https://github.com/ngbp/ngbp">ngbp</a> Angular boilerplate.  One of the modules it included out of the box was <a href="https://github.com/angular-ui/ui-router">ui-router</a>.</p>
+<p>ui-router is one of those solutions where once you've seen it in use, you can feel certain programming problems clearing up right in front of you.  ui-router allows you to:</p>
+<ul>
+<li>nest views or "states" inside of each other</li>
+<li>associate url routes and querystring parameters with states so that changing the url changes any number of currently displayed states</li>
+<li>indicate which states are associated with which parameters in the url</li>
+</ul>
+<p>This gives you the power to write each state as its own little module - you don't have to manually watch for changes to the querystring, because if any relevant parameter changes, your state goes away and a fresh new version of the state is instantiated.  Each state is its own little island and changes on navigation independently of any parent/child states.</p>
+<p><img style="width: 467px; height: 187px;" src="images/analyst-menu-hierarchy.png" alt="Analyst Nextgen menu hierarchy"></p>
+<p>This screenshot is from my employer's product.  Each of those three menus is a different nested state that allows you to drill down to a different child state.  And the url routing is a dream!</p>
+<h2 id="but-angular">but... Angular</h2>
+<p>I'm a child of the node/npm revolution, and as such I'm pretty framework-averse.  I prefer disconnected modules that solve problems that I can compose myself.</p>
+<p>I'm especially averse to AngularJS 1.x, as it forces so many bad decisions down your throat (a module system with no difference between private and public APIs, all view-facing data on a $scope that uses dirty-checking to detect changes, and an inscrutable testing API).</p>
+<p>ui-router is a fantastic library, solving a commonplace yet difficult problem, and solving it very well.  However, it's not worth using AngularJS just to be able to use ui-router.</p>
+<p>I looked for similar libraries, but the only ones I found (<a href="https://github.com/rackt/react-router">react-router</a> and <a href="http://guides.emberjs.com/v1.10.0/routing/defining-your-routes/">Ember's router</a>) are similarly tied to their chosen rendering/templating tools.</p>
+<h2 id="so-i-made-my-own">So I made my own</h2>
+<p>I want to build business webapps without tying myself to a specific framework, allowing me to try new solutions at will.  I know that no matter what rendering or templating library I use at the time, my webapps need a state router.  Thus, <a href="https://github.com/TehShrike/abstract-state-router">abstract-state-router</a>!</p>
+<p>Built with help from <a href="https://github.com/ArtskydJ">ArtskydJ</a>, abstract-state-router is heavily inspired by ui-router, intended to be used with whatever templating library you like.  At the time of this writing, renderers have been set up for <a href="http://www.ractivejs.org/">Ractive.JS</a>, <a href="https://muut.com/riotjs/">Riot</a>, and <a href="https://github.com/Matt-Esch/virtual-dom">virtual-dom</a> - and it's not too difficult to <a href="https://github.com/TehShrike/abstract-state-router/blob/master/renderer.md">implement new ones</a> with your favorite template/dom manipulation library.</p>
+<p>The documentation is <a href="https://github.com/TehShrike/abstract-state-router">on Github</a>.  I don't have good introductory wiki pages like ui-router's yet, though there is an <a href="http://tehshrike.github.io/state-router-example/">example todo app</a> using each of the current rendering/templating options.</p>
+<h2 id="you-should-use-it">You should use it!</h2>
+<p>If you're making a webapp that is more complex than a simple content site like this blog, you need a state-based router, and I'd like to help you use this one.</p>
+<p>If you have a favorite template/dom manipulation library that you want to use, let me know and I'll help you write the renderer so that you can use it with abstract-state-router.</p>
+<p>If you run into any difficulties, open an issue on Github or ping me on Twitter.</p>
+<p>The module is out on npm for you to try - <a href="https://github.com/TehShrike/abstract-state-router">check it out on Github</a>!</p>
+</div></div></article></div>
+
+		<script async defer src="https://cdn.simpleanalytics.io/hello.js"></script>
+		<noscript><img src="https://api.simpleanalytics.io/hello.gif" alt></noscript>
+	</body>
+
+	<script src="/assets/hashbang-redirector/redirector.js"></script>
+	<script type="module" src="//instant.page/1.1.0" integrity="sha384-EwBObn5QAxP8f09iemwAJljc+sU+eUXeL9vSBw1eNmVarwhKk2F9vBEpaN9rsrtp"></script>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>
+			Josh Duff | Writing Noddity 
+		</title>
+		<link type="application/rss+xml" href="/feed.rss" rel="alternate" title="Josh Duff">
+
+		<meta charset="utf-8">
+
+		<link type="text/css" rel="stylesheet" href="/assets/style.css">
+
+		<link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+		<link type="image/png" rel="icon" href="/assets/icon/favicon-32x32.png" sizes="32x32">
+		<link type="image/png" rel="icon" href="/assets/icon/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/assets/icon/manifest.json">
+		<link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/assets/icon/favicon.ico">
+		<meta name="msapplication-config" content="/assets/icon/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+	</head>
+
+	<body>
+		<div id="sidebar"><p><a href="/">
+<img class="logo" src="/images/logo.svg">
+</a></p>
+<div>
+    <h3>Posts</h3>
+    <ol>
+            <li><a href="/2016-07-writing-sql.md">Writing SQL for applications</a></li>
+            <li><a href="/2015-09-communal-checklist.md">Side project post-partum: Communal Checklist</a></li>
+            <li><a href="/2015-06-why-you-need-a-state-router.md">Why your webapp needs a state-based router</a></li>
+            <li><a href="/2014-11-22-noddity.md">Writing Noddity</a></li>
+            <li><a href="/2012-11-29-an-entreaty.md">An entreaty</a></li>
+            <li><a href="/2011-09-26-how-should-we-then-drive.md">How Should We Then Drive?</a></li>
+            <li><a href="/2010-06-21-profanities-and-other-funny-words.md">Profanities and other funny words</a></li>
+            <li><a href="/2010-05-25-dirty-mother.md">Sandwich war crimes: the Dirty Mother</a></li>
+            <li><a href="/2010-02-19-run-a-query-for-every-table-in-a-database.md">Run a query for every table in a database</a></li>
+            <li><a href="/2010-02-04-logical-errors-in-queries-do-not-want.md">Logical errors in queries: DO NOT WANT</a></li>
+            <li><a href="/2010-01-22-convert-blocks-of-text-to-sentence-case.md">Convert blocks of text to sentence case in MySQL</a></li>
+            <li><a href="/2010-01-15-running-my-first-campaign.md">Running my first campaign!</a></li>
+            <li><a href="/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.md">My accomplishment for the day: a MySQL quine!</a></li>
+    </ol>
+</div>
+</div> <div id="main"><div id="edit-post-link"><a href="https://github.com/TehShrike/joshduff.com/edit/master/content/2014-11-22-noddity.md" target="_blank" rel="external noreferrer">Edit</a></div> <article><div><h1>Writing Noddity</h1> <div class="post-content"><p>Some time in 2012, I decided to write my own blogging platform in JavaScript.  I hashed out my goals with a friend over an evening.  "It'll be simple," I said.  "You'll make changes to a directory full of Markdown files, and that's your blog!  I should be able to write the prototype in one evening!"</p>
+<p>If you want to read some mediocre code from early in my JavaScript career, that prototype code is <a href="https://github.com/TehShrike/noddity/commit/c91ee844b55f9cb2cfe809b9b3666536ba8cc9e7">on the internet</a>.  I was still figuring out Node best practices, and dipping my feet into functional programming.</p>
+<p>It took me a surprising amount of work to write something that could replace Wordpress as my blogging platform, let alone something that somebody else could conceivably download and use.</p>
+<p>This post is about the work I did to Make It Happen.</p>
+<h1 id="making-up-my-mind">Making up my mind</h1>
+<p>The project's specific goals didn't solidify until after I'd started writing it.  I eventually settled on:</p>
+<ol>
+<li>static file deployments (no server-side code, deployable on Github Pages or shared hosting)</li>
+<li>no build step to turn markdown into html</li>
+<li>browse to new pages without waiting for a round-trip to the server</li>
+</ol>
+<p>I had dream features as well, features I wish all content sites had.  Interestingly, these features all come from MediaWiki:</p>
+<h2 id="an-edit-button-on-every-page">An edit button on every page</h2>
+<p>I've been editing Wikipedia for years, and my first instinct when I see poor grammar or overly-long paragraphs is to click an "edit" button and fix the problem.  Sadly, most blogs don't have an edit button.</p>
+<p>Everyone should be able to feel the catharsis of fixing someone else's mistakes on the internet.</p>
+<h2 id="easy-linking-to-other-pages">Easy linking to other pages</h2>
+<p>I shouldn't have to think about the deployment environment when I reference one of my other posts.  When I link to another post I've written, it should be by the file name, and nothing more.</p>
+<p>Having to link to <code>http://mysite.com/blog/#!/my-awesome-posts/some-file.md</code> is unacceptable.  I need wiki-style <code>[link.md|linking]</code>.</p>
+<h2 id="embeddable-templates">Embeddable templates</h2>
+<p>This is MediaWiki/Wikipedia's killer feature.  Any page can be embedded in any other page - and since you can pass parameters to the embedded document, you can use templates to build domain-specific languages for content.</p>
+<p>I dug in to MediaWiki templates a bit when administrating the <a href="http://wikido.isoftdata.com">MediaWiki documentation site for my previous employer</a>, and am totally sold on the feature.</p>
+<p>I wanted all that wiki power, but without the archaic MediaWiki formatting syntax.</p>
+<h1 id="work-that-other-people-did-for-me">Work that other people did for me</h1>
+<ul>
+<li>I planned on using Substack's <a href="http://browserify.org/">Browserify</a> as my module/build system from very early on, letting me use large chunks of client-side code in my RSS and static file servers.</li>
+<li>DOM manipulation was not something I had any intention of rewriting, so I decided to try Rich Harris's sweet <a href="http://www.ractivejs.org/">RactiveJS</a> library.  Life got even awesomer when I realized that Ractive's mustache syntax would be the perfect way to allow code in embedded templates.</li>
+<li>Even though the blog itself runs without any server-side code, it caches post content, and that means storage.  I wrote everything to Rod Vagg's <a href="https://github.com/rvagg/node-levelup">LevelUP</a> interface, giving me an ideal key-value store.  Noddity modules use localstorage in the browser, Redis on the RSS/static file servers, and in-memory structures in unit tests, with no code changes or storage mocks.</li>
+</ul>
+<h1 id="why-did-that-take-so-long-to-implement">Why did that take so long to implement?</h1>
+<p>Having those goals in mind, I was able to start working on the other tools that I would need to exist.</p>
+<p>Astute students of practical computer science will have recognized goal #3 above as something that requires caching, one of the <a href="http://martinfowler.com/bliki/TwoHardThings.html">two hard problems</a>.</p>
+<p>While it didn't occur to the me of yester-year, it should not surprise you to hear that most of the code I wrote to get Noddity running was in the caching layer.</p>
+<h2 id="post-metadata">Post metadata</h2>
+<p>Before I dug into the caching, I started by nailing down the post format.  I needed to formalize a big ball of http-accessible blog content.</p>
+<p>I wrote <a href="https://github.com/TehShrike/noddity-retrieval">noddity-retrieval</a> to abstract away accessing a directory full of Markdown files, and <a href="https://github.com/TehShrike/text-metadata-parser">text-metadata-parser</a>+<a href="https://github.com/TehShrike/weak-type-wizard">weak-type-wizard</a> to parse metadata from the top lines of my blog post files.</p>
+<p>It turns out that putting metadata in plain text isn't a new thing - Jekyll's "Front Matter" has become the de-facto way to embed metadata in content files, though it was quite young when I started on Noddity.  text-metadata-parser was the implementation I wrote, which has since changed to support "Front Matter" YAML.</p>
+<h2 id="caching">Caching</h2>
+<p>Wheeeeeee!  This is one of those things you instinctively know that you shouldn't be re-implementing.</p>
+<p>Still, I couldn't find a solution on npm (the current winner of <a href="http://www.modulecounts.com/">Having Code On The Internet</a>) that matched my goals:</p>
+<ul>
+<li>Return a cached value as quickly as possible, regardless of age</li>
+<li>Update the cached value automatically every so often</li>
+<li>Expire keys based on the last time they were requested, not the last time the value changed</li>
+</ul>
+<p>So, I wrote <a href="https://github.com/TehShrike/levelup-cache">levelup-cache</a>, and, in what I consider my Favorite Abstraction Layer in Noddity, I wrote the <a href="https://github.com/TehShrike/expire-unused-keys">expire-unused-keys</a> module to take responsibility for knowing when a key needed to be refreshed or dropped.</p>
+<p>Since writing it, I've realized that expire-unused-keys is a great low-level building block in many caching solutions.  I'm kind of proud of that library.</p>
+<p>Next I wrote <a href="https://github.com/TehShrike/noddity-butler">noddity-butler</a> - which combines all of the above to return parsed posts from a Noddity content directory (like <a href="http://joshduff.com/content/">joshduff.com/content</a>) as efficiently as possible.</p>
+<p>The butler is used by both the client and the RSS/static servers to access a given site's content.</p>
+<h2 id="the-actual-front-end">The actual front-end</h2>
+<p>After assembling those parts on my nights and weekends, I made the real website.  Most of the front-end code by lines is taken up by the "recursively-embedded-posts" logic, which was not nearly as straightforward as it seemed in my head when I decided "hey, I should have embeddable templates!"</p>
+<p>Eventually, I wrote <a href="https://github.com/TehShrike/noddity-renderer">noddity-renderer</a>, which will turn a Noddity blog post into either static HTML, or recursively infinite Ractive elements that automatically update themselves whenever the noddity-butler reports any changes.</p>
+<p>It's, uh, an interesting library.  It turns out "static html" and "a self-updating front-end" do share code, but imply very different architectures to pull off reasonably.  If you can give me any advice on the structure of <a href="https://github.com/TehShrike/noddity-renderer/blob/master/index.js">the code</a> I'd love to hear it.</p>
+<h1 id="real-web-site-features">"Real" web site features</h1>
+<p>I didn't want to drop Wordpress until I had an RSS feed, and search engines could index my individual pages.</p>
+<p>The RSS feed wasn't difficult, all it takes is a <a href="https://github.com/TehShrike/noddity/blob/master/index.html#L11">link element</a> pointing to the url of a server that knows how to turn querystring parameters into a feed of posts using Noddity Butler.  Hesto presto, <a href="https://github.com/TehShrike/rssaas">rssaas</a>.</p>
+<p>Making search engines happy with your Web 3.0 single-page app is a bit more involved - you have to add a <a href="https://github.com/TehShrike/noddity/blob/master/index.html#L13-L18">special line to your html</a> to tell the search engine spiders to visit a <a href="https://developers.google.com/webmasters/ajax-crawling/docs/specification">special querystring that you have to handle on the server</a> - in the case of Noddity by using an <a href="https://github.com/TehShrike/noddity/blob/master/.htaccess#L27-L32">.htaccess file</a> to redirect the spiders to a server capable of serving static html versions of the markdown posts.  I named that module <a href="https://github.com/TehShrike/seoaas">seoaas</a>.</p>
+<p>It turned out those two applications shared a lot of code, so I moved the core out to the <a href="https://github.com/TehShrike/noddity-service-server">noddity-service-server</a>.  If you ever want to write a node.js server that references a remote Noddity blog, that's the library you probably want to be using.</p>
+<h1 id="does-anyone-actually-want-to-use-it">Does anyone actually want to use it?</h1>
+<p>I've always admired the programmers who release polished projects that others can use to solve problems with a few clicks.</p>
+<p>I wanted to release a project like that - even if it is a very narrow problem set, I want you to be able to use Noddity to easily solve real problems.</p>
+<p>I registered <a href="http://noddity.com">noddity.com</a>, and used the majority of a working-vacation with my wife at a bed-and-breakfast to write copy and fix bugs that I discovered in the process.</p>
+<p>Cloning from github, running <code>npm install</code> + <code>npm build</code>, and deleting the leftover cruft is almost acceptable for just me, but it's not very friendly for people who want to give it a quick try.</p>
+<p>So, I wrote a magical Noddity installer.  It requires typing some things into the command-line, but <a href="http://noddity.com/content/image/noddity-install.gif">not many</a>.  Install one global module from npm, and you can create a fresh Noddity project in any directory.</p>
+<h1 id="a-winner-is-me">A winner is me?</h1>
+<p>So I'm a Real Open Source Programmer now, I suppose!  I wrote code that other people could conceivably use to solve their own problems.  A <a href="http://davistobias.com/">few</a> of my <a href="http://tobiaslabs.com/">sexier</a> <a href="http://josephdykstra.com/">friends</a> have already deployed their own sites based on Noddity's code.</p>
+<p>Noddity has some stars on Github, but I don't know how to market it.  Given how much work the most popular open source developers seem to do to support their code, I'm not 100% sure I want to.</p>
+<p>But I am a selfish human with selfish human desires.  I want people to use my code because it would validate the work I put into it.</p>
+<p>Plus, I get a special lift when I act as a multiplier to someone else.</p>
+<p>So I want Noddity to seem usable, and painless enough to override the "it would be easier to write it myself" instinct we all feel, and solid and featured enough that people would actually consider deploying it instead of Wordpress or Mediawiki.</p>
+<h1 id="rfc">RFC</h1>
+<p>To that end, I want you to message me.  If any part of the documentation seems incomplete, or you run into anything stupid, <a href="https://twitter.com/tehshrike">message me on Twitter</a>.  If you think some part of the code is dumb, or you have questions about whether or not it could be bent to your own particular use case, <a href="mailto:me@JoshDuff.com">send me an email</a>.</p>
+<p>If you want to contribute, I would be flattered and happy.  Submit an <a href="https://github.com/tehshrike/noddity/issues">issue</a> or pull request, and I will hug you if I ever meet you in person.  Unless you don't like that sort of thing, in which case I'll give you a cool-guy nod.</p>
+<h1 id="to-infinity-and-beyond">To infinity and beyond</h1>
+<p>I don't expect to make any great profits from Noddity, but I still want to work on improving it - easier theming, easier plugins, better parsing of wiki-links in the Markdown content.</p>
+<p>If Noddity never grows, and simply stays as the cool backbone of 3-10 web sites for the rest of its existence, I won't be disappointed - I wrote it for my own use cases, and I'm satisfied so far.</p>
+<p>But if Noddity grows, that would be sweet, and I'd love the excuse to put more polish into it.</p>
+<p><a href="http://noddity.com">Check it out!</a></p>
+</div></div></article></div>
+
+		<script async defer src="https://cdn.simpleanalytics.io/hello.js"></script>
+		<noscript><img src="https://api.simpleanalytics.io/hello.gif" alt></noscript>
+	</body>
+
+	<script src="/assets/hashbang-redirector/redirector.js"></script>
+	<script type="module" src="//instant.page/1.1.0" integrity="sha384-EwBObn5QAxP8f09iemwAJljc+sU+eUXeL9vSBw1eNmVarwhKk2F9vBEpaN9rsrtp"></script>
+</html>
