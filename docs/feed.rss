@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Josh Duff .com]]></title><description><![CDATA[Josh Duff .com]]></description><link>https://joshduff.com/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 18 Jun 2021 20:46:25 GMT</lastBuildDate><atom:link href="https://joshduff.com/feed.rss" rel="self" type="application/rss+xml"/><ttl>720</ttl><item><title><![CDATA[Convert blocks of text to sentence case in MySQL]]></title><description><![CDATA[<p>You know what I hate?  Paragraphs of capital (or all lowercase) letters.</p>
+<p>The other day a coworker was looking to beautify a large quantity of data spread across some MySQL tables.  I created this function to make his life easier:</p>
+<pre><code>DELIMITER $
+CREATE FUNCTION `f_sentence_case`(strInput TEXT, nMinimumLength INT) RETURNS TEXT
+DETERMINISTIC
+BEGIN
+
+    DECLARE result TEXT;
+    DECLARE LastSpace INT;
+    DECLARE NextSpace INT;
+    DECLARE NextSlash INT;
+    DECLARE Word TEXT;
+    DECLARE NewSentence INT;
+    DECLARE PreviousCharacter CHAR(1);
+    DECLARE TrimmedWord TEXT;
+    DECLARE NumberOfSpaces INT;
+    DECLARE Swap INT;
+
+    SET strInput := CONCAT(strInput, ' ');
+    SET result := '';
+    SET LastSpace := 1;
+    SET NextSpace := LOCATE(' ', strInput, LastSpace + 1);
+    SET NextSlash := LOCATE('/', strInput, LastSpace + 1);
+
+    SET NextSpace := IF(LEAST(NextSlash, NextSpace) = 0, GREATEST(NextSlash, NextSpace), LEAST(NextSlash, NextSpace));
+
+    label1: WHILE NextSpace DO
+
+        SET Word := SUBSTR(strInput, LastSpace, NextSpace - LastSpace);
+        SET PreviousCharacter := SUBSTR(strInput, LastSpace - 1, 1);
+        SET NewSentence := LastSpace = 1 OR (NewSentence AND PreviousCharacter = ' ') OR PreviousCharacter IN('.', '!', '?');
+
+        SET TrimmedWord := LTRIM(Word);
+        SET NumberOfSpaces := LENGTH(Word) - LENGTH(TrimmedWord);
+        SET Word := TrimmedWord;
+
+        # Make it lowercase if it is all uppercase
+        SET Word := IF(LENGTH(Word) &gt;= nMinimumLength AND Word NOT REGEXP '[0-9]',
+            IF(NewSentence,
+                CONCAT(UCASE(SUBSTR(Word, 1, 1)), LCASE(SUBSTR(Word, 2, LENGTH(Word) - 1))),
+                LCASE(Word)
+            ),
+            Word);
+
+        SET result := CONCAT(result, REPEAT(' ', NumberOfSpaces), Word);
+
+        SET Swap := LastSpace;
+        SET LastSpace := NextSpace;
+        SET NextSpace := LOCATE(' ', strInput, Swap + 1);
+        SET NextSlash := LOCATE('/', strInput, Swap + 1);
+        SET NextSpace := IF(LEAST(NextSlash, NextSpace) = 0, GREATEST(NextSlash, NextSpace), LEAST(NextSlash, NextSpace));
+
+    END WHILE label1;
+
+RETURN result;
+
+END$
+DELIMITER ;
+</code></pre>
+<h1 id="what-it-does">What it does</h1>
+<p>It seems to perform generally as I hoped it would; which is to say that it formats text to be sentence case.</p>
+<p>More specifically, it alters all the "words" (a set of non-numeric, non-whitespace characters) that are longer than the specified minimum length.</p>
+<p>It changes the words to be all lowercase, unless they happen to be the first word after a punctuation mark (in which case the first character of the word is made uppercase).</p>
+<h1 id="useage">Useage</h1>
+<p>To clean up a field so that it is formatted in sentence case (ignoring all words with less than 3 characters), simply run this query:</p>
+<pre><code>UPDATE `table` SET `field` = f_sentence_case(`field`, 3);
+</code></pre>
+<p>Other than that, my only specs for the query were for it to be functional and hopefully not break my brain when I went back to read it later.  If anyone has any significant improvements to it, let me know!</p>
+]]></description><link>https://joshduff.com/2010-01-22-convert-blocks-of-text-to-sentence-case.md</link><guid isPermaLink="true">https://joshduff.com/2010-01-22-convert-blocks-of-text-to-sentence-case.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Fri, 22 Jan 2010 13:31:00 GMT</pubDate></item><item><title><![CDATA[Running my first campaign!]]></title><description><![CDATA[<p>Less than a year ago, I jumped off the high-board of nerdiness into the deep end of the role-playing pool - and ran my very first campaign.</p>
+<p>I wanted a fun campaign (duh) with rules and story that would be hard for me to mess up.  For most of the campaign, the only players were two good friends with solid role-playing experience, so I was able to rely on the players to contribute a good amount of quality.</p>
+<h1 id="the-story">The story</h1>
+<p>I took a stab at running an old-west campaign, borrowing every western-movie trope I could think of.  The PCs played <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/TheGunslinger">gunslinging</a> lawmen for hire, riding into a town oppressed by a gang of n'er-do-wells populated with plenty of tobacco-spitting, expendable, no-good <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/Outlaw">outlaws</a> to gun down.</p>
+<p>Without going into too much detail: the players cleaned out a counterfeiting operation in an old widow's basement, were recruited to clean up the town, used aggressive negotiations to get rid of gang members harassing the mayor's house, and stopped another group of enforcers who were coercing money from some water-starved farmers.</p>
+<p>Back in town, they took over the town prison, had a gun fight in a booby-trapped house, escaped just as it blew sky high, confronted the aristocratic gang leader on the porch of his ranch house, and finished with a gun battle on main street.</p>
+<h1 id="the-system">The system</h1>
+<p>At the recommendation of an experienced GM, I used the <a href="http://error420.com/documents/Boot%20Hill%202nd%20Edition.pdf">Boot Hill (second edition) rules</a>, a creation of <a href="http://en.wikipedia.org/wiki/Gary_Gygax">Gary Gygax</a> and <a href="http://en.wikipedia.org/wiki/Brian_Blume">Brian Blume</a>.</p>
+<p>I was looking for super-lightweight rules, so I didn't even use the full rules set described by the Boot Hill book - the only dice rolling during the campaign happened during combat.  Boot Hill gun combat is simple:</p>
+<ul>
+<li>The fastest draw (based on weapon speed and personal speed) goes first</li>
+<li>Roll percentile dice (based on your weapon, personal accuracy, and a relatively short list of modifiers) to see if you hit:</li>
+</ul>
+<p><img src="/images/hit-determination-chart.jpg" alt="&quot;Boot Hill hit determination chart&quot;" title="Boot Hill hit determination chart"></p>
+<ul>
+<li>Roll percentile dice on a wound chart to see where you hit:</li>
+</ul>
+<p><img src="/images/wound-chart.jpg" alt="&quot;Boot Hill wound chart&quot;" title="Boot Hill wound chart"></p>
+<p>Mortal wounds kill you.</p>
+<p>Any wound at all gives you a -5% chance at getting to shoot first, and also to hitting the other guy.</p>
+<p>Once your strength drops below 50% of what it is normally (which can often be done with a single serious wound), you start getting -20% to shooting first, and hitting.</p>
+<p>It's a simple system, but one that facilitates characters dying pretty often.  A couple good rolls, and a single shot can permanently take out any character - even if he just rolled into town with a new bandanna and a pocket full of hit points.</p>
+<h2 id="wait-easy-character-death">Wait, easy character death?</h2>
+<p>I wanted my players to enjoy a good old-fashioned movie version of the wild west.  They were supposed to play the heroes - the guys who go flying through bar windows and come up swinging!</p>
+<p>I wanted quick and dirty combat, but I wanted my PCs to be a bit more survivable.  I tried a few things to counteract the cheapness of life:</p>
+<h3 id="giving-the-pcs-slightly-better-stats">Giving the PCs slightly better stats</h3>
+<p>Standard nerfing - most of my NPCs would drop below half strength after one serious wound (which severely limits a character for the rest of the combat).  The player characters could took at least two (non-mortal) wounds before things got really sticky.</p>
+<h3 id="making-healing-much-more-trivial-than-the-rules-suggested">Making healing much more trivial than the rules suggested</h3>
+<p>According to the rules, healing is a fairly slow process, taking days or weeks to recover from any sort of combat wound.  My player characters needed to be able to get into gun battles every few hours - they could be rejuvenated by a good night's sleep, or the restorative powers of a <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/ApronMatron">kindly old lady</a>'s stew.</p>
+<h3 id="adding-a-new-game-mechanic">Adding a new game mechanic</h3>
+<p>I decided to take a hint from the awesome and successful video game <em>Left 4 Dead</em>.  In that universe, survivor characters who go down are immobilized, but can still fire handguns until their teammates pull them up (or the zombies fill up at the brain buffet).</p>
+<p>Any time one of the PCs took mortal damage, I did something similar - instead of the characters dying, they dropped to the ground and could fire their handguns at a reduced rate.  If another player made it over to them and used a round to pull them up, that character could enter the fray with some of their strength restored.</p>
+<p>It wasn't a mechanic that saw a lot of use, but it turned several potential defeats into narrow victories.  I was happy with this - narrowly beating the baddies is a lot more exhilarating than seeing one side gun down the other like dogs.</p>
+<h1 id="also-i-m-a-noob">Also, I'm a noob</h1>
+<p>I found it a highly enjoyable experience, but there were weak spots.  The campaign was fairly light on dialog, which isn't necessarily a bad thing - I just wish I were better at having a conversation in character, and thinking on my feet.</p>
+<p>My weaknesses were most evident in the final session, where my PCs held the big baddy in prison and were looking around for a way to prove his guilt (they were lawful, after all) or uncover the next plot hook.</p>
+<p>I left them wandering around looking for a clue far too long before I initiated the next action for them to deal with.  They grilled the prisoner for some time (good roleplaying, at least), looking for the magic words that would advance the plot.  Blah.</p>
+<h1 id="i-think-i-might-try-this-again">I think I might try this again</h1>
+<p>I was very glad to have such great (and forgiving) roleplayers in my campaign.  When the GM is fresh, there's a lot less room for noobs or troublemakers.</p>
+<p>I'm definitely sold on lightweight rules sets, especially when going for a more cinematic feel.  The less of a barrier there is between the players and the cool things they want their characters to do, the better.</p>
+<p>I have a suspicion that we might try this (noobs GMs practicing with friends) again sometime soon - if you have any suggestions for easy-to-pick-up gaming systems, or good scenarios for some one-shot sessions, then surrender your knowledge to my gaping mind-hole!</p>
+]]></description><link>https://joshduff.com/2010-01-15-running-my-first-campaign.md</link><guid isPermaLink="true">https://joshduff.com/2010-01-15-running-my-first-campaign.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Sat, 16 Jan 2010 03:41:00 GMT</pubDate></item><item><title><![CDATA[Logical errors in queries: DO NOT WANT]]></title><description><![CDATA[<p>During my career developing database-driven software (teehee, I'm a professional) I've noted that the most horrific query errors are the logical ones - queries that parse correctly, and return reasonable-looking data, but make wrong assumptions about how different parts of the query relate to each other.</p>
+<p>One particular error that I've seen time and time again (even from people who have been writing queries for a while) can occur when summarizing data from multiple tables that have a one-to-many relationship.</p>
+<p>...In other words, it could occur in queries written for most database-driven software.</p>
+<h2 id="solution-fix-the-problem-by-writing-about-it">Solution: fix the problem by writing about it!</h2>
+<p>I wrote <a href="http://wikido.isoftdata.com/index.php/The_GROUPing_pitfall">a page documenting</a> the cause of the logical error, doing my best to warn people against letting it slip into their own code.</p>
+<p>I attempted to write it so it would be easy to read, possibly even entertaining (a lofty goal for a manual on writing database queries, perhaps) - there is some colorful language and plenty of juvenile humor mixed with the tech-speak.</p>
+<p>The doc itself is part of the wiki of the company where I work.  I don't write a ton of documentation for our developers or customers (certainly not as much as I should), but whenever I do, I get this awesome feeling of usefulness.  Oh, and pride.  Sometimes, I feel so proud, that I feel compelled to link other people (who have no relationship to my company) to what I wrote!  Ridiculous, I know.</p>
+<p>Remember: if you write queries, it is your responsibility to guarantee that they return true and accurate data!</p>
+]]></description><link>https://joshduff.com/2010-02-04-logical-errors-in-queries-do-not-want.md</link><guid isPermaLink="true">https://joshduff.com/2010-02-04-logical-errors-in-queries-do-not-want.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Thu, 04 Feb 2010 15:17:00 GMT</pubDate></item><item><title><![CDATA[Run a query for every table in a database]]></title><description><![CDATA[<p>Ever wished you could run a dangerous query like DROP TABLE or TRUNCATE against every table in a database in a single query?</p>
+<p>No?</p>
+<p>Well, how about something like CHECK or REPAIR table, then?</p>
+<p>If you ever find yourself in the rare situation where you need to run the same query across every table in a database, this procedure might make your life easier:</p>
+<pre><code>DELIMITER $
+CREATE PROCEDURE `p_run_for_each_table`(IN strDatabase TEXT, IN strOperation TEXT)
+    DETERMINISTIC
+BEGIN
+    DECLARE strQuery TEXT;
+    DECLARE strTable VARCHAR(255);
+    DECLARE bDone INT DEFAULT 0;
+    DECLARE TableCursor CURSOR FOR
+        SELECT `TABLE_NAME`
+        FROM `information_schema`.`TABLES`
+        WHERE `TABLE_SCHEMA` = strDatabase AND TABLE_TYPE = 'BASE TABLE';
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET bDone = 1;
+
+    OPEN TableCursor;
+
+    REPEAT
+        FETCH TableCursor INTO strTable;
+
+        SET @QueryThatWasPassedIn := REPLACE(
+            REPLACE(strOperation, '{?database}', strDatabase)
+            , '{?table}', strTable);
+
+        PREPARE Statement FROM @QueryThatWasPassedIn;
+        EXECUTE Statement;
+    UNTIL bDone END REPEAT;
+
+    CLOSE TableCursor;
+    DEALLOCATE PREPARE Statement;
+END$
+DELIMITER ;
+</code></pre>
+<h1 id="useage">Useage</h1>
+<p>The procedure takes two parameters.  The first one is the name of the database whose tables you want to run the query for.</p>
+<p>The second is the query you would like to run.  The strings "{?database}" and "{?table}" will be replaced with the database and table names.</p>
+<pre><code>CALL p_run_for_each_table('databasename', 'SELECT * FROM {?database}.{?table}');
+</code></pre>
+<h1 id="what-queries-you-can-run">What queries you can run</h1>
+<p>You should be able to use any queries that can be run in a prepared statement - you can find the list about two-thirds of the way down <a href="http://dev.mysql.com/doc/refman/5.1/en/sql-syntax-prepared-statements.html">this page</a>.</p>
+<p>As of MySQL 5.1, you can run these queries: "<code>ALTER TABLE</code>, <code>CALL</code>, <code>COMMIT</code>, <code>CREATE INDEX</code>, <code>CREATE TABLE</code>, <code>DELETE</code>, <code>DO</code>, <code>DROP INDEX</code>, <code>DROP TABLE</code>, <code>INSERT</code>, <code>RENAME TABLE</code>, <code>REPLACE</code>, <code>SELECT</code>, <code>SET</code>, <code>UPDATE</code>, and most <code>SHOW</code> statements."</p>
+]]></description><link>https://joshduff.com/2010-02-19-run-a-query-for-every-table-in-a-database.md</link><guid isPermaLink="true">https://joshduff.com/2010-02-19-run-a-query-for-every-table-in-a-database.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Fri, 19 Feb 2010 08:16:00 GMT</pubDate></item><item><title><![CDATA[Sandwich war crimes: the Dirty Mother]]></title><description><![CDATA[<p>For those attending a university, the end of a semester is a time of much rejoicing.  During my last semesters at such an institution, I took place in an end-of-year celebratory tradition involving a ridiculous sandwich.</p>
+<p>In some issue of Maxim (November 2005?) there was an article featuring absurd sandwich-based foods.  So ridiculous were these edibles that some fraternity brothers of mine decided that the consumption of one such sandwich would make a fitting end-of-semester celebration.</p>
+<p>I was unable to find the original article online, but found the ingredients <a href="https://web.archive.org/web/20101103053652/http://www.ntxalliance.com/index.php?action=printpage;topic=3970.0">here</a>.  I post them here for posterity.</p>
+<h2 id="the-dirty-mother">The Dirty Mother</h2>
+<blockquote>
+<p>"Use two slices of buttery Texas toast as bookends, and slap together a sausage patty, hash browns, and three generous chops of ham, separating each layer with a slice of cheddar cheese. Throw two fried eggs in the mix, and comfort them with four strips of crispy bacon. A splash of ketchup or Worcestershire sauce is your choice, but tons of S&amp;P is mandatory."</p>
+</blockquote>
+<p>We would usually go to IHOP, order the ingredients individually, and assemble the sandwiches ourselves.  The braver souls in the group would purchase fries as a side dish.</p>
+<p>These memories are making me hungry.</p>
+]]></description><link>https://joshduff.com/2010-05-25-dirty-mother.md</link><guid isPermaLink="true">https://joshduff.com/2010-05-25-dirty-mother.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Tue, 25 May 2010 19:57:00 GMT</pubDate></item><item><title><![CDATA[Profanities and other funny words]]></title><description><![CDATA[<p>I recently did a quick audit of the source code I help maintain/develop for <a href="http://wikido.isoftdata.com/index.php/ISoft_Data_Systems">the company I work for</a>.  By which I mean, I spent the last part of a Friday searching through our code for funny words.</p>
+<p>I decided to open up by looking for traditional profanities - a commonly-accepted method of gauging the state of a project (see: <a href="http://www.vidarholen.net/contents/wordcount/">profanities in the Linux kernel, graphed over time</a> and <a href="http://www.kuro5hin.org/story/2004/2/15/71552/7795">a quick look at the Win2k source</a>).</p>
+<p>Below, I provide a list of my findings, with a few examples.  Enjoy a look at the source code of a functioning product with many users!</p>
+<p><em>Disclaimer: if any of the words that you are about to read will offend you, then don't read them.</em></p>
+<h1 id="the-classics">The classics</h1>
+<p>I started off by looking for looking for the current English classics:</p>
+<p><strong>Fuck</strong>: 6 times.
+Example:</p>
+<pre><code>// If they had any unsaved changes, they're pretty much fucked, because
+// this customer has apparently been modified by another screen.
+</code></pre>
+<p><strong>Shit</strong>: 10</p>
+<pre><code>// For now, I believe that all the data is updated on the fly, so saving first is not
+// necessary, but maybe we should just for shits and giggles
+</code></pre>
+<p><strong>Crap</strong>: 22
+The expletive for the more vocabulary-sensitive programmer!</p>
+<pre><code>//!!! It was late, we were tired, so I hacked this crap together !!!
+</code></pre>
+<pre><code>// What the crap does this button do? - I disabled it because I think that this button
+// is misleading and confusing
+</code></pre>
+<p><strong>Hell</strong>: 1</p>
+<pre><code>// If it wasn't any of the valid options, then get the hell out
+</code></pre>
+<h1 id="insults">Insults</h1>
+<p>It's usually another programmer's fault.</p>
+<p><strong>Stupid</strong>: 75
+The code is stupid, the users are stupid, other developers are stupid.  According to the comments, at least.</p>
+<pre><code>// Clear out year if it is a stupid number
+</code></pre>
+<pre><code>// Here we tell the user they are stupid when they do stupid things
+// If the user forgets to specify a table, gently remind them that it's a good idea,
+// then return
+</code></pre>
+<pre><code>// When you minimize, it tells you you're size 0 now.  That seems stupid, ignore it
+</code></pre>
+<pre><code>// Die, stupid message boxes
+</code></pre>
+<pre><code>TRACE("Stupid quickbooks.\n");
+</code></pre>
+<pre><code>IQBBasePtr stupid = response-&gt;GetDetail();
+TRACE("Response Type: %d\n", (int)stupid-&gt;Type-&gt;GetValue());
+InterpretResponse(stupid);
+</code></pre>
+<pre><code>// Thigs are different (stupid) without this flag.  I don't currently support its omission
+</code></pre>
+<p><strong>Dumb</strong>: 17</p>
+<pre><code>// There was some seriously wacky code here earlier including a really dumb memory leak.
+// I tested my changes and they seem to work fine, nevertheless, I wasn't able
+// to fully understand what this code was attempting to do so I may have missed
+// some obscure feature.
+</code></pre>
+<p><strong>Retarded</strong>: 4</p>
+<pre><code>// Because CStrings are retarded and don't do well with binary data, we have to copy the
+// data in to the query in a rather inconvenient manner.
+</code></pre>
+<p><strong>Idiot</strong>: 2</p>
+<pre><code>// Else politely inform the user that they are an idiot
+</code></pre>
+<p><strong>Hack</strong>: 6</p>
+<pre><code>// Look at the first part of the label to find the operation (this is a sort of
+// dirty hack so that) we don't have to change the database.
+</code></pre>
+<h1 id="incredulity">Incredulity</h1>
+<p>Really?</p>
+<p><strong>Why</strong>: 84
+The only word with a higher count than "stupid" - there is always more for a programmer to learn.  Or speculate on.  Or rage at.</p>
+<pre><code>//!!! For some reason ODBC crashes at this point if you've already done a query !!!
+//!!! I can't really figure out why !!!
+</code></pre>
+<pre><code>// Not sure why we would want to do bitwise operations...
+</code></pre>
+<pre><code>// WHy doesn't this exist?
+</code></pre>
+<pre><code>// I don't see why we'd do this
+</code></pre>
+<pre><code>// CRH asks: Why do we use Format() instead of "="? Can't we assume that it's slower?
+// JDD Answers: what Formats?  What are you talking about?  You crazy, Charles!
+</code></pre>
+<pre><code>// Removed 2006.02.17 - This makes it so that negative balances show up positive.
+// I am not sure sure why it was ever here.
+</code></pre>
+<pre><code>// This doesn't seem to work.  I'm not sure why
+</code></pre>
+<p><strong>wtf</strong>: 25
+Often heard expressed verbally by developers reading code.</p>
+<pre><code>catch (...)
+{
+    TRACE("Seriously, wtf\n");
+    // sic vita est
+}
+</code></pre>
+<pre><code>// Sort the incoming files alphabetically (windows sometimes reverses the order (wtf?)
+</code></pre>
+<h1 id="random">Random</h1>
+<p><strong>Ridiculous</strong>: 2
+When three syllables just isn't enough.</p>
+<pre><code>// Make the quantity not have ridiculous decimal places
+</code></pre>
+<p><strong>Pants</strong>: 3</p>
+<p>That's right, and all 3 times inside of a static string, too!</p>
+<pre><code>strPCProductCode = GetInitSetting(__MASTERWND, "session", "productcode", "pants");
+</code></pre>
+<p>That fourth argument is the default value, returned if there is no existing setting with that name.  So... yeah.</p>
+<p><strong>lol</strong>: 3</p>
+<pre><code>// lol xor
+if ((bPaid || bUnpaid) &amp;&amp; !(bPaid &amp;&amp; bUnpaid))
+</code></pre>
+<p><strong>lulz</strong>: 1</p>
+<pre><code>// Half implemented, lulz
+</code></pre>
+<h1 id="a-few-other-gems">A few other gems</h1>
+<pre><code>// If shift was already depressed, fo' real, don't screw that up
+</code></pre>
+<p>Obvious mental deterioration:</p>
+<pre><code>// A grape typed this line in:
+//9
+</code></pre>
+<p>And... uh... this was at the bottom of a header file...</p>
+<pre><code>// Standardized code makes him happy!
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;                        ;;
+;;        ;;;;;;;;        ;;
+;;       ;;      ;;       ;;
+;;      ;; ;;  ;; ;;      ;;
+;;      ;;        ;;      ;;
+;;      ;;    ;   ;;      ;;
+;;      ;;        ;;      ;;
+;;      ;; ;;;;;; ;;      ;;
+;;       ;;  ;;  ;;       ;;
+;;        ;;;;;;;;        ;;
+;;                        ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+// Non-Standardized code makes him sad!
+// And keeps him up all night, screaming
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;                        ;;
+;;        ;;;;;;;;        ;;
+;;       ;;;    ;;;       ;;
+;;      ;; /*\/*\ ;;      ;;
+;;      ;; \_/\_/ ;;      ;;
+;;      ;;   ^^   ;;      ;;
+;;      ;; /****\ ;;      ;;
+;;      ;; \****/ ;;      ;;
+;;       ;;      ;;       ;;
+;;        ;;;;;;;;        ;;
+;;                        ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+</code></pre>
+<p>8-|</p>
+<h1 id="so-yeah">So, yeah...</h1>
+<p>Found any entertaining metadata in code?  Link me!</p>
+]]></description><link>https://joshduff.com/2010-06-21-profanities-and-other-funny-words.md</link><guid isPermaLink="true">https://joshduff.com/2010-06-21-profanities-and-other-funny-words.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Mon, 21 Jun 2010 09:11:00 GMT</pubDate></item><item><title><![CDATA[An entreaty]]></title><description><![CDATA[<p>(Spoiler-level: as low as I could keep it)</p>
+<p>Speaking to you as someone who plays games, I entreat you to play Spec Ops: The Line.</p>
+<p>If you are the sort of person who also plays games, you may already be aware of Spec Ops. But that probably depends on the sort of game-playing-person you are.</p>
+<p>Perhaps you play video games regularly, but aren't immersed in the culture - you play your shooters, or puzzle games, or real-time-strategy, but you mostly stick to one or two genres. I believe that many of the younger crowd at my church fall into this category.</p>
+<p>Maybe you're more like me in your gamer-ness - you have played many games over the years, and are nowadays less interested in specific games or game types than the nature of games themselves. You talk to your friends about the games that you've played, not just because you have something to say about the game, but because it lets you wrap your brain around the experience the game gave you.</p>
+<p>Maybe you enjoy talking about games because the conversations give you a context to understand the culture that surrounds them, or because you're fascinated by the different things people saw as they played those games themselves - which weapons were the most satisfying, which plot hooks caught their interest, which characters they most enjoyed interacting with, and how difficult the game was for them to beat. What does that mean in the light of your years/decades/lifetime of playing other games? A good portion of my coworkers fall into this latter group of game-players.</p>
+<p>Now, I could use this space to try to convince some of my non-gaming friends of the relevance of these experiences, and why I think they should matter to anyone interested in creating things, communicating with others, or the human condition in general - but that's a different treatise. Today, I am speaking mostly to the people who fall somewhere on the spectrum of people who have engaged with games (video or otherwise) multiple times throughout their lives.</p>
+<p>You should play Spec Ops: The Line! If you're in the second group I defined, it's quite possible you've already heard this - you might have heard that some critics have raved about it, for some reason, even though it has a mediocre Metacritic score. You may have caught some mild-to-large spoilers already, about something something guilt blah blah judging the player something shooters. Maybe it caught your interest, and you thought that you should check it out at some point when it wasn't so expensive.</p>
+<p>I'm keeping this post spoiler-free because right now, at least for a while longer, there are gamers who are unaware of the details of what Spec Ops has done. I believe that over the next decade, SO:TL will continue to seep into the culture of games, and players will have at the very least, a general idea of what the game set out to do, and may even form opinions about how well it accomplished its goals (much as I already have a good idea of how much I'll enjoy the new James Bond movie without having actually watched it yet).</p>
+<p>People who critique or make games will continue to talk about it. Eventually, some games will probably even reference it directly. It will become one of the influential works of the gaming medium, even for those who thought it was flawed or poorly done. But you, reading this in 2013ish, have a chance to play the game before this cycle runs its course, and you should! I don't recommend this game just because it's some classic that you should check out because a classic.</p>
+<p>I heard Citizen Kane referenced as a classic for many years before I ever got around to watching it. I thought it was pretty good. I didn't regret watching it, anyway. But SO:TL is not just something to play because people will be talking about it for a while, I think it is a game that is masterfully done in many respects, and deserves to be played because it succeeds so well in areas where games typically fail.</p>
+<p>Many reviews note, almost with a sense of obligation, that the shooting mechanics are not polished to the heavily-lacquered shine of the modern AAA military shooter. Which is true. But whether you have ever played one of the moving-puzzles known as a first-person shooter or not, I think the game succeeds - your skill will be tested, the settings are varied, and succeeding at the task of gunning down your enemies feels sufficiently satisfying, as far as it goes.</p>
+<p>Any perceived flaws in the gunplay are mitigated by the excellent pacing of the game. Playing through the campaign will take you 5-7 hours, and they are not wasted. The story steps well from chapter to chapter, with both characters and settings being skillfully established, developed, and broken down.</p>
+<p>Even the implementation of the trite excuses for narrative that are shoehorned into so many shooters - the collectible audio logs - are worth experiencing. One of my biggest regrets from my playthrough is that I didn't pick these up and listen to them from the start of the game. While you can experience the story without their help, they flesh out the game's story in a manner well above what FPS storytelling has taught me to expect.</p>
+<p>While many games would have used the desert setting as an excuse to settle for a lighter shade of brown, SO:TL uses consistently vibrant colors.</p>
+<p>Where most player-driven character interaction (i.e., the things the characters say to each other when they see or shoot a weapon or enemy) in games does nothing more than fill up the emptiness in the your ear-holes, in Spec Ops they reflect the development of the characters.</p>
+<p>In fact, virtually every mechanic that we are used to from the "genre" of the shooter is taken and used to do what such games never do: reflect the character and world development that would take place if a game like this was consistent in its storytelling.</p>
+<p>You should play Spec Ops: The Line not because of the story it tells, but because I don't remember ever playing a game that told a story quite so effectively. I've seen a lot of games, and I just haven't seen many (any?) story-based games that were this well-executed.</p>
+<p>So, if the execution is the reason I'm telling you to play the game, why am I telling you to play it <em>now</em>, before the game's narrative has sunk into the collective conscience of gaming culture? Well... it's because the narrative is also so very worth experiencing.</p>
+<p>Citizen Kane was appreciated primarily because it broke ground in the mechanics of story-telling with film, not because its story was a tale for the ages (though such a position is quite arguable I am sure). The Sixth Sense was appreciated not just because of its setpieces or execution, but because the arc of its story and characters was so memorable to those who experienced it without knowing what to expect.</p>
+<p>Spec Ops is notable because it pulls off its storytelling using the same mechanics that every other shooting-based game has been using for over a decade, but tells a story of a quality greater than any I've ever played in such a shooter, with a message like Saving Private Ryan's, and a twist like Sixth Sense's.</p>
+<p>Since its release at the end of the 90s, The Sixth Sense has worked its way into popular culture, to the point where the movie's twist has itself become a cliché for referring to plot twists in movies. Don't wait to experience Spec Ops: The Line's mechanics until it's too late to enjoy the story's twists.</p>
+<p>Get the game <a href="http://store.steampowered.com/app/50300/">here on Steam</a>.</p>
+<h2 id="post-script">Post-script</h2>
+<p>Spec Ops: The Line is a game about killing people and shouldn't be played by, or in front of, anyone who can't handle that theme.</p>
+<p>This post was written three months after my first (and so far, only) play-through. I have thought about the game at least once a week every week since I played it.</p>
+<p>I have many more thoughts about the mechanics and story of SO:TL, which I hope to compile for a spoilerier post at some point in the future.</p>
+]]></description><link>https://joshduff.com/2012-11-29-an-entreaty.md</link><guid isPermaLink="true">https://joshduff.com/2012-11-29-an-entreaty.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Thu, 29 Nov 2012 08:04:00 GMT</pubDate></item><item><title><![CDATA[How Should We Then Drive?]]></title><description><![CDATA[<p><em>Inside joke: the title of this post is a reference to <a href="http://en.wikipedia.org/wiki/How_Should_We_Then_Live%3F">a book</a> I have never actually read</em></p>
+<p>I believe that God created the world, and that those who are <a href="http://en.wikipedia.org/wiki/Limited_atonement">chosen</a> by him should obey him to the best of their abilities.  Despite these aspirations, I'm a terrible sinner.</p>
+<p>Nonetheless, at least I've got goals to aspire to, right?  Sure, there are quite a few that most people don't agree with, especially <a href="http://www.biblegateway.com/passage/?search=leviticus%2018:22&amp;amp;version=MSG">the ones that prohibit actions that non-Christians (and even many self-proclaimed Christians) don't want to call evil</a>.</p>
+<p>Still, most people are on board with the second-greatest commandment - in fact, <a href="http://store.penny-arcade.com/products/pat070181">according to popular culture</a>, that is in fact the main point of Jesus' coming to Earth!</p>
+<blockquote>
+<p>37 Jesus said to him, "'You shall love the LORD your God with all your heart, with all your soul, and with all your mind.'</p>
+<p>38 This is the first and great commandment.</p>
+<p>39 And the second is like it: 'You shall love your neighbor as yourself.'</p>
+<p>40 On these two commandments hang all the Law and the Prophets."</p>
+<p><a href="http://www.biblegateway.com/passage/?search=matthew%2022:37-40&amp;amp;version=MSG">Matthew 22:37-40</a> (NKJV)</p>
+</blockquote>
+<p>(And for those paying attention, yes, I consider Penny Arcade to be an arbiter of popular culture.)</p>
+<p>But if I'm not engaging in weekly gay-hunts, what IS my Christianity doing for me?  Well, among the many other instructions for living life that God passed down to us, it seems that he really does care about Christians being an improvement for the quality-of-life of the people around us:</p>
+<blockquote>
+<p>"Let me tell you why you are here. You're here to be salt-seasoning that brings out the God-flavors of this earth. If you lose your saltiness, how will people taste godliness? You've lost your usefulness and will end up in the garbage." <a href="http://www.biblegateway.com/passage/?search=matthew%205:13&amp;amp;version=MSG">Matthew 5:13</a> (MSG)</p>
+</blockquote>
+<h1 id="seriously-what-is-this-post-even-about">Seriously, what is this post even about</h1>
+<p>All right, so Christians aren't supposed to be assholes.  Most people sort of assume that already, even given plenty of implicit counter-arguments via the actions of Christians they know.</p>
+<p>However, I've noticed a high correlation between driving a vehicle on the road and anger.  While driving as a passenger, I've noticed that it is extremely common for a driver to express anger at</p>
+<ul>
+<li>The drivers sharing the road with him</li>
+<li>Shitty things that happen while driving (inconvenient red lights, poor road signs, etc)
+The former is by far the most common - the other vehicles on the road have a tendency to cut you off, slow you down, fail to announce where they are going, and generally just act like jerks.</li>
+</ul>
+<h2 id="why-does-that-burn-people-up-so-much">Why does that burn people up so much?</h2>
+<p>If I accidentally bump my shopping cart into someone else at the grocery store, I'll quickly apologize - and the odds are that they'll say something to the effect of "ah, don't worry" or give an understanding smile, or at worst give a small huff and push on in annoyance.</p>
+<p>If I turn left on a street and someone in oncoming traffic has to slow down to avoid me safely, I don't usually get a chance to hear their response.  I've driven with enough people to imagine it, though - when you see someone doing something stupid or unnecessary in a way that inconveniences you, you generally feel a quick flash of anger toward them, and may say something to that effect at their expense.</p>
+<p>Maybe it's because you just see vehicles - you're not dealing with humans, you're dealing with 4 wheels and a bumper sticker pushing [political party you hate]!  Most people are polite enough to be diplomatic in the face of being inconvenienced by another human face, but if a hunk of metal cuts you off, you feel real rage at the theoretical person inside of it!</p>
+<h1 id="i-m-glad-i-m-smarter-than-that">I'm glad I'm smarter than that!</h1>
+<p>Oh wait, no, I get mad exactly like that, all the time.  Despite the Bible hammering in the fact that <a href="http://www.openbible.info/topics/self-control">God expects you to be working on this self-control thing</a>, I've raged at other drivers about 100% more than I should have.  What am I supposed to do, turn every driving excursion into a painful turn-the-other-cheek exercise?</p>
+<p>Well, that has kind of happened - but not until after I started adopting a proactive stance towards driving smart.</p>
+<p>My life was changed (no, really!) when I read <a href="http://trafficwaves.org/">this site</a> written by an engineer on the internet.  I'd recommend reading it over, but here's the basic premise:</p>
+<ul>
+<li>Busy roads (especially big ones like highways) get inefficient to travel on quite a bit</li>
+<li>It turns out that if you drive in a certain way, you can make highway driving a lot more efficient... not just for yourself, but for all the people behind you, too.</li>
+</ul>
+<p>So how does a motivated engineer make the world better?  It turns out, you can improve the quality-of-life of those around you by simply <strong>leaving a big gap between you and the vehicle in front of you</strong>.</p>
+<p>I don't want to belabor all of the points he makes (seriously, you should read his site), but the general idea is</p>
+<ul>
+<li>If you never hit your brakes, the people behind you never have to hit their brakes, which lets everyone avoid the burst-forward-then-come-to-nearly-a-complete-stop situation that happens way too often on busy roads</li>
+<li>It's easy for people to merge in in front of you, which lets the lanes next to you avoid the someone-driving-really-slow-trying-to-merge-lanes situation</li>
+</ul>
+<h1 id="is-that-really-how-you-drive-like-a-christian">Is that really how you drive like a Christian?</h1>
+<p>So you're leaving a carefully-engineered gap between you and the traffic in front of you.  Traffic behind you is demonstrably better because of it.  What's the big deal?</p>
+<p>Well, it turns out that this habit is not natural at all.  At least not to me.  When did I turn into a competitive driver looking to beat everyone else to my exit?  I'm not sure.  Maybe it was the day I got my drivers license.  Maybe it was the day I was born with two working testicles.  I haven't been able to pin it down.</p>
+<h2 id="they-just-keep-merging">They just... keep... merging!</h2>
+<p>People will merge in front of you.  And man, no matter how zen I've been feeling about driving lately, my first instinct is STILL "gotta close the gap so the rest of the horde doesn't jump in in front of me!"</p>
+<p>Calm yourself with these facts: each car who merges in front of you (potentially forcing you to let up on the accelerator in order to maintain good distance between you and the car ahead) adds... maybe 5 seconds to your trip.  Sure, there's a slim chance that those 5 seconds could cause you to miss a light somewhere, but aren't those low odds worth improving the driving situation for all those around you and behind you?</p>
+<p>Don't forget: the easier it is for people to merge into your lane, the smoother traffic will be for all of the people behind you!</p>
+<h2 id="not-dying-is-good-too">Not dying is good, too</h2>
+<p>So yeah, this falls by the wayside whenever people are in a hurry, but it turns out that the more space you leave between you and the vehicle in front of you, the safer you are.</p>
+<p>I'm struggling not to write a 500-word rant on this topic alone.  Two seconds to respond to sudden developments ahead of you makes a massive difference compared to one second... and protip: you've been counting seconds too fast.  Giving yourself a larger margin of error turns "accidents" into much safer near-misses.</p>
+<p>But keeping your car and skull dent-free are just happy side effects that can happen when you decide to try to apply the biblical principle of making-life-better-for-others to driving.</p>
+<p>Resist the power of <a href="http://www.penny-arcade.com/comic/2004/3/19/">John Gabriel's Greater Internet Fuckwad Theory</a> - start training yourself to be a blessing to the anonymized people on the road around you!</p>
+]]></description><link>https://joshduff.com/2011-09-26-how-should-we-then-drive.md</link><guid isPermaLink="true">https://joshduff.com/2011-09-26-how-should-we-then-drive.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Mon, 26 Sep 2011 08:00:00 GMT</pubDate></item><item><title><![CDATA[Why your webapp needs a state-based router]]></title><description><![CDATA[<p>Yeah, the title is slightly hyperbolic - state routers aren't appropriate for every webapp.  Your webapp probably needs one though!</p>
+<h2 id="quick-intro">Quick intro</h2>
+<p>Let's lay out a few definitions before diving in to avoid possible misunderstandings:</p>
+<ul>
+<li>webapp: a <a href="https://blog.andyet.com/2015/01/22/native-web-apps">native web application</a> running in the browser that uses <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history">pushState</a> to control navigation instead of sending the browser to a different html page.</li>
+<li>router: any library that triggers your code when the url changes so you can update content in the dom.</li>
+</ul>
+<h2 id="routing-in-a-webapp">Routing in a webapp</h2>
+<p>Simple routers work something like this:</p>
+<pre><code>route('/content/:name', function(params) {
+    var name = params.name
+    getContent(name, function(err, content) {
+        $('.container').text(content) // insert your DOM manipulation framework here
+    })
+})
+</code></pre>
+<p>...which is all well and good.  My personal web site, the one you're probably reading this post on, uses such a simple router.</p>
+<p>But when you start writing a more complex webapp, you will discover new desires within yourself.  You will begin to desire the ability to nest different parts of your webapp inside each other in some kind of hierarchy.</p>
+<p><img style="width: 360px; height: 162px;" src="images/github-settings-submenu.png" alt="Github user settings screenshot"></p>
+<p>Let's say you're making an account page that looks something like Github's here.</p>
+<p>If your account page has a submenu that allows users to switch between "profile" and "account settings" forms, you have a few options:</p>
+<ol>
+<li>Neglect to put the current submenu's path in the url at all - if the user is at <code>/app/settings</code>, has the profile submenu open, and hits the refresh button, they pop back to whatever the default state is (maybe the profile page).  This is bad because they can't then hit the back button to go back to the last form, or send people links to a specific submenu on the settings page.</li>
+<li>Represent the submenu in the url, instead of the page that contains it - you create routing rules for both <code>/app/settings-profile</code> and <code>/app/settings-account</code>, and both their templates just happen to contain that same menu on the left side.  This is bad because you have to re-render the menu every time, and you can't link to the settings page without setting up a settings route that is just a redirect, or linking directly to a default sub-page.</li>
+<li>Make the submenu a parameter of the settings route - so inside a single route handler for <code>/app/settings/:submenu</code>, you put a big if block in your template that says "if the submenu parameter is 'profile' embed the profile page, else if it's 'account' embed that page..." etc etc.  This is awkward, and doesn't scale well past one level of nesting.</li>
+<li>Use a solution that lets you nest your views, and handles interpreting the url to realize that <code>/app/settings/profile</code> should display the main logged-in app view, with the settings page inside of that, and the profile sub-page inside of that.  <strong>This is the good option!</strong></li>
+</ol>
+<h2 id="in-the-bad-ol-days">In the bad 'ol days</h2>
+<p>I first used AngularJS <a href="http://www.edatasource.com/">at work</a> on a project that began in mid-2013.  Like every other Angular app at the time, we used the simple <a href="https://docs.angularjs.org/api/ngRoute/provider/$routeProvider">$routeProvider</a> exposed by the framework.</p>
+<p>We had one route for the login screen, and another for each of the two different screens inside the app.  There was a lot of shared ui around the edges of the app, with the menu and search bar and everything, so both of those screen's routes used the same template, something like this:</p>
+<pre><code>&lt;div id="main"&gt;
+    &lt;div id="search-bar"&gt;
+        &lt;input type="text" magical-autocomplete&gt;
+    &lt;/div&gt;
+    &lt;div id="menu"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="" ng-click="navigateTo('page1')"&gt;Page 1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="" ng-click="navigateTo('page2')"&gt;Page 2&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div id="content"&gt;
+        &lt;div ng-include="template.urlOfActualTemplate"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Navigating to Page 1 or Page 2 would set <code>scope.template.urlOfActualTemplate = 'this-screen/screen-template.html'</code> and that would get displayed via the <code>ng-include</code>.</p>
+<p>Pretty ugly.  Everything that we wanted serialized to the url was manually synchronized to a querystring parameter.  We never even considered going to the effort of representing further nested states by adding something like <code>&amp;childScreen=profile</code> to the querystring.</p>
+<h2 id="and-then-i-fell-into-the-light">And then I fell into the light</h2>
+<p>When the time came to begin our next AngularJS project, I turned to the barely-maintained-but-still-useful <a href="https://github.com/ngbp/ngbp">ngbp</a> Angular boilerplate.  One of the modules it included out of the box was <a href="https://github.com/angular-ui/ui-router">ui-router</a>.</p>
+<p>ui-router is one of those solutions where once you've seen it in use, you can feel certain programming problems clearing up right in front of you.  ui-router allows you to:</p>
+<ul>
+<li>nest views or "states" inside of each other</li>
+<li>associate url routes and querystring parameters with states so that changing the url changes any number of currently displayed states</li>
+<li>indicate which states are associated with which parameters in the url</li>
+</ul>
+<p>This gives you the power to write each state as its own little module - you don't have to manually watch for changes to the querystring, because if any relevant parameter changes, your state goes away and a fresh new version of the state is instantiated.  Each state is its own little island and changes on navigation independently of any parent/child states.</p>
+<p><img style="width: 467px; height: 187px;" src="images/analyst-menu-hierarchy.png" alt="Analyst Nextgen menu hierarchy"></p>
+<p>This screenshot is from my employer's product.  Each of those three menus is a different nested state that allows you to drill down to a different child state.  And the url routing is a dream!</p>
+<h2 id="but-angular">but... Angular</h2>
+<p>I'm a child of the node/npm revolution, and as such I'm pretty framework-averse.  I prefer disconnected modules that solve problems that I can compose myself.</p>
+<p>I'm especially averse to AngularJS 1.x, as it forces so many bad decisions down your throat (a module system with no difference between private and public APIs, all view-facing data on a $scope that uses dirty-checking to detect changes, and an inscrutable testing API).</p>
+<p>ui-router is a fantastic library, solving a commonplace yet difficult problem, and solving it very well.  However, it's not worth using AngularJS just to be able to use ui-router.</p>
+<p>I looked for similar libraries, but the only ones I found (<a href="https://github.com/rackt/react-router">react-router</a> and <a href="http://guides.emberjs.com/v1.10.0/routing/defining-your-routes/">Ember's router</a>) are similarly tied to their chosen rendering/templating tools.</p>
+<h2 id="so-i-made-my-own">So I made my own</h2>
+<p>I want to build business webapps without tying myself to a specific framework, allowing me to try new solutions at will.  I know that no matter what rendering or templating library I use at the time, my webapps need a state router.  Thus, <a href="https://github.com/TehShrike/abstract-state-router">abstract-state-router</a>!</p>
+<p>Built with help from <a href="https://github.com/ArtskydJ">ArtskydJ</a>, abstract-state-router is heavily inspired by ui-router, intended to be used with whatever templating library you like.  At the time of this writing, renderers have been set up for <a href="http://www.ractivejs.org/">Ractive.JS</a>, <a href="https://muut.com/riotjs/">Riot</a>, and <a href="https://github.com/Matt-Esch/virtual-dom">virtual-dom</a> - and it's not too difficult to <a href="https://github.com/TehShrike/abstract-state-router/blob/master/renderer.md">implement new ones</a> with your favorite template/dom manipulation library.</p>
+<p>The documentation is <a href="https://github.com/TehShrike/abstract-state-router">on Github</a>.  I don't have good introductory wiki pages like ui-router's yet, though there is an <a href="http://tehshrike.github.io/state-router-example/">example todo app</a> using each of the current rendering/templating options.</p>
+<h2 id="you-should-use-it">You should use it!</h2>
+<p>If you're making a webapp that is more complex than a simple content site like this blog, you need a state-based router, and I'd like to help you use this one.</p>
+<p>If you have a favorite template/dom manipulation library that you want to use, let me know and I'll help you write the renderer so that you can use it with abstract-state-router.</p>
+<p>If you run into any difficulties, open an issue on Github or ping me on Twitter.</p>
+<p>The module is out on npm for you to try - <a href="https://github.com/TehShrike/abstract-state-router">check it out on Github</a>!</p>
+]]></description><link>https://joshduff.com/2015-06-why-you-need-a-state-router.md</link><guid isPermaLink="true">https://joshduff.com/2015-06-why-you-need-a-state-router.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Sun, 21 Jun 2015 00:05:51 GMT</pubDate></item><item><title><![CDATA[Side project post-partum: Communal Checklist]]></title><description><![CDATA[<p>A wild side project appears!</p>
+<p>My wife was looking for a site to set up a gift registry.  She tried several sites, but they weren't great - Amazon and Target have pretty good registries, but only if you lock your friends into buying from that one store.</p>
+<p>There are more open-ended registries, but most of them require that your friends create accounts, and one of the most reasonable ones forces you to create multiple rows for each item if you wanted people to be able to indicate that they were buying say, only one of the two needed pajamas.</p>
+<p>My finely-tuned programmer senses tingled.  A simple CRUD webapp, something like a custom to-do list - I should be able to whip up a servicable app in a few evenings!  I could call it the Communal Checklist.</p>
+<p>Fast forward to about a month later.  After putting in 30-90 minutes coding every two or three days, I have finally deployed version 1.0.  Here's what I learned!</p>
+<h2 id="my-tools-are-getting-better-but-i-need-to-put-them-first">My tools are getting better but I need to put them first</h2>
+<p>My first bad decision was to not use the <a href="https://github.com/TehShrike/abstract-state-router">abstract-state-router</a>.  I didn't think it was necessary - the Communal Checklist is nearly a literal single-page application, with one home screen and one editing/viewing screen.  A simple router like <a href="https://github.com/TehShrike/hash-brown-router">hash-brown-router</a> should be plenty.</p>
+<p>I forgot about the other niceities provided by the abstract-state-router - without it, I had to</p>
+<ol>
+<li>load asynchronous data after the template has been displayed, and handle both the "loading data" and "data done loading" states</li>
+<li>deal with (or in my case, convince myself I could ignore) cleaning up event listeners on route change instead of getting a nice clean <code>destroy</code> event if the state parameters changed</li>
+<li>actually care about where the template would be inserted, and manually create the Ractive object at that DOM location (just the <code>&lt;body&gt;</code> element in this case, but still annoying)</li>
+</ol>
+<p>Turns out the abstract-state-router isn't just for medium-to-large webapps, it's handy for small apps too.  I should have used it instead of imagining that a library with a slightly smaller API would make my app simpler.</p>
+<h2 id="i-should-have-considered-the-project-as-an-excuse-to-keep-developing-my-tools">I should have considered the project as an excuse to keep developing my tools</h2>
+<p>Communal Checklist was, in my mind, something I could have ready for my wife to use in a couple evenings.  No need to work in any tools I wasn't already familiar with, I planned to just make the app and move on.</p>
+<p>Specifically, I opted to not use a <a href="https://gist.github.com/staltz/868e7e9bc2a7b8c1f754">reactive programming</a> library when hooking up my user interface.  I've been experimenting with the reactive programming library <a href="https://baconjs.github.io/">Bacon.js</a> lately and putting together some tools to make those libraries easier for me to use, but I haven't actually used a reactive programming library in an app yet.</p>
+<p>It turns out, even for relatively simple apps, hooking together business logic behind a view (even a sexy view interface like <a href="http://www.ractivejs.org/">RactiveJS</a>) isn't that pretty.  If I handled user changes with a reactive streaming library, development may have felt slightly slower at first, but the code would have ended up simpler.</p>
+<p>In addition to not slowing down development in reality, using Bacon.js to hook up a real app would have given me practical experience that would have been valuable as I use it to hook together my next, much more complicated apps.</p>
+<h2 id="make-sure-to-clarify-specs">Make sure to clarify specs...</h2>
+<p>I proudly showed my wife the beta slightly less than two weeks after I started.  She poked around a bit and then asked "how do I add categories?"</p>
+<p>An entirely reasonable request.  I hadn't considered splitting lists up into sections.</p>
+<p>Allowing items to be divvied up between different categories required small changes on the server-side to handle the changed data structure, but it took a bit more work on the client-side.</p>
+<h3 id="which-made-the-code-slightly-more-complicated">Which made the code slightly more complicated</h3>
+<p>In theory I could have just added another level of nested loops to the template and plowed forwards, adding to the long list of functions in my single list.js file, but I had already pushed past a level of code complexity that I was comfortable with.</p>
+<p>This was the first real app I'd made with RactiveJS without using the abstract-state-router, and I'd never had to figure out how to nest templates properly in Ractive.</p>
+<p>In AngularJS, I would have already created a second directive to represent a single list item, and adding category support would have just involved creating a new "category" directive to layer between the main template and the item template.</p>
+<p>The Ractive documentation revealed <a href="http://docs.ractivejs.org/latest/components">components</a> to be the reasonable choice.  I broke out list items into their own template with their own associated code and created a new category template.</p>
+<p>If I had been on the ball from the beginning I would have been using isolated scopes to make things simpler.</p>
+<h2 id="ordered-arguments-are-evil-srsly">Ordered arguments are evil srsly</h2>
+<p>I lost a couple hours tracking down bugs caused by emitting lists of 5+ arguments to the socket.io listeners on the server side.  I wasn't consistent on the argument order between all my functions, and I paid the price.</p>
+<p>You'd think I would have learned by now!  Ordered arguments are evil.</p>
+<p>I switched to emitting objects with named properties and everything became simple again.</p>
+<h2 id="sweet-stylez">Sweet stylez</h2>
+<p>I used a <a href="http://bootswatch.com/">Bootswatch</a> Bootstrap theme again.  Instant classy site design!  Biggest downside: it uses Google hosted fonts, making it impossible to work on the site without internet access to Google CDNs.</p>
+<h3 id="responsive">Responsive</h3>
+<p>Another buzzword achieved!  I decided to actually put the effort into making the site look good at small sizes.  I'd used Bootstrap's grid layout from the beginning - it turns out that making it properly responsive just involved giving all my rows a column width for every size.  w00t!</p>
+<h2 id="storage-not-a-real-database">Storage: not a real database</h2>
+<p>I am quite attracted to the <a href="http://lebron.technology/">LEBRON</a> stack.  I've used <a href="https://github.com/Level/levelup">LevelUP</a> a good bit in the past, for Noddity and other projects - it's an excellent interface to a key-value store.  And from what I've heard, LevelDB is quite a good flat-file key-value store - it's the SQLite of key-value stores, and SQLite is awesome!</p>
+<p>So I took the plunge - I wrote and deployed a webapp using a <a href="http://howfuckedismydatabase.com/nosql/">nosql</a> database.</p>
+<p>It's a pretty defensible choice - I don't expect traffic to go out of control, and using LevelUP as my interface means I can relatively easily switch to other backends besides LevelDB.  The simple key-value store makes local testing easy, and deployments are as simple as <code>npm install</code>.</p>
+<p>Yet, if I were starting today, this is another choice I would make differently.</p>
+<p>Using a key-value store actually made my server-side code more complex than it needed to be.</p>
+<p>In order to read and update a list category or a category's item with a single read, I have to store the whole tree at the same key.</p>
+<p>To update a list item, I have to look up the list by its id (my one lookup), iterate over the categories to find the one with the correct id, and then iterate over the category's items to find the id that is being updated.  I then copy the changed values over to the original document, and save the whole thing back in at the list's key.</p>
+<p>I realize that more advanced document stores have better tools for working with child documents, but most of the attraction of the key-value store for me is being able to use LevelUP as an interface.</p>
+<p>Maybe I should have stored lists, categories, and items at their own keys and suffered the extra lookups in exchange for simpler code.  Or maybe I should have just used a database that supported SQL.</p>
+<p>Relational databases are actually pretty sweet.</p>
+<h3 id="will-it-scale">Will it scale?</h3>
+<p>I have no idea!  I figure it will at least make it past the baby shower.</p>
+<p>Honestly though, the benchmarks that LevelDB advertises are far beyond what I expect this app to ever have put against it, even in the unlikely event that the Communal Checklist turns into a bustling hub of gift registries.</p>
+<h2 id="passive-income">Passive income!</h2>
+<p>Communal Checklist represents my first attempt at generating passive income.  Every time someone adds a link to an Amazon item, my affiliate code is automatically attached.</p>
+<p>If my site does ever start getting regular traffic, this may lead to some small regular income, as Amazon is a monster of internet shopping (though I understand that when it comes to first-party gift registries, Target still provides a better experience for now).</p>
+<h2 id="yet-to-do">Yet to do</h2>
+<p>The most obvious missing feature that I know of is the inability to reorder items.  If many people start using the site, I'll give <a href="https://github.com/bevacqua/dragula">dragula</a> another try (I couldn't figure out how to get the dragging styles to work in my first quick try).</p>
+<p>Other assorted TLC would include testing the app more thoroughly on phones and touchscreens, and figuring out how to make the checkboxes larger and friendlier.</p>
+<p>In the short term, I plan to slim down the CSS and inline the webfonts to increase the loading speed.  I also recently added gzipping of static content on <code>npm run build</code>.</p>
+<p>These further improvements probably won't happen unless the site sees regular traffic going forward.  Speaking of which, I suppose I need to set up some kind of analytics, too.  Does anyone know of a reasonable analytics site that Google Analytics?</p>
+<h2 id="in-conclusion">In conclusion</h2>
+<p>Like everything else I make, the code to Communal Checklist is <a href="https://github.com/TehShrike/communal-checklist">public on Github</a> and is licensed <a href="http://wtfpl2.com/">WTFPL</a>.</p>
+<p>If you want a lightweight gift-registry/checklist collaboration app that doesn't require you to sign in, go to <a href="http://communalchecklist.com/">communalchecklist.com</a>!</p>
+]]></description><link>https://joshduff.com/2015-09-communal-checklist.md</link><guid isPermaLink="true">https://joshduff.com/2015-09-communal-checklist.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Wed, 02 Sep 2015 18:04:27 GMT</pubDate></item><item><title><![CDATA[My accomplishment for the day: a MySQL quine!]]></title><description><![CDATA[<p>"<a href="http://en.wikipedia.org/wiki/Quine_%28computing%29">Quine</a>:" a program that outputs it's complete source code when run.</p>
+<p>I was lounging around in the MySQL chat room on irc.freenode.net, and someone suggested that I try to write a MySQL quine - a database query that would return the text of the query itself.</p>
+<p>After about half an hour of screwing around, I got it!  It may not be a fantastic achievement, but I feel pretty leet about writing my first quine in a database query language.</p>
+<pre lang="mysql">
+SELECT REPLACE(@v:='SELECT REPLACE(@v:=\'2\',1+1,REPLACE(REPLACE(@v,\'\\\\\',\'\\\\\\\\\'),\'\\\'\',\'\\\\\\\'\'));',1+1,REPLACE(REPLACE(@v,'\\','\\\\'),'\'','\\\''));
+</pre>
+<p>Only 167 characters.  Hah!</p>
+]]></description><link>https://joshduff.com/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.md</link><guid isPermaLink="true">https://joshduff.com/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Sat, 29 Nov 2008 12:38:00 GMT</pubDate></item><item><title><![CDATA[Writing Noddity]]></title><description><![CDATA[<p>Some time in 2012, I decided to write my own blogging platform in JavaScript.  I hashed out my goals with a friend over an evening.  "It'll be simple," I said.  "You'll make changes to a directory full of Markdown files, and that's your blog!  I should be able to write the prototype in one evening!"</p>
+<p>If you want to read some mediocre code from early in my JavaScript career, that prototype code is <a href="https://github.com/TehShrike/noddity/commit/c91ee844b55f9cb2cfe809b9b3666536ba8cc9e7">on the internet</a>.  I was still figuring out Node best practices, and dipping my feet into functional programming.</p>
+<p>It took me a surprising amount of work to write something that could replace Wordpress as my blogging platform, let alone something that somebody else could conceivably download and use.</p>
+<p>This post is about the work I did to Make It Happen.</p>
+<h1 id="making-up-my-mind">Making up my mind</h1>
+<p>The project's specific goals didn't solidify until after I'd started writing it.  I eventually settled on:</p>
+<ol>
+<li>static file deployments (no server-side code, deployable on Github Pages or shared hosting)</li>
+<li>no build step to turn markdown into html</li>
+<li>browse to new pages without waiting for a round-trip to the server</li>
+</ol>
+<p>I had dream features as well, features I wish all content sites had.  Interestingly, these features all come from MediaWiki:</p>
+<h2 id="an-edit-button-on-every-page">An edit button on every page</h2>
+<p>I've been editing Wikipedia for years, and my first instinct when I see poor grammar or overly-long paragraphs is to click an "edit" button and fix the problem.  Sadly, most blogs don't have an edit button.</p>
+<p>Everyone should be able to feel the catharsis of fixing someone else's mistakes on the internet.</p>
+<h2 id="easy-linking-to-other-pages">Easy linking to other pages</h2>
+<p>I shouldn't have to think about the deployment environment when I reference one of my other posts.  When I link to another post I've written, it should be by the file name, and nothing more.</p>
+<p>Having to link to <code>http://mysite.com/blog/#!/my-awesome-posts/some-file.md</code> is unacceptable.  I need wiki-style <code>[link.md|linking]</code>.</p>
+<h2 id="embeddable-templates">Embeddable templates</h2>
+<p>This is MediaWiki/Wikipedia's killer feature.  Any page can be embedded in any other page - and since you can pass parameters to the embedded document, you can use templates to build domain-specific languages for content.</p>
+<p>I dug in to MediaWiki templates a bit when administrating the <a href="http://wikido.isoftdata.com">MediaWiki documentation site for my previous employer</a>, and am totally sold on the feature.</p>
+<p>I wanted all that wiki power, but without the archaic MediaWiki formatting syntax.</p>
+<h1 id="work-that-other-people-did-for-me">Work that other people did for me</h1>
+<ul>
+<li>I planned on using Substack's <a href="http://browserify.org/">Browserify</a> as my module/build system from very early on, letting me use large chunks of client-side code in my RSS and static file servers.</li>
+<li>DOM manipulation was not something I had any intention of rewriting, so I decided to try Rich Harris's sweet <a href="http://www.ractivejs.org/">RactiveJS</a> library.  Life got even awesomer when I realized that Ractive's mustache syntax would be the perfect way to allow code in embedded templates.</li>
+<li>Even though the blog itself runs without any server-side code, it caches post content, and that means storage.  I wrote everything to Rod Vagg's <a href="https://github.com/rvagg/node-levelup">LevelUP</a> interface, giving me an ideal key-value store.  Noddity modules use localstorage in the browser, Redis on the RSS/static file servers, and in-memory structures in unit tests, with no code changes or storage mocks.</li>
+</ul>
+<h1 id="why-did-that-take-so-long-to-implement">Why did that take so long to implement?</h1>
+<p>Having those goals in mind, I was able to start working on the other tools that I would need to exist.</p>
+<p>Astute students of practical computer science will have recognized goal #3 above as something that requires caching, one of the <a href="http://martinfowler.com/bliki/TwoHardThings.html">two hard problems</a>.</p>
+<p>While it didn't occur to the me of yester-year, it should not surprise you to hear that most of the code I wrote to get Noddity running was in the caching layer.</p>
+<h2 id="post-metadata">Post metadata</h2>
+<p>Before I dug into the caching, I started by nailing down the post format.  I needed to formalize a big ball of http-accessible blog content.</p>
+<p>I wrote <a href="https://github.com/TehShrike/noddity-retrieval">noddity-retrieval</a> to abstract away accessing a directory full of Markdown files, and <a href="https://github.com/TehShrike/text-metadata-parser">text-metadata-parser</a>+<a href="https://github.com/TehShrike/weak-type-wizard">weak-type-wizard</a> to parse metadata from the top lines of my blog post files.</p>
+<p>It turns out that putting metadata in plain text isn't a new thing - Jekyll's "Front Matter" has become the de-facto way to embed metadata in content files, though it was quite young when I started on Noddity.  text-metadata-parser was the implementation I wrote, which has since changed to support "Front Matter" YAML.</p>
+<h2 id="caching">Caching</h2>
+<p>Wheeeeeee!  This is one of those things you instinctively know that you shouldn't be re-implementing.</p>
+<p>Still, I couldn't find a solution on npm (the current winner of <a href="http://www.modulecounts.com/">Having Code On The Internet</a>) that matched my goals:</p>
+<ul>
+<li>Return a cached value as quickly as possible, regardless of age</li>
+<li>Update the cached value automatically every so often</li>
+<li>Expire keys based on the last time they were requested, not the last time the value changed</li>
+</ul>
+<p>So, I wrote <a href="https://github.com/TehShrike/levelup-cache">levelup-cache</a>, and, in what I consider my Favorite Abstraction Layer in Noddity, I wrote the <a href="https://github.com/TehShrike/expire-unused-keys">expire-unused-keys</a> module to take responsibility for knowing when a key needed to be refreshed or dropped.</p>
+<p>Since writing it, I've realized that expire-unused-keys is a great low-level building block in many caching solutions.  I'm kind of proud of that library.</p>
+<p>Next I wrote <a href="https://github.com/TehShrike/noddity-butler">noddity-butler</a> - which combines all of the above to return parsed posts from a Noddity content directory (like <a href="http://joshduff.com/content/">joshduff.com/content</a>) as efficiently as possible.</p>
+<p>The butler is used by both the client and the RSS/static servers to access a given site's content.</p>
+<h2 id="the-actual-front-end">The actual front-end</h2>
+<p>After assembling those parts on my nights and weekends, I made the real website.  Most of the front-end code by lines is taken up by the "recursively-embedded-posts" logic, which was not nearly as straightforward as it seemed in my head when I decided "hey, I should have embeddable templates!"</p>
+<p>Eventually, I wrote <a href="https://github.com/TehShrike/noddity-renderer">noddity-renderer</a>, which will turn a Noddity blog post into either static HTML, or recursively infinite Ractive elements that automatically update themselves whenever the noddity-butler reports any changes.</p>
+<p>It's, uh, an interesting library.  It turns out "static html" and "a self-updating front-end" do share code, but imply very different architectures to pull off reasonably.  If you can give me any advice on the structure of <a href="https://github.com/TehShrike/noddity-renderer/blob/master/index.js">the code</a> I'd love to hear it.</p>
+<h1 id="real-web-site-features">"Real" web site features</h1>
+<p>I didn't want to drop Wordpress until I had an RSS feed, and search engines could index my individual pages.</p>
+<p>The RSS feed wasn't difficult, all it takes is a <a href="https://github.com/TehShrike/noddity/blob/master/index.html#L11">link element</a> pointing to the url of a server that knows how to turn querystring parameters into a feed of posts using Noddity Butler.  Hesto presto, <a href="https://github.com/TehShrike/rssaas">rssaas</a>.</p>
+<p>Making search engines happy with your Web 3.0 single-page app is a bit more involved - you have to add a <a href="https://github.com/TehShrike/noddity/blob/master/index.html#L13-L18">special line to your html</a> to tell the search engine spiders to visit a <a href="https://developers.google.com/webmasters/ajax-crawling/docs/specification">special querystring that you have to handle on the server</a> - in the case of Noddity by using an <a href="https://github.com/TehShrike/noddity/blob/master/.htaccess#L27-L32">.htaccess file</a> to redirect the spiders to a server capable of serving static html versions of the markdown posts.  I named that module <a href="https://github.com/TehShrike/seoaas">seoaas</a>.</p>
+<p>It turned out those two applications shared a lot of code, so I moved the core out to the <a href="https://github.com/TehShrike/noddity-service-server">noddity-service-server</a>.  If you ever want to write a node.js server that references a remote Noddity blog, that's the library you probably want to be using.</p>
+<h1 id="does-anyone-actually-want-to-use-it">Does anyone actually want to use it?</h1>
+<p>I've always admired the programmers who release polished projects that others can use to solve problems with a few clicks.</p>
+<p>I wanted to release a project like that - even if it is a very narrow problem set, I want you to be able to use Noddity to easily solve real problems.</p>
+<p>I registered <a href="http://noddity.com">noddity.com</a>, and used the majority of a working-vacation with my wife at a bed-and-breakfast to write copy and fix bugs that I discovered in the process.</p>
+<p>Cloning from github, running <code>npm install</code> + <code>npm build</code>, and deleting the leftover cruft is almost acceptable for just me, but it's not very friendly for people who want to give it a quick try.</p>
+<p>So, I wrote a magical Noddity installer.  It requires typing some things into the command-line, but <a href="http://noddity.com/content/image/noddity-install.gif">not many</a>.  Install one global module from npm, and you can create a fresh Noddity project in any directory.</p>
+<h1 id="a-winner-is-me">A winner is me?</h1>
+<p>So I'm a Real Open Source Programmer now, I suppose!  I wrote code that other people could conceivably use to solve their own problems.  A <a href="http://davistobias.com/">few</a> of my <a href="http://tobiaslabs.com/">sexier</a> <a href="http://josephdykstra.com/">friends</a> have already deployed their own sites based on Noddity's code.</p>
+<p>Noddity has some stars on Github, but I don't know how to market it.  Given how much work the most popular open source developers seem to do to support their code, I'm not 100% sure I want to.</p>
+<p>But I am a selfish human with selfish human desires.  I want people to use my code because it would validate the work I put into it.</p>
+<p>Plus, I get a special lift when I act as a multiplier to someone else.</p>
+<p>So I want Noddity to seem usable, and painless enough to override the "it would be easier to write it myself" instinct we all feel, and solid and featured enough that people would actually consider deploying it instead of Wordpress or Mediawiki.</p>
+<h1 id="rfc">RFC</h1>
+<p>To that end, I want you to message me.  If any part of the documentation seems incomplete, or you run into anything stupid, <a href="https://twitter.com/tehshrike">message me on Twitter</a>.  If you think some part of the code is dumb, or you have questions about whether or not it could be bent to your own particular use case, <a href="mailto:me@JoshDuff.com">send me an email</a>.</p>
+<p>If you want to contribute, I would be flattered and happy.  Submit an <a href="https://github.com/tehshrike/noddity/issues">issue</a> or pull request, and I will hug you if I ever meet you in person.  Unless you don't like that sort of thing, in which case I'll give you a cool-guy nod.</p>
+<h1 id="to-infinity-and-beyond">To infinity and beyond</h1>
+<p>I don't expect to make any great profits from Noddity, but I still want to work on improving it - easier theming, easier plugins, better parsing of wiki-links in the Markdown content.</p>
+<p>If Noddity never grows, and simply stays as the cool backbone of 3-10 web sites for the rest of its existence, I won't be disappointed - I wrote it for my own use cases, and I'm satisfied so far.</p>
+<p>But if Noddity grows, that would be sweet, and I'd love the excuse to put more polish into it.</p>
+<p><a href="http://noddity.com">Check it out!</a></p>
+]]></description><link>https://joshduff.com/2014-11-22-noddity.md</link><guid isPermaLink="true">https://joshduff.com/2014-11-22-noddity.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Sun, 23 Nov 2014 03:34:30 GMT</pubDate></item><item><title><![CDATA[Writing SQL for applications]]></title><description><![CDATA[<p>For about the last decade I've been writing business software backed by relational databases.  Working with my teammates, I have acquired conventions for writing schema and production queries that make interacting with the database simpler and easier.</p>
+<p>These conventions primarily optimize for <strong>reading or writing queries in production code</strong>.</p>
+<p>I believe it is fair to say that for most business applications, the schema + data <em>is</em> the application, with the rest of the code there to make the application easy to work with.</p>
+<p>As Patrick McKenzie likes to remind us, most of our industry is built on building specialized spreadsheets.</p>
+<blockquote>
+<p>Every spreadsheet shared in a business is an angel announcing another SaaS app still needs to be built.</p>
+<p>-- @patio11 <a href="https://twitter.com/patio11/status/655674551615942657">2015-10-18</a></p>
+</blockquote>
+<p>The less friction involved in interacting with the underlying data, the greater our ability to develop our application.</p>
+<h1 id="schema-design-conventions">Schema design conventions</h1>
+<p>Most of the conventions in schema design enable two things:</p>
+<p>First, the ability to write queries without having to look up a bunch of table schemas to remind yourself what the column names are, or spelling idiosyncrasies.</p>
+<p>Second, looking at a single table and quickly understanding all of its relationships.</p>
+<h2 id="the-primary-key-column-should-be-either-id-or-the-table-name-suffixed-with-_id">The primary key column should be either <code>id</code>, or the table name suffixed with <code>_id</code></h2>
+<p>It's a matter of preference whether you use <code>customer_id</code> versus <code>id</code> as the primary key column of the <code>customer</code> table, you could make arguments either direction - just apply the convention consistently.</p>
+<p>The actual suffix/name doesn't matter, but <code>_id</code> seems to be the most common convention.</p>
+<p>The main point is that whatever suffix you pick should be consistent across the entire schema.  This lets you join to another table without having to remember anything but the table name.</p>
+<h2 id="foreign-keys-should-always-contain-the-name-of-the-table-they-link-to">Foreign keys should always contain the name of the table they link to</h2>
+<p>If rows in your <code>invoice</code> table link to rows in your <code>customer</code> table, the invoice table should be named <code>customer_id</code>, not <code>buyer_id</code> or <code>purchaser_id</code>.</p>
+<p>This convention lets you know what the foreign keys of a table are referencing just by looking at the output from <code>DESCRIBE tablename</code>, which makes writing queries easier.  It also makes queries in code easier to follow.</p>
+<p>Sometimes the name of the column by itself isn't enough - for example, besides the purchasing customer, your invoice might have a <code>referrer_customer_id</code>.  As long as the column ends with the <code>[tablename]_id</code> for the table you're linking to, everything is good and easy to read.  Naming that column <code>referrer_id</code> makes your schema much more difficult to read and requires you to memorize a bunch of special-case names.</p>
+<h2 id="all-tables-have-a-single-column-auto-increment-primary-key">All tables have a single-column auto-increment primary key</h2>
+<p>This is something I waffled on a lot in my early years.  After all, isn't the primary key just an arbitrarily chosen candidate key?  Why not use a "natural" key, if one exists?</p>
+<p>If you're using MySQL + InnoDB, there are real performance benefits to using an auto-increment primary key, but even if that were not the case I have become convinced that natural keys should not be used as the primary key.</p>
+<p>No matter how sure you are that a natural candidate key will never change, and that all the values in the key are immutable after being inserted, it is very likely that at some point, business concerns will require that some of the values be changed, breaking all foreign key references and caches throughout your system.</p>
+<p>That fear alone is pretty motivating.  But beyond that I have found that when foreign keys use identifiers that don't have any business concern outside of the database, queries are easier to write and mutating state in tables becomes less scary.</p>
+<h2 id="no-abbreviations-in-table-or-column-names">No abbreviations in table or column names</h2>
+<p>Abbreviations and otherwise shortened labels make your schema difficult to read, and incomprehensible to people who don't spend every minute in the project.  Saving those occasional keystrokes is not worth it.</p>
+<p>Making an exception for industry-standard abbreviations is fine - in the car parts inventory industry, <code>vin</code> is a reasonable column name, and <code>esp</code> is an acceptable table name in the email marketing industry.</p>
+<p>Using abbreviations that you come up with yourself, or drpping vwls to sv chars is counterproductive.</p>
+<h2 id="no-plural-table-names">No plural table names</h2>
+<p>This is one of the simplest conventions, but the one that causes the most annoyance when ignored.</p>
+<p>If your schema has a mix of pluralized and non-pluralized table names, you will forever be referring to your list of table names to remember if you should be typing <code>customer</code> or <code>customers</code>.</p>
+<p>Half the time I see someone with a plural table name, they leave the <code>s</code> off of some or all of the key references - does the invoice table contain a <code>customer_id</code> column, or a <code>customers_id</code> column?  I dunno, better go look.</p>
+<p>Just remember that the table name should be representative of what a single row contains.  A row in the <code>invoice</code> table contains an <code>invoice</code>, not <code>invoices</code>.</p>
+<p>This will allow you to write queries with many joins without having to look up a bunch of column/table names.</p>
+<h1 id="query-conventions">Query conventions</h1>
+<p>These conventions all have the goal of making queries in production code easier to read and maintain.</p>
+<h2 id="no-select">No <code>SELECT *</code></h2>
+<p>Perhaps the most <a href="http://www.parseerror.com/blog/select-*-is-evil">commonly-known SQL antipattern</a>.</p>
+<p>Queries should specify exactly the columns that you require.  There are performance implications, but beyond that, your queries should be explicit about what they are doing, for the reader's benefit.</p>
+<h2 id="no-aliases">No aliases</h2>
+<p>I see lots of developers aliasing table names in production queries.</p>
+<pre><code>SELECT i.total
+FROM invoice AS i
+WHERE i.customer_id = ?
+</code></pre>
+<p>This reduces the number of characters you type at the expense of taking more work to read the query when someone comes across it in the code later.  Don't make that tradeoff!</p>
+<p>Developers shouldn't have to pull in a bunch of specialized naming context to be able to understand a query.  You want to be able to read over any part of the query and understand what columns are being used without having to read over the from and join clauses to memorize any aliases.</p>
+<p>There's an obvious exception for when you need to reference the same table twice in different from/join clauses.  When writing production queries, you should still try to make the alias meaningful!</p>
+<pre><code>FROM invoice
+JOIN invoice AS other_invoices_from_same_customer ON other_invoices_from_same_customer.customer_id = invoice.customer_id
+    AND other_invoices_from_same_customer.invoice_id != invoice.invoice_id
+</code></pre>
+<h2 id="always-use-table-identifiers-in-multi-table-queries">Always use table identifiers in multi-table queries</h2>
+<p>Similarly, if you consistently use table names in column identifiers, you make it easier to read over your query in smaller chunks.  <code>SELECT customer_id</code> is less meaningful than <code>SELECT invoice.customer_id</code>.</p>
+<p>This convention does make it easier to add joins to existing queries.  However, in my mind the primary advantage is the improved readability.</p>
+<h2 id="uppercase-everything-except-identifiers">Uppercase everything except identifiers</h2>
+<p>Sadly, I haven't yet worked with a code editor that applied SQL syntax highlighting inside of static strings.</p>
+<p>Uppercasing the non-identifier parts of the SQL (e.g. <code>FROM invoice</code> instead of <code>from invoice</code>) makes queries embedded in code easier to read.</p>
+<h2 id="newlines-before-each-query-clause">Newlines before each query clause</h2>
+<p>A query is composed of an ordered list of components called "clauses".  Queries are easier to read when the clauses are separated by newlines.</p>
+<pre><code>SELECT SUM(invoice.total)
+FROM customer
+JOIN invoice ON invoice.invoice_id = customer.customer_id
+    AND invoice.finalized = TRUE
+WHERE customer.customer_id = ?
+</code></pre>
+<p>As opposed to</p>
+<pre><code>SELECT SUM(invoice.total) FROM customer JOIN invoice ON invoice.invoice_id = customer.customer_id AND invoice.finalized = TRUE
+WHERE customer.customer_id = ?
+</code></pre>
+<p>You and your team can come up with your own conventions around the rest of the whitespace, but I think newlines before each clause are a must for readability.</p>
+<h1 id="personal-context">Personal context</h1>
+<p>I've worked on evolving schemas with hundreds of tables.  Following these conventions has made life demonstrably better.  Frustration is decreased, less time is wasted.</p>
+<p>I have spent countless nights helping people with schema and query issues in <a href="http://hashmysql.org/">#mysql</a> on Freenode, and the <a href="http://chat.stackoverflow.com/rooms/592/mysql-and-relational-databases">MySQL room on StackOverflow</a>.  Most developers do not appear to follow strong conventions like these.</p>
+<p>At ISoft, in the early days of <a href="http://wikido.isoftdata.com/index.php/ITrack/Enterprise">ITrack Enterprise</a>, we were able to take a week and refactor the hodge-podge of tables (probably 80 at the time), bringing them in line with the conventions we had set up at the time, and updating the code to match.</p>
+<p>This paid off enormously over the years as the application was deployed to many customers and the schema grew to ~200 tables.  Not many applications get that chance, though - you have to evolve your schema while continuing to deliver features and fixes.</p>
+<p>It's not hopeless - you can achieve an easy-to-work-with schema - as long as your team is on board, you leave things better than you found them when working in an area of the schema.</p>
+<p>This is something I'm still working on!  I got super-excited to learn more after listening to Neal Ford's <em>Continuous Delivery: Infrastructure and Data</em> talk at Uberconf, and am following his recommendation to read <a href="https://www.amazon.com/gp/product/0321774515/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0321774515&amp;linkCode=as2&amp;tag=josduf-20&amp;linkId=5983034458d49f14545009fbc8d5b31f">Refactoring Databases: Evolutionary Database Design</a>.</p>
+<h1 id="in-conclusion">In conclusion</h1>
+<p>Your application is defined by its schema and the queries you use to interact with it.  Embrace it!  Keep it simple!  It will pay off.</p>
+]]></description><link>https://joshduff.com/2016-07-writing-sql.md</link><guid isPermaLink="true">https://joshduff.com/2016-07-writing-sql.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Tue, 26 Jul 2016 01:11:19 GMT</pubDate></item></channel></rss>

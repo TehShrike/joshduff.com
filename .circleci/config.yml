@@ -43,28 +43,9 @@ jobs:
       - run:
           name: npm run lint
           command: npm run lint
-  deploy_up_production:
-    <<: *defaults
-    steps:
-      - *git_restore_cache
-      - checkout
-      - *git_save_cache
-      - attach_workspace:
-          at: ~/repo
-      - *prep_deploy
-      - run:
-          name: Run deploy script
-          command: ./deploy.sh
 
 workflows:
   version: 2
-  lint_and_deploy:
+  lint:
     jobs:
       - lint
-      - deploy_up_production:
-          context: apex-up
-          requires:
-            - lint
-          filters:
-            branches:
-              only: master
