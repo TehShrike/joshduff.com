@@ -11,7 +11,7 @@ date: 2017-02-16T15:37:34.176Z
 	<h3>Posts</h3>
 	<ol>
 		{{#postList}}
-			<li><a href="{{pathPrefix}}{{pagePathPrefix}}{{filename}}">{{title}}</a></li>
+			<li><a href="{{pathPrefix}}{{pagePathPrefix}}{{filename.replace(/\.md$/, '.html')}}">{{title}}</a></li>
 		{{/postList}}
 	</ol>
 </div>
