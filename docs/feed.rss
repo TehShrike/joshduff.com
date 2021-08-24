@@ -1,12 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Josh Duff .com]]></title><description><![CDATA[Josh Duff .com]]></description><link>https://joshduff.com/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 18 Jun 2021 21:19:36 GMT</lastBuildDate><atom:link href="https://joshduff.com/feed.rss" rel="self" type="application/rss+xml"/><ttl>720</ttl><item><title><![CDATA[Logical errors in queries: DO NOT WANT]]></title><description><![CDATA[<p>During my career developing database-driven software (teehee, I'm a professional) I've noted that the most horrific query errors are the logical ones - queries that parse correctly, and return reasonable-looking data, but make wrong assumptions about how different parts of the query relate to each other.</p>
-<p>One particular error that I've seen time and time again (even from people who have been writing queries for a while) can occur when summarizing data from multiple tables that have a one-to-many relationship.</p>
-<p>...In other words, it could occur in queries written for most database-driven software.</p>
-<h2 id="solution-fix-the-problem-by-writing-about-it">Solution: fix the problem by writing about it!</h2>
-<p>I wrote <a href="http://wikido.isoftdata.com/index.php/The_GROUPing_pitfall">a page documenting</a> the cause of the logical error, doing my best to warn people against letting it slip into their own code.</p>
-<p>I attempted to write it so it would be easy to read, possibly even entertaining (a lofty goal for a manual on writing database queries, perhaps) - there is some colorful language and plenty of juvenile humor mixed with the tech-speak.</p>
-<p>The doc itself is part of the wiki of the company where I work.  I don't write a ton of documentation for our developers or customers (certainly not as much as I should), but whenever I do, I get this awesome feeling of usefulness.  Oh, and pride.  Sometimes, I feel so proud, that I feel compelled to link other people (who have no relationship to my company) to what I wrote!  Ridiculous, I know.</p>
-<p>Remember: if you write queries, it is your responsibility to guarantee that they return true and accurate data!</p>
-]]></description><link>https://joshduff.com/2010-02-04-logical-errors-in-queries-do-not-want.md</link><guid isPermaLink="true">https://joshduff.com/2010-02-04-logical-errors-in-queries-do-not-want.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Thu, 04 Feb 2010 15:17:00 GMT</pubDate></item><item><title><![CDATA[Convert blocks of text to sentence case in MySQL]]></title><description><![CDATA[<p>You know what I hate?  Paragraphs of capital (or all lowercase) letters.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Josh Duff .com]]></title><description><![CDATA[Josh Duff .com]]></description><link>https://joshduff.com/</link><generator>RSS for Node</generator><lastBuildDate>Tue, 24 Aug 2021 18:34:58 GMT</lastBuildDate><atom:link href="https://joshduff.com/feed.rss" rel="self" type="application/rss+xml"/><ttl>720</ttl><item><title><![CDATA[My accomplishment for the day: a MySQL quine!]]></title><description><![CDATA[<p>"<a href="http://en.wikipedia.org/wiki/Quine_%28computing%29">Quine</a>:" a program that outputs it's complete source code when run.</p>
+<p>I was lounging around in the MySQL chat room on irc.freenode.net, and someone suggested that I try to write a MySQL quine - a database query that would return the text of the query itself.</p>
+<p>After about half an hour of screwing around, I got it!  It may not be a fantastic achievement, but I feel pretty leet about writing my first quine in a database query language.</p>
+<pre lang="mysql">
+SELECT REPLACE(@v:='SELECT REPLACE(@v:=\'2\',1+1,REPLACE(REPLACE(@v,\'\\\\\',\'\\\\\\\\\'),\'\\\'\',\'\\\\\\\'\'));',1+1,REPLACE(REPLACE(@v,'\\','\\\\'),'\'','\\\''));
+</pre>
+<p>Only 167 characters.  Hah!</p>
+]]></description><link>https://joshduff.com/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.md</link><guid isPermaLink="true">https://joshduff.com/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Sat, 29 Nov 2008 12:38:00 GMT</pubDate></item><item><title><![CDATA[Running my first campaign!]]></title><description><![CDATA[<p>Less than a year ago, I jumped off the high-board of nerdiness into the deep end of the role-playing pool - and ran my very first campaign.</p>
+<p>I wanted a fun campaign (duh) with rules and story that would be hard for me to mess up.  For most of the campaign, the only players were two good friends with solid role-playing experience, so I was able to rely on the players to contribute a good amount of quality.</p>
+<h1 id="the-story">The story</h1>
+<p>I took a stab at running an old-west campaign, borrowing every western-movie trope I could think of.  The PCs played <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/TheGunslinger">gunslinging</a> lawmen for hire, riding into a town oppressed by a gang of n'er-do-wells populated with plenty of tobacco-spitting, expendable, no-good <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/Outlaw">outlaws</a> to gun down.</p>
+<p>Without going into too much detail: the players cleaned out a counterfeiting operation in an old widow's basement, were recruited to clean up the town, used aggressive negotiations to get rid of gang members harassing the mayor's house, and stopped another group of enforcers who were coercing money from some water-starved farmers.</p>
+<p>Back in town, they took over the town prison, had a gun fight in a booby-trapped house, escaped just as it blew sky high, confronted the aristocratic gang leader on the porch of his ranch house, and finished with a gun battle on main street.</p>
+<h1 id="the-system">The system</h1>
+<p>At the recommendation of an experienced GM, I used the <a href="http://error420.com/documents/Boot%20Hill%202nd%20Edition.pdf">Boot Hill (second edition) rules</a>, a creation of <a href="http://en.wikipedia.org/wiki/Gary_Gygax">Gary Gygax</a> and <a href="http://en.wikipedia.org/wiki/Brian_Blume">Brian Blume</a>.</p>
+<p>I was looking for super-lightweight rules, so I didn't even use the full rules set described by the Boot Hill book - the only dice rolling during the campaign happened during combat.  Boot Hill gun combat is simple:</p>
+<ul>
+<li>The fastest draw (based on weapon speed and personal speed) goes first</li>
+<li>Roll percentile dice (based on your weapon, personal accuracy, and a relatively short list of modifiers) to see if you hit:</li>
+</ul>
+<p><img src="/images/hit-determination-chart.jpg" alt="&quot;Boot Hill hit determination chart&quot;" title="Boot Hill hit determination chart"></p>
+<ul>
+<li>Roll percentile dice on a wound chart to see where you hit:</li>
+</ul>
+<p><img src="/images/wound-chart.jpg" alt="&quot;Boot Hill wound chart&quot;" title="Boot Hill wound chart"></p>
+<p>Mortal wounds kill you.</p>
+<p>Any wound at all gives you a -5% chance at getting to shoot first, and also to hitting the other guy.</p>
+<p>Once your strength drops below 50% of what it is normally (which can often be done with a single serious wound), you start getting -20% to shooting first, and hitting.</p>
+<p>It's a simple system, but one that facilitates characters dying pretty often.  A couple good rolls, and a single shot can permanently take out any character - even if he just rolled into town with a new bandanna and a pocket full of hit points.</p>
+<h2 id="wait-easy-character-death">Wait, easy character death?</h2>
+<p>I wanted my players to enjoy a good old-fashioned movie version of the wild west.  They were supposed to play the heroes - the guys who go flying through bar windows and come up swinging!</p>
+<p>I wanted quick and dirty combat, but I wanted my PCs to be a bit more survivable.  I tried a few things to counteract the cheapness of life:</p>
+<h3 id="giving-the-pcs-slightly-better-stats">Giving the PCs slightly better stats</h3>
+<p>Standard nerfing - most of my NPCs would drop below half strength after one serious wound (which severely limits a character for the rest of the combat).  The player characters could took at least two (non-mortal) wounds before things got really sticky.</p>
+<h3 id="making-healing-much-more-trivial-than-the-rules-suggested">Making healing much more trivial than the rules suggested</h3>
+<p>According to the rules, healing is a fairly slow process, taking days or weeks to recover from any sort of combat wound.  My player characters needed to be able to get into gun battles every few hours - they could be rejuvenated by a good night's sleep, or the restorative powers of a <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/ApronMatron">kindly old lady</a>'s stew.</p>
+<h3 id="adding-a-new-game-mechanic">Adding a new game mechanic</h3>
+<p>I decided to take a hint from the awesome and successful video game <em>Left 4 Dead</em>.  In that universe, survivor characters who go down are immobilized, but can still fire handguns until their teammates pull them up (or the zombies fill up at the brain buffet).</p>
+<p>Any time one of the PCs took mortal damage, I did something similar - instead of the characters dying, they dropped to the ground and could fire their handguns at a reduced rate.  If another player made it over to them and used a round to pull them up, that character could enter the fray with some of their strength restored.</p>
+<p>It wasn't a mechanic that saw a lot of use, but it turned several potential defeats into narrow victories.  I was happy with this - narrowly beating the baddies is a lot more exhilarating than seeing one side gun down the other like dogs.</p>
+<h1 id="also-i-m-a-noob">Also, I'm a noob</h1>
+<p>I found it a highly enjoyable experience, but there were weak spots.  The campaign was fairly light on dialog, which isn't necessarily a bad thing - I just wish I were better at having a conversation in character, and thinking on my feet.</p>
+<p>My weaknesses were most evident in the final session, where my PCs held the big baddy in prison and were looking around for a way to prove his guilt (they were lawful, after all) or uncover the next plot hook.</p>
+<p>I left them wandering around looking for a clue far too long before I initiated the next action for them to deal with.  They grilled the prisoner for some time (good roleplaying, at least), looking for the magic words that would advance the plot.  Blah.</p>
+<h1 id="i-think-i-might-try-this-again">I think I might try this again</h1>
+<p>I was very glad to have such great (and forgiving) roleplayers in my campaign.  When the GM is fresh, there's a lot less room for noobs or troublemakers.</p>
+<p>I'm definitely sold on lightweight rules sets, especially when going for a more cinematic feel.  The less of a barrier there is between the players and the cool things they want their characters to do, the better.</p>
+<p>I have a suspicion that we might try this (noobs GMs practicing with friends) again sometime soon - if you have any suggestions for easy-to-pick-up gaming systems, or good scenarios for some one-shot sessions, then surrender your knowledge to my gaping mind-hole!</p>
+]]></description><link>https://joshduff.com/2010-01-15-running-my-first-campaign.md</link><guid isPermaLink="true">https://joshduff.com/2010-01-15-running-my-first-campaign.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Sat, 16 Jan 2010 03:41:00 GMT</pubDate></item><item><title><![CDATA[Convert blocks of text to sentence case in MySQL]]></title><description><![CDATA[<p>You know what I hate?  Paragraphs of capital (or all lowercase) letters.</p>
 <p>The other day a coworker was looking to beautify a large quantity of data spread across some MySQL tables.  I created this function to make his life easier:</p>
 <pre><code>DELIMITER $
 CREATE FUNCTION `f_sentence_case`(strInput TEXT, nMinimumLength INT) RETURNS TEXT
@@ -74,7 +114,15 @@ DELIMITER ;
 <pre><code>UPDATE `table` SET `field` = f_sentence_case(`field`, 3);
 </code></pre>
 <p>Other than that, my only specs for the query were for it to be functional and hopefully not break my brain when I went back to read it later.  If anyone has any significant improvements to it, let me know!</p>
-]]></description><link>https://joshduff.com/2010-01-22-convert-blocks-of-text-to-sentence-case.md</link><guid isPermaLink="true">https://joshduff.com/2010-01-22-convert-blocks-of-text-to-sentence-case.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Fri, 22 Jan 2010 13:31:00 GMT</pubDate></item><item><title><![CDATA[Run a query for every table in a database]]></title><description><![CDATA[<p>Ever wished you could run a dangerous query like DROP TABLE or TRUNCATE against every table in a database in a single query?</p>
+]]></description><link>https://joshduff.com/2010-01-22-convert-blocks-of-text-to-sentence-case.md</link><guid isPermaLink="true">https://joshduff.com/2010-01-22-convert-blocks-of-text-to-sentence-case.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Fri, 22 Jan 2010 13:31:00 GMT</pubDate></item><item><title><![CDATA[Logical errors in queries: DO NOT WANT]]></title><description><![CDATA[<p>During my career developing database-driven software (teehee, I'm a professional) I've noted that the most horrific query errors are the logical ones - queries that parse correctly, and return reasonable-looking data, but make wrong assumptions about how different parts of the query relate to each other.</p>
+<p>One particular error that I've seen time and time again (even from people who have been writing queries for a while) can occur when summarizing data from multiple tables that have a one-to-many relationship.</p>
+<p>...In other words, it could occur in queries written for most database-driven software.</p>
+<h2 id="solution-fix-the-problem-by-writing-about-it">Solution: fix the problem by writing about it!</h2>
+<p>I wrote <a href="http://wikido.isoftdata.com/index.php/The_GROUPing_pitfall">a page documenting</a> the cause of the logical error, doing my best to warn people against letting it slip into their own code.</p>
+<p>I attempted to write it so it would be easy to read, possibly even entertaining (a lofty goal for a manual on writing database queries, perhaps) - there is some colorful language and plenty of juvenile humor mixed with the tech-speak.</p>
+<p>The doc itself is part of the wiki of the company where I work.  I don't write a ton of documentation for our developers or customers (certainly not as much as I should), but whenever I do, I get this awesome feeling of usefulness.  Oh, and pride.  Sometimes, I feel so proud, that I feel compelled to link other people (who have no relationship to my company) to what I wrote!  Ridiculous, I know.</p>
+<p>Remember: if you write queries, it is your responsibility to guarantee that they return true and accurate data!</p>
+]]></description><link>https://joshduff.com/2010-02-04-logical-errors-in-queries-do-not-want.md</link><guid isPermaLink="true">https://joshduff.com/2010-02-04-logical-errors-in-queries-do-not-want.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Thu, 04 Feb 2010 15:17:00 GMT</pubDate></item><item><title><![CDATA[Run a query for every table in a database]]></title><description><![CDATA[<p>Ever wished you could run a dangerous query like DROP TABLE or TRUNCATE against every table in a database in a single query?</p>
 <p>No?</p>
 <p>Well, how about something like CHECK or REPAIR table, then?</p>
 <p>If you ever find yourself in the rare situation where you need to run the same query across every table in a database, this procedure might make your life easier:</p>
@@ -438,137 +486,7 @@ The former is by far the most common - the other vehicles on the road have a ten
 <p>If Noddity never grows, and simply stays as the cool backbone of 3-10 web sites for the rest of its existence, I won't be disappointed - I wrote it for my own use cases, and I'm satisfied so far.</p>
 <p>But if Noddity grows, that would be sweet, and I'd love the excuse to put more polish into it.</p>
 <p><a href="http://noddity.com">Check it out!</a></p>
-]]></description><link>https://joshduff.com/2014-11-22-noddity.md</link><guid isPermaLink="true">https://joshduff.com/2014-11-22-noddity.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Sun, 23 Nov 2014 03:34:30 GMT</pubDate></item><item><title><![CDATA[Running my first campaign!]]></title><description><![CDATA[<p>Less than a year ago, I jumped off the high-board of nerdiness into the deep end of the role-playing pool - and ran my very first campaign.</p>
-<p>I wanted a fun campaign (duh) with rules and story that would be hard for me to mess up.  For most of the campaign, the only players were two good friends with solid role-playing experience, so I was able to rely on the players to contribute a good amount of quality.</p>
-<h1 id="the-story">The story</h1>
-<p>I took a stab at running an old-west campaign, borrowing every western-movie trope I could think of.  The PCs played <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/TheGunslinger">gunslinging</a> lawmen for hire, riding into a town oppressed by a gang of n'er-do-wells populated with plenty of tobacco-spitting, expendable, no-good <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/Outlaw">outlaws</a> to gun down.</p>
-<p>Without going into too much detail: the players cleaned out a counterfeiting operation in an old widow's basement, were recruited to clean up the town, used aggressive negotiations to get rid of gang members harassing the mayor's house, and stopped another group of enforcers who were coercing money from some water-starved farmers.</p>
-<p>Back in town, they took over the town prison, had a gun fight in a booby-trapped house, escaped just as it blew sky high, confronted the aristocratic gang leader on the porch of his ranch house, and finished with a gun battle on main street.</p>
-<h1 id="the-system">The system</h1>
-<p>At the recommendation of an experienced GM, I used the <a href="http://error420.com/documents/Boot%20Hill%202nd%20Edition.pdf">Boot Hill (second edition) rules</a>, a creation of <a href="http://en.wikipedia.org/wiki/Gary_Gygax">Gary Gygax</a> and <a href="http://en.wikipedia.org/wiki/Brian_Blume">Brian Blume</a>.</p>
-<p>I was looking for super-lightweight rules, so I didn't even use the full rules set described by the Boot Hill book - the only dice rolling during the campaign happened during combat.  Boot Hill gun combat is simple:</p>
-<ul>
-<li>The fastest draw (based on weapon speed and personal speed) goes first</li>
-<li>Roll percentile dice (based on your weapon, personal accuracy, and a relatively short list of modifiers) to see if you hit:</li>
-</ul>
-<p><img src="/images/hit-determination-chart.jpg" alt="&quot;Boot Hill hit determination chart&quot;" title="Boot Hill hit determination chart"></p>
-<ul>
-<li>Roll percentile dice on a wound chart to see where you hit:</li>
-</ul>
-<p><img src="/images/wound-chart.jpg" alt="&quot;Boot Hill wound chart&quot;" title="Boot Hill wound chart"></p>
-<p>Mortal wounds kill you.</p>
-<p>Any wound at all gives you a -5% chance at getting to shoot first, and also to hitting the other guy.</p>
-<p>Once your strength drops below 50% of what it is normally (which can often be done with a single serious wound), you start getting -20% to shooting first, and hitting.</p>
-<p>It's a simple system, but one that facilitates characters dying pretty often.  A couple good rolls, and a single shot can permanently take out any character - even if he just rolled into town with a new bandanna and a pocket full of hit points.</p>
-<h2 id="wait-easy-character-death">Wait, easy character death?</h2>
-<p>I wanted my players to enjoy a good old-fashioned movie version of the wild west.  They were supposed to play the heroes - the guys who go flying through bar windows and come up swinging!</p>
-<p>I wanted quick and dirty combat, but I wanted my PCs to be a bit more survivable.  I tried a few things to counteract the cheapness of life:</p>
-<h3 id="giving-the-pcs-slightly-better-stats">Giving the PCs slightly better stats</h3>
-<p>Standard nerfing - most of my NPCs would drop below half strength after one serious wound (which severely limits a character for the rest of the combat).  The player characters could took at least two (non-mortal) wounds before things got really sticky.</p>
-<h3 id="making-healing-much-more-trivial-than-the-rules-suggested">Making healing much more trivial than the rules suggested</h3>
-<p>According to the rules, healing is a fairly slow process, taking days or weeks to recover from any sort of combat wound.  My player characters needed to be able to get into gun battles every few hours - they could be rejuvenated by a good night's sleep, or the restorative powers of a <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/ApronMatron">kindly old lady</a>'s stew.</p>
-<h3 id="adding-a-new-game-mechanic">Adding a new game mechanic</h3>
-<p>I decided to take a hint from the awesome and successful video game <em>Left 4 Dead</em>.  In that universe, survivor characters who go down are immobilized, but can still fire handguns until their teammates pull them up (or the zombies fill up at the brain buffet).</p>
-<p>Any time one of the PCs took mortal damage, I did something similar - instead of the characters dying, they dropped to the ground and could fire their handguns at a reduced rate.  If another player made it over to them and used a round to pull them up, that character could enter the fray with some of their strength restored.</p>
-<p>It wasn't a mechanic that saw a lot of use, but it turned several potential defeats into narrow victories.  I was happy with this - narrowly beating the baddies is a lot more exhilarating than seeing one side gun down the other like dogs.</p>
-<h1 id="also-i-m-a-noob">Also, I'm a noob</h1>
-<p>I found it a highly enjoyable experience, but there were weak spots.  The campaign was fairly light on dialog, which isn't necessarily a bad thing - I just wish I were better at having a conversation in character, and thinking on my feet.</p>
-<p>My weaknesses were most evident in the final session, where my PCs held the big baddy in prison and were looking around for a way to prove his guilt (they were lawful, after all) or uncover the next plot hook.</p>
-<p>I left them wandering around looking for a clue far too long before I initiated the next action for them to deal with.  They grilled the prisoner for some time (good roleplaying, at least), looking for the magic words that would advance the plot.  Blah.</p>
-<h1 id="i-think-i-might-try-this-again">I think I might try this again</h1>
-<p>I was very glad to have such great (and forgiving) roleplayers in my campaign.  When the GM is fresh, there's a lot less room for noobs or troublemakers.</p>
-<p>I'm definitely sold on lightweight rules sets, especially when going for a more cinematic feel.  The less of a barrier there is between the players and the cool things they want their characters to do, the better.</p>
-<p>I have a suspicion that we might try this (noobs GMs practicing with friends) again sometime soon - if you have any suggestions for easy-to-pick-up gaming systems, or good scenarios for some one-shot sessions, then surrender your knowledge to my gaping mind-hole!</p>
-]]></description><link>https://joshduff.com/2010-01-15-running-my-first-campaign.md</link><guid isPermaLink="true">https://joshduff.com/2010-01-15-running-my-first-campaign.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Sat, 16 Jan 2010 03:41:00 GMT</pubDate></item><item><title><![CDATA[My accomplishment for the day: a MySQL quine!]]></title><description><![CDATA[<p>"<a href="http://en.wikipedia.org/wiki/Quine_%28computing%29">Quine</a>:" a program that outputs it's complete source code when run.</p>
-<p>I was lounging around in the MySQL chat room on irc.freenode.net, and someone suggested that I try to write a MySQL quine - a database query that would return the text of the query itself.</p>
-<p>After about half an hour of screwing around, I got it!  It may not be a fantastic achievement, but I feel pretty leet about writing my first quine in a database query language.</p>
-<pre lang="mysql">
-SELECT REPLACE(@v:='SELECT REPLACE(@v:=\'2\',1+1,REPLACE(REPLACE(@v,\'\\\\\',\'\\\\\\\\\'),\'\\\'\',\'\\\\\\\'\'));',1+1,REPLACE(REPLACE(@v,'\\','\\\\'),'\'','\\\''));
-</pre>
-<p>Only 167 characters.  Hah!</p>
-]]></description><link>https://joshduff.com/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.md</link><guid isPermaLink="true">https://joshduff.com/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Sat, 29 Nov 2008 12:38:00 GMT</pubDate></item><item><title><![CDATA[Writing SQL for applications]]></title><description><![CDATA[<p>For about the last decade I've been writing business software backed by relational databases.  Working with my teammates, I have acquired conventions for writing schema and production queries that make interacting with the database simpler and easier.</p>
-<p>These conventions primarily optimize for <strong>reading or writing queries in production code</strong>.</p>
-<p>I believe it is fair to say that for most business applications, the schema + data <em>is</em> the application, with the rest of the code there to make the application easy to work with.</p>
-<p>As Patrick McKenzie likes to remind us, most of our industry is built on building specialized spreadsheets.</p>
-<blockquote>
-<p>Every spreadsheet shared in a business is an angel announcing another SaaS app still needs to be built.</p>
-<p>-- @patio11 <a href="https://twitter.com/patio11/status/655674551615942657">2015-10-18</a></p>
-</blockquote>
-<p>The less friction involved in interacting with the underlying data, the greater our ability to develop our application.</p>
-<h1 id="schema-design-conventions">Schema design conventions</h1>
-<p>Most of the conventions in schema design enable two things:</p>
-<p>First, the ability to write queries without having to look up a bunch of table schemas to remind yourself what the column names are, or spelling idiosyncrasies.</p>
-<p>Second, looking at a single table and quickly understanding all of its relationships.</p>
-<h2 id="the-primary-key-column-should-be-either-id-or-the-table-name-suffixed-with-_id">The primary key column should be either <code>id</code>, or the table name suffixed with <code>_id</code></h2>
-<p>It's a matter of preference whether you use <code>customer_id</code> versus <code>id</code> as the primary key column of the <code>customer</code> table, you could make arguments either direction - just apply the convention consistently.</p>
-<p>The actual suffix/name doesn't matter, but <code>_id</code> seems to be the most common convention.</p>
-<p>The main point is that whatever suffix you pick should be consistent across the entire schema.  This lets you join to another table without having to remember anything but the table name.</p>
-<h2 id="foreign-keys-should-always-contain-the-name-of-the-table-they-link-to">Foreign keys should always contain the name of the table they link to</h2>
-<p>If rows in your <code>invoice</code> table link to rows in your <code>customer</code> table, the invoice table should be named <code>customer_id</code>, not <code>buyer_id</code> or <code>purchaser_id</code>.</p>
-<p>This convention lets you know what the foreign keys of a table are referencing just by looking at the output from <code>DESCRIBE tablename</code>, which makes writing queries easier.  It also makes queries in code easier to follow.</p>
-<p>Sometimes the name of the column by itself isn't enough - for example, besides the purchasing customer, your invoice might have a <code>referrer_customer_id</code>.  As long as the column ends with the <code>[tablename]_id</code> for the table you're linking to, everything is good and easy to read.  Naming that column <code>referrer_id</code> makes your schema much more difficult to read and requires you to memorize a bunch of special-case names.</p>
-<h2 id="all-tables-have-a-single-column-auto-increment-primary-key">All tables have a single-column auto-increment primary key</h2>
-<p>This is something I waffled on a lot in my early years.  After all, isn't the primary key just an arbitrarily chosen candidate key?  Why not use a "natural" key, if one exists?</p>
-<p>If you're using MySQL + InnoDB, there are real performance benefits to using an auto-increment primary key, but even if that were not the case I have become convinced that natural keys should not be used as the primary key.</p>
-<p>No matter how sure you are that a natural candidate key will never change, and that all the values in the key are immutable after being inserted, it is very likely that at some point, business concerns will require that some of the values be changed, breaking all foreign key references and caches throughout your system.</p>
-<p>That fear alone is pretty motivating.  But beyond that I have found that when foreign keys use identifiers that don't have any business concern outside of the database, queries are easier to write and mutating state in tables becomes less scary.</p>
-<h2 id="no-abbreviations-in-table-or-column-names">No abbreviations in table or column names</h2>
-<p>Abbreviations and otherwise shortened labels make your schema difficult to read, and incomprehensible to people who don't spend every minute in the project.  Saving those occasional keystrokes is not worth it.</p>
-<p>Making an exception for industry-standard abbreviations is fine - in the car parts inventory industry, <code>vin</code> is a reasonable column name, and <code>esp</code> is an acceptable table name in the email marketing industry.</p>
-<p>Using abbreviations that you come up with yourself, or drpping vwls to sv chars is counterproductive.</p>
-<h2 id="no-plural-table-names">No plural table names</h2>
-<p>This is one of the simplest conventions, but the one that causes the most annoyance when ignored.</p>
-<p>If your schema has a mix of pluralized and non-pluralized table names, you will forever be referring to your list of table names to remember if you should be typing <code>customer</code> or <code>customers</code>.</p>
-<p>Half the time I see someone with a plural table name, they leave the <code>s</code> off of some or all of the key references - does the invoice table contain a <code>customer_id</code> column, or a <code>customers_id</code> column?  I dunno, better go look.</p>
-<p>Just remember that the table name should be representative of what a single row contains.  A row in the <code>invoice</code> table contains an <code>invoice</code>, not <code>invoices</code>.</p>
-<p>This will allow you to write queries with many joins without having to look up a bunch of column/table names.</p>
-<h1 id="query-conventions">Query conventions</h1>
-<p>These conventions all have the goal of making queries in production code easier to read and maintain.</p>
-<h2 id="no-select">No <code>SELECT *</code></h2>
-<p>Perhaps the most <a href="http://www.parseerror.com/blog/select-*-is-evil">commonly-known SQL antipattern</a>.</p>
-<p>Queries should specify exactly the columns that you require.  There are performance implications, but beyond that, your queries should be explicit about what they are doing, for the reader's benefit.</p>
-<h2 id="no-aliases">No aliases</h2>
-<p>I see lots of developers aliasing table names in production queries.</p>
-<pre><code>SELECT i.total
-FROM invoice AS i
-WHERE i.customer_id = ?
-</code></pre>
-<p>This reduces the number of characters you type at the expense of taking more work to read the query when someone comes across it in the code later.  Don't make that tradeoff!</p>
-<p>Developers shouldn't have to pull in a bunch of specialized naming context to be able to understand a query.  You want to be able to read over any part of the query and understand what columns are being used without having to read over the from and join clauses to memorize any aliases.</p>
-<p>There's an obvious exception for when you need to reference the same table twice in different from/join clauses.  When writing production queries, you should still try to make the alias meaningful!</p>
-<pre><code>FROM invoice
-JOIN invoice AS other_invoices_from_same_customer ON other_invoices_from_same_customer.customer_id = invoice.customer_id
-    AND other_invoices_from_same_customer.invoice_id != invoice.invoice_id
-</code></pre>
-<h2 id="always-use-table-identifiers-in-multi-table-queries">Always use table identifiers in multi-table queries</h2>
-<p>Similarly, if you consistently use table names in column identifiers, you make it easier to read over your query in smaller chunks.  <code>SELECT customer_id</code> is less meaningful than <code>SELECT invoice.customer_id</code>.</p>
-<p>This convention does make it easier to add joins to existing queries.  However, in my mind the primary advantage is the improved readability.</p>
-<h2 id="uppercase-everything-except-identifiers">Uppercase everything except identifiers</h2>
-<p>Sadly, I haven't yet worked with a code editor that applied SQL syntax highlighting inside of static strings.</p>
-<p>Uppercasing the non-identifier parts of the SQL (e.g. <code>FROM invoice</code> instead of <code>from invoice</code>) makes queries embedded in code easier to read.</p>
-<h2 id="newlines-before-each-query-clause">Newlines before each query clause</h2>
-<p>A query is composed of an ordered list of components called "clauses".  Queries are easier to read when the clauses are separated by newlines.</p>
-<pre><code>SELECT SUM(invoice.total)
-FROM customer
-JOIN invoice ON invoice.invoice_id = customer.customer_id
-    AND invoice.finalized = TRUE
-WHERE customer.customer_id = ?
-</code></pre>
-<p>As opposed to</p>
-<pre><code>SELECT SUM(invoice.total) FROM customer JOIN invoice ON invoice.invoice_id = customer.customer_id AND invoice.finalized = TRUE
-WHERE customer.customer_id = ?
-</code></pre>
-<p>You and your team can come up with your own conventions around the rest of the whitespace, but I think newlines before each clause are a must for readability.</p>
-<h1 id="personal-context">Personal context</h1>
-<p>I've worked on evolving schemas with hundreds of tables.  Following these conventions has made life demonstrably better.  Frustration is decreased, less time is wasted.</p>
-<p>I have spent countless nights helping people with schema and query issues in <a href="http://hashmysql.org/">#mysql</a> on Freenode, and the <a href="http://chat.stackoverflow.com/rooms/592/mysql-and-relational-databases">MySQL room on StackOverflow</a>.  Most developers do not appear to follow strong conventions like these.</p>
-<p>At ISoft, in the early days of <a href="http://wikido.isoftdata.com/index.php/ITrack/Enterprise">ITrack Enterprise</a>, we were able to take a week and refactor the hodge-podge of tables (probably 80 at the time), bringing them in line with the conventions we had set up at the time, and updating the code to match.</p>
-<p>This paid off enormously over the years as the application was deployed to many customers and the schema grew to ~200 tables.  Not many applications get that chance, though - you have to evolve your schema while continuing to deliver features and fixes.</p>
-<p>It's not hopeless - you can achieve an easy-to-work-with schema - as long as your team is on board, you leave things better than you found them when working in an area of the schema.</p>
-<p>This is something I'm still working on!  I got super-excited to learn more after listening to Neal Ford's <em>Continuous Delivery: Infrastructure and Data</em> talk at Uberconf, and am following his recommendation to read <a href="https://www.amazon.com/gp/product/0321774515/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0321774515&amp;linkCode=as2&amp;tag=josduf-20&amp;linkId=5983034458d49f14545009fbc8d5b31f">Refactoring Databases: Evolutionary Database Design</a>.</p>
-<h1 id="in-conclusion">In conclusion</h1>
-<p>Your application is defined by its schema and the queries you use to interact with it.  Embrace it!  Keep it simple!  It will pay off.</p>
-]]></description><link>https://joshduff.com/2016-07-writing-sql.md</link><guid isPermaLink="true">https://joshduff.com/2016-07-writing-sql.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Tue, 26 Jul 2016 01:11:19 GMT</pubDate></item><item><title><![CDATA[Why your webapp needs a state-based router]]></title><description><![CDATA[<p>Yeah, the title is slightly hyperbolic - state routers aren't appropriate for every webapp.  Your webapp probably needs one though!</p>
+]]></description><link>https://joshduff.com/2014-11-22-noddity.md</link><guid isPermaLink="true">https://joshduff.com/2014-11-22-noddity.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Sun, 23 Nov 2014 03:34:30 GMT</pubDate></item><item><title><![CDATA[Why your webapp needs a state-based router]]></title><description><![CDATA[<p>Yeah, the title is slightly hyperbolic - state routers aren't appropriate for every webapp.  Your webapp probably needs one though!</p>
 <h2 id="quick-intro">Quick intro</h2>
 <p>Let's lay out a few definitions before diving in to avoid possible misunderstandings:</p>
 <ul>
@@ -702,4 +620,106 @@ WHERE customer.customer_id = ?
 <h2 id="in-conclusion">In conclusion</h2>
 <p>Like everything else I make, the code to Communal Checklist is <a href="https://github.com/TehShrike/communal-checklist">public on Github</a> and is licensed <a href="http://wtfpl2.com/">WTFPL</a>.</p>
 <p>If you want a lightweight gift-registry/checklist collaboration app that doesn't require you to sign in, go to <a href="http://communalchecklist.com/">communalchecklist.com</a>!</p>
-]]></description><link>https://joshduff.com/2015-09-communal-checklist.md</link><guid isPermaLink="true">https://joshduff.com/2015-09-communal-checklist.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Wed, 02 Sep 2015 18:04:27 GMT</pubDate></item></channel></rss>
+]]></description><link>https://joshduff.com/2015-09-communal-checklist.md</link><guid isPermaLink="true">https://joshduff.com/2015-09-communal-checklist.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Wed, 02 Sep 2015 18:04:27 GMT</pubDate></item><item><title><![CDATA[Writing SQL for applications]]></title><description><![CDATA[<p>For about the last decade I've been writing business software backed by relational databases.  Working with my teammates, I have acquired conventions for writing schema and production queries that make interacting with the database simpler and easier.</p>
+<p>These conventions primarily optimize for <strong>reading or writing queries in production code</strong>.</p>
+<p>I believe it is fair to say that for most business applications, the schema + data <em>is</em> the application, with the rest of the code there to make the application easy to work with.</p>
+<p>As Patrick McKenzie likes to remind us, most of our industry is built on building specialized spreadsheets.</p>
+<blockquote>
+<p>Every spreadsheet shared in a business is an angel announcing another SaaS app still needs to be built.</p>
+<p>-- @patio11 <a href="https://twitter.com/patio11/status/655674551615942657">2015-10-18</a></p>
+</blockquote>
+<p>The less friction involved in interacting with the underlying data, the greater our ability to develop our application.</p>
+<h1 id="schema-design-conventions">Schema design conventions</h1>
+<p>Most of the conventions in schema design enable two things:</p>
+<p>First, the ability to write queries without having to look up a bunch of table schemas to remind yourself what the column names are, or spelling idiosyncrasies.</p>
+<p>Second, looking at a single table and quickly understanding all of its relationships.</p>
+<h2 id="the-primary-key-column-should-be-either-id-or-the-table-name-suffixed-with-_id">The primary key column should be either <code>id</code>, or the table name suffixed with <code>_id</code></h2>
+<p>It's a matter of preference whether you use <code>customer_id</code> versus <code>id</code> as the primary key column of the <code>customer</code> table, you could make arguments either direction - just apply the convention consistently.</p>
+<p>The actual suffix/name doesn't matter, but <code>_id</code> seems to be the most common convention.</p>
+<p>The main point is that whatever suffix you pick should be consistent across the entire schema.  This lets you join to another table without having to remember anything but the table name.</p>
+<h2 id="foreign-keys-should-always-contain-the-name-of-the-table-they-link-to">Foreign keys should always contain the name of the table they link to</h2>
+<p>If rows in your <code>invoice</code> table link to rows in your <code>customer</code> table, the invoice table should be named <code>customer_id</code>, not <code>buyer_id</code> or <code>purchaser_id</code>.</p>
+<p>This convention lets you know what the foreign keys of a table are referencing just by looking at the output from <code>DESCRIBE tablename</code>, which makes writing queries easier.  It also makes queries in code easier to follow.</p>
+<p>Sometimes the name of the column by itself isn't enough - for example, besides the purchasing customer, your invoice might have a <code>referrer_customer_id</code>.  As long as the column ends with the <code>[tablename]_id</code> for the table you're linking to, everything is good and easy to read.  Naming that column <code>referrer_id</code> makes your schema much more difficult to read and requires you to memorize a bunch of special-case names.</p>
+<h2 id="all-tables-have-a-single-column-auto-increment-primary-key">All tables have a single-column auto-increment primary key</h2>
+<p>This is something I waffled on a lot in my early years.  After all, isn't the primary key just an arbitrarily chosen candidate key?  Why not use a "natural" key, if one exists?</p>
+<p>If you're using MySQL + InnoDB, there are real performance benefits to using an auto-increment primary key, but even if that were not the case I have become convinced that natural keys should not be used as the primary key.</p>
+<p>No matter how sure you are that a natural candidate key will never change, and that all the values in the key are immutable after being inserted, it is very likely that at some point, business concerns will require that some of the values be changed, breaking all foreign key references and caches throughout your system.</p>
+<p>That fear alone is pretty motivating.  But beyond that I have found that when foreign keys use identifiers that don't have any business concern outside of the database, queries are easier to write and mutating state in tables becomes less scary.</p>
+<h2 id="no-abbreviations-in-table-or-column-names">No abbreviations in table or column names</h2>
+<p>Abbreviations and otherwise shortened labels make your schema difficult to read, and incomprehensible to people who don't spend every minute in the project.  Saving those occasional keystrokes is not worth it.</p>
+<p>Making an exception for industry-standard abbreviations is fine - in the car parts inventory industry, <code>vin</code> is a reasonable column name, and <code>esp</code> is an acceptable table name in the email marketing industry.</p>
+<p>Using abbreviations that you come up with yourself, or drpping vwls to sv chars is counterproductive.</p>
+<h2 id="no-plural-table-names">No plural table names</h2>
+<p>This is one of the simplest conventions, but the one that causes the most annoyance when ignored.</p>
+<p>If your schema has a mix of pluralized and non-pluralized table names, you will forever be referring to your list of table names to remember if you should be typing <code>customer</code> or <code>customers</code>.</p>
+<p>Half the time I see someone with a plural table name, they leave the <code>s</code> off of some or all of the key references - does the invoice table contain a <code>customer_id</code> column, or a <code>customers_id</code> column?  I dunno, better go look.</p>
+<p>Just remember that the table name should be representative of what a single row contains.  A row in the <code>invoice</code> table contains an <code>invoice</code>, not <code>invoices</code>.</p>
+<p>This will allow you to write queries with many joins without having to look up a bunch of column/table names.</p>
+<h1 id="query-conventions">Query conventions</h1>
+<p>These conventions all have the goal of making queries in production code easier to read and maintain.</p>
+<h2 id="no-select">No <code>SELECT *</code></h2>
+<p>Perhaps the most <a href="http://www.parseerror.com/blog/select-*-is-evil">commonly-known SQL antipattern</a>.</p>
+<p>Queries should specify exactly the columns that you require.  There are performance implications, but beyond that, your queries should be explicit about what they are doing, for the reader's benefit.</p>
+<h2 id="no-aliases">No aliases</h2>
+<p>I see lots of developers aliasing table names in production queries.</p>
+<pre><code>SELECT i.total
+FROM invoice AS i
+WHERE i.customer_id = ?
+</code></pre>
+<p>This reduces the number of characters you type at the expense of taking more work to read the query when someone comes across it in the code later.  Don't make that tradeoff!</p>
+<p>Developers shouldn't have to pull in a bunch of specialized naming context to be able to understand a query.  You want to be able to read over any part of the query and understand what columns are being used without having to read over the from and join clauses to memorize any aliases.</p>
+<p>There's an obvious exception for when you need to reference the same table twice in different from/join clauses.  When writing production queries, you should still try to make the alias meaningful!</p>
+<pre><code>FROM invoice
+JOIN invoice AS other_invoices_from_same_customer ON other_invoices_from_same_customer.customer_id = invoice.customer_id
+    AND other_invoices_from_same_customer.invoice_id != invoice.invoice_id
+</code></pre>
+<h2 id="always-use-table-identifiers-in-multi-table-queries">Always use table identifiers in multi-table queries</h2>
+<p>Similarly, if you consistently use table names in column identifiers, you make it easier to read over your query in smaller chunks.  <code>SELECT customer_id</code> is less meaningful than <code>SELECT invoice.customer_id</code>.</p>
+<p>This convention does make it easier to add joins to existing queries.  However, in my mind the primary advantage is the improved readability.</p>
+<h2 id="uppercase-everything-except-identifiers">Uppercase everything except identifiers</h2>
+<p>Sadly, I haven't yet worked with a code editor that applied SQL syntax highlighting inside of static strings.</p>
+<p>Uppercasing the non-identifier parts of the SQL (e.g. <code>FROM invoice</code> instead of <code>from invoice</code>) makes queries embedded in code easier to read.</p>
+<h2 id="newlines-before-each-query-clause">Newlines before each query clause</h2>
+<p>A query is composed of an ordered list of components called "clauses".  Queries are easier to read when the clauses are separated by newlines.</p>
+<pre><code>SELECT SUM(invoice.total)
+FROM customer
+JOIN invoice ON invoice.invoice_id = customer.customer_id
+    AND invoice.finalized = TRUE
+WHERE customer.customer_id = ?
+</code></pre>
+<p>As opposed to</p>
+<pre><code>SELECT SUM(invoice.total) FROM customer JOIN invoice ON invoice.invoice_id = customer.customer_id AND invoice.finalized = TRUE
+WHERE customer.customer_id = ?
+</code></pre>
+<p>You and your team can come up with your own conventions around the rest of the whitespace, but I think newlines before each clause are a must for readability.</p>
+<h1 id="personal-context">Personal context</h1>
+<p>I've worked on evolving schemas with hundreds of tables.  Following these conventions has made life demonstrably better.  Frustration is decreased, less time is wasted.</p>
+<p>I have spent countless nights helping people with schema and query issues in <a href="http://hashmysql.org/">#mysql</a> on Freenode, and the <a href="http://chat.stackoverflow.com/rooms/592/mysql-and-relational-databases">MySQL room on StackOverflow</a>.  Most developers do not appear to follow strong conventions like these.</p>
+<p>At ISoft, in the early days of <a href="http://wikido.isoftdata.com/index.php/ITrack/Enterprise">ITrack Enterprise</a>, we were able to take a week and refactor the hodge-podge of tables (probably 80 at the time), bringing them in line with the conventions we had set up at the time, and updating the code to match.</p>
+<p>This paid off enormously over the years as the application was deployed to many customers and the schema grew to ~200 tables.  Not many applications get that chance, though - you have to evolve your schema while continuing to deliver features and fixes.</p>
+<p>It's not hopeless - you can achieve an easy-to-work-with schema - as long as your team is on board, you leave things better than you found them when working in an area of the schema.</p>
+<p>This is something I'm still working on!  I got super-excited to learn more after listening to Neal Ford's <em>Continuous Delivery: Infrastructure and Data</em> talk at Uberconf, and am following his recommendation to read <a href="https://www.amazon.com/gp/product/0321774515/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0321774515&amp;linkCode=as2&amp;tag=josduf-20&amp;linkId=5983034458d49f14545009fbc8d5b31f">Refactoring Databases: Evolutionary Database Design</a>.</p>
+<h1 id="in-conclusion">In conclusion</h1>
+<p>Your application is defined by its schema and the queries you use to interact with it.  Embrace it!  Keep it simple!  It will pay off.</p>
+]]></description><link>https://joshduff.com/2016-07-writing-sql.md</link><guid isPermaLink="true">https://joshduff.com/2016-07-writing-sql.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Tue, 26 Jul 2016 01:11:19 GMT</pubDate></item><item><title><![CDATA[How to remote pair-code usefully]]></title><description><![CDATA[<p>I like pair-coding and think it can be great.  Done well, it multiplies the abilities/usefulness of two developers, rather than just adding them together.</p>
+<p>The easiest way to pair in a remote setting is one person driving the keyboard and sharing their screen, and one person observing and communicating verbally or by sending code snippets via direct message.</p>
+<p>The observer can provide a lot of value by</p>
+<ul>
+<li>reading the driver's code as it is being written and mentally validating that it solves the problem at hand (kind of like a linter, but for business logic)</li>
+<li>looking up documentation or searching Stack Overflow so that driver doesn't have to mode-switch away from the code they're staring at</li>
+<li>validating or checking assumptions that the driver is making</li>
+<li>asking questions about current/next steps</li>
+</ul>
+<p>The better the driver is at "programming out loud" and narrating their thought process, the easier it is for the observer to provide value.</p>
+<p>If the observer is paying attention and knows what you're trying to do, the driver can often bang out code pretty efficiently, trusting the observer to catch issues on the fly that would have burned time in tracking them down later.</p>
+<h2 id="distracted-coding-kills">Distracted coding kills</h2>
+<p>If the driver or the observer (especially the observer) ever get distracted and aren't highly engaged in what you're working on, it can suck all the energy out of the session and make it difficult to spin back up again.</p>
+<p>If something happens that you really need to pay attention to, you should immediately say "I need to step away for a bit" and disconnect from the call until you're able to be engaged again.</p>
+<p>It's really great to be able to lean on someone else's brain while problem-solving.  If they're not engaged, leaning on their brain will lead to falling over, and train you not to count on them.</p>
+<h2 id="communicating-verbally-while-coding-can-be-frustrating">Communicating verbally while coding can be frustrating</h2>
+<p>Verbalizing what you are trying to do to another human while you're in coding-mode can be really difficult if you're not used to it.</p>
+<p>Don't give up on it – it gets easier as you exercise it, and I believe the skill transfers over to lots of other communicating-with-prose-about-code contexts.</p>
+<p>One of the reasons I dislike screen-sharing tools like Screenhero that let you click/type on the other person's screen is because it lets you give in to the "it's hard to explain, just let me do it".</p>
+<p>Having to explain it with words is where a lot of the value comes from, and I believe it levels up your ability to communicate as teammates.</p>
+]]></description><link>https://joshduff.com/2021-08-24-pair-coding.md</link><guid isPermaLink="true">https://joshduff.com/2021-08-24-pair-coding.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Tue, 24 Aug 2021 18:28:36 GMT</pubDate></item></channel></rss>
