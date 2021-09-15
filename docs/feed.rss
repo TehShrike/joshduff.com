@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Josh Duff .com]]></title><description><![CDATA[Josh Duff .com]]></description><link>https://joshduff.com/</link><generator>RSS for Node</generator><lastBuildDate>Tue, 24 Aug 2021 18:34:58 GMT</lastBuildDate><atom:link href="https://joshduff.com/feed.rss" rel="self" type="application/rss+xml"/><ttl>720</ttl><item><title><![CDATA[My accomplishment for the day: a MySQL quine!]]></title><description><![CDATA[<p>"<a href="http://en.wikipedia.org/wiki/Quine_%28computing%29">Quine</a>:" a program that outputs it's complete source code when run.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Josh Duff .com]]></title><description><![CDATA[Josh Duff .com]]></description><link>https://joshduff.com/</link><generator>RSS for Node</generator><lastBuildDate>Wed, 15 Sep 2021 20:01:57 GMT</lastBuildDate><atom:link href="https://joshduff.com/feed.rss" rel="self" type="application/rss+xml"/><ttl>720</ttl><item><title><![CDATA[My accomplishment for the day: a MySQL quine!]]></title><description><![CDATA[<p>"<a href="http://en.wikipedia.org/wiki/Quine_%28computing%29">Quine</a>:" a program that outputs it's complete source code when run.</p>
 <p>I was lounging around in the MySQL chat room on irc.freenode.net, and someone suggested that I try to write a MySQL quine - a database query that would return the text of the query itself.</p>
 <p>After about half an hour of screwing around, I got it!  It may not be a fantastic achievement, but I feel pretty leet about writing my first quine in a database query language.</p>
 <pre lang="mysql">
@@ -114,58 +114,7 @@ DELIMITER ;
 <pre><code>UPDATE `table` SET `field` = f_sentence_case(`field`, 3);
 </code></pre>
 <p>Other than that, my only specs for the query were for it to be functional and hopefully not break my brain when I went back to read it later.  If anyone has any significant improvements to it, let me know!</p>
-]]></description><link>https://joshduff.com/2010-01-22-convert-blocks-of-text-to-sentence-case.md</link><guid isPermaLink="true">https://joshduff.com/2010-01-22-convert-blocks-of-text-to-sentence-case.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Fri, 22 Jan 2010 13:31:00 GMT</pubDate></item><item><title><![CDATA[Logical errors in queries: DO NOT WANT]]></title><description><![CDATA[<p>During my career developing database-driven software (teehee, I'm a professional) I've noted that the most horrific query errors are the logical ones - queries that parse correctly, and return reasonable-looking data, but make wrong assumptions about how different parts of the query relate to each other.</p>
-<p>One particular error that I've seen time and time again (even from people who have been writing queries for a while) can occur when summarizing data from multiple tables that have a one-to-many relationship.</p>
-<p>...In other words, it could occur in queries written for most database-driven software.</p>
-<h2 id="solution-fix-the-problem-by-writing-about-it">Solution: fix the problem by writing about it!</h2>
-<p>I wrote <a href="http://wikido.isoftdata.com/index.php/The_GROUPing_pitfall">a page documenting</a> the cause of the logical error, doing my best to warn people against letting it slip into their own code.</p>
-<p>I attempted to write it so it would be easy to read, possibly even entertaining (a lofty goal for a manual on writing database queries, perhaps) - there is some colorful language and plenty of juvenile humor mixed with the tech-speak.</p>
-<p>The doc itself is part of the wiki of the company where I work.  I don't write a ton of documentation for our developers or customers (certainly not as much as I should), but whenever I do, I get this awesome feeling of usefulness.  Oh, and pride.  Sometimes, I feel so proud, that I feel compelled to link other people (who have no relationship to my company) to what I wrote!  Ridiculous, I know.</p>
-<p>Remember: if you write queries, it is your responsibility to guarantee that they return true and accurate data!</p>
-]]></description><link>https://joshduff.com/2010-02-04-logical-errors-in-queries-do-not-want.md</link><guid isPermaLink="true">https://joshduff.com/2010-02-04-logical-errors-in-queries-do-not-want.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Thu, 04 Feb 2010 15:17:00 GMT</pubDate></item><item><title><![CDATA[Run a query for every table in a database]]></title><description><![CDATA[<p>Ever wished you could run a dangerous query like DROP TABLE or TRUNCATE against every table in a database in a single query?</p>
-<p>No?</p>
-<p>Well, how about something like CHECK or REPAIR table, then?</p>
-<p>If you ever find yourself in the rare situation where you need to run the same query across every table in a database, this procedure might make your life easier:</p>
-<pre><code>DELIMITER $
-CREATE PROCEDURE `p_run_for_each_table`(IN strDatabase TEXT, IN strOperation TEXT)
-    DETERMINISTIC
-BEGIN
-    DECLARE strQuery TEXT;
-    DECLARE strTable VARCHAR(255);
-    DECLARE bDone INT DEFAULT 0;
-    DECLARE TableCursor CURSOR FOR
-        SELECT `TABLE_NAME`
-        FROM `information_schema`.`TABLES`
-        WHERE `TABLE_SCHEMA` = strDatabase AND TABLE_TYPE = 'BASE TABLE';
-    DECLARE CONTINUE HANDLER FOR NOT FOUND SET bDone = 1;
-
-    OPEN TableCursor;
-
-    REPEAT
-        FETCH TableCursor INTO strTable;
-
-        SET @QueryThatWasPassedIn := REPLACE(
-            REPLACE(strOperation, '{?database}', strDatabase)
-            , '{?table}', strTable);
-
-        PREPARE Statement FROM @QueryThatWasPassedIn;
-        EXECUTE Statement;
-    UNTIL bDone END REPEAT;
-
-    CLOSE TableCursor;
-    DEALLOCATE PREPARE Statement;
-END$
-DELIMITER ;
-</code></pre>
-<h1 id="useage">Useage</h1>
-<p>The procedure takes two parameters.  The first one is the name of the database whose tables you want to run the query for.</p>
-<p>The second is the query you would like to run.  The strings "{?database}" and "{?table}" will be replaced with the database and table names.</p>
-<pre><code>CALL p_run_for_each_table('databasename', 'SELECT * FROM {?database}.{?table}');
-</code></pre>
-<h1 id="what-queries-you-can-run">What queries you can run</h1>
-<p>You should be able to use any queries that can be run in a prepared statement - you can find the list about two-thirds of the way down <a href="http://dev.mysql.com/doc/refman/5.1/en/sql-syntax-prepared-statements.html">this page</a>.</p>
-<p>As of MySQL 5.1, you can run these queries: "<code>ALTER TABLE</code>, <code>CALL</code>, <code>COMMIT</code>, <code>CREATE INDEX</code>, <code>CREATE TABLE</code>, <code>DELETE</code>, <code>DO</code>, <code>DROP INDEX</code>, <code>DROP TABLE</code>, <code>INSERT</code>, <code>RENAME TABLE</code>, <code>REPLACE</code>, <code>SELECT</code>, <code>SET</code>, <code>UPDATE</code>, and most <code>SHOW</code> statements."</p>
-]]></description><link>https://joshduff.com/2010-02-19-run-a-query-for-every-table-in-a-database.md</link><guid isPermaLink="true">https://joshduff.com/2010-02-19-run-a-query-for-every-table-in-a-database.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Fri, 19 Feb 2010 08:16:00 GMT</pubDate></item><item><title><![CDATA[Sandwich war crimes: the Dirty Mother]]></title><description><![CDATA[<p>For those attending a university, the end of a semester is a time of much rejoicing.  During my last semesters at such an institution, I took place in an end-of-year celebratory tradition involving a ridiculous sandwich.</p>
+]]></description><link>https://joshduff.com/2010-01-22-convert-blocks-of-text-to-sentence-case.md</link><guid isPermaLink="true">https://joshduff.com/2010-01-22-convert-blocks-of-text-to-sentence-case.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Fri, 22 Jan 2010 13:31:00 GMT</pubDate></item><item><title><![CDATA[Sandwich war crimes: the Dirty Mother]]></title><description><![CDATA[<p>For those attending a university, the end of a semester is a time of much rejoicing.  During my last semesters at such an institution, I took place in an end-of-year celebratory tradition involving a ridiculous sandwich.</p>
 <p>In some issue of Maxim (November 2005?) there was an article featuring absurd sandwich-based foods.  So ridiculous were these edibles that some fraternity brothers of mine decided that the consumption of one such sandwich would make a fitting end-of-semester celebration.</p>
 <p>I was unable to find the original article online, but found the ingredients <a href="https://web.archive.org/web/20101103053652/http://www.ntxalliance.com/index.php?action=printpage;topic=3970.0">here</a>.  I post them here for posterity.</p>
 <h2 id="the-dirty-mother">The Dirty Mother</h2>
@@ -328,7 +277,58 @@ if ((bPaid || bUnpaid) &amp;&amp; !(bPaid &amp;&amp; bUnpaid))
 <p>8-|</p>
 <h1 id="so-yeah">So, yeah...</h1>
 <p>Found any entertaining metadata in code?  Link me!</p>
-]]></description><link>https://joshduff.com/2010-06-21-profanities-and-other-funny-words.md</link><guid isPermaLink="true">https://joshduff.com/2010-06-21-profanities-and-other-funny-words.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Mon, 21 Jun 2010 09:11:00 GMT</pubDate></item><item><title><![CDATA[How Should We Then Drive?]]></title><description><![CDATA[<p><em>Inside joke: the title of this post is a reference to <a href="http://en.wikipedia.org/wiki/How_Should_We_Then_Live%3F">a book</a> I have never actually read</em></p>
+]]></description><link>https://joshduff.com/2010-06-21-profanities-and-other-funny-words.md</link><guid isPermaLink="true">https://joshduff.com/2010-06-21-profanities-and-other-funny-words.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Mon, 21 Jun 2010 09:11:00 GMT</pubDate></item><item><title><![CDATA[Run a query for every table in a database]]></title><description><![CDATA[<p>Ever wished you could run a dangerous query like DROP TABLE or TRUNCATE against every table in a database in a single query?</p>
+<p>No?</p>
+<p>Well, how about something like CHECK or REPAIR table, then?</p>
+<p>If you ever find yourself in the rare situation where you need to run the same query across every table in a database, this procedure might make your life easier:</p>
+<pre><code>DELIMITER $
+CREATE PROCEDURE `p_run_for_each_table`(IN strDatabase TEXT, IN strOperation TEXT)
+    DETERMINISTIC
+BEGIN
+    DECLARE strQuery TEXT;
+    DECLARE strTable VARCHAR(255);
+    DECLARE bDone INT DEFAULT 0;
+    DECLARE TableCursor CURSOR FOR
+        SELECT `TABLE_NAME`
+        FROM `information_schema`.`TABLES`
+        WHERE `TABLE_SCHEMA` = strDatabase AND TABLE_TYPE = 'BASE TABLE';
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET bDone = 1;
+
+    OPEN TableCursor;
+
+    REPEAT
+        FETCH TableCursor INTO strTable;
+
+        SET @QueryThatWasPassedIn := REPLACE(
+            REPLACE(strOperation, '{?database}', strDatabase)
+            , '{?table}', strTable);
+
+        PREPARE Statement FROM @QueryThatWasPassedIn;
+        EXECUTE Statement;
+    UNTIL bDone END REPEAT;
+
+    CLOSE TableCursor;
+    DEALLOCATE PREPARE Statement;
+END$
+DELIMITER ;
+</code></pre>
+<h1 id="useage">Useage</h1>
+<p>The procedure takes two parameters.  The first one is the name of the database whose tables you want to run the query for.</p>
+<p>The second is the query you would like to run.  The strings "{?database}" and "{?table}" will be replaced with the database and table names.</p>
+<pre><code>CALL p_run_for_each_table('databasename', 'SELECT * FROM {?database}.{?table}');
+</code></pre>
+<h1 id="what-queries-you-can-run">What queries you can run</h1>
+<p>You should be able to use any queries that can be run in a prepared statement - you can find the list about two-thirds of the way down <a href="http://dev.mysql.com/doc/refman/5.1/en/sql-syntax-prepared-statements.html">this page</a>.</p>
+<p>As of MySQL 5.1, you can run these queries: "<code>ALTER TABLE</code>, <code>CALL</code>, <code>COMMIT</code>, <code>CREATE INDEX</code>, <code>CREATE TABLE</code>, <code>DELETE</code>, <code>DO</code>, <code>DROP INDEX</code>, <code>DROP TABLE</code>, <code>INSERT</code>, <code>RENAME TABLE</code>, <code>REPLACE</code>, <code>SELECT</code>, <code>SET</code>, <code>UPDATE</code>, and most <code>SHOW</code> statements."</p>
+]]></description><link>https://joshduff.com/2010-02-19-run-a-query-for-every-table-in-a-database.md</link><guid isPermaLink="true">https://joshduff.com/2010-02-19-run-a-query-for-every-table-in-a-database.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Fri, 19 Feb 2010 08:16:00 GMT</pubDate></item><item><title><![CDATA[Logical errors in queries: DO NOT WANT]]></title><description><![CDATA[<p>During my career developing database-driven software (teehee, I'm a professional) I've noted that the most horrific query errors are the logical ones - queries that parse correctly, and return reasonable-looking data, but make wrong assumptions about how different parts of the query relate to each other.</p>
+<p>One particular error that I've seen time and time again (even from people who have been writing queries for a while) can occur when summarizing data from multiple tables that have a one-to-many relationship.</p>
+<p>...In other words, it could occur in queries written for most database-driven software.</p>
+<h2 id="solution-fix-the-problem-by-writing-about-it">Solution: fix the problem by writing about it!</h2>
+<p>I wrote <a href="http://wikido.isoftdata.com/index.php/The_GROUPing_pitfall">a page documenting</a> the cause of the logical error, doing my best to warn people against letting it slip into their own code.</p>
+<p>I attempted to write it so it would be easy to read, possibly even entertaining (a lofty goal for a manual on writing database queries, perhaps) - there is some colorful language and plenty of juvenile humor mixed with the tech-speak.</p>
+<p>The doc itself is part of the wiki of the company where I work.  I don't write a ton of documentation for our developers or customers (certainly not as much as I should), but whenever I do, I get this awesome feeling of usefulness.  Oh, and pride.  Sometimes, I feel so proud, that I feel compelled to link other people (who have no relationship to my company) to what I wrote!  Ridiculous, I know.</p>
+<p>Remember: if you write queries, it is your responsibility to guarantee that they return true and accurate data!</p>
+]]></description><link>https://joshduff.com/2010-02-04-logical-errors-in-queries-do-not-want.md</link><guid isPermaLink="true">https://joshduff.com/2010-02-04-logical-errors-in-queries-do-not-want.md</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Thu, 04 Feb 2010 15:17:00 GMT</pubDate></item><item><title><![CDATA[How Should We Then Drive?]]></title><description><![CDATA[<p><em>Inside joke: the title of this post is a reference to <a href="http://en.wikipedia.org/wiki/How_Should_We_Then_Live%3F">a book</a> I have never actually read</em></p>
 <p>I believe that God created the world, and that those who are <a href="http://en.wikipedia.org/wiki/Limited_atonement">chosen</a> by him should obey him to the best of their abilities.  Despite these aspirations, I'm a terrible sinner.</p>
 <p>Nonetheless, at least I've got goals to aspire to, right?  Sure, there are quite a few that most people don't agree with, especially <a href="http://www.biblegateway.com/passage/?search=leviticus%2018:22&amp;amp;version=MSG">the ones that prohibit actions that non-Christians (and even many self-proclaimed Christians) don't want to call evil</a>.</p>
 <p>Still, most people are on board with the second-greatest commandment - in fact, <a href="http://store.penny-arcade.com/products/pat070181">according to popular culture</a>, that is in fact the main point of Jesus' coming to Earth!</p>
@@ -359,7 +359,7 @@ The former is by far the most common - the other vehicles on the road have a ten
 <h1 id="i-m-glad-i-m-smarter-than-that">I'm glad I'm smarter than that!</h1>
 <p>Oh wait, no, I get mad exactly like that, all the time.  Despite the Bible hammering in the fact that <a href="http://www.openbible.info/topics/self-control">God expects you to be working on this self-control thing</a>, I've raged at other drivers about 100% more than I should have.  What am I supposed to do, turn every driving excursion into a painful turn-the-other-cheek exercise?</p>
 <p>Well, that has kind of happened - but not until after I started adopting a proactive stance towards driving smart.</p>
-<p>My life was changed (no, really!) when I read <a href="http://trafficwaves.org/">this site</a> written by an engineer on the internet.  I'd recommend reading it over, but here's the basic premise:</p>
+<p>My life was changed (no, really!) when I read <a href="http://web.archive.org/web/20201109033625/http://trafficwaves.org/trafexp.html">this site</a> written by an engineer on the internet.  I'd recommend reading it over, but here's the basic premise:</p>
 <ul>
 <li>Busy roads (especially big ones like highways) get inefficient to travel on quite a bit</li>
 <li>It turns out that if you drive in a certain way, you can make highway driving a lot more efficient... not just for yourself, but for all the people behind you, too.</li>
