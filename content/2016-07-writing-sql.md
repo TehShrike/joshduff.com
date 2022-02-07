@@ -13,7 +13,7 @@ As Patrick McKenzie likes to remind us, most of our industry is built on buildin
 
 > Every spreadsheet shared in a business is an angel announcing another SaaS app still needs to be built.
 >
-> -- @patio11 [2015-10-18](https://twitter.com/patio11/status/655674551615942657)
+> – @patio11 [2015-10-18](https://twitter.com/patio11/status/655674551615942657)
 
 The less friction involved in interacting with the underlying data, the greater our ability to develop our application.
 
