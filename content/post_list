@@ -1,0 +1,15 @@
+---
+title: post_list
+date: 2017-02-16T15:37:34.176Z
+markdown: false
+---
+
+<ol class=post_list>
+	{{#postList}}
+		<li>
+			<a href="{{pathPrefix}}{{pagePathPrefix}}{{filename.replace(/\.md$/, '.html')}}">
+				{{title}}
+			</a>
+		</li>
+	{{/postList}}
+</ol>

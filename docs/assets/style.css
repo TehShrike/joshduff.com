@@ -1,42 +1,53 @@
-#sidebar {
-	float: left;
-	position: relative;
-	padding: 25px;
-	width: 300px;
-}
-
-#main {
-	float: left;
-	padding: 20px;
-	margin: 10px;
-	width: 700px;
+* {
+	margin: 0;
+	box-sizing: border-box;
 }
 
 body {
-	float: left;
-	min-width: 1110px;
+	--gap: 16px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: var(--gap);
+
+	margin-left: auto;
+	margin-right: auto;
+
 	color: #141414;
 	background-color: #FAFAFA;
 
 	font-family: "Merriweather", "PT Serif", Georgia, "Times New Roman", serif;
-	font-size: 1.2em;
+	font-size: 18px;
 	line-height: 1.4;
+
+	padding: 16px;
+	width: 100%;
+	max-width: 700px;
 }
 
-#sidebar ol {
+header {
+	display: flex;
+	gap: 32px;
+	align-items: center;
+}
+
+.post_list {
 	padding: 0;
+
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
 }
 
-#sidebar li a {
-	text-decoration: none;
-}
-
-#sidebar li {
-	padding-bottom: 4px;
-	border-bottom: thin solid rgba(55, 42, 26, 1);
-	margin: 20px 0px;
+.post_list li {
 	line-height: 1.05;
 	list-style-type: none;
+}
+
+.post_list a {
+	text-decoration: none;
+	border-bottom: thin solid rgba(55, 42, 26, 1);
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -45,10 +56,6 @@ h1,h2,h3,h4,h5,h6 {
 
 h1 {
 	font-size: 1.6em;
-}
-
-div.post-content > h1 {
-	font-size: 1.4em;
 }
 
 h2 {
@@ -63,31 +70,60 @@ h4 {
 	font-size: .8em;
 }
 
-img.logo {
-	display: block;
-	width: 120px;
-	margin-left: auto;
-	margin-right: auto;
+.logo {
+	width: 80px;
 }
 
-div#edit-post-link {
+ol, ul {
+	padding: 0 0 0 18px;
+}
+
+main {
 	display: flex;
-	justify-content: flex-end;
+	flex-direction: column;
+	gap: var(--gap);
 }
 
-div#edit-post-link a {
+footer {
+	display: flex;
+	justify-content: space-between;
+}
+
+.edit_post_link {
 	text-decoration: none;
 	color: gray;
 }
 
 blockquote {
 	background-color: #ECECEC;
-	padding: 5px 30px;
+	padding: 4px 16px;
 	border-radius: 5px;
-	margin: 10px 20px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
 }
 
 code, pre {
 	font-family: "Monaco","Courier","monospace";
 	font-size: .8em;
 }
+
+pre {
+	border-left: thin solid rgba(55, 42, 26, 1);
+	padding-left: 4px;
+}
+
+@media (max-width: 400px) {
+	body {
+		font-size: 16px;
+		--gap: 8px;
+		padding: 8px;
+	}
+}
+
+/*
+media query for small screens
+smaller fonts
+smaller paddings
+smaller gaps?

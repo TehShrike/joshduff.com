@@ -3,20 +3,35 @@ title: Post template
 markdown: false
 ---
 
-<div id="sidebar">
-	::sidebar::
-</div>
+<header>
+	<a href="/">
+		<img class="logo" src="/images/logo.svg">
+	</a>
 
-<div id="main">
-	{{#editLink}}<div id="edit-post-link"><a href="{{editLink}}{{current}}" target=_blank rel="external noreferrer">Edit</a></div>{{/editLink}}
-	<article>
-		<div>
-			{{#metadata.title}}
-				<h1>{{metadata.title}}</h1>
-			{{/metadata.title}}
-			<div class="post-content">
-				{{{html}}}
-			</div>
-		</div>
-	</article>
-</div>
+	{{#metadata.title}}
+		<h1>{{metadata.title}}</h1>
+	{{/metadata.title}}
+</header>
+
+<main>
+	{{{html}}}
+</main>
+
+{{#if metadata.is_index_page !== true}}
+	<hr>
+
+	<footer>
+		<a href="/">More posts</a>
+
+		{{#editLink}}
+			<a
+				class=edit_post_link
+				href="{{editLink}}{{current}}"
+				target=_blank
+				rel="external noreferrer"
+			>
+				Edit
+			</a>
+		{{/editLink}}
+	</footer>
+{{/if}}

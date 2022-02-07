@@ -21,35 +21,13 @@
 	</head>
 
 	<body>
-		<div id="sidebar"><p><a href="/">
-<img class="logo" src="/images/logo.svg">
-</a></p>
-<div>
-    <h3>Posts</h3>
-    <ol>
-            <li><a href="/2021-08-24-pair-coding.html">How to remote pair-code usefully</a></li>
-            <li><a href="/2016-07-writing-sql.html">Writing SQL for applications</a></li>
-            <li><a href="/2015-09-communal-checklist.html">Side project post-partum: Communal Checklist</a></li>
-            <li><a href="/2015-06-why-you-need-a-state-router.html">Why your webapp needs a state-based router</a></li>
-            <li><a href="/2014-11-22-noddity.html">Writing Noddity</a></li>
-            <li><a href="/2012-11-29-an-entreaty.html">An entreaty</a></li>
-            <li><a href="/2011-09-26-how-should-we-then-drive.html">How Should We Then Drive?</a></li>
-            <li><a href="/2010-06-21-profanities-and-other-funny-words.html">Profanities and other funny words</a></li>
-            <li><a href="/2010-05-25-dirty-mother.html">Sandwich war crimes: the Dirty Mother</a></li>
-            <li><a href="/2010-02-19-run-a-query-for-every-table-in-a-database.html">Run a query for every table in a database</a></li>
-            <li><a href="/2010-02-04-logical-errors-in-queries-do-not-want.html">Logical errors in queries: DO NOT WANT</a></li>
-            <li><a href="/2010-01-22-convert-blocks-of-text-to-sentence-case.html">Convert blocks of text to sentence case in MySQL</a></li>
-            <li><a href="/2010-01-15-running-my-first-campaign.html">Running my first campaign!</a></li>
-            <li><a href="/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.html">My accomplishment for the day: a MySQL quine!</a></li>
-    </ol>
-</div>
-</div> <div id="main"><div id="edit-post-link"><a href="https://github.com/TehShrike/joshduff.com/edit/master/content/2016-07-writing-sql.md" target="_blank" rel="external noreferrer">Edit</a></div> <article><div><h1>Writing SQL for applications</h1> <div class="post-content"><p>For about the last decade I've been writing business software backed by relational databases.  Working with my teammates, I have acquired conventions for writing schema and production queries that make interacting with the database simpler and easier.</p>
+		<header><a href="/"><img class="logo" src="/images/logo.svg"></a> <h1>Writing SQL for applications</h1></header> <main><p>For about the last decade I've been writing business software backed by relational databases.  Working with my teammates, I have acquired conventions for writing schema and production queries that make interacting with the database simpler and easier.</p>
 <p>These conventions primarily optimize for <strong>reading or writing queries in production code</strong>.</p>
 <p>I believe it is fair to say that for most business applications, the schema + data <em>is</em> the application, with the rest of the code there to make the application easy to work with.</p>
 <p>As Patrick McKenzie likes to remind us, most of our industry is built on building specialized spreadsheets.</p>
 <blockquote>
 <p>Every spreadsheet shared in a business is an angel announcing another SaaS app still needs to be built.</p>
-<p>-- @patio11 <a href="https://twitter.com/patio11/status/655674551615942657">2015-10-18</a></p>
+<p>– @patio11 <a href="https://twitter.com/patio11/status/655674551615942657">2015-10-18</a></p>
 </blockquote>
 <p>The less friction involved in interacting with the underlying data, the greater our ability to develop our application.</p>
 <h1 id="schema-design-conventions">Schema design conventions</h1>
@@ -125,7 +103,7 @@ WHERE customer.customer_id = ?
 <p>This is something I'm still working on!  I got super-excited to learn more after listening to Neal Ford's <em>Continuous Delivery: Infrastructure and Data</em> talk at Uberconf, and am following his recommendation to read <a href="https://www.amazon.com/gp/product/0321774515/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0321774515&amp;linkCode=as2&amp;tag=josduf-20&amp;linkId=5983034458d49f14545009fbc8d5b31f">Refactoring Databases: Evolutionary Database Design</a>.</p>
 <h1 id="in-conclusion">In conclusion</h1>
 <p>Your application is defined by its schema and the queries you use to interact with it.  Embrace it!  Keep it simple!  It will pay off.</p>
-</div></div></article></div>
+</main> <hr> <footer><a href="/">More posts</a> <a class="edit_post_link" href="https://github.com/TehShrike/joshduff.com/edit/master/content/2016-07-writing-sql.md" target="_blank" rel="external noreferrer">Edit</a></footer>
 	</body>
 
 	<script type="module" src="//instant.page/1.1.0" integrity="sha384-EwBObn5QAxP8f09iemwAJljc+sU+eUXeL9vSBw1eNmVarwhKk2F9vBEpaN9rsrtp"></script>
