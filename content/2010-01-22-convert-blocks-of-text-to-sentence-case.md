@@ -3,9 +3,9 @@ date: 2010-01-22T07:31:00-06:00
 
 You know what I hate?  Paragraphs of capital (or all lowercase) letters.
 
-The other day a coworker was looking to beautify a large quantity of data spread across some MySQL tables.  I created this function to make his life easier:
+The other day a coworker was looking to beautify a large quantity of data spread across some MySQL tables.  I created this function to make his life easier:
 
-```
+```sql
 DELIMITER $$
 CREATE FUNCTION `f_sentence_case`(strInput TEXT, nMinimumLength INT) RETURNS TEXT
 DETERMINISTIC
