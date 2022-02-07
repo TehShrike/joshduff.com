@@ -1,11 +1,69 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Josh Duff .com]]></title><description><![CDATA[Josh Duff .com]]></description><link>https://joshduff.com/</link><generator>RSS for Node</generator><lastBuildDate>Mon, 07 Feb 2022 19:24:58 GMT</lastBuildDate><atom:link href="https://joshduff.com/feed.rss" rel="self" type="application/rss+xml"/><ttl>720</ttl><item><title><![CDATA[My accomplishment for the day: a MySQL quine!]]></title><description><![CDATA[<p>"<a href="http://en.wikipedia.org/wiki/Quine_%28computing%29">Quine</a>:" a program that outputs it's complete source code when run.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Josh Duff .com]]></title><description><![CDATA[Josh Duff .com]]></description><link>https://joshduff.com/</link><generator>RSS for Node</generator><lastBuildDate>Mon, 07 Feb 2022 19:34:16 GMT</lastBuildDate><atom:link href="https://joshduff.com/feed.rss" rel="self" type="application/rss+xml"/><ttl>720</ttl><item><title><![CDATA[My accomplishment for the day: a MySQL quine!]]></title><description><![CDATA[<p>"<a href="http://en.wikipedia.org/wiki/Quine_%28computing%29">Quine</a>:" a program that outputs it's complete source code when run.</p>
 <p>I was lounging around in the MySQL chat room on irc.freenode.net, and someone suggested that I try to write a MySQL quine - a database query that would return the text of the query itself.</p>
 <p>After about half an hour of screwing around, I got it!  It may not be a fantastic achievement, but I feel pretty leet about writing my first quine in a database query language.</p>
 <pre lang="mysql">
 SELECT REPLACE(@v:='SELECT REPLACE(@v:=\'2\',1+1,REPLACE(REPLACE(@v,\'\\\\\',\'\\\\\\\\\'),\'\\\'\',\'\\\\\\\'\'));',1+1,REPLACE(REPLACE(@v,'\\','\\\\'),'\'','\\\''));
 </pre>
 <p>Only 167 characters.  Hah!</p>
-]]></description><link>https://joshduff.com/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.html</link><guid isPermaLink="true">https://joshduff.com/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Sat, 29 Nov 2008 12:38:00 GMT</pubDate></item><item><title><![CDATA[Convert blocks of text to sentence case in MySQL]]></title><description><![CDATA[<p>You know what I hate?  Paragraphs of capital (or all lowercase) letters.</p>
+]]></description><link>https://joshduff.com/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.html</link><guid isPermaLink="true">https://joshduff.com/2008-11-29-my-accomplishment-for-the-day-a-mysql-quine.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Sat, 29 Nov 2008 12:38:00 GMT</pubDate></item><item><title><![CDATA[Running my first campaign!]]></title><description><![CDATA[<p>Less than a year ago, I jumped off the high-board of nerdiness into the deep end of the role-playing pool - and ran my very first campaign.</p>
+<p>I wanted a fun campaign (duh) with rules and story that would be hard for me to mess up.  For most of the campaign, the only players were two good friends with solid role-playing experience, so I was able to rely on the players to contribute a good amount of quality.</p>
+<h1 id="the-story">The story</h1>
+<p>I took a stab at running an old-west campaign, borrowing every western-movie trope I could think of.  The PCs played <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/TheGunslinger">gunslinging</a> lawmen for hire, riding into a town oppressed by a gang of n'er-do-wells populated with plenty of tobacco-spitting, expendable, no-good <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/Outlaw">outlaws</a> to gun down.</p>
+<p>Without going into too much detail: the players cleaned out a counterfeiting operation in an old widow's basement, were recruited to clean up the town, used aggressive negotiations to get rid of gang members harassing the mayor's house, and stopped another group of enforcers who were coercing money from some water-starved farmers.</p>
+<p>Back in town, they took over the town prison, had a gun fight in a booby-trapped house, escaped just as it blew sky high, confronted the aristocratic gang leader on the porch of his ranch house, and finished with a gun battle on main street.</p>
+<h1 id="the-system">The system</h1>
+<p>At the recommendation of an experienced GM, I used the <a href="http://error420.com/documents/Boot%20Hill%202nd%20Edition.pdf">Boot Hill (second edition) rules</a>, a creation of <a href="http://en.wikipedia.org/wiki/Gary_Gygax">Gary Gygax</a> and <a href="http://en.wikipedia.org/wiki/Brian_Blume">Brian Blume</a>.</p>
+<p>I was looking for super-lightweight rules, so I didn't even use the full rules set described by the Boot Hill book - the only dice rolling during the campaign happened during combat.  Boot Hill gun combat is simple:</p>
+<ul>
+<li>The fastest draw (based on weapon speed and personal speed) goes first</li>
+<li>Roll percentile dice (based on your weapon, personal accuracy, and a relatively short list of modifiers) to see if you hit:</li>
+</ul>
+<p><img src="/images/hit-determination-chart.jpg" alt="&quot;Boot Hill hit determination chart&quot;" title="Boot Hill hit determination chart"></p>
+<ul>
+<li>Roll percentile dice on a wound chart to see where you hit:</li>
+</ul>
+<p><img src="/images/wound-chart.jpg" alt="&quot;Boot Hill wound chart&quot;" title="Boot Hill wound chart"></p>
+<p>Mortal wounds kill you.</p>
+<p>Any wound at all gives you a -5% chance at getting to shoot first, and also to hitting the other guy.</p>
+<p>Once your strength drops below 50% of what it is normally (which can often be done with a single serious wound), you start getting -20% to shooting first, and hitting.</p>
+<p>It's a simple system, but one that facilitates characters dying pretty often.  A couple good rolls, and a single shot can permanently take out any character - even if he just rolled into town with a new bandanna and a pocket full of hit points.</p>
+<h2 id="wait-easy-character-death">Wait, easy character death?</h2>
+<p>I wanted my players to enjoy a good old-fashioned movie version of the wild west.  They were supposed to play the heroes - the guys who go flying through bar windows and come up swinging!</p>
+<p>I wanted quick and dirty combat, but I wanted my PCs to be a bit more survivable.  I tried a few things to counteract the cheapness of life:</p>
+<h3 id="giving-the-pcs-slightly-better-stats">Giving the PCs slightly better stats</h3>
+<p>Standard nerfing - most of my NPCs would drop below half strength after one serious wound (which severely limits a character for the rest of the combat).  The player characters could took at least two (non-mortal) wounds before things got really sticky.</p>
+<h3 id="making-healing-much-more-trivial-than-the-rules-suggested">Making healing much more trivial than the rules suggested</h3>
+<p>According to the rules, healing is a fairly slow process, taking days or weeks to recover from any sort of combat wound.  My player characters needed to be able to get into gun battles every few hours - they could be rejuvenated by a good night's sleep, or the restorative powers of a <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/ApronMatron">kindly old lady</a>'s stew.</p>
+<h3 id="adding-a-new-game-mechanic">Adding a new game mechanic</h3>
+<p>I decided to take a hint from the awesome and successful video game <em>Left 4 Dead</em>.  In that universe, survivor characters who go down are immobilized, but can still fire handguns until their teammates pull them up (or the zombies fill up at the brain buffet).</p>
+<p>Any time one of the PCs took mortal damage, I did something similar - instead of the characters dying, they dropped to the ground and could fire their handguns at a reduced rate.  If another player made it over to them and used a round to pull them up, that character could enter the fray with some of their strength restored.</p>
+<p>It wasn't a mechanic that saw a lot of use, but it turned several potential defeats into narrow victories.  I was happy with this - narrowly beating the baddies is a lot more exhilarating than seeing one side gun down the other like dogs.</p>
+<h1 id="also-i-m-a-noob">Also, I'm a noob</h1>
+<p>I found it a highly enjoyable experience, but there were weak spots.  The campaign was fairly light on dialog, which isn't necessarily a bad thing - I just wish I were better at having a conversation in character, and thinking on my feet.</p>
+<p>My weaknesses were most evident in the final session, where my PCs held the big baddy in prison and were looking around for a way to prove his guilt (they were lawful, after all) or uncover the next plot hook.</p>
+<p>I left them wandering around looking for a clue far too long before I initiated the next action for them to deal with.  They grilled the prisoner for some time (good roleplaying, at least), looking for the magic words that would advance the plot.  Blah.</p>
+<h1 id="i-think-i-might-try-this-again">I think I might try this again</h1>
+<p>I was very glad to have such great (and forgiving) roleplayers in my campaign.  When the GM is fresh, there's a lot less room for noobs or troublemakers.</p>
+<p>I'm definitely sold on lightweight rules sets, especially when going for a more cinematic feel.  The less of a barrier there is between the players and the cool things they want their characters to do, the better.</p>
+<p>I have a suspicion that we might try this (noobs GMs practicing with friends) again sometime soon - if you have any suggestions for easy-to-pick-up gaming systems, or good scenarios for some one-shot sessions, then surrender your knowledge to my gaping mind-hole!</p>
+]]></description><link>https://joshduff.com/2010-01-15-running-my-first-campaign.html</link><guid isPermaLink="true">https://joshduff.com/2010-01-15-running-my-first-campaign.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Sat, 16 Jan 2010 03:41:00 GMT</pubDate></item><item><title><![CDATA[Sandwich war crimes: the Dirty Mother]]></title><description><![CDATA[<p>For those attending a university, the end of a semester is a time of much rejoicing.  During my last semesters at such an institution, I took place in an end-of-year celebratory tradition involving a ridiculous sandwich.</p>
+<p>In some issue of Maxim (November 2005?) there was an article featuring absurd sandwich-based foods.  So ridiculous were these edibles that some fraternity brothers of mine decided that the consumption of one such sandwich would make a fitting end-of-semester celebration.</p>
+<p>I was unable to find the original article online, but found the ingredients <a href="https://web.archive.org/web/20101103053652/http://www.ntxalliance.com/index.php?action=printpage;topic=3970.0">here</a>.  I post them here for posterity.</p>
+<h2 id="the-dirty-mother">The Dirty Mother</h2>
+<blockquote>
+<p>"Use two slices of buttery Texas toast as bookends, and slap together a sausage patty, hash browns, and three generous chops of ham, separating each layer with a slice of cheddar cheese. Throw two fried eggs in the mix, and comfort them with four strips of crispy bacon. A splash of ketchup or Worcestershire sauce is your choice, but tons of S&amp;P is mandatory."</p>
+</blockquote>
+<p>We would usually go to IHOP, order the ingredients individually, and assemble the sandwiches ourselves.  The braver souls in the group would purchase fries as a side dish.</p>
+<p>These memories are making me hungry.</p>
+]]></description><link>https://joshduff.com/2010-05-25-dirty-mother.html</link><guid isPermaLink="true">https://joshduff.com/2010-05-25-dirty-mother.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Tue, 25 May 2010 19:57:00 GMT</pubDate></item><item><title><![CDATA[Logical errors in queries: DO NOT WANT]]></title><description><![CDATA[<p>During my career developing database-driven software (teehee, I'm a professional) I've noted that the most horrific query errors are the logical ones - queries that parse correctly, and return reasonable-looking data, but make wrong assumptions about how different parts of the query relate to each other.</p>
+<p>One particular error that I've seen time and time again (even from people who have been writing queries for a while) can occur when summarizing data from multiple tables that have a one-to-many relationship.</p>
+<p>...In other words, it could occur in queries written for most database-driven software.</p>
+<h2 id="solution-fix-the-problem-by-writing-about-it">Solution: fix the problem by writing about it!</h2>
+<p>I wrote <a href="http://wikido.isoftdata.com/index.php/The_GROUPing_pitfall">a page documenting</a> the cause of the logical error, doing my best to warn people against letting it slip into their own code.</p>
+<p>I attempted to write it so it would be easy to read, possibly even entertaining (a lofty goal for a manual on writing database queries, perhaps) - there is some colorful language and plenty of juvenile humor mixed with the tech-speak.</p>
+<p>The doc itself is part of the wiki of the company where I work.  I don't write a ton of documentation for our developers or customers (certainly not as much as I should), but whenever I do, I get this awesome feeling of usefulness.  Oh, and pride.  Sometimes, I feel so proud, that I feel compelled to link other people (who have no relationship to my company) to what I wrote!  Ridiculous, I know.</p>
+<p>Remember: if you write queries, it is your responsibility to guarantee that they return true and accurate data!</p>
+]]></description><link>https://joshduff.com/2010-02-04-logical-errors-in-queries-do-not-want.html</link><guid isPermaLink="true">https://joshduff.com/2010-02-04-logical-errors-in-queries-do-not-want.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Thu, 04 Feb 2010 15:17:00 GMT</pubDate></item><item><title><![CDATA[Convert blocks of text to sentence case in MySQL]]></title><description><![CDATA[<p>You know what I hate?  Paragraphs of capital (or all lowercase) letters.</p>
 <p>The other day a coworker was looking to beautify a large quantity of data spread across some MySQL tables.  I created this function to make his life easier:</p>
 <pre><code class="language-sql">DELIMITER $
 CREATE FUNCTION `f_sentence_case`(strInput TEXT, nMinimumLength INT) RETURNS TEXT
@@ -73,56 +131,7 @@ DELIMITER ;
 <pre><code>UPDATE `table` SET `field` = f_sentence_case(`field`, 3);
 </code></pre>
 <p>Other than that, my only specs for the query were for it to be functional and hopefully not break my brain when I went back to read it later.  If anyone has any significant improvements to it, let me know!</p>
-]]></description><link>https://joshduff.com/2010-01-22-convert-blocks-of-text-to-sentence-case.html</link><guid isPermaLink="true">https://joshduff.com/2010-01-22-convert-blocks-of-text-to-sentence-case.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Fri, 22 Jan 2010 13:31:00 GMT</pubDate></item><item><title><![CDATA[Running my first campaign!]]></title><description><![CDATA[<p>Less than a year ago, I jumped off the high-board of nerdiness into the deep end of the role-playing pool - and ran my very first campaign.</p>
-<p>I wanted a fun campaign (duh) with rules and story that would be hard for me to mess up.  For most of the campaign, the only players were two good friends with solid role-playing experience, so I was able to rely on the players to contribute a good amount of quality.</p>
-<h1 id="the-story">The story</h1>
-<p>I took a stab at running an old-west campaign, borrowing every western-movie trope I could think of.  The PCs played <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/TheGunslinger">gunslinging</a> lawmen for hire, riding into a town oppressed by a gang of n'er-do-wells populated with plenty of tobacco-spitting, expendable, no-good <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/Outlaw">outlaws</a> to gun down.</p>
-<p>Without going into too much detail: the players cleaned out a counterfeiting operation in an old widow's basement, were recruited to clean up the town, used aggressive negotiations to get rid of gang members harassing the mayor's house, and stopped another group of enforcers who were coercing money from some water-starved farmers.</p>
-<p>Back in town, they took over the town prison, had a gun fight in a booby-trapped house, escaped just as it blew sky high, confronted the aristocratic gang leader on the porch of his ranch house, and finished with a gun battle on main street.</p>
-<h1 id="the-system">The system</h1>
-<p>At the recommendation of an experienced GM, I used the <a href="http://error420.com/documents/Boot%20Hill%202nd%20Edition.pdf">Boot Hill (second edition) rules</a>, a creation of <a href="http://en.wikipedia.org/wiki/Gary_Gygax">Gary Gygax</a> and <a href="http://en.wikipedia.org/wiki/Brian_Blume">Brian Blume</a>.</p>
-<p>I was looking for super-lightweight rules, so I didn't even use the full rules set described by the Boot Hill book - the only dice rolling during the campaign happened during combat.  Boot Hill gun combat is simple:</p>
-<ul>
-<li>The fastest draw (based on weapon speed and personal speed) goes first</li>
-<li>Roll percentile dice (based on your weapon, personal accuracy, and a relatively short list of modifiers) to see if you hit:</li>
-</ul>
-<p><img src="/images/hit-determination-chart.jpg" alt="&quot;Boot Hill hit determination chart&quot;" title="Boot Hill hit determination chart"></p>
-<ul>
-<li>Roll percentile dice on a wound chart to see where you hit:</li>
-</ul>
-<p><img src="/images/wound-chart.jpg" alt="&quot;Boot Hill wound chart&quot;" title="Boot Hill wound chart"></p>
-<p>Mortal wounds kill you.</p>
-<p>Any wound at all gives you a -5% chance at getting to shoot first, and also to hitting the other guy.</p>
-<p>Once your strength drops below 50% of what it is normally (which can often be done with a single serious wound), you start getting -20% to shooting first, and hitting.</p>
-<p>It's a simple system, but one that facilitates characters dying pretty often.  A couple good rolls, and a single shot can permanently take out any character - even if he just rolled into town with a new bandanna and a pocket full of hit points.</p>
-<h2 id="wait-easy-character-death">Wait, easy character death?</h2>
-<p>I wanted my players to enjoy a good old-fashioned movie version of the wild west.  They were supposed to play the heroes - the guys who go flying through bar windows and come up swinging!</p>
-<p>I wanted quick and dirty combat, but I wanted my PCs to be a bit more survivable.  I tried a few things to counteract the cheapness of life:</p>
-<h3 id="giving-the-pcs-slightly-better-stats">Giving the PCs slightly better stats</h3>
-<p>Standard nerfing - most of my NPCs would drop below half strength after one serious wound (which severely limits a character for the rest of the combat).  The player characters could took at least two (non-mortal) wounds before things got really sticky.</p>
-<h3 id="making-healing-much-more-trivial-than-the-rules-suggested">Making healing much more trivial than the rules suggested</h3>
-<p>According to the rules, healing is a fairly slow process, taking days or weeks to recover from any sort of combat wound.  My player characters needed to be able to get into gun battles every few hours - they could be rejuvenated by a good night's sleep, or the restorative powers of a <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/ApronMatron">kindly old lady</a>'s stew.</p>
-<h3 id="adding-a-new-game-mechanic">Adding a new game mechanic</h3>
-<p>I decided to take a hint from the awesome and successful video game <em>Left 4 Dead</em>.  In that universe, survivor characters who go down are immobilized, but can still fire handguns until their teammates pull them up (or the zombies fill up at the brain buffet).</p>
-<p>Any time one of the PCs took mortal damage, I did something similar - instead of the characters dying, they dropped to the ground and could fire their handguns at a reduced rate.  If another player made it over to them and used a round to pull them up, that character could enter the fray with some of their strength restored.</p>
-<p>It wasn't a mechanic that saw a lot of use, but it turned several potential defeats into narrow victories.  I was happy with this - narrowly beating the baddies is a lot more exhilarating than seeing one side gun down the other like dogs.</p>
-<h1 id="also-i-m-a-noob">Also, I'm a noob</h1>
-<p>I found it a highly enjoyable experience, but there were weak spots.  The campaign was fairly light on dialog, which isn't necessarily a bad thing - I just wish I were better at having a conversation in character, and thinking on my feet.</p>
-<p>My weaknesses were most evident in the final session, where my PCs held the big baddy in prison and were looking around for a way to prove his guilt (they were lawful, after all) or uncover the next plot hook.</p>
-<p>I left them wandering around looking for a clue far too long before I initiated the next action for them to deal with.  They grilled the prisoner for some time (good roleplaying, at least), looking for the magic words that would advance the plot.  Blah.</p>
-<h1 id="i-think-i-might-try-this-again">I think I might try this again</h1>
-<p>I was very glad to have such great (and forgiving) roleplayers in my campaign.  When the GM is fresh, there's a lot less room for noobs or troublemakers.</p>
-<p>I'm definitely sold on lightweight rules sets, especially when going for a more cinematic feel.  The less of a barrier there is between the players and the cool things they want their characters to do, the better.</p>
-<p>I have a suspicion that we might try this (noobs GMs practicing with friends) again sometime soon - if you have any suggestions for easy-to-pick-up gaming systems, or good scenarios for some one-shot sessions, then surrender your knowledge to my gaping mind-hole!</p>
-]]></description><link>https://joshduff.com/2010-01-15-running-my-first-campaign.html</link><guid isPermaLink="true">https://joshduff.com/2010-01-15-running-my-first-campaign.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Sat, 16 Jan 2010 03:41:00 GMT</pubDate></item><item><title><![CDATA[Logical errors in queries: DO NOT WANT]]></title><description><![CDATA[<p>During my career developing database-driven software (teehee, I'm a professional) I've noted that the most horrific query errors are the logical ones - queries that parse correctly, and return reasonable-looking data, but make wrong assumptions about how different parts of the query relate to each other.</p>
-<p>One particular error that I've seen time and time again (even from people who have been writing queries for a while) can occur when summarizing data from multiple tables that have a one-to-many relationship.</p>
-<p>...In other words, it could occur in queries written for most database-driven software.</p>
-<h2 id="solution-fix-the-problem-by-writing-about-it">Solution: fix the problem by writing about it!</h2>
-<p>I wrote <a href="http://wikido.isoftdata.com/index.php/The_GROUPing_pitfall">a page documenting</a> the cause of the logical error, doing my best to warn people against letting it slip into their own code.</p>
-<p>I attempted to write it so it would be easy to read, possibly even entertaining (a lofty goal for a manual on writing database queries, perhaps) - there is some colorful language and plenty of juvenile humor mixed with the tech-speak.</p>
-<p>The doc itself is part of the wiki of the company where I work.  I don't write a ton of documentation for our developers or customers (certainly not as much as I should), but whenever I do, I get this awesome feeling of usefulness.  Oh, and pride.  Sometimes, I feel so proud, that I feel compelled to link other people (who have no relationship to my company) to what I wrote!  Ridiculous, I know.</p>
-<p>Remember: if you write queries, it is your responsibility to guarantee that they return true and accurate data!</p>
-]]></description><link>https://joshduff.com/2010-02-04-logical-errors-in-queries-do-not-want.html</link><guid isPermaLink="true">https://joshduff.com/2010-02-04-logical-errors-in-queries-do-not-want.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Thu, 04 Feb 2010 15:17:00 GMT</pubDate></item><item><title><![CDATA[Run a query for every table in a database]]></title><description><![CDATA[<p>Ever wished you could run a dangerous query like DROP TABLE or TRUNCATE against every table in a database in a single query?</p>
+]]></description><link>https://joshduff.com/2010-01-22-convert-blocks-of-text-to-sentence-case.html</link><guid isPermaLink="true">https://joshduff.com/2010-01-22-convert-blocks-of-text-to-sentence-case.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Fri, 22 Jan 2010 13:31:00 GMT</pubDate></item><item><title><![CDATA[Run a query for every table in a database]]></title><description><![CDATA[<p>Ever wished you could run a dangerous query like DROP TABLE or TRUNCATE against every table in a database in a single query?</p>
 <p>No?</p>
 <p>Well, how about something like CHECK or REPAIR table, then?</p>
 <p>If you ever find yourself in the rare situation where you need to run the same query across every table in a database, this procedure might make your life easier:</p>
@@ -165,61 +174,7 @@ DELIMITER ;
 <h1 id="what-queries-you-can-run">What queries you can run</h1>
 <p>You should be able to use any queries that can be run in a prepared statement - you can find the list about two-thirds of the way down <a href="http://dev.mysql.com/doc/refman/5.1/en/sql-syntax-prepared-statements.html">this page</a>.</p>
 <p>As of MySQL 5.1, you can run these queries: "<code>ALTER TABLE</code>, <code>CALL</code>, <code>COMMIT</code>, <code>CREATE INDEX</code>, <code>CREATE TABLE</code>, <code>DELETE</code>, <code>DO</code>, <code>DROP INDEX</code>, <code>DROP TABLE</code>, <code>INSERT</code>, <code>RENAME TABLE</code>, <code>REPLACE</code>, <code>SELECT</code>, <code>SET</code>, <code>UPDATE</code>, and most <code>SHOW</code> statements."</p>
-]]></description><link>https://joshduff.com/2010-02-19-run-a-query-for-every-table-in-a-database.html</link><guid isPermaLink="true">https://joshduff.com/2010-02-19-run-a-query-for-every-table-in-a-database.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Fri, 19 Feb 2010 08:16:00 GMT</pubDate></item><item><title><![CDATA[How Should We Then Drive?]]></title><description><![CDATA[<p><em>Inside joke: the title of this post is a reference to <a href="http://en.wikipedia.org/wiki/How_Should_We_Then_Live%3F">a book</a> I have never actually read</em></p>
-<p>I believe that God created the world, and that those who are <a href="http://en.wikipedia.org/wiki/Limited_atonement">chosen</a> by him should obey him to the best of their abilities.  Despite these aspirations, I'm a terrible sinner.</p>
-<p>Nonetheless, at least I've got goals to aspire to, right?  Sure, there are quite a few that most people don't agree with, especially <a href="http://www.biblegateway.com/passage/?search=leviticus%2018:22&amp;amp;version=MSG">the ones that prohibit actions that non-Christians (and even many self-proclaimed Christians) don't want to call evil</a>.</p>
-<p>Still, most people are on board with the second-greatest commandment - in fact, <a href="http://store.penny-arcade.com/products/pat070181">according to popular culture</a>, that is in fact the main point of Jesus' coming to Earth!</p>
-<blockquote>
-<p>37 Jesus said to him, "'You shall love the LORD your God with all your heart, with all your soul, and with all your mind.'</p>
-<p>38 This is the first and great commandment.</p>
-<p>39 And the second is like it: 'You shall love your neighbor as yourself.'</p>
-<p>40 On these two commandments hang all the Law and the Prophets."</p>
-<p><a href="http://www.biblegateway.com/passage/?search=matthew%2022:37-40&amp;amp;version=MSG">Matthew 22:37-40</a> (NKJV)</p>
-</blockquote>
-<p>(And for those paying attention, yes, I consider Penny Arcade to be an arbiter of popular culture.)</p>
-<p>But if I'm not engaging in weekly gay-hunts, what IS my Christianity doing for me?  Well, among the many other instructions for living life that God passed down to us, it seems that he really does care about Christians being an improvement for the quality-of-life of the people around us:</p>
-<blockquote>
-<p>"Let me tell you why you are here. You're here to be salt-seasoning that brings out the God-flavors of this earth. If you lose your saltiness, how will people taste godliness? You've lost your usefulness and will end up in the garbage." <a href="http://www.biblegateway.com/passage/?search=matthew%205:13&amp;amp;version=MSG">Matthew 5:13</a> (MSG)</p>
-</blockquote>
-<h1 id="seriously-what-is-this-post-even-about">Seriously, what is this post even about</h1>
-<p>All right, so Christians aren't supposed to be assholes.  Most people sort of assume that already, even given plenty of implicit counter-arguments via the actions of Christians they know.</p>
-<p>However, I've noticed a high correlation between driving a vehicle on the road and anger.  While driving as a passenger, I've noticed that it is extremely common for a driver to express anger at</p>
-<ul>
-<li>The drivers sharing the road with him</li>
-<li>Shitty things that happen while driving (inconvenient red lights, poor road signs, etc)
-The former is by far the most common - the other vehicles on the road have a tendency to cut you off, slow you down, fail to announce where they are going, and generally just act like jerks.</li>
-</ul>
-<h2 id="why-does-that-burn-people-up-so-much">Why does that burn people up so much?</h2>
-<p>If I accidentally bump my shopping cart into someone else at the grocery store, I'll quickly apologize - and the odds are that they'll say something to the effect of "ah, don't worry" or give an understanding smile, or at worst give a small huff and push on in annoyance.</p>
-<p>If I turn left on a street and someone in oncoming traffic has to slow down to avoid me safely, I don't usually get a chance to hear their response.  I've driven with enough people to imagine it, though - when you see someone doing something stupid or unnecessary in a way that inconveniences you, you generally feel a quick flash of anger toward them, and may say something to that effect at their expense.</p>
-<p>Maybe it's because you just see vehicles - you're not dealing with humans, you're dealing with 4 wheels and a bumper sticker pushing [political party you hate]!  Most people are polite enough to be diplomatic in the face of being inconvenienced by another human face, but if a hunk of metal cuts you off, you feel real rage at the theoretical person inside of it!</p>
-<h1 id="i-m-glad-i-m-smarter-than-that">I'm glad I'm smarter than that!</h1>
-<p>Oh wait, no, I get mad exactly like that, all the time.  Despite the Bible hammering in the fact that <a href="http://www.openbible.info/topics/self-control">God expects you to be working on this self-control thing</a>, I've raged at other drivers about 100% more than I should have.  What am I supposed to do, turn every driving excursion into a painful turn-the-other-cheek exercise?</p>
-<p>Well, that has kind of happened - but not until after I started adopting a proactive stance towards driving smart.</p>
-<p>My life was changed (no, really!) when I read <a href="http://web.archive.org/web/20201109033625/http://trafficwaves.org/trafexp.html">this site</a> written by an engineer on the internet.  I'd recommend reading it over, but here's the basic premise:</p>
-<ul>
-<li>Busy roads (especially big ones like highways) get inefficient to travel on quite a bit</li>
-<li>It turns out that if you drive in a certain way, you can make highway driving a lot more efficient... not just for yourself, but for all the people behind you, too.</li>
-</ul>
-<p>So how does a motivated engineer make the world better?  It turns out, you can improve the quality-of-life of those around you by simply <strong>leaving a big gap between you and the vehicle in front of you</strong>.</p>
-<p>I don't want to belabor all of the points he makes (seriously, you should read his site), but the general idea is</p>
-<ul>
-<li>If you never hit your brakes, the people behind you never have to hit their brakes, which lets everyone avoid the burst-forward-then-come-to-nearly-a-complete-stop situation that happens way too often on busy roads</li>
-<li>It's easy for people to merge in in front of you, which lets the lanes next to you avoid the someone-driving-really-slow-trying-to-merge-lanes situation</li>
-</ul>
-<h1 id="is-that-really-how-you-drive-like-a-christian">Is that really how you drive like a Christian?</h1>
-<p>So you're leaving a carefully-engineered gap between you and the traffic in front of you.  Traffic behind you is demonstrably better because of it.  What's the big deal?</p>
-<p>Well, it turns out that this habit is not natural at all.  At least not to me.  When did I turn into a competitive driver looking to beat everyone else to my exit?  I'm not sure.  Maybe it was the day I got my drivers license.  Maybe it was the day I was born with two working testicles.  I haven't been able to pin it down.</p>
-<h2 id="they-just-keep-merging">They just... keep... merging!</h2>
-<p>People will merge in front of you.  And man, no matter how zen I've been feeling about driving lately, my first instinct is STILL "gotta close the gap so the rest of the horde doesn't jump in in front of me!"</p>
-<p>Calm yourself with these facts: each car who merges in front of you (potentially forcing you to let up on the accelerator in order to maintain good distance between you and the car ahead) adds... maybe 5 seconds to your trip.  Sure, there's a slim chance that those 5 seconds could cause you to miss a light somewhere, but aren't those low odds worth improving the driving situation for all those around you and behind you?</p>
-<p>Don't forget: the easier it is for people to merge into your lane, the smoother traffic will be for all of the people behind you!</p>
-<h2 id="not-dying-is-good-too">Not dying is good, too</h2>
-<p>So yeah, this falls by the wayside whenever people are in a hurry, but it turns out that the more space you leave between you and the vehicle in front of you, the safer you are.</p>
-<p>I'm struggling not to write a 500-word rant on this topic alone.  Two seconds to respond to sudden developments ahead of you makes a massive difference compared to one second... and protip: you've been counting seconds too fast.  Giving yourself a larger margin of error turns "accidents" into much safer near-misses.</p>
-<p>But keeping your car and skull dent-free are just happy side effects that can happen when you decide to try to apply the biblical principle of making-life-better-for-others to driving.</p>
-<p>Resist the power of <a href="http://www.penny-arcade.com/comic/2004/3/19/">John Gabriel's Greater Internet Fuckwad Theory</a> - start training yourself to be a blessing to the anonymized people on the road around you!</p>
-]]></description><link>https://joshduff.com/2011-09-26-how-should-we-then-drive.html</link><guid isPermaLink="true">https://joshduff.com/2011-09-26-how-should-we-then-drive.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Mon, 26 Sep 2011 08:00:00 GMT</pubDate></item><item><title><![CDATA[Profanities and other funny words]]></title><description><![CDATA[<p>I recently did a quick audit of the source code I help maintain/develop for <a href="http://wikido.isoftdata.com/index.php/ISoft_Data_Systems">the company I work for</a>.  By which I mean, I spent the last part of a Friday searching through our code for funny words.</p>
+]]></description><link>https://joshduff.com/2010-02-19-run-a-query-for-every-table-in-a-database.html</link><guid isPermaLink="true">https://joshduff.com/2010-02-19-run-a-query-for-every-table-in-a-database.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Fri, 19 Feb 2010 08:16:00 GMT</pubDate></item><item><title><![CDATA[Profanities and other funny words]]></title><description><![CDATA[<p>I recently did a quick audit of the source code I help maintain/develop for <a href="http://wikido.isoftdata.com/index.php/ISoft_Data_Systems">the company I work for</a>.  By which I mean, I spent the last part of a Friday searching through our code for funny words.</p>
 <p>I decided to open up by looking for traditional profanities - a commonly-accepted method of gauging the state of a project (see: <a href="http://www.vidarholen.net/contents/wordcount/">profanities in the Linux kernel, graphed over time</a> and <a href="http://www.kuro5hin.org/story/2004/2/15/71552/7795">a quick look at the Win2k source</a>).</p>
 <p>Below, I provide a list of my findings, with a few examples.  Enjoy a look at the source code of a functioning product with many users!</p>
 <p><em>Disclaimer: if any of the words that you are about to read will offend you, then don't read them.</em></p>
@@ -373,16 +328,61 @@ if ((bPaid || bUnpaid) &amp;&amp; !(bPaid &amp;&amp; bUnpaid))
 <p>8-|</p>
 <h1 id="so-yeah">So, yeah...</h1>
 <p>Found any entertaining metadata in code?  Link me!</p>
-]]></description><link>https://joshduff.com/2010-06-21-profanities-and-other-funny-words.html</link><guid isPermaLink="true">https://joshduff.com/2010-06-21-profanities-and-other-funny-words.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Mon, 21 Jun 2010 09:11:00 GMT</pubDate></item><item><title><![CDATA[Sandwich war crimes: the Dirty Mother]]></title><description><![CDATA[<p>For those attending a university, the end of a semester is a time of much rejoicing.  During my last semesters at such an institution, I took place in an end-of-year celebratory tradition involving a ridiculous sandwich.</p>
-<p>In some issue of Maxim (November 2005?) there was an article featuring absurd sandwich-based foods.  So ridiculous were these edibles that some fraternity brothers of mine decided that the consumption of one such sandwich would make a fitting end-of-semester celebration.</p>
-<p>I was unable to find the original article online, but found the ingredients <a href="https://web.archive.org/web/20101103053652/http://www.ntxalliance.com/index.php?action=printpage;topic=3970.0">here</a>.  I post them here for posterity.</p>
-<h2 id="the-dirty-mother">The Dirty Mother</h2>
+]]></description><link>https://joshduff.com/2010-06-21-profanities-and-other-funny-words.html</link><guid isPermaLink="true">https://joshduff.com/2010-06-21-profanities-and-other-funny-words.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Mon, 21 Jun 2010 09:11:00 GMT</pubDate></item><item><title><![CDATA[How Should We Then Drive?]]></title><description><![CDATA[<p><em>Inside joke: the title of this post is a reference to <a href="http://en.wikipedia.org/wiki/How_Should_We_Then_Live%3F">a book</a> I have never actually read</em></p>
+<p>I believe that God created the world, and that those who are <a href="http://en.wikipedia.org/wiki/Limited_atonement">chosen</a> by him should obey him to the best of their abilities.  Despite these aspirations, I'm a terrible sinner.</p>
+<p>Nonetheless, at least I've got goals to aspire to, right?  Sure, there are quite a few that most people don't agree with, especially <a href="http://www.biblegateway.com/passage/?search=leviticus%2018:22&amp;amp;version=MSG">the ones that prohibit actions that non-Christians (and even many self-proclaimed Christians) don't want to call evil</a>.</p>
+<p>Still, most people are on board with the second-greatest commandment - in fact, <a href="http://store.penny-arcade.com/products/pat070181">according to popular culture</a>, that is in fact the main point of Jesus' coming to Earth!</p>
 <blockquote>
-<p>"Use two slices of buttery Texas toast as bookends, and slap together a sausage patty, hash browns, and three generous chops of ham, separating each layer with a slice of cheddar cheese. Throw two fried eggs in the mix, and comfort them with four strips of crispy bacon. A splash of ketchup or Worcestershire sauce is your choice, but tons of S&amp;P is mandatory."</p>
+<p>37 Jesus said to him, "'You shall love the LORD your God with all your heart, with all your soul, and with all your mind.'</p>
+<p>38 This is the first and great commandment.</p>
+<p>39 And the second is like it: 'You shall love your neighbor as yourself.'</p>
+<p>40 On these two commandments hang all the Law and the Prophets."</p>
+<p><a href="http://www.biblegateway.com/passage/?search=matthew%2022:37-40&amp;amp;version=MSG">Matthew 22:37-40</a> (NKJV)</p>
 </blockquote>
-<p>We would usually go to IHOP, order the ingredients individually, and assemble the sandwiches ourselves.  The braver souls in the group would purchase fries as a side dish.</p>
-<p>These memories are making me hungry.</p>
-]]></description><link>https://joshduff.com/2010-05-25-dirty-mother.html</link><guid isPermaLink="true">https://joshduff.com/2010-05-25-dirty-mother.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Tue, 25 May 2010 19:57:00 GMT</pubDate></item><item><title><![CDATA[An entreaty]]></title><description><![CDATA[<p>(Spoiler-level: as low as I could keep it)</p>
+<p>(And for those paying attention, yes, I consider Penny Arcade to be an arbiter of popular culture.)</p>
+<p>But if I'm not engaging in weekly gay-hunts, what IS my Christianity doing for me?  Well, among the many other instructions for living life that God passed down to us, it seems that he really does care about Christians being an improvement for the quality-of-life of the people around us:</p>
+<blockquote>
+<p>"Let me tell you why you are here. You're here to be salt-seasoning that brings out the God-flavors of this earth. If you lose your saltiness, how will people taste godliness? You've lost your usefulness and will end up in the garbage." <a href="http://www.biblegateway.com/passage/?search=matthew%205:13&amp;amp;version=MSG">Matthew 5:13</a> (MSG)</p>
+</blockquote>
+<h1 id="seriously-what-is-this-post-even-about">Seriously, what is this post even about</h1>
+<p>All right, so Christians aren't supposed to be assholes.  Most people sort of assume that already, even given plenty of implicit counter-arguments via the actions of Christians they know.</p>
+<p>However, I've noticed a high correlation between driving a vehicle on the road and anger.  While driving as a passenger, I've noticed that it is extremely common for a driver to express anger at</p>
+<ul>
+<li>The drivers sharing the road with him</li>
+<li>Shitty things that happen while driving (inconvenient red lights, poor road signs, etc)
+The former is by far the most common - the other vehicles on the road have a tendency to cut you off, slow you down, fail to announce where they are going, and generally just act like jerks.</li>
+</ul>
+<h2 id="why-does-that-burn-people-up-so-much">Why does that burn people up so much?</h2>
+<p>If I accidentally bump my shopping cart into someone else at the grocery store, I'll quickly apologize - and the odds are that they'll say something to the effect of "ah, don't worry" or give an understanding smile, or at worst give a small huff and push on in annoyance.</p>
+<p>If I turn left on a street and someone in oncoming traffic has to slow down to avoid me safely, I don't usually get a chance to hear their response.  I've driven with enough people to imagine it, though - when you see someone doing something stupid or unnecessary in a way that inconveniences you, you generally feel a quick flash of anger toward them, and may say something to that effect at their expense.</p>
+<p>Maybe it's because you just see vehicles - you're not dealing with humans, you're dealing with 4 wheels and a bumper sticker pushing [political party you hate]!  Most people are polite enough to be diplomatic in the face of being inconvenienced by another human face, but if a hunk of metal cuts you off, you feel real rage at the theoretical person inside of it!</p>
+<h1 id="i-m-glad-i-m-smarter-than-that">I'm glad I'm smarter than that!</h1>
+<p>Oh wait, no, I get mad exactly like that, all the time.  Despite the Bible hammering in the fact that <a href="http://www.openbible.info/topics/self-control">God expects you to be working on this self-control thing</a>, I've raged at other drivers about 100% more than I should have.  What am I supposed to do, turn every driving excursion into a painful turn-the-other-cheek exercise?</p>
+<p>Well, that has kind of happened - but not until after I started adopting a proactive stance towards driving smart.</p>
+<p>My life was changed (no, really!) when I read <a href="http://web.archive.org/web/20201109033625/http://trafficwaves.org/trafexp.html">this site</a> written by an engineer on the internet.  I'd recommend reading it over, but here's the basic premise:</p>
+<ul>
+<li>Busy roads (especially big ones like highways) get inefficient to travel on quite a bit</li>
+<li>It turns out that if you drive in a certain way, you can make highway driving a lot more efficient... not just for yourself, but for all the people behind you, too.</li>
+</ul>
+<p>So how does a motivated engineer make the world better?  It turns out, you can improve the quality-of-life of those around you by simply <strong>leaving a big gap between you and the vehicle in front of you</strong>.</p>
+<p>I don't want to belabor all of the points he makes (seriously, you should read his site), but the general idea is</p>
+<ul>
+<li>If you never hit your brakes, the people behind you never have to hit their brakes, which lets everyone avoid the burst-forward-then-come-to-nearly-a-complete-stop situation that happens way too often on busy roads</li>
+<li>It's easy for people to merge in in front of you, which lets the lanes next to you avoid the someone-driving-really-slow-trying-to-merge-lanes situation</li>
+</ul>
+<h1 id="is-that-really-how-you-drive-like-a-christian">Is that really how you drive like a Christian?</h1>
+<p>So you're leaving a carefully-engineered gap between you and the traffic in front of you.  Traffic behind you is demonstrably better because of it.  What's the big deal?</p>
+<p>Well, it turns out that this habit is not natural at all.  At least not to me.  When did I turn into a competitive driver looking to beat everyone else to my exit?  I'm not sure.  Maybe it was the day I got my drivers license.  Maybe it was the day I was born with two working testicles.  I haven't been able to pin it down.</p>
+<h2 id="they-just-keep-merging">They just... keep... merging!</h2>
+<p>People will merge in front of you.  And man, no matter how zen I've been feeling about driving lately, my first instinct is STILL "gotta close the gap so the rest of the horde doesn't jump in in front of me!"</p>
+<p>Calm yourself with these facts: each car who merges in front of you (potentially forcing you to let up on the accelerator in order to maintain good distance between you and the car ahead) adds... maybe 5 seconds to your trip.  Sure, there's a slim chance that those 5 seconds could cause you to miss a light somewhere, but aren't those low odds worth improving the driving situation for all those around you and behind you?</p>
+<p>Don't forget: the easier it is for people to merge into your lane, the smoother traffic will be for all of the people behind you!</p>
+<h2 id="not-dying-is-good-too">Not dying is good, too</h2>
+<p>So yeah, this falls by the wayside whenever people are in a hurry, but it turns out that the more space you leave between you and the vehicle in front of you, the safer you are.</p>
+<p>I'm struggling not to write a 500-word rant on this topic alone.  Two seconds to respond to sudden developments ahead of you makes a massive difference compared to one second... and protip: you've been counting seconds too fast.  Giving yourself a larger margin of error turns "accidents" into much safer near-misses.</p>
+<p>But keeping your car and skull dent-free are just happy side effects that can happen when you decide to try to apply the biblical principle of making-life-better-for-others to driving.</p>
+<p>Resist the power of <a href="http://www.penny-arcade.com/comic/2004/3/19/">John Gabriel's Greater Internet Fuckwad Theory</a> - start training yourself to be a blessing to the anonymized people on the road around you!</p>
+]]></description><link>https://joshduff.com/2011-09-26-how-should-we-then-drive.html</link><guid isPermaLink="true">https://joshduff.com/2011-09-26-how-should-we-then-drive.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Mon, 26 Sep 2011 08:00:00 GMT</pubDate></item><item><title><![CDATA[An entreaty]]></title><description><![CDATA[<p>(Spoiler-level: as low as I could keep it)</p>
 <p>Speaking to you as someone who plays games, I entreat you to play Spec Ops: The Line.</p>
 <p>If you are the sort of person who also plays games, you may already be aware of Spec Ops. But that probably depends on the sort of game-playing-person you are.</p>
 <p>Perhaps you play video games regularly, but aren't immersed in the culture - you play your shooters, or puzzle games, or real-time-strategy, but you mostly stick to one or two genres. I believe that many of the younger crowd at my church fall into this category.</p>
@@ -558,7 +558,69 @@ if ((bPaid || bUnpaid) &amp;&amp; !(bPaid &amp;&amp; bUnpaid))
 <p>If you have a favorite template/dom manipulation library that you want to use, let me know and I'll help you write the renderer so that you can use it with abstract-state-router.</p>
 <p>If you run into any difficulties, open an issue on Github or ping me on Twitter.</p>
 <p>The module is out on npm for you to try - <a href="https://github.com/TehShrike/abstract-state-router">check it out on Github</a>!</p>
-]]></description><link>https://joshduff.com/2015-06-why-you-need-a-state-router.html</link><guid isPermaLink="true">https://joshduff.com/2015-06-why-you-need-a-state-router.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Sun, 21 Jun 2015 00:05:51 GMT</pubDate></item><item><title><![CDATA[Writing SQL for applications]]></title><description><![CDATA[<p>For about the last decade I've been writing business software backed by relational databases.  Working with my teammates, I have acquired conventions for writing schema and production queries that make interacting with the database simpler and easier.</p>
+]]></description><link>https://joshduff.com/2015-06-why-you-need-a-state-router.html</link><guid isPermaLink="true">https://joshduff.com/2015-06-why-you-need-a-state-router.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Sun, 21 Jun 2015 00:05:51 GMT</pubDate></item><item><title><![CDATA[Side project post-partum: Communal Checklist]]></title><description><![CDATA[<p>A wild side project appears!</p>
+<p>My wife was looking for a site to set up a gift registry.  She tried several sites, but they weren't great - Amazon and Target have pretty good registries, but only if you lock your friends into buying from that one store.</p>
+<p>There are more open-ended registries, but most of them require that your friends create accounts, and one of the most reasonable ones forces you to create multiple rows for each item if you wanted people to be able to indicate that they were buying say, only one of the two needed pajamas.</p>
+<p>My finely-tuned programmer senses tingled.  A simple CRUD webapp, something like a custom to-do list - I should be able to whip up a servicable app in a few evenings!  I could call it the Communal Checklist.</p>
+<p>Fast forward to about a month later.  After putting in 30-90 minutes coding every two or three days, I have finally deployed version 1.0.  Here's what I learned!</p>
+<h2 id="my-tools-are-getting-better-but-i-need-to-put-them-first">My tools are getting better but I need to put them first</h2>
+<p>My first bad decision was to not use the <a href="https://github.com/TehShrike/abstract-state-router">abstract-state-router</a>.  I didn't think it was necessary - the Communal Checklist is nearly a literal single-page application, with one home screen and one editing/viewing screen.  A simple router like <a href="https://github.com/TehShrike/hash-brown-router">hash-brown-router</a> should be plenty.</p>
+<p>I forgot about the other niceities provided by the abstract-state-router - without it, I had to</p>
+<ol>
+<li>load asynchronous data after the template has been displayed, and handle both the "loading data" and "data done loading" states</li>
+<li>deal with (or in my case, convince myself I could ignore) cleaning up event listeners on route change instead of getting a nice clean <code>destroy</code> event if the state parameters changed</li>
+<li>actually care about where the template would be inserted, and manually create the Ractive object at that DOM location (just the <code>&lt;body&gt;</code> element in this case, but still annoying)</li>
+</ol>
+<p>Turns out the abstract-state-router isn't just for medium-to-large webapps, it's handy for small apps too.  I should have used it instead of imagining that a library with a slightly smaller API would make my app simpler.</p>
+<h2 id="i-should-have-considered-the-project-as-an-excuse-to-keep-developing-my-tools">I should have considered the project as an excuse to keep developing my tools</h2>
+<p>Communal Checklist was, in my mind, something I could have ready for my wife to use in a couple evenings.  No need to work in any tools I wasn't already familiar with, I planned to just make the app and move on.</p>
+<p>Specifically, I opted to not use a <a href="https://gist.github.com/staltz/868e7e9bc2a7b8c1f754">reactive programming</a> library when hooking up my user interface.  I've been experimenting with the reactive programming library <a href="https://baconjs.github.io/">Bacon.js</a> lately and putting together some tools to make those libraries easier for me to use, but I haven't actually used a reactive programming library in an app yet.</p>
+<p>It turns out, even for relatively simple apps, hooking together business logic behind a view (even a sexy view interface like <a href="http://www.ractivejs.org/">RactiveJS</a>) isn't that pretty.  If I handled user changes with a reactive streaming library, development may have felt slightly slower at first, but the code would have ended up simpler.</p>
+<p>In addition to not slowing down development in reality, using Bacon.js to hook up a real app would have given me practical experience that would have been valuable as I use it to hook together my next, much more complicated apps.</p>
+<h2 id="make-sure-to-clarify-specs">Make sure to clarify specs...</h2>
+<p>I proudly showed my wife the beta slightly less than two weeks after I started.  She poked around a bit and then asked "how do I add categories?"</p>
+<p>An entirely reasonable request.  I hadn't considered splitting lists up into sections.</p>
+<p>Allowing items to be divvied up between different categories required small changes on the server-side to handle the changed data structure, but it took a bit more work on the client-side.</p>
+<h3 id="which-made-the-code-slightly-more-complicated">Which made the code slightly more complicated</h3>
+<p>In theory I could have just added another level of nested loops to the template and plowed forwards, adding to the long list of functions in my single list.js file, but I had already pushed past a level of code complexity that I was comfortable with.</p>
+<p>This was the first real app I'd made with RactiveJS without using the abstract-state-router, and I'd never had to figure out how to nest templates properly in Ractive.</p>
+<p>In AngularJS, I would have already created a second directive to represent a single list item, and adding category support would have just involved creating a new "category" directive to layer between the main template and the item template.</p>
+<p>The Ractive documentation revealed <a href="http://docs.ractivejs.org/latest/components">components</a> to be the reasonable choice.  I broke out list items into their own template with their own associated code and created a new category template.</p>
+<p>If I had been on the ball from the beginning I would have been using isolated scopes to make things simpler.</p>
+<h2 id="ordered-arguments-are-evil-srsly">Ordered arguments are evil srsly</h2>
+<p>I lost a couple hours tracking down bugs caused by emitting lists of 5+ arguments to the socket.io listeners on the server side.  I wasn't consistent on the argument order between all my functions, and I paid the price.</p>
+<p>You'd think I would have learned by now!  Ordered arguments are evil.</p>
+<p>I switched to emitting objects with named properties and everything became simple again.</p>
+<h2 id="sweet-stylez">Sweet stylez</h2>
+<p>I used a <a href="http://bootswatch.com/">Bootswatch</a> Bootstrap theme again.  Instant classy site design!  Biggest downside: it uses Google hosted fonts, making it impossible to work on the site without internet access to Google CDNs.</p>
+<h3 id="responsive">Responsive</h3>
+<p>Another buzzword achieved!  I decided to actually put the effort into making the site look good at small sizes.  I'd used Bootstrap's grid layout from the beginning - it turns out that making it properly responsive just involved giving all my rows a column width for every size.  w00t!</p>
+<h2 id="storage-not-a-real-database">Storage: not a real database</h2>
+<p>I am quite attracted to the <a href="http://lebron.technology/">LEBRON</a> stack.  I've used <a href="https://github.com/Level/levelup">LevelUP</a> a good bit in the past, for Noddity and other projects - it's an excellent interface to a key-value store.  And from what I've heard, LevelDB is quite a good flat-file key-value store - it's the SQLite of key-value stores, and SQLite is awesome!</p>
+<p>So I took the plunge - I wrote and deployed a webapp using a <a href="http://howfuckedismydatabase.com/nosql/">nosql</a> database.</p>
+<p>It's a pretty defensible choice - I don't expect traffic to go out of control, and using LevelUP as my interface means I can relatively easily switch to other backends besides LevelDB.  The simple key-value store makes local testing easy, and deployments are as simple as <code>npm install</code>.</p>
+<p>Yet, if I were starting today, this is another choice I would make differently.</p>
+<p>Using a key-value store actually made my server-side code more complex than it needed to be.</p>
+<p>In order to read and update a list category or a category's item with a single read, I have to store the whole tree at the same key.</p>
+<p>To update a list item, I have to look up the list by its id (my one lookup), iterate over the categories to find the one with the correct id, and then iterate over the category's items to find the id that is being updated.  I then copy the changed values over to the original document, and save the whole thing back in at the list's key.</p>
+<p>I realize that more advanced document stores have better tools for working with child documents, but most of the attraction of the key-value store for me is being able to use LevelUP as an interface.</p>
+<p>Maybe I should have stored lists, categories, and items at their own keys and suffered the extra lookups in exchange for simpler code.  Or maybe I should have just used a database that supported SQL.</p>
+<p>Relational databases are actually pretty sweet.</p>
+<h3 id="will-it-scale">Will it scale?</h3>
+<p>I have no idea!  I figure it will at least make it past the baby shower.</p>
+<p>Honestly though, the benchmarks that LevelDB advertises are far beyond what I expect this app to ever have put against it, even in the unlikely event that the Communal Checklist turns into a bustling hub of gift registries.</p>
+<h2 id="passive-income">Passive income!</h2>
+<p>Communal Checklist represents my first attempt at generating passive income.  Every time someone adds a link to an Amazon item, my affiliate code is automatically attached.</p>
+<p>If my site does ever start getting regular traffic, this may lead to some small regular income, as Amazon is a monster of internet shopping (though I understand that when it comes to first-party gift registries, Target still provides a better experience for now).</p>
+<h2 id="yet-to-do">Yet to do</h2>
+<p>The most obvious missing feature that I know of is the inability to reorder items.  If many people start using the site, I'll give <a href="https://github.com/bevacqua/dragula">dragula</a> another try (I couldn't figure out how to get the dragging styles to work in my first quick try).</p>
+<p>Other assorted TLC would include testing the app more thoroughly on phones and touchscreens, and figuring out how to make the checkboxes larger and friendlier.</p>
+<p>In the short term, I plan to slim down the CSS and inline the webfonts to increase the loading speed.  I also recently added gzipping of static content on <code>npm run build</code>.</p>
+<p>These further improvements probably won't happen unless the site sees regular traffic going forward.  Speaking of which, I suppose I need to set up some kind of analytics, too.  Does anyone know of a reasonable analytics site that Google Analytics?</p>
+<h2 id="in-conclusion">In conclusion</h2>
+<p>Like everything else I make, the code to Communal Checklist is <a href="https://github.com/TehShrike/communal-checklist">public on Github</a> and is licensed <a href="http://wtfpl2.com/">WTFPL</a>.</p>
+<p>If you want a lightweight gift-registry/checklist collaboration app that doesn't require you to sign in, go to <a href="http://communalchecklist.com/">communalchecklist.com</a>!</p>
+]]></description><link>https://joshduff.com/2015-09-communal-checklist.html</link><guid isPermaLink="true">https://joshduff.com/2015-09-communal-checklist.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Wed, 02 Sep 2015 18:04:27 GMT</pubDate></item><item><title><![CDATA[Writing SQL for applications]]></title><description><![CDATA[<p>For about the last decade I've been writing business software backed by relational databases.  Working with my teammates, I have acquired conventions for writing schema and production queries that make interacting with the database simpler and easier.</p>
 <p>These conventions primarily optimize for <strong>reading or writing queries in production code</strong>.</p>
 <p>I believe it is fair to say that for most business applications, the schema + data <em>is</em> the application, with the rest of the code there to make the application easy to work with.</p>
 <p>As Patrick McKenzie likes to remind us, most of our industry is built on building specialized spreadsheets.</p>
@@ -660,69 +722,7 @@ WHERE customer.customer_id = ?
 <p>Don't give up on it – it gets easier as you exercise it, and I believe the skill transfers over to lots of other communicating-with-prose-about-code contexts.</p>
 <p>One of the reasons I dislike screen-sharing tools like Screenhero that let you click/type on the other person's screen is because it lets you give in to the "it's hard to explain, just let me do it".</p>
 <p>Having to explain it with words is where a lot of the value comes from, and I believe it levels up your ability to communicate as teammates.</p>
-]]></description><link>https://joshduff.com/2021-08-24-pair-coding.html</link><guid isPermaLink="true">https://joshduff.com/2021-08-24-pair-coding.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Tue, 24 Aug 2021 18:28:36 GMT</pubDate></item><item><title><![CDATA[Side project post-partum: Communal Checklist]]></title><description><![CDATA[<p>A wild side project appears!</p>
-<p>My wife was looking for a site to set up a gift registry.  She tried several sites, but they weren't great - Amazon and Target have pretty good registries, but only if you lock your friends into buying from that one store.</p>
-<p>There are more open-ended registries, but most of them require that your friends create accounts, and one of the most reasonable ones forces you to create multiple rows for each item if you wanted people to be able to indicate that they were buying say, only one of the two needed pajamas.</p>
-<p>My finely-tuned programmer senses tingled.  A simple CRUD webapp, something like a custom to-do list - I should be able to whip up a servicable app in a few evenings!  I could call it the Communal Checklist.</p>
-<p>Fast forward to about a month later.  After putting in 30-90 minutes coding every two or three days, I have finally deployed version 1.0.  Here's what I learned!</p>
-<h2 id="my-tools-are-getting-better-but-i-need-to-put-them-first">My tools are getting better but I need to put them first</h2>
-<p>My first bad decision was to not use the <a href="https://github.com/TehShrike/abstract-state-router">abstract-state-router</a>.  I didn't think it was necessary - the Communal Checklist is nearly a literal single-page application, with one home screen and one editing/viewing screen.  A simple router like <a href="https://github.com/TehShrike/hash-brown-router">hash-brown-router</a> should be plenty.</p>
-<p>I forgot about the other niceities provided by the abstract-state-router - without it, I had to</p>
-<ol>
-<li>load asynchronous data after the template has been displayed, and handle both the "loading data" and "data done loading" states</li>
-<li>deal with (or in my case, convince myself I could ignore) cleaning up event listeners on route change instead of getting a nice clean <code>destroy</code> event if the state parameters changed</li>
-<li>actually care about where the template would be inserted, and manually create the Ractive object at that DOM location (just the <code>&lt;body&gt;</code> element in this case, but still annoying)</li>
-</ol>
-<p>Turns out the abstract-state-router isn't just for medium-to-large webapps, it's handy for small apps too.  I should have used it instead of imagining that a library with a slightly smaller API would make my app simpler.</p>
-<h2 id="i-should-have-considered-the-project-as-an-excuse-to-keep-developing-my-tools">I should have considered the project as an excuse to keep developing my tools</h2>
-<p>Communal Checklist was, in my mind, something I could have ready for my wife to use in a couple evenings.  No need to work in any tools I wasn't already familiar with, I planned to just make the app and move on.</p>
-<p>Specifically, I opted to not use a <a href="https://gist.github.com/staltz/868e7e9bc2a7b8c1f754">reactive programming</a> library when hooking up my user interface.  I've been experimenting with the reactive programming library <a href="https://baconjs.github.io/">Bacon.js</a> lately and putting together some tools to make those libraries easier for me to use, but I haven't actually used a reactive programming library in an app yet.</p>
-<p>It turns out, even for relatively simple apps, hooking together business logic behind a view (even a sexy view interface like <a href="http://www.ractivejs.org/">RactiveJS</a>) isn't that pretty.  If I handled user changes with a reactive streaming library, development may have felt slightly slower at first, but the code would have ended up simpler.</p>
-<p>In addition to not slowing down development in reality, using Bacon.js to hook up a real app would have given me practical experience that would have been valuable as I use it to hook together my next, much more complicated apps.</p>
-<h2 id="make-sure-to-clarify-specs">Make sure to clarify specs...</h2>
-<p>I proudly showed my wife the beta slightly less than two weeks after I started.  She poked around a bit and then asked "how do I add categories?"</p>
-<p>An entirely reasonable request.  I hadn't considered splitting lists up into sections.</p>
-<p>Allowing items to be divvied up between different categories required small changes on the server-side to handle the changed data structure, but it took a bit more work on the client-side.</p>
-<h3 id="which-made-the-code-slightly-more-complicated">Which made the code slightly more complicated</h3>
-<p>In theory I could have just added another level of nested loops to the template and plowed forwards, adding to the long list of functions in my single list.js file, but I had already pushed past a level of code complexity that I was comfortable with.</p>
-<p>This was the first real app I'd made with RactiveJS without using the abstract-state-router, and I'd never had to figure out how to nest templates properly in Ractive.</p>
-<p>In AngularJS, I would have already created a second directive to represent a single list item, and adding category support would have just involved creating a new "category" directive to layer between the main template and the item template.</p>
-<p>The Ractive documentation revealed <a href="http://docs.ractivejs.org/latest/components">components</a> to be the reasonable choice.  I broke out list items into their own template with their own associated code and created a new category template.</p>
-<p>If I had been on the ball from the beginning I would have been using isolated scopes to make things simpler.</p>
-<h2 id="ordered-arguments-are-evil-srsly">Ordered arguments are evil srsly</h2>
-<p>I lost a couple hours tracking down bugs caused by emitting lists of 5+ arguments to the socket.io listeners on the server side.  I wasn't consistent on the argument order between all my functions, and I paid the price.</p>
-<p>You'd think I would have learned by now!  Ordered arguments are evil.</p>
-<p>I switched to emitting objects with named properties and everything became simple again.</p>
-<h2 id="sweet-stylez">Sweet stylez</h2>
-<p>I used a <a href="http://bootswatch.com/">Bootswatch</a> Bootstrap theme again.  Instant classy site design!  Biggest downside: it uses Google hosted fonts, making it impossible to work on the site without internet access to Google CDNs.</p>
-<h3 id="responsive">Responsive</h3>
-<p>Another buzzword achieved!  I decided to actually put the effort into making the site look good at small sizes.  I'd used Bootstrap's grid layout from the beginning - it turns out that making it properly responsive just involved giving all my rows a column width for every size.  w00t!</p>
-<h2 id="storage-not-a-real-database">Storage: not a real database</h2>
-<p>I am quite attracted to the <a href="http://lebron.technology/">LEBRON</a> stack.  I've used <a href="https://github.com/Level/levelup">LevelUP</a> a good bit in the past, for Noddity and other projects - it's an excellent interface to a key-value store.  And from what I've heard, LevelDB is quite a good flat-file key-value store - it's the SQLite of key-value stores, and SQLite is awesome!</p>
-<p>So I took the plunge - I wrote and deployed a webapp using a <a href="http://howfuckedismydatabase.com/nosql/">nosql</a> database.</p>
-<p>It's a pretty defensible choice - I don't expect traffic to go out of control, and using LevelUP as my interface means I can relatively easily switch to other backends besides LevelDB.  The simple key-value store makes local testing easy, and deployments are as simple as <code>npm install</code>.</p>
-<p>Yet, if I were starting today, this is another choice I would make differently.</p>
-<p>Using a key-value store actually made my server-side code more complex than it needed to be.</p>
-<p>In order to read and update a list category or a category's item with a single read, I have to store the whole tree at the same key.</p>
-<p>To update a list item, I have to look up the list by its id (my one lookup), iterate over the categories to find the one with the correct id, and then iterate over the category's items to find the id that is being updated.  I then copy the changed values over to the original document, and save the whole thing back in at the list's key.</p>
-<p>I realize that more advanced document stores have better tools for working with child documents, but most of the attraction of the key-value store for me is being able to use LevelUP as an interface.</p>
-<p>Maybe I should have stored lists, categories, and items at their own keys and suffered the extra lookups in exchange for simpler code.  Or maybe I should have just used a database that supported SQL.</p>
-<p>Relational databases are actually pretty sweet.</p>
-<h3 id="will-it-scale">Will it scale?</h3>
-<p>I have no idea!  I figure it will at least make it past the baby shower.</p>
-<p>Honestly though, the benchmarks that LevelDB advertises are far beyond what I expect this app to ever have put against it, even in the unlikely event that the Communal Checklist turns into a bustling hub of gift registries.</p>
-<h2 id="passive-income">Passive income!</h2>
-<p>Communal Checklist represents my first attempt at generating passive income.  Every time someone adds a link to an Amazon item, my affiliate code is automatically attached.</p>
-<p>If my site does ever start getting regular traffic, this may lead to some small regular income, as Amazon is a monster of internet shopping (though I understand that when it comes to first-party gift registries, Target still provides a better experience for now).</p>
-<h2 id="yet-to-do">Yet to do</h2>
-<p>The most obvious missing feature that I know of is the inability to reorder items.  If many people start using the site, I'll give <a href="https://github.com/bevacqua/dragula">dragula</a> another try (I couldn't figure out how to get the dragging styles to work in my first quick try).</p>
-<p>Other assorted TLC would include testing the app more thoroughly on phones and touchscreens, and figuring out how to make the checkboxes larger and friendlier.</p>
-<p>In the short term, I plan to slim down the CSS and inline the webfonts to increase the loading speed.  I also recently added gzipping of static content on <code>npm run build</code>.</p>
-<p>These further improvements probably won't happen unless the site sees regular traffic going forward.  Speaking of which, I suppose I need to set up some kind of analytics, too.  Does anyone know of a reasonable analytics site that Google Analytics?</p>
-<h2 id="in-conclusion">In conclusion</h2>
-<p>Like everything else I make, the code to Communal Checklist is <a href="https://github.com/TehShrike/communal-checklist">public on Github</a> and is licensed <a href="http://wtfpl2.com/">WTFPL</a>.</p>
-<p>If you want a lightweight gift-registry/checklist collaboration app that doesn't require you to sign in, go to <a href="http://communalchecklist.com/">communalchecklist.com</a>!</p>
-]]></description><link>https://joshduff.com/2015-09-communal-checklist.html</link><guid isPermaLink="true">https://joshduff.com/2015-09-communal-checklist.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Wed, 02 Sep 2015 18:04:27 GMT</pubDate></item><item><title><![CDATA[Eschatology of software]]></title><description><![CDATA[<blockquote>
+]]></description><link>https://joshduff.com/2021-08-24-pair-coding.html</link><guid isPermaLink="true">https://joshduff.com/2021-08-24-pair-coding.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Tue, 24 Aug 2021 18:28:36 GMT</pubDate></item><item><title><![CDATA[Eschatology of software]]></title><description><![CDATA[<blockquote>
 <p><strong>Eschatology:</strong></p>
 <ol>
 <li>System of doctrines concerning final matters, such as death.</li>
