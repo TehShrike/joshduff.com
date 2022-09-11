@@ -37,11 +37,10 @@ header {
 
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
+	gap: 12px;
 }
 
 .post_list li {
-	line-height: 1.05;
 	list-style-type: none;
 }
 
