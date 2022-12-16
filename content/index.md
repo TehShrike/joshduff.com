@@ -7,7 +7,7 @@ markdown: false
 ---
 
 <div>
-	<a href="https://github.com/TehShrike/">Github</a> • <a href="https://twitter.com/TehShrike">Twitter</a> • <a href="https://www.linkedin.com/in/joshduff/">LinkedIn</a> • <a href="mailto:me@JoshDuff.com">Email</a>
+	<a rel="me" href="https://github.com/TehShrike/">Github</a> • <a rel="me" href="https://twitter.com/TehShrike">Twitter</a> • <a rel="me" href="https://www.linkedin.com/in/joshduff/">LinkedIn</a> • <a rel="me" href="https://mastodon.xyz/@TehShrike">Mastodon</a> • <a href="mailto:me@JoshDuff.com">Email</a>
 </div>
 
 
