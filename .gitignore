@@ -2,3 +2,4 @@ node_modules
 public/*.md
 public/images
 public/feed.rss
+.ds_store
