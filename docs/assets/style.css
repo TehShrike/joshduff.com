@@ -26,6 +26,10 @@ body {
 	max-width: 700px;
 }
 
+img {
+	max-width: 100%;
+}
+
 header {
 	display: flex;
 	gap: 32px;
