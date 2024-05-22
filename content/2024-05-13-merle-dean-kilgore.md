@@ -4,19 +4,19 @@ date: "2024-05-13T15:33:14.229Z"
 ---
 
 
-Merle Dean Kilgore was born February 22, 1933.  He fought in the Army during the Korean war.  He was the trigger man on a [BAR](https://en.wikipedia.org/wiki/M1918_Browning_Automatic_Rifle) team.  Two assistant gunners on his team were killed.  The longest he went without changing his clothes or bathing in Korea was two weeks.
+Merle Dean Kilgore was born May 31, 1930.  He fought in the Army during the Korean war.  He was the trigger man on a [BAR](https://en.wikipedia.org/wiki/M1918_Browning_Automatic_Rifle) team.  Two assistant gunners on his team were killed.  The longest he went without changing his clothes or bathing in Korea was two weeks.
 
-Stateside, he married Doris.  On a double date, she left her purse in his car so that he would have to see her again.
+Stateside, he married Doris.  On a double date, she left her purse in his car so that he would have to bring it back and see her again.
 
-He worked for NPPD (a precursor to [OPPD](https://www.oppd.com/)).  In the early years, he climbed utility poles.  On Sundays he would take his family driving country roads, looking for electric wires strung along the old glass electric insulators.  When he found one, he would climb the pole with the kit he kept in his trunk, replace the old insulator with a modern one, and add the glass insulator to his collection.
+He worked for NPPD (a precursor to [OPPD](https://www.oppd.com/)).  In the early years, he and his young family lived in a trailer and moved around the state putting up the electric poles and lines.  He climbed a lot of utility poles.  On some vacations, especially the one to Canada, he would take his family driving country roads, looking for electric wires strung along the old glass electric insulators.  When he found one, he would climb the pole with the kit he kept in his trunk, replace the old insulator with a modern one, and add the glass insulator to his collection.
 
 ![A blue glass insulator next to a business card of Merle D. Kilgore, District Manager, Nebraska Public Power District](./images/merle-nppd.jpg)
 
-His father was a drunk.  His mother had an unusual level of financial knowledge for the time, and invested well.  She passed on financial knowledge to her children.  Merle put money into the stock market his whole career, lived modestly, and retired relatively early on millions.  It's unlikely that any of his friends or neighbors knew how much money he had, since he never spent it on anything large and would never talk about it.
+His father was an alcoholic.  Merele decided he never wanted to take the risk of becoming addicted to alcohol, so he decided to be a teetotalar.  He stopped that sin from being passed down to his children!  His mother had an unusual level of financial knowledge for the time, and invested well.  She passed on financial knowledge to her children.  Merle put money into the stock market his whole career, lived modestly, and retired relatively early as a millionaire.  It's unlikely that any of his friends or neighbors knew how much money he had, since he never spent it on anything large and would never talk about it.
 
-He was a worker.  After he retired, he and his wife spent every cold season in the southern states constructing church buildings.  He was a useful carpenter and electrician.
+He was a worker.  After he retired at 59 1/2, he and his wife did volunteer work for his church denomination and spent every cold season in the southern states constructing church buildings.  Summers were spent going north to do the same. He was a useful carpenter and electrician.
 
-Every spring when they got back, they would visit us a few days later.  He would ask my dad "so, what are we doing?"  He wanted a project to work on.  He helped build a porch, re-run ancient wires, finish our basement, hang sheetrock.
+Every spring when they got back, they would visit us a few days later.  He would ask my dad "so, what are we doing?"  He wanted a project to work on.  He helped build a porch, re-run ancient wires, finish our basement, hang sheetrock, insulate and put on a new roof.
 
 When he wasn't working on a project, he watched war movies and the history channel from his la-z-boy.
 
