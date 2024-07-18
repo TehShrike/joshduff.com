@@ -3,9 +3,13 @@ title: Contra Jane Jacobs on a biblical history of cities
 date: "2024-05-04T19:00:58.664Z"
 ---
 
-In *The Economy Of Cities*, Jane Jacobs argues that cities have always been the locus of human economy.  She refutes the idea that humans did agricultural work on distributed farms, and then built up cities when they got wealthier.
+In *The Economy Of Cities*, Jane Jacobs argues that cities have always been the locus of human economy.
 
-She attributes this incorrect idea of the historic agrarian -> city transition at least in part to Adam Smith, and blames his assumptions on the Bible:
+The default story of pre-history given by a lot of books is that humans did agricultural work on distributed farms, and then built up cities when they got wealthier.
+
+She refutes this idea, saying that cities have always been the starting place for human culture and production, and makes some pretty convincing arguments.
+
+She attributes the incorrect idea of the historic agrarian -> city transition at least in part to Adam Smith, and blames his assumptions on the Bible:
 
 > At the time Smith was writing, educated men in Europe still believed that both the world and men had been created almost simultaneously, about 5,000 B.C., and that man was born into a garden. So Smith never asked how agriculture arose. Agriculture and animal husbandry were givens; they were the original ways in which men earned their bread by the sweat of their brows.
 >
