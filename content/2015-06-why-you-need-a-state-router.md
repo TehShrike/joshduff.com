@@ -1,5 +1,6 @@
 title: Why your webapp needs a state-based router
 date: Sat Jun 20 2015 19:05:51 GMT-0500 (CDT)
+summary: Business software has lots of moving parts and routing is important
 
 Yeah, the title is slightly hyperbolic - state routers aren't appropriate for every webapp.  Your webapp probably needs one though!
 

@@ -4,13 +4,17 @@ markdown: false
 ---
 
 <header>
-	<a href="/">
+	<a href="/" class=logo_link>
 		<img class="logo" src="/images/logo.svg">
 	</a>
 
-	{{#metadata.title}}
-		<h1>{{metadata.title}}</h1>
-	{{/metadata.title}}
+	<div class=title_and_summary>
+		{{#metadata.title}}
+			<h1>{{metadata.title}}</h1>
+		{{/metadata.title}}
+
+		<div class=summary>{{metadata.summary}}</div>
+	</div>
 </header>
 
 <main>

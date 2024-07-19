@@ -1,5 +1,6 @@
 title: Convert blocks of text to sentence case in MySQL
 date: 2010-01-22T07:31:00-06:00
+summary: A fairly specific SQL procedure
 
 You know what I hate?  Paragraphs of capital (or all lowercase) letters.
 

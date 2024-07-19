@@ -1,6 +1,7 @@
 ---
 title: Writing SQL for applications
 date: 2016-07-26T01:11:19.617Z
+summary: Opinions from a decade of writing queries
 ---
 
 For about the last decade I've been writing business software backed by relational databases.  Working with my teammates, I have acquired conventions for writing schema and production queries that make interacting with the database simpler and easier.
@@ -80,6 +81,8 @@ These conventions all have the goal of making queries in production code easier 
 Perhaps the most [commonly-known SQL antipattern](http://www.parseerror.com/blog/select-*-is-evil).
 
 Queries should specify exactly the columns that you require.  There are performance implications, but beyond that, your queries should be explicit about what they are doing, for the reader's benefit.
+
+*NOTE: as of ~2020 I no longer subscribe to this convention – there are legitimate cases where `SELECT *` is valid and useful, e.g. "I want to get the entire customer object from the database" where you really want the whole thing no matter how many columns it is.*
 
 ## No aliases
 

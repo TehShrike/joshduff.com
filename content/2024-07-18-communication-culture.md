@@ -1,6 +1,7 @@
 ---
 title: Communication culture
 date: "2024-07-18T14:44:39.935Z"
+summary: There's a discussion style spectrum that I haven't seen many people talk about
 ---
 
 One of the most important things I've read is the post *[Conversational Cultures: Combat vs Nurture](https://www.lesswrong.com/posts/ExssKjAaXEEYcnzPd/conversational-cultures-combat-vs-nurture)*.

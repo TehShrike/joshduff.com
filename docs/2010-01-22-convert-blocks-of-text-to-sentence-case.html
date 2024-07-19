@@ -23,7 +23,7 @@
 	</head>
 
 	<body>
-		<header><a href="/"><img class="logo" src="/images/logo.svg"></a> <h1>Convert blocks of text to sentence case in MySQL</h1></header> <main><p>You know what I hate?  Paragraphs of capital (or all lowercase) letters.</p>
+		<header><a class="logo_link" href="/"><img class="logo" src="/images/logo.svg"></a> <div class="title_and_summary"><h1>Convert blocks of text to sentence case in MySQL</h1> <div class="summary">A fairly specific SQL procedure</div></div></header> <main><p>You know what I hate?  Paragraphs of capital (or all lowercase) letters.</p>
 <p>The other day a coworker was looking to beautify a large quantity of data spread across some MySQL tables.  I created this function to make his life easier:</p>
 <pre><code class="language-sql">DELIMITER $
 CREATE FUNCTION `f_sentence_case`(strInput TEXT, nMinimumLength INT) RETURNS TEXT

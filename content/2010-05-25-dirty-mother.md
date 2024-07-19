@@ -1,5 +1,6 @@
 title: Sandwich war crimes: the Dirty Mother
 date: 2010-05-25T13:57:00-06:00
+summary: A ridiculous sandwich from my youth
 
 For those attending a university, the end of a semester is a time of much rejoicing.  During my last semesters at such an institution, I took place in an end-of-year celebratory tradition involving a ridiculous sandwich.
 

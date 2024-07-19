@@ -1,5 +1,6 @@
 title: Side project post-partum: Communal Checklist
 date: Wed Sep 02 2015 13:04:27 GMT-0500 (CDT)
+summary: I made a fancy todo app
 
 A wild side project appears!
 

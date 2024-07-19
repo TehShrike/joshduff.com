@@ -1,5 +1,6 @@
 title: My accomplishment for the day: a MySQL quine!
 date: 2008-11-29T06:38:00-06:00
+summary: Faffing around with SQL
 
 "[Quine](http://en.wikipedia.org/wiki/Quine_%28computing%29):" a program that outputs it's complete source code when run.
 

@@ -1,6 +1,7 @@
 ---
 title: My appendix experience
 date: "2022-10-01T17:44:36.240Z"
+summary: My appendectomy felt kind of surreal so I wrote it down
 ---
 
 I don't often feel the need to journal my experiences for posterity, but these last few days have been quite the outlier among my human experiences.

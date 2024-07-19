@@ -1,6 +1,7 @@
 ---
 title: The first letter I wrote to Anna
 date: "2022-09-10T15:04:09.223Z"
+summary: Written to the woman who became my wife
 ---
 
 I sent this letter 10 years ago today.

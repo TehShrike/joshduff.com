@@ -1,6 +1,7 @@
 ---
 title: Eschatology of software
 date: "2022-02-07T16:34:49.327Z"
+summary: My worldview of code
 ---
 
 > **Eschatology:**

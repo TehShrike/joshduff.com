@@ -10,6 +10,7 @@ markdown: false
 			<a href="{{pathPrefix}}{{pagePathPrefix}}{{filename.replace(/\.md$/, '.html')}}">
 				{{title}}
 			</a>
+			<div class=summary>{{summary}}</div>
 		</li>
 	{{/postList}}
 </ol>

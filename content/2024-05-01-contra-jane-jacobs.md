@@ -1,6 +1,7 @@
 ---
 title: Contra Jane Jacobs on a biblical history of cities
 date: "2024-05-04T19:00:58.664Z"
+summary: She wrote a good book that prompted a fairly specific thought
 ---
 
 In *The Economy Of Cities*, Jane Jacobs argues that cities have always been the locus of human economy.

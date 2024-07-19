@@ -1,0 +1,13 @@
+---
+title: highlight_box
+date: 2024-07-19T19:44:59.582Z
+markdown: false
+---
+
+<div class=highlight_box>
+	<strong>
+	({{this.2}})
+	<br/>
+	<a href="./{{this.1.replace(/\.md$/, '.html')}}">{{this.3}}</a></strong>
+	<div class=summary>{{this.4}}</div>
+</div>

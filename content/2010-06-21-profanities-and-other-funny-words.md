@@ -1,7 +1,8 @@
 title: Profanities and other funny words
 date: 2010-06-21T03:11:00-06:00
+summary: Funny code comments
 
-I recently did a quick audit of the source code I help maintain/develop for [the company I work for](http://wikido.isoftdata.com/index.php/ISoft_Data_Systems).  By which I mean, I spent the last part of a Friday searching through our code for funny words.
+I recently did a quick audit of the source code I help maintain/develop for [the company I work for](http://wikido.isoftdata.com/index.php/ISoft_Data_Systems).  By which I mean, I spent the last part of a Friday searching through our code for funny words.
 
 I decided to open up by looking for traditional profanities - a commonly-accepted method of gauging the state of a project (see: [profanities in the Linux kernel, graphed over time](http://www.vidarholen.net/contents/wordcount/) and [a quick look at the Win2k source](http://www.kuro5hin.org/story/2004/2/15/71552/7795)).
 
@@ -59,7 +60,7 @@ The code is stupid, the users are stupid, other developers are stupid.  Accordin
 ```
 
 ```
-// When you minimize, it tells you you're size 0 now.  That seems stupid, ignore it
+// When you minimize, it tells you you're size 0 now.  That seems stupid, ignore it
 ```
 
 ```
@@ -240,4 +241,4 @@ And... uh... this was at the bottom of a header file...
 
 # So, yeah...
 
-Found any entertaining metadata in code?  Link me!
+Found any entertaining metadata in code?  Link me!

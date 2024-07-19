@@ -23,7 +23,7 @@
 	</head>
 
 	<body>
-		<header><a href="/"><img class="logo" src="/images/logo.svg"></a> <h1>Logical errors in queries: DO NOT WANT</h1></header> <main><p>During my career developing database-driven software (teehee, I'm a professional) I've noted that the most horrific query errors are the logical ones - queries that parse correctly, and return reasonable-looking data, but make wrong assumptions about how different parts of the query relate to each other.</p>
+		<header><a class="logo_link" href="/"><img class="logo" src="/images/logo.svg"></a> <div class="title_and_summary"><h1>Logical errors in queries: DO NOT WANT</h1> <div class="summary">How to avoid a common JOIN mistake</div></div></header> <main><p>During my career developing database-driven software (teehee, I'm a professional) I've noted that the most horrific query errors are the logical ones - queries that parse correctly, and return reasonable-looking data, but make wrong assumptions about how different parts of the query relate to each other.</p>
 <p>One particular error that I've seen time and time again (even from people who have been writing queries for a while) can occur when summarizing data from multiple tables that have a one-to-many relationship.</p>
 <p>...In other words, it could occur in queries written for most database-driven software.</p>
 <h2 id="solution-fix-the-problem-by-writing-about-it">Solution: fix the problem by writing about it!</h2>

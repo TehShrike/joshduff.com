@@ -1,6 +1,7 @@
 ---
 title: Merle Dean Kilgore
 date: "2024-05-13T15:33:14.229Z"
+summary: My grandfather
 ---
 
 

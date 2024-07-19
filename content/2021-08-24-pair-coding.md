@@ -1,6 +1,7 @@
 ---
 title: How to remote pair-code usefully
 date: 2021-08-24T18:28:36.530Z
+summary: Talking while screensharing
 ---
 
 I like pair-coding and think it can be great.  Done well, it multiplies the abilities/usefulness of two developers, rather than just adding them together.
