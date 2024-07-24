@@ -6,7 +6,7 @@ summary: There's a discussion style spectrum that I haven't seen many people tal
 
 One of the most important things I've read is the post *[Conversational Cultures: Combat vs Nurture](https://www.lesswrong.com/posts/ExssKjAaXEEYcnzPd/conversational-cultures-combat-vs-nurture)*.
 
-A very short summary: "combat culture" is typified by people being willing to disagree with each other directly.  "Nurture culture" is typified by people affirming each other and interpreting any criticism or disagreement as an attack.
+A very short summary: "combat culture" is typified by people being willing to disagree with each other verbally.  "Nurture culture" is typified by people affirming each other and interpreting direct criticism or disagreement as an attack.
 
 I would recommend reading the post, but I'm not writing this post to convince you to read it, more to get out some thoughts on the effective communication.
 
@@ -22,7 +22,9 @@ I do disagree with the post's author when they say that countersignalling (the s
 
 ## Tangent: I don't like the names
 
-"Nurture Culture" isn't a terrible name for the concept I suppose, but I don't like "Combat Culture".  I haven't come up with a good name that I like better, though.  Let me know if you come across one.
+"Nurture Culture" isn't a terrible name for the concept I suppose (though it can be very toxic and I personally find combat culture to be nurturing), but I really dislike the name "Combat Culture".
+
+I haven't come up with a label that I like better, though.  Let me know if think of one.
 
 I dislike the implication that effective communication between people willing to disagree with each other has anything to do with fighting.
 
