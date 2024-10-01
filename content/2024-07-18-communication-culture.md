@@ -16,7 +16,7 @@ I've been practicing combat culture communication my whole career, and it seems 
 
 I want to work with people who care more about their work than they care about their ego, or being superficially aligned during a conversation.
 
-We're here to figure out Truth – I don't really trust my ideas until someone I really trust has tried to argue with them.  Working solo is a disadvantage because I don't get that check.  Working within nurture culture is the worst case, because even though I can tell my ideas to people, nobody will tell me if they disagree with me, and as a result I feel like nobody is listening to me.
+We're here to figure out Truth – I don't really trust my ideas until someone I trust has tried to argue with them.  Working solo is a disadvantage because I don't get that check.  Working within nurture culture is the worst case, because even though I can tell my ideas to people, nobody will tell me if they disagree with me, and as a result I feel like nobody is listening to me.
 
 I do disagree with the post's author when they say that countersignalling (the sort of friendly insulting that often happens between friends) has any place in effective combat culture – productive arguments are about ideas and any hint of insulting, even as a joke, tends to get ego involved when it shouldn't be.
 
