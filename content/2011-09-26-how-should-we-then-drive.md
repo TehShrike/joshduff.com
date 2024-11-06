@@ -35,6 +35,7 @@ However, I've noticed a high correlation between driving a vehicle on the road a
 
 *   The drivers sharing the road with him
 *   Shitty things that happen while driving (inconvenient red lights, poor road signs, etc)
+
 The former is by far the most common - the other vehicles on the road have a tendency to cut you off, slow you down, fail to announce where they are going, and generally just act like jerks.
 
 ## Why does that burn people up so much?
