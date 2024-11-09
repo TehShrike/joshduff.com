@@ -34,6 +34,4 @@ At higher levels it doesn't even look like an argument, it's just 2+ people havi
 
 It shouldn't.  If you honestly care about finding the best way to do something, you should want other people who care to be willing to share their thoughts with you when they differ from yours.
 
-It is true that I care more about doing a good job than I care about my coworker's feelings, as long as we both care about doing a good job, our feelings shouldn't be on the line.
-
 The people I've worked with who cared the most about doing the best job possible, and were willing to argue with me when they thought I was wrong, have tended to be the ones I most wanted to be friends with.
