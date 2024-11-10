@@ -78,7 +78,7 @@ These conventions all have the goal of making queries in production code easier 
 
 ## No `SELECT *`
 
-Perhaps the most [commonly-known SQL antipattern](http://www.parseerror.com/blog/select-*-is-evil).
+Perhaps the most [commonly-known SQL antipattern](https://web.archive.org/web/20110828214454/http://www.parseerror.com/blog/select-*-is-evil).
 
 Queries should specify exactly the columns that you require.  There are performance implications, but beyond that, your queries should be explicit about what they are doing, for the reader's benefit.
 
