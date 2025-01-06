@@ -62,7 +62,7 @@
 <h1 id="query-conventions">Query conventions</h1>
 <p>These conventions all have the goal of making queries in production code easier to read and maintain.</p>
 <h2 id="no-select">No <code>SELECT *</code></h2>
-<p>Perhaps the most <a href="http://www.parseerror.com/blog/select-*-is-evil">commonly-known SQL antipattern</a>.</p>
+<p>Perhaps the most <a href="https://web.archive.org/web/20110828214454/http://www.parseerror.com/blog/select-*-is-evil">commonly-known SQL antipattern</a>.</p>
 <p>Queries should specify exactly the columns that you require.  There are performance implications, but beyond that, your queries should be explicit about what they are doing, for the reader's benefit.</p>
 <p><em>NOTE: as of ~2020 I no longer subscribe to this convention – there are legitimate cases where <code>SELECT *</code> is valid and useful, e.g. "I want to get the entire customer object from the database" where you really want the whole thing no matter how many columns it is.</em></p>
 <h2 id="no-aliases">No aliases</h2>

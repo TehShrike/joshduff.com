@@ -6,42 +6,32 @@ summary: There's a discussion style spectrum that I haven't seen many people tal
 
 One of the most important things I've read is the post *[Conversational Cultures: Combat vs Nurture](https://www.lesswrong.com/posts/ExssKjAaXEEYcnzPd/conversational-cultures-combat-vs-nurture)*.
 
-A very short summary: "combat culture" is typified by people being willing to disagree with each other verbally.  "Nurture culture" is typified by people affirming each other and interpreting direct criticism or disagreement as an attack.
+A very short summary: what that post's author calls "combat culture", and what I will call "idea culture" is typified by people being willing to disagree with each other's ideas directly.  A conflict-avoidant culture, or "nurture culture" is typified by people affirming each other, and interpreting direct criticism or disagreement as an attack.
 
 I would recommend reading the post, but I'm not writing this post to convince you to read it, more to get out some thoughts on the effective communication.
 
 ## My stance: not neutral
 
-I've been practicing combat culture communication my whole career, and it seems obviously better than nurture culture.
+I've been practicing direct idea culture communication my whole career, and it seems obviously better than the conflict-avoidant style.
 
 I want to work with people who care more about their work than they care about their ego, or being superficially aligned during a conversation.
 
-We're here to figure out Truth – I don't really trust my ideas until someone I trust has tried to argue with them.  Working solo is a disadvantage because I don't get that check.  Working within nurture culture is the worst case, because even though I can tell my ideas to people, nobody will tell me if they disagree with me, and as a result I feel like nobody is listening to me.
+We're here to figure out the truth – I don't really trust my ideas until someone I trust has tried to argue with them.  Working solo is a disadvantage because I don't get that check.  Working in a conflict-avoidant culture is the worst case, because even though I can tell my ideas to people, nobody will tell me if they disagree with me, and as a result I feel like nobody is listening to me.
 
-I do disagree with the post's author when they say that countersignalling (the sort of friendly insulting that often happens between friends) has any place in effective combat culture – productive arguments are about ideas and any hint of insulting, even as a joke, tends to get ego involved when it shouldn't be.
+I do disagree with the post's author when they say that countersignalling (the sort of friendly insulting that often happens between friends) has any place in an effective idea culture – productive arguments are about ideas and any hint of insulting, even as a joke, tends to get ego involved when it shouldn't be.
 
-## Tangent: I don't like the names
+## What is effective idea culture?
 
-"Nurture Culture" isn't a terrible name for the concept I suppose (though it can be very toxic and I personally find combat culture to be nurturing), but I really dislike the name "Combat Culture".
+Ineffective idea culture just looks like two people arguing without really listening to each other.  They might throw out some worthwhile ideas, but they're not seriously working to test their ideas out.
 
-I haven't come up with a label that I like better, though.  Let me know if think of one.
+Mid-level idea culture might still look like an argument, but without the frustration.  The parties involved are iterating on their ideas during the argument.
 
-I dislike the implication that effective communication between people willing to disagree with each other has anything to do with fighting.
+The better the speakers are at idea culture arguments, the more clearly they will talk about the assertions being made, and the quicker they update their position when their counterparty makes a valid argument.
 
-## What is effective combat culture?
+At higher levels it doesn't even look like an argument, it's just 2+ people having a discussion and quickly figuring out the Most Correct direction forward, as far as their human reason and experience are capable of.  [This post](https://www.lesswrong.com/posts/WB49uKgMkQRbKaHme/combat-vs-nurture-and-meta-contrarianism) is a good description of the communication effectiveness spectrum.
 
-Ineffective combat culture just looks like two people arguing without really listening to each other.
+## Does idea culture make you disagreeable?
 
-Mid-level combat culture still looks like an argument, but without the frustration.
-
-The better the speakers are at combat culture arguments, the more clearly they will talk about the assertions being made, and the quicker they update their position when their counterparty makes a valid argument.
-
-At higher levels it doesn't even look like an argument, it's just 2+ people having a discussion and quickly figuring out the Most Correct direction forward, as far as their human reason and experience are capable of.  [This post](https://www.lesswrong.com/posts/WB49uKgMkQRbKaHme/combat-vs-nurture-and-meta-contrarianism) is a good description of the combat-culture-effectiveness spectrum.
-
-## Does combat culture make you disagreeable?
-
-It doesn't have to.  Some of my favorite people to argue with have been very personable and gracious.
-
-I aspire to be like them.  Yes, it's true that I care more about doing a good job than I care about my coworker's feelings, but that doesn't mean that I can't be a blessing to them while we're doing good work.
+It shouldn't.  If you honestly care about finding the best way to do something, you should want other people who care to be willing to share their thoughts with you when they differ from yours.
 
 The people I've worked with who cared the most about doing the best job possible, and were willing to argue with me when they thought I was wrong, have tended to be the ones I most wanted to be friends with.
