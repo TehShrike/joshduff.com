@@ -35,3 +35,11 @@ At higher levels it doesn't even look like an argument, it's just 2+ people havi
 It shouldn't.  If you honestly care about finding the best way to do something, you should want other people who care to be willing to share their thoughts with you when they differ from yours.
 
 The people I've worked with who cared the most about doing the best job possible, and were willing to argue with me when they thought I was wrong, have tended to be the ones I most wanted to be friends with.
+
+I appreciate [this NYT piece on work team culture](https://archive.is/LcPF2) that comes to the conclusion that "psychological safety" is a trait shared by effective teams.  That psychological safety doesn't mean that people avoid disagreeing with each other, it means that they trust their peers not to punish them for saying something risky.
+
+The coworkers I've had the best arguments with about how to solve job problems were also the ones who I talked to about theology, spouses, kids, education, etc – even though we came from very different backgrounds and had very different opinions.
+
+Since it wasn't a topic relevant to our job, we didn't expect to need to change anyone else's mind during the conversations, and we trusted each other enough to know that even though someone might have strong opinions, they wouldn't get worked up about them, and they were prepared to empathize.
+
+I've only ever had that kind of relationship with coworkers who practiced idea culture.
