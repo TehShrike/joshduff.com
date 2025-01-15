@@ -22,11 +22,11 @@ I do disagree with the post's author when they say that countersignalling (the s
 
 ## What is effective idea culture?
 
-Ineffective idea culture just looks like two people arguing without really listening to each other.  They might throw out some worthwhile ideas, but they're not seriously working to test their ideas out.
+*Ineffective* idea culture just looks like two people arguing without really listening to each other.  They might throw out some worthwhile ideas, but they're not seriously working to test their ideas out.
 
 Mid-level idea culture might still look like an argument, but without the frustration.  The parties involved are iterating on their ideas during the argument.
 
-The better the speakers are at idea culture arguments, the more clearly they will talk about the assertions being made, and the quicker they update their position when their counterparty makes a valid argument.
+The more effective the speakers are at idea culture arguments, the more clearly they will talk about the assertions being made, and the quicker they update their position when their counterparty makes a valid argument.
 
 At higher levels it doesn't even look like an argument, it's just 2+ people having a discussion and quickly figuring out the Most Correct direction forward, as far as their human reason and experience are capable of.  [This post](https://www.lesswrong.com/posts/WB49uKgMkQRbKaHme/combat-vs-nurture-and-meta-contrarianism) is a good description of the communication effectiveness spectrum.
 
