@@ -6,17 +6,17 @@ summary: There's a discussion style spectrum that I haven't seen many people tal
 
 One of the most important things I've read is the post *[Conversational Cultures: Combat vs Nurture](https://www.lesswrong.com/posts/ExssKjAaXEEYcnzPd/conversational-cultures-combat-vs-nurture)*.
 
-A very short summary: what that post's author calls "combat culture", and what I will call "idea culture" is typified by people being willing to disagree with each other's ideas directly.  A conflict-avoidant culture, or "nurture culture" is typified by people affirming each other, and interpreting direct criticism or disagreement as an attack.
+A very short summary: what that post's author calls "combat culture", and what I will call "idea culture" is typified by people being willing to disagree with each other's ideas directly.  A face-saving culture, or "nurture culture" is typified by people affirming each other, and interpreting direct criticism or disagreement as an attack.
 
 I would recommend reading the post, but I'm not writing this post to convince you to read it, more to get out some thoughts on the effective communication.
 
 ## My stance: not neutral
 
-I've been practicing direct idea culture communication my whole career, and it seems obviously better than the conflict-avoidant style.
+I've been practicing direct idea culture communication my whole career, and it seems obviously better than the face-saving style.
 
 I want to work with people who care more about their work than they care about their ego, or being superficially aligned during a conversation.
 
-We're here to figure out the truth – I don't really trust my ideas until someone I trust has tried to argue with them.  Working solo is a disadvantage because I don't get that check.  Working in a conflict-avoidant culture is the worst case, because even though I can tell my ideas to people, nobody will tell me if they disagree with me, and as a result I feel like nobody is listening to me.
+We're here to figure out the truth – I don't really trust my ideas until someone I trust has tried to argue with them.  Working solo is a disadvantage because I don't get that check.  Working in a face-saving culture is the worst case, because even though I can tell my ideas to people, nobody will tell me if they disagree with me, and as a result I feel like nobody is listening to me.
 
 I do disagree with the post's author when they say that countersignalling (the sort of friendly insulting that often happens between friends) has any place in an effective idea culture – productive arguments are about ideas and any hint of insulting, even as a joke, tends to get ego involved when it shouldn't be.
 
@@ -43,3 +43,9 @@ The coworkers I've had the best arguments with about how to solve job problems w
 Since it wasn't a topic relevant to our job, we didn't expect to need to change anyone else's mind during the conversations, and we trusted each other enough to know that even though someone might have strong opinions, they wouldn't get worked up about them, and they were prepared to empathize.
 
 I've only ever had that kind of relationship with coworkers who practiced idea culture.
+
+## Addendum: Why change the names?
+
+I've found that when talking to people about this communication style spectrum using the names from the original post above, people can easily get hung up on the terms.
+
+It's too easy to think of "combat" as two people fighting each other (as opposed to a willingness to challenge ideas), and "nurture" as a positive environment, even though I find nurture/face-saving culture extremely stressful, and feel nurtured in an environment where people respect me enough to point out flaws in my ideas directly.
