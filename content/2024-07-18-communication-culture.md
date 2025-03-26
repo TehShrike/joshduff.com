@@ -6,9 +6,9 @@ summary: There's a discussion style spectrum that I haven't seen many people tal
 
 One of the most important things I've read is the post *[Conversational Cultures: Combat vs Nurture](https://www.lesswrong.com/posts/ExssKjAaXEEYcnzPd/conversational-cultures-combat-vs-nurture)*.
 
-A very short summary: what that post's author calls "combat culture", and what I will call "idea culture" is typified by people being willing to disagree with each other's ideas directly.  A face-saving culture, or "nurture culture" is typified by people affirming each other, and interpreting direct criticism or disagreement as an attack.
+A very short summary: what that post's author calls "combat culture" and what I will call "idea culture" is typified by people being willing to disagree with each other's ideas directly.  A face-saving culture, or "nurture culture" is typified by people affirming each other, and interpreting direct criticism or disagreement as an attack.
 
-I would recommend reading the post, but I'm not writing this post to convince you to read it, more to get out some thoughts on the effective communication.
+I would recommend reading the post, but I'm not writing this post to convince you to read it, more to get out some thoughts on effective communication.
 
 ## My stance: not neutral
 
@@ -40,9 +40,17 @@ I appreciate [this NYT piece on work team culture](https://archive.is/LcPF2) tha
 
 The coworkers I've had the best arguments with about how to solve job problems were also the ones who I talked to about theology, spouses, kids, education, etc – even though we came from very different backgrounds and had very different opinions.
 
-Since it wasn't a topic relevant to our job, we didn't expect to need to change anyone else's mind during the conversations, and we trusted each other enough to know that even though someone might have strong opinions, they wouldn't get worked up about them, and they were prepared to empathize.
+Since it wasn't a topic relevant to our job, we didn't expect to need to change anyone else's mind during the conversations, and we trusted each other enough to know that even though someone might have strong opinions, they wouldn't get worked up about them and were prepared to empathize.
 
 I've only ever had that kind of relationship with coworkers who practiced idea culture.
+
+## Clients vs coworkers
+
+Interestingly, I've never had communication culture collisions with clients or customers.  In those discussions we don't need to argue to figure out the truth – the truth of the matter is that the customer has a problem, and I'm going to fix it for them.
+
+Those discussions are more like an interview.  Sometimes they'll ask for a specific fix that wouldn't be a good idea and I'll have to sidestep it to keep asking them details about the underlying problem, and sometimes the problem will boil down to a misunderstanding, but either way I'm there to learn what I need to solve their problem.
+
+The idea/face-saving communication culture spectrum comes into play after the client discussion, when I'm back with my coworkers and we need to figure out the best way to solve that customer's problems in the context of the whole project and all our other customers.
 
 ## Addendum: Why change the names?
 
