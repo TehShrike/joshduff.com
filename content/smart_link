@@ -1,0 +1,9 @@
+title: smart internal link
+markdown: false
+
+{{# current !== this.1 }}
+<a href="{{pathPrefix}}{{pagePathPrefix}}{{encodeURI(this.1.replace(/\.md$/, '.html'))}}">{{this.2}}</a>
+{{/ end of filter }}
+{{# current === this.1 }}
+<strong>{{this.2}}</strong>
+{{/ end of filter }}

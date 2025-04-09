@@ -23,3 +23,5 @@ The biblical eschatology of humans says that we are fallen, sinful, shitty human
 My eschatology of software is that I have been given a fallen, sinful, shitty codebase.  I should obsess over the ideal perfect software that I could theoretically ship.  And I should be constantly iterating the codebase towards that perfection, while understanding that it will never achieve perfection in its lifetime or mine.
 
 [^love_your_law]: [Psalm 119:97](https://canonreader.com/text/psalms?highlight=119_97-119_97#chapter-119-verse-97)
+
+::how_i_think_about_software::

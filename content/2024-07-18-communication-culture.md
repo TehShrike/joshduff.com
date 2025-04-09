@@ -57,3 +57,5 @@ The idea/face-saving communication culture spectrum comes into play after the cl
 I've found that when talking to people about this communication style spectrum using the names from the original post above, people can easily get hung up on the terms.
 
 It's too easy to think of "combat" as two people fighting each other (as opposed to a willingness to challenge ideas), and "nurture" as a positive environment, even though I find nurture/face-saving culture extremely stressful, and feel nurtured in an environment where people respect me enough to point out flaws in my ideas directly.
+
+::how_i_think_about_software::
