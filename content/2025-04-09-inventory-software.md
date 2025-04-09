@@ -28,6 +28,6 @@ You can't make all the complications disappear with software, but with enough th
 
 ---
 
-*The post summary is a nod to [this excellent post](http://johnsalvatier.org/blog/2017/reality-has-a-surprising-amount-of-detail)*
+*The subhead is a nod to [this excellent post](http://johnsalvatier.org/blog/2017/reality-has-a-surprising-amount-of-detail)*
 
 ::how_i_think_about_software::

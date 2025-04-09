@@ -1,11 +1,24 @@
 ---
 title: "Series: How I think about software"
+markdown: false
 ---
 
----
+<style>
+.series {
+	border: 2px solid gray;
+	border-radius: 5px;
+	padding: 16px;
+	font-size: 80%;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	text-align: center;
+}
+</style>
 
-This post is part of a series on how I think about software.
+<div class=series>
 
-::smart_link|2022-02-07-eschatology-of-software.md|Eschatology of software:: • ::smart_link|2024-07-18-communication-culture.md|Communication culture:: • ::smart_link|2025-04-09-inventory-software.md|I like building inventory software::
+	<p>This post is part of a series on how I think about software.  Want to work with me?  <a href=mailto:me@JoshDuff.com>Get in touch!</a></p>
 
-Want to work with me?  [Get in touch!](mailto:me@JoshDuff.com)
+	<p>::smart_link|2022-02-07-eschatology-of-software.md|Eschatology of software:: • ::smart_link|2024-07-18-communication-culture.md|Communication culture:: • ::smart_link|2025-04-09-inventory-software.md|I like building inventory software::</p>
+</div>
