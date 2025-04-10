@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Josh Duff .com]]></title><description><![CDATA[Josh Duff .com]]></description><link>https://joshduff.com/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 10 Apr 2025 16:02:33 GMT</lastBuildDate><atom:link href="https://joshduff.com/feed.rss" rel="self" type="application/rss+xml"/><ttl>720</ttl><item><title><![CDATA[My accomplishment for the day: a MySQL quine!]]></title><description><![CDATA[<p>"<a href="http://en.wikipedia.org/wiki/Quine_%28computing%29">Quine</a>:" a program that outputs it's complete source code when run.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Josh Duff .com]]></title><description><![CDATA[Josh Duff .com]]></description><link>https://joshduff.com/</link><generator>RSS for Node</generator><lastBuildDate>Thu, 10 Apr 2025 18:51:23 GMT</lastBuildDate><atom:link href="https://joshduff.com/feed.rss" rel="self" type="application/rss+xml"/><ttl>720</ttl><item><title><![CDATA[My accomplishment for the day: a MySQL quine!]]></title><description><![CDATA[<p>"<a href="http://en.wikipedia.org/wiki/Quine_%28computing%29">Quine</a>:" a program that outputs it's complete source code when run.</p>
 <p>I was lounging around in the MySQL chat room on irc.freenode.net, and someone suggested that I try to write a MySQL quine - a database query that would return the text of the query itself.</p>
 <p>After about half an hour of screwing around, I got it!  It may not be a fantastic achievement, but I feel pretty leet about writing my first quine in a database query language.</p>
 <pre lang="mysql">
@@ -732,7 +732,7 @@ WHERE customer.customer_id = ?
  • 
 <a href="2024-07-18-communication-culture.html">Communication culture</a>
  • 
-<a href="2025-04-09-inventory-software.html">I like building inventory software</a>
+<a href="2025-04-09-inventory-software.html">The joy of inventory software</a>
 </p>
 </div>
 </p>
@@ -899,7 +899,7 @@ WHERE customer.customer_id = ?
  • 
 <strong>Communication culture</strong>
  • 
-<a href="2025-04-09-inventory-software.html">I like building inventory software</a>
+<a href="2025-04-09-inventory-software.html">The joy of inventory software</a>
 </p>
 </div>
 </p>
@@ -939,7 +939,7 @@ WHERE customer.customer_id = ?
  • 
 <a href="2024-07-18-communication-culture.html">Communication culture</a>
  • 
-<strong>I like building inventory software</strong>
+<strong>The joy of inventory software</strong>
 </p>
 </div>
 </p>
