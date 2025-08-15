@@ -19,5 +19,7 @@ markdown: false
 <div class=series>
 	<p>This post is part of a series on how I think about software.</p>
 
+	<p>If this resonated with you, you should <a href="mailto:me@JoshDuff.com">reach out to me to let me know</a>, maybe we can work together some day.</p>
+
 	<p>::smart_link|2022-02-07-eschatology-of-software.md|Eschatology of software:: • ::smart_link|2024-07-18-communication-culture.md|Communication culture:: • ::smart_link|2025-04-09-inventory-software.md|The joy of inventory software::</p>
 </div>
