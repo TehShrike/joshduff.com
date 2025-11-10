@@ -59,7 +59,14 @@ If you pull up an individual pistol and look at the product details, it's not mu
 
 I was able to push my "this should be legible to an outsider like me" worldview a little bit when I worked at T.Rex Arms, where I pushed to change their [holster listings page](https://www.trex-arms.com/holsters) from being a grid of images and product names to having bullet points listing the differentiating features plus a short approachable paragraph.
 
-<img src="images/trex-holster-listing-2025-11-10.png" alt="Two holster product listings, the top one has the bullet points &quot;Inside-the-Waistband, Concealed, Appendix Carry, Modular Attachments&quot;" />
+
+<figure>
+	<img
+		src="images/trex-holster-listing-2025-11-10.png"
+		alt="Two holster product listings, the top one has the bullet points &quot;Inside-the-Waistband, Concealed, Appendix Carry, Modular Attachments&quot;"
+	/>
+	<figcaption>I lost the battle to replace the pictures with in-use photos so you could see where the holster goes on your body</figcaption>
+</figure>
 
 For my Dagger project, this meant scraping all the Dagger product listings, parsing them, feeding them to Claude and spending about an hour asking it a bunch of questions to figure out what all the options and random letters in the product names meant.
 
