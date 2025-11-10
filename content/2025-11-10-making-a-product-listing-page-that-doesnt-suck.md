@@ -67,11 +67,11 @@ Then came the editorial aspect – which options are likely to matter to a non-g
 
 ## What is "design"
 
-You could tip over any freshman art class and get a pile of designers with a better sense of aesthetics than me.  I have focused on the parts of software design that let people do their jobs without having to think about it.
+You could tip over any freshman art class and get a pile of designers with a better sense of aesthetics than me.  I've chosen to focus on the parts of software design that let people do their jobs easily.
 
 On [buyadagger.com](https://www.buyadagger.com/), every filter option operates like a radio button, but it is also a link.  You can middle-click on any one and it will open correctly in a new tab.  They are all keyboard accessible.
 
-The product listing names are generated dynamically with the differentiating features that I think matter most, but if you filter to e.g. only view pistols with night sights, I don't display that in the product list, because what would be the point of that extra text next to every item in the list.
+The product listing names are generated dynamically with the differentiating features that I think matter most, but if you filter to e.g. only view pistols with night sights, I don't display "Night Sights" in the product name, because what would be the point of that extra text next to every item in the list.
 
 And above all, the list updates instantly with every click.
 
