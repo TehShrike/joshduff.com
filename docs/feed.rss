@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Josh Duff .com]]></title><description><![CDATA[Josh Duff .com]]></description><link>https://joshduff.com/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 15 Aug 2025 17:54:31 GMT</lastBuildDate><atom:link href="https://joshduff.com/feed.rss" rel="self" type="application/rss+xml"/><ttl>720</ttl><item><title><![CDATA[My accomplishment for the day: a MySQL quine!]]></title><description><![CDATA[<p>"<a href="http://en.wikipedia.org/wiki/Quine_%28computing%29">Quine</a>:" a program that outputs it's complete source code when run.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Josh Duff .com]]></title><description><![CDATA[Josh Duff .com]]></description><link>https://joshduff.com/</link><generator>RSS for Node</generator><lastBuildDate>Mon, 10 Nov 2025 19:06:12 GMT</lastBuildDate><atom:link href="https://joshduff.com/feed.rss" rel="self" type="application/rss+xml"/><ttl>720</ttl><item><title><![CDATA[My accomplishment for the day: a MySQL quine!]]></title><description><![CDATA[<p>"<a href="http://en.wikipedia.org/wiki/Quine_%28computing%29">Quine</a>:" a program that outputs it's complete source code when run.</p>
 <p>I was lounging around in the MySQL chat room on irc.freenode.net, and someone suggested that I try to write a MySQL quine - a database query that would return the text of the query itself.</p>
 <p>After about half an hour of screwing around, I got it!  It may not be a fantastic achievement, but I feel pretty leet about writing my first quine in a database query language.</p>
 <pre lang="mysql">
@@ -734,6 +734,8 @@ WHERE customer.customer_id = ?
 <a href="2024-07-18-communication-culture.html">Communication culture</a>
  • 
 <a href="2025-04-09-inventory-software.html">The joy of inventory software</a>
+ • 
+<a href="2025-11-10-making-a-product-listing-page-that-doesnt-suck.html">On making a product listing page that doesn't suck</a>
 </p>
 </div>
 </p>
@@ -902,6 +904,8 @@ WHERE customer.customer_id = ?
 <strong>Communication culture</strong>
  • 
 <a href="2025-04-09-inventory-software.html">The joy of inventory software</a>
+ • 
+<a href="2025-11-10-making-a-product-listing-page-that-doesnt-suck.html">On making a product listing page that doesn't suck</a>
 </p>
 </div>
 </p>
@@ -943,7 +947,76 @@ WHERE customer.customer_id = ?
 <a href="2024-07-18-communication-culture.html">Communication culture</a>
  • 
 <strong>The joy of inventory software</strong>
+ • 
+<a href="2025-11-10-making-a-product-listing-page-that-doesnt-suck.html">On making a product listing page that doesn't suck</a>
 </p>
 </div>
 </p>
-]]></description><link>https://joshduff.com/2025-04-09-inventory-software.html</link><guid isPermaLink="true">https://joshduff.com/2025-04-09-inventory-software.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Wed, 09 Apr 2025 16:29:53 GMT</pubDate></item></channel></rss>
+]]></description><link>https://joshduff.com/2025-04-09-inventory-software.html</link><guid isPermaLink="true">https://joshduff.com/2025-04-09-inventory-software.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Wed, 09 Apr 2025 16:29:53 GMT</pubDate></item><item><title><![CDATA[On making a product listing page that doesn't suck]]></title><description><![CDATA[<p>I am blessed and cursed by an awareness of all the little frictions that get in my way when I use software.</p>
+<p>Most ecommerce sites are covered in these little frictions.  Every interaction on a product page or product listing page disables the entire page for a second while some state changes.  The page will jump around, and you get the impression that every click is a potential mistake that will be difficult to walk back.</p>
+<p>And that's even on a competently run ecommerce site – if they didn't hire someone obsessive, the trend for a storefront is for product categories and tags to devolve into an unending list with duplication and misspellings.  If I'm browsing a list of shirts or jackets, and I can filter by color, the pull of entropy is for there to be multiple variations on "blue", and even if I check all of them (waiting seconds between each click for the page to reload), some genuinely blue-colored products will be incorrectly filtered out.</p>
+<p>Long story short, I recently decided to make an alternate product listing page for a product line I like that is underserved by its online storefront: the Palmetto State Armory Dagger, the modern affordable cousin of the Glock.  My custom page is live now at <a href="https://www.buyadagger.com/">buyadagger.com</a>.</p>
+<figure>
+    <a href="https://www.buyadagger.com/">
+        <img src="images/buy-a-psa-dagger-home-page-2025-11-10.png" alt="A classy-looking product listing page that says&quot;Buy a PSA Dagger&quot; at the top">
+    </a>
+</figure>
+<h2 id="how-to-fix-jankety-product-listing-pages">How to fix jankety product listing pages</h2>
+<p>Well, you still have to be obsessively vigilant about your product tags and metadata, but besides that it turns out there is actually one change that would fix the most egregious issues on every ecommerce site.</p>
+<p>That's right, the One Weird Trick Computer Scientists Don't Want You To Know: if you have fewere than ~10,000 items, you don't actually need a fancy database with indexes, you can keep have the entire list in memory locally and loop over it in the dumbest possible way pulling out the items that match your filters.</p>
+<p>Try it out <a href="https://www.buyadagger.com/">on the site</a> right now – choose a different size, or click the filters on the left.  See how long it doesn't take to see the new results?  You do have to wait for the images to come in, but the state of the form and the results change instantly.</p>
+<p>Even if you're doing some kind of bespoke fulltext-ish matching like when I made my similar <a href="https://susdsearch.com/">fan site for Shut Up &amp; Sit Down</a> a while back, it's still faster to loop over the array of items and use string functions than to make a request to a server to take advantage of a "real" database.</p>
+<h2 id="so-why-doesn-t-everyone-do-this">So why doesn't everyone do this?</h2>
+<p>So you, Mr. Median Ecommerce Proprietor, you definitely have fewer than 10k SKUs in your storefront.  Even if you were getting close to those numbers, they would be across different categories with their own product listing pages, each of which would be well short of those numbers.</p>
+<p>But the developers making your ecommerce platform didn't make it for you – they built it to handle the largest ecommerce site they could imagine, and they can imagine some pretty big ones, ones with SKU counts that are definitely database-index-worthy.</p>
+<p>So what should you do?  Should you hire your own developer who can build you the ecommerce solution suited to your niche?  <a href="mailto:me@JoshDuff.com">Maybe so.</a>  But almost nobody is willing to take on that kind of a responsibility when they're just getting their online store off the ground, so everyone reaches for a platform built by developers with big imaginations trying to build something that will work for any industry.</p>
+<h2 id="the-problem-with-selling-technical-products">The problem with selling technical products</h2>
+<p>If you're selling anything more complicated than t-shirts, then you have an even bigger problem: a lot of the people who want to buy what you're selling can't tell the difference between your product offerings.  In a lot of cases the stuff you're selling will seem like the manufacturer named it to try to actively discourage normies from figuring out what it is.  <a href="https://www.shamusyoung.com/twentysidedtale/?p=1477">Graphics cards are notorious for this</a>, and the gun world isn't any better.</p>
+<p>The Glock 17 got its name because it was the 17th patent that Gaston Glock acquired, and the company has honored his tradition by studiously avoiding any kind of useful meaning in their product names ever since.</p>
+<p>The PSA Dagger is a great product and should probably be top on the list of everyone idly considering buying their first pistol without spending a ton of money, but <a href="https://palmettostatearmory.com/psa-dagger/handguns.html?stock_filter=Show+Only+In+Stock">the official product listing</a> isn't super approachable.</p>
+<p>The filter options on the left are a mix of things I probably care about and some that I don't, and I can't reliably tell which is which.</p>
+<figure>
+    <img style="max-width: 273px;" src="images/psa-slide-type-options.png" alt="A list of &quot;Slide Type&quot; options with names like &quot;X-1&quot; and &quot;SW6&quot;">
+    <figcaption>I know that the slide is an important part of the pistol, it's the metal part on top around the barrel, but I don't know what any of these mean</figcaption>
+</figure>
+<p>If you pull up an individual pistol and look at the product details, it's not much more educational.  This one I just randomly opened claims as an additional feature "Stainless Steel Recoil Spring Guide Rod".  Is that... common?  I don't know what recoil spring guide rods are usually made out of, or how big of a deal it is to be using stainless steel.  Apparently another feature is a "Flat Faced Trigger", which sounds like a schoolyard insult to me.</p>
+<p>I was able to push my "this should be legible to an outsider like me" worldview a little bit when I worked at T.Rex Arms, where I pushed to change their <a href="https://www.trex-arms.com/holsters">holster listings page</a> from being a grid of images and product names to having bullet points listing the differentiating features plus a short approachable paragraph.</p>
+<p><img src="images/trex-holster-listing-2025-11-10.png" alt="Two holster product listings, the top one has the bullet points &quot;Inside-the-Waistband, Concealed, Appendix Carry, Modular Attachments&quot;"></p>
+<p>For my Dagger project, this meant scraping all the Dagger product listings, parsing them, feeding them to Claude and spending about an hour asking it a bunch of questions to figure out what all the options and random letters in the product names meant.</p>
+<p>Then came the editorial aspect – which options are likely to matter to a non-gun-nerd buyer, and how do I present them?  I don't want to explain what "X-1" means, but if some pistols have longer slides than others, that's a meaningful difference I'd want to know about.</p>
+<h2 id="what-is-design">What is "design"</h2>
+<p>You could tip over any freshman art class and get a pile of designers with a better sense of aesthetics than me.  I have focused on the parts of software design that let people do their jobs without having to think about it.</p>
+<p>On <a href="https://www.buyadagger.com/">buyadagger.com</a>, every filter option operates like a radio button, but it is also a link.  You can middle-click on any one and it will open correctly in a new tab.  They are all keyboard accessible.</p>
+<p>The product listing names are generated dynamically with the differentiating features that I think matter most, but if you filter to e.g. only view pistols with night sights, I don't display that in the product list, because what would be the point of that extra text next to every item in the list.</p>
+<p>And above all, the list updates instantly with every click.</p>
+<p>This is the kind of design I care about, and it seems rare.  It's easier to build software that looks aesthetically pleasing in Figma than it is something well built for purpose.</p>
+<p><style>
+.series {
+	border: 2px solid gray;
+	border-radius: 5px;
+	padding: 16px;
+	font-size: 80%;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	text-align: center;
+}
+</style>
+
+<div class="series">
+	<p>This post is part of a series on how I think about software.</p>
+
+	<p>If this resonated with you, you should <a href="mailto:me@JoshDuff.com">reach out to me to let me know</a>, maybe we can work together some day.</p>
+
+	<p>
+<a href="2022-02-07-eschatology-of-software.html">Eschatology of software</a>
+ • 
+<a href="2024-07-18-communication-culture.html">Communication culture</a>
+ • 
+<a href="2025-04-09-inventory-software.html">The joy of inventory software</a>
+ • 
+<strong>On making a product listing page that doesn't suck</strong>
+</p>
+</div>
+</p>
+]]></description><link>https://joshduff.com/2025-11-10-making-a-product-listing-page-that-doesnt-suck.html</link><guid isPermaLink="true">https://joshduff.com/2025-11-10-making-a-product-listing-page-that-doesnt-suck.html</guid><dc:creator><![CDATA[Josh]]></dc:creator><pubDate>Mon, 10 Nov 2025 15:56:24 GMT</pubDate></item></channel></rss>

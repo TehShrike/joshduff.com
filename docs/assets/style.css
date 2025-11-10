@@ -28,6 +28,8 @@ body {
 
 img {
 	max-width: 100%;
+	display: block;
+	margin: 0 auto;
 }
 
 header {
@@ -138,6 +140,12 @@ pre {
 .summary {
 	color: gray;
 	font-size: 10px;
+}
+
+figcaption {
+	color: darkgray;
+	font-size: 12px;
+	text-align: center;
 }
 
 .highlight_box {
