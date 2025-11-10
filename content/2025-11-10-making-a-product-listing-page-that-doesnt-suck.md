@@ -6,7 +6,7 @@ summary: My potentially transgressive design sensibilities
 
 I am blessed and cursed by an awareness of all the little frictions that get in my way when I use software.
 
-Most ecommerce sites are covered in these little frictions.  Every interaction on a product page or product listing page disables the entire page for a second while some state changes.  The page will jump around, and you get the impression that every click is a potential mistake that will be difficult to walk back.
+Most ecommerce sites are covered in these.  Every interaction on a product page or product listing page disables the entire page for a second while some state changes.  The page will jump around, and you get the impression that every click is a potential mistake that will be difficult to walk back.
 
 And that's even on a competently run ecommerce site – if they didn't hire someone obsessive, the trend for a storefront is for product categories and tags to devolve into an unending list with duplication and misspellings.  If I'm browsing a list of shirts or jackets, and I can filter by color, the pull of entropy is for there to be multiple variations on "blue", and even if I check all of them (waiting seconds between each click for the page to reload), some genuinely blue-colored products will be incorrectly filtered out.
 
