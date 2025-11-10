@@ -9,8 +9,10 @@
   "description": "JoshDuff.com",
   "scripts": {
     "build": "generate-noddity --root=content --output=docs --template=index.html --extension=html '*.md' --filter=./noddity-filter.js --data=./noddity-data.json --feed=./noddity-feed.json && cpy content/images docs/images",
+    "publish": "git add docs && git commit -m \"build\" && git push",
+    "build_and_publish": "run-s build publish",
     "test": "npm run lint",
-    "start": "run-p serve watch",
+    "dev": "run-p serve watch",
     "serve": "live-server docs",
     "watch": "watch \"npm run build\" content",
     "lint": "noddity-linter \"./content/\" --useIndex=false"
