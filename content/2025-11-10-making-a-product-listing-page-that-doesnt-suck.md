@@ -22,7 +22,7 @@ Long story short, I recently decided to make an alternate product listing page f
 
 Well, you still have to be obsessively vigilant about your product tags and metadata, but besides that it turns out there is actually one change that would fix the most egregious issues on every ecommerce site.
 
-That's right, the One Weird Trick Computer Scientists Don't Want You To Know: if you have fewere than ~10,000 items, you don't actually need a fancy database with indexes, you can keep have the entire list in memory locally and loop over it in the dumbest possible way pulling out the items that match your filters.
+That's right, the One Weird Trick Computer Scientists Don't Want You To Know: if you have fewer than ~10,000 items, you don't actually need a fancy database with indexes, you can keep have the entire list in memory locally and loop over it in the dumbest possible way pulling out the items that match your filters.
 
 Try it out [on the site](https://www.buyadagger.com/) right now – choose a different size, or click the filters on the left.  See how long it doesn't take to see the new results?  You do have to wait for the images to come in, but the state of the form and the results change instantly.
 
