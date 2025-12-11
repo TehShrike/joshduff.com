@@ -20,7 +20,7 @@ One employer that I worked for had unit tests for every client-side React compon
 
 These tests provided no value – the only thing that they were testing was that the "successfully saved" text hadn't changed since the test was last touched.  The only reason the test would ever fail would be because someone decided to change the copy.  At best, the tests asserted that React's internals were still working.
 
-It's easy to make the call that 99% of the tests in that repository should have been deleted, but even in a thoughtfully curated codebase, you have to play on the spectrum between the two extremes.  You're always trying to maximize the ratio of "likelihood to fail when something actually goes wrong" to "likelihood of failing for unrelated reasons".
+It's easy to make the call that 99% of the tests in that repository should have been deleted, but even in a thoughtfully curated codebase, you have to play on the spectrum between the two extremes.  You're always trying to maximize the ratio of "chance of catching something actually going wrong" to "likelihood of failing for unrelated reasons".
 
 If you want to assert that the server doesn't respond with a 500 error when you click the "save" button, how should you identify the element to be clicked?  Do you target the `button` with a `save` class?  Do you find an element that contains the text `/save/i`?  Do you take a screenshot of the screen every time the test runs, upload it to an LLM, and have it tell you where to click?
 
