@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>
+			Josh Duff | On useful tests 
+		</title>
+		<link type="application/rss+xml" href="/feed.rss" rel="alternate" title="Josh Duff">
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link type="text/css" rel="stylesheet" href="/assets/style.css">
+
+		<link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+		<link type="image/png" rel="icon" href="/assets/icon/favicon-32x32.png" sizes="32x32">
+		<link type="image/png" rel="icon" href="/assets/icon/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/assets/icon/manifest.json">
+		<link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/assets/icon/favicon.ico">
+
+		<meta name="msapplication-config" content="/assets/icon/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+	</head>
+
+	<body>
+		<header><a class="logo_link" href="/"><img class="logo" src="/images/logo.svg"></a> <div class="title_and_summary"><h1>On useful tests</h1> <div class="summary">Which automated tests are worth the bytes?</div></div></header> <main><p>When your automated test suite fails because an assertion failed, it's generally one of:</p>
+<ol>
+<li>Someone changed the software and as an unintentional side effect something isn't working the way it's supposed to.</li>
+<li>Someone changed the software intentionally, and the test is failing because it's asserting something untrue.</li>
+<li>Nothing changed about the software, but sometimes the test just fails, and you have to run it again without changing anything</li>
+</ol>
+<p>People call #3 "flaky" tests.  I don't have much to say about them.  Dan Luu referenced the idea in his <a href="https://danluu.com/wat/">normalization of deviance</a> post for good reason.  Better to delete them.</p>
+<p>Having seen thousands of test assertions in open source and corporate repositories, the main friction I see is between cases 1 and 2.</p>
+<p>#1 is the dream, it's the ostensible reason why we write all those tests.  In practice, #2 seems much more likely.  Sometimes it's because the test was written intentionally, but the developer's intentions have changed.  More often, the test fails because the assertion relies on a dozen unrelated things that could legitimately change, that should never be a part of an automated test.</p>
+<p>One employer that I worked for had unit tests for every client-side React component.  They were all of the same variety – they relied on a bunch of mocks, so they didn't interact with the server or any framework code, they would simulate a button click, and then they would assert that the component contained the text that was supposed to be displayed after e.g. the item was successfully saved in the database.</p>
+<p>These tests provided no value – the only thing that they were testing was that the "successfully saved" text hadn't changed since the test was last touched.  The only reason the test would ever fail would be because someone decided to change the copy.  At best, the tests asserted that React's internals were still working.</p>
+<p>It's easy to make the call that 99% of the tests in that repository should have been deleted, but even in a thoughtfully curated codebase, you have to play on the spectrum between the two extremes.  You're always trying to maximize the ratio of "likelihood to fail when something actually goes wrong" to "likelihood of failing for unrelated reasons".</p>
+<p>If you want to assert that the server doesn't respond with a 500 error when you click the "save" button, how should you identify the element to be clicked?  Do you target the <code>button</code> with a <code>save</code> class?  Do you find an element that contains the text <code>/save/i</code>?  Do you take a screenshot of the screen every time the test runs, upload it to an LLM, and have it tell you where to click?</p>
+<p>Depending on your codebase and the conventions your team decides on, your answer will vary.  What matters is to deliberately steer your test suite so that when a test fails, it is more likely to be catching an actual problem rather than making "fix the tests" busywork.</p>
+</main> <hr> <footer><a href="/">More posts</a> <a class="edit_post_link" href="https://github.com/TehShrike/joshduff.com/edit/master/content/2025-12-11-on-useful-tests.md" target="_blank" rel="external noreferrer">Edit</a></footer>
+	</body>
+</html>
