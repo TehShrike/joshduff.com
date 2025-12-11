@@ -16,7 +16,7 @@ Having seen thousands of test assertions in open source and corporate repositori
 
 #1 is the dream, it's the ostensible reason why we write all those tests.  In practice, #2 seems much more likely.  Sometimes it's because the test was written intentionally, but the developer's intentions have changed.  More often, the test fails because the assertion relies on a dozen unrelated things that could legitimately change, that should never be a part of an automated test.
 
-One employer that I worked for had unit tests for every client-side React component.  They were all of the same variety – they relied on a bunch of mocks, so they didn't interact with the server or any framework code, they would simulate a button click, and then they would assert that the component contained the text that was supposed to be displayed after e.g. the item was successfully saved in the database.
+One project that I worked on had unit tests for every client-side React component.  They were all of the same variety – they relied on a bunch of mocks, so they didn't interact with the server or any framework code, they would simulate a button click, and then they would assert that the component contained the text that was supposed to be displayed after e.g. the item was successfully saved in the database.
 
 These tests provided no value – the only thing that they were testing was that the "successfully saved" text hadn't changed since the test was last touched.  The only reason the test would ever fail would be because someone decided to change the copy.  At best, the tests asserted that React's internals were still working.
 
