@@ -18,7 +18,7 @@ Having seen thousands of test assertions in open source and corporate repositori
 
 One project that I worked on had unit tests for every client-side React component.  They were all of the same variety – they relied on a bunch of mocks, so they didn't interact with the server or any framework code, they would simulate a button click, and then they would assert that the component contained the text that was supposed to be displayed after e.g. the item was successfully saved in the database.
 
-These tests provided no value – the only thing that they were testing was that the "successfully saved" text hadn't changed since the test was last touched.  The only reason the test would ever fail would be because someone decided to change the copy.  At best, the tests asserted that React's internals were still working.
+These tests provided no value – the only thing tested was that the "successfully saved" text hadn't changed since the test was last touched.  The only reason the test would ever fail would be because someone decided to change the copy.  At best, the tests asserted that React's internals were still working.
 
 It's easy to make the call that 99% of the tests in that repository should have been deleted, but even in a thoughtfully curated codebase, you have to play on the spectrum between the two extremes.  You're always trying to maximize the ratio of "chance of catching something actually going wrong" to "likelihood of failing for unrelated reasons".
 
