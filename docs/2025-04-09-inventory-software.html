@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>
+			Josh Duff | The joy of inventory software 
+		</title>
+		<link type="application/rss+xml" href="/feed.rss" rel="alternate" title="Josh Duff">
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link type="text/css" rel="stylesheet" href="/assets/style.css">
+
+		<link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+		<link type="image/png" rel="icon" href="/assets/icon/favicon-32x32.png" sizes="32x32">
+		<link type="image/png" rel="icon" href="/assets/icon/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/assets/icon/manifest.json">
+		<link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/assets/icon/favicon.ico">
+
+		<meta name="msapplication-config" content="/assets/icon/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+	</head>
+
+	<body>
+		<header><a class="logo_link" href="/"><img class="logo" src="/images/logo.svg"></a> <div class="title_and_summary"><h1>The joy of inventory software</h1> <div class="summary">Reality has a surprising amount of detail</div></div></header> <main><p>The purpose of inventory software is to take something about the world and represent it in a database so the people who care (like the people who own the things, or the people responsible for selling them) can look it up easily.</p>
+<p>How much did we pay for it?  What are we selling it for?  Do we have any with this model number? And the ever-present <strong>"how much of it do we have left?"</strong></p>
+<p>Tell a developer about the inventory count process and it sounds simple enough to implement.  A human counts the number of Things on the shelf, types the number into the software, and the software runs a database query to set the inventory quantity to that number.</p>
+<h2 id="except">Except</h2>
+<p>Except that wouldn't represent Reality.  The Reality is that if you find fewer Things than you expected, there's a pretty decent chance that you'll discover the missing items somewhere else in a week or so.  Or you'll find them on the same shelf where they didn't exist when you were looking at it today.  Or you'll find <em>more</em> of them next week than you thought you had.  So, while the fact that the human found fewer Things than you were expecting is <em>important</em>, you can't exactly represent it in the database as <em>reality</em>.</p>
+<p>Even worse, if it turns out that after 3-12 months that everyone in the company is on board with the reality of "okay, that Thing is gone and we won't be able to sell it", it's still not an <em>accounting</em> reality.  You know who changes the amount of inventory they have in stock without a paper trail?  People that the IRS wants to throw in jail, that's who.  And you don't want to be those folks.</p>
+<p>When the company is finally ready to write that lost inventory off its books, you need to remove it with a document, something nice and legible, something that creates general ledger entries that credit inventory and debit some expense account.</p>
+<p>And what happens if you find that Thing again 13 months after you first lost it?  Well, maybe it's easiest if someone just takes it home, I don't know.  I mean, uh, ask your accountant.</p>
+<h2 id="that-sounds-like-a-lot-of-work-to-model">That sounds like a lot of work to model</h2>
+<p>This is true about almost every aspect of business software.  These softwares make the real world legible to the people who need to know about it to do their job – if not physical reality, then accounting reality, or the reality of promises we made to someone while they were paying us for something, or some other kind of reality that matters to the company.</p>
+<p>Software that interacts with the world is full of edge cases, dealing with weird behaviors that people evolved before anyone forced them to represent it in a spreadsheet.</p>
+<p>You can't make all complications disappear with software, but by iterating and talking to the people interacting with the world, you can make reality easier to work with, and I find that incredibly satisfying.</p>
+<hr>
+<p><em>The subhead is a nod to <a href="http://johnsalvatier.org/blog/2017/reality-has-a-surprising-amount-of-detail">this excellent post</a></em></p>
+<p><style>
+.series {
+	border: 2px solid gray;
+	border-radius: 5px;
+	padding: 16px;
+	font-size: 80%;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	text-align: center;
+}
+</style>
+
+<div class="series">
+	<p>This post is part of a series on how I think about software.</p>
+
+	<p>If this resonated with you, you should <a href="mailto:me@JoshDuff.com">reach out to me to let me know</a>, maybe we can work together some day.</p>
+
+	<p>
+<a href="/2022-02-07-eschatology-of-software.html">Eschatology of software</a>
+ • 
+<a href="/2024-07-18-communication-culture.html">Communication culture</a>
+ • 
+<strong>The joy of inventory software</strong>
+ • 
+<a href="/2025-11-10-making-a-product-listing-page-that-doesnt-suck.html">On making a product listing page that doesn't suck</a>
+</p>
+</div>
+</p>
+</main> <hr> <footer><a href="/">More posts</a> <a class="edit_post_link" href="https://github.com/TehShrike/joshduff.com/edit/master/content/2025-04-09-inventory-software.md" target="_blank" rel="external noreferrer">Edit</a></footer>
+	</body>
+</html>
