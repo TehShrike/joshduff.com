@@ -4,7 +4,7 @@ date: "2025-12-11T12:32:05"
 summary: Which automated tests are worth the bytes?
 ---
 
-When your automated test suite fails because an assertion failed, it's generally one of:
+When your automated test suite reports failure, it's generally one of:
 
 1. Someone changed the software and as an unintentional side effect something isn't working the way it's supposed to.
 2. Someone changed the software intentionally, and the test is failing because it's asserting something untrue.
