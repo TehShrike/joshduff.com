@@ -8,6 +8,11 @@ One of the most important things I've read is the post *[Conversational Cultures
 
 A very short summary: what that post's author calls "combat culture" and what I will call "idea culture" is typified by people being willing to disagree with each other's ideas directly.  A face-saving culture, or "nurture culture" is typified by people affirming each other, and interpreting direct criticism or disagreement as an attack.
 
+If someone says something to you that you mostly agree with, but there is an important piece that you disagree with, here is how you might respond given your communication culture:
+
+- *Face-saving culture*: "Yes, and [something else you believe, which could imply some difference from their inferred beliefs]"
+- *Idea Culture*: "Yes, but [thing you disagree with, and why]"
+
 I would recommend reading the post, but I'm not writing this post to convince you to read it, more to get out some thoughts on effective communication.
 
 ## My stance: not neutral
