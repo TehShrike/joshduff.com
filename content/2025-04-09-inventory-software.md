@@ -14,7 +14,7 @@ Tell a developer about the inventory count process and it sounds simple enough t
 
 Except that wouldn't represent Reality.  The Reality is that if you find fewer Things than you expected, there's a pretty decent chance that you'll discover the missing items somewhere else in a week or so.  Or you'll find them on the same shelf where they didn't exist when you were looking at it today.  Or you'll find *more* of them next week than you thought you had.  So, while the fact that the human found fewer Things than you were expecting is *important*, you can't exactly represent it in the database as *reality*.
 
-Even worse, if it turns out that after 3-12 months that everyone in the company is on board with the reality of "okay, that Thing is gone and we won't be able to sell it", it's still not an *accounting* reality.  You know who changes the amount of inventory they have in stock without a paper trail?  People that the IRS wants to throw in jail, that's who.  And you don't want to be those folks.
+Even worse, if it turns out that after 3-12 months that everyone in the company is on board with the reality of "okay, that Thing is gone and we won't be able to sell it", it's still not an *accounting* reality.  You know who changes the amount of inventory they have in stock without a paper trail?  People that the IRS wants to audit, that's who.  And you don't want to be those folks.
 
 When the company is finally ready to write that lost inventory off its books, you need to remove it with a document, something nice and legible, something that creates general ledger entries that credit inventory and debit some expense account.
 
