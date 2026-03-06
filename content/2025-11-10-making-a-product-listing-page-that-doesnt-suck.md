@@ -10,7 +10,7 @@ Most ecommerce sites are covered in these.  Every interaction on a product page 
 
 And that's even on a competently run ecommerce site – if they didn't hire someone obsessive, the trend for a storefront is for product categories and tags to devolve into an unending list with duplication and misspellings.  If I'm browsing a list of shirts or jackets, and I can filter by color, the pull of entropy is for there to be multiple variations on "blue", and even if I check all of them (waiting seconds between each click for the page to reload), some genuinely blue-colored products will be incorrectly filtered out.
 
-Long story short, I recently decided to make an alternate product listing page for a product line I like that is underserved by its online storefront: the Palmetto State Armory Dagger, the modern affordable cousin of the Glock.  My custom page is live now at [buyadagger.com](https://www.buyadagger.com/).
+Long story short, I recently decided to make an alternate product listing page for a product line I like that is underserved by its online storefront: the Palmetto State Armory Dagger, the modern affordable cousin of the Glock.  It's live now at [buyadagger.com](https://www.buyadagger.com/).
 
 <figure>
 	<a href="https://www.buyadagger.com/">
